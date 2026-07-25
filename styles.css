@@ -311,42 +311,6 @@ footer.site .brand small { color: rgba(255,255,255,.55); }
 .chips.chips-1line .chip { font-size: 12px; padding: 7px 10px; letter-spacing: -0.04em; }
 @media (max-width: 1000px) { .chips.chips-1line { overflow-x: auto; -webkit-overflow-scrolling: touch; justify-content: flex-start; } }
 
-/* ---------- 교육 현장 사진 ---------- */
-.training-gallery {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-}
-.training-photo {
-  position: relative;
-  min-width: 0;
-  margin: 0;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: #fff;
-  box-shadow: var(--shadow);
-}
-.training-photo img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  display: block;
-  transition: transform .35s ease;
-}
-.training-photo:hover img { transform: scale(1.025); }
-.training-photo figcaption {
-  padding: 14px 16px 15px;
-  color: var(--navy);
-  font-size: 15px;
-  font-weight: 700;
-}
-.training-gallery-note {
-  margin-top: 18px;
-  text-align: center;
-  color: var(--ink-soft);
-  font-size: 13.5px;
-}
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .nav-links, .nav-cta .btn-outline { display: none; }
@@ -361,11 +325,9 @@ footer.site .brand small { color: rgba(255,255,255,.55); }
   footer.site .cols { grid-template-columns: 1fr 1fr; }
   section { padding: 60px 0; }
   .cta-band { padding: 40px 24px; }
-  .training-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 520px) {
   .stats { grid-template-columns: 1fr; }
   footer.site .cols { grid-template-columns: 1fr; }
   .hero-actions .btn, .cta-actions .btn { width: 100%; }
-  .training-gallery { grid-template-columns: 1fr; }
 }
