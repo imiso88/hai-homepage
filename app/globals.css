@@ -610,8 +610,6 @@ footer .footer-link:focus-visible { color: #fff; }
   border-radius: 999px;
   background: var(--blue);
 }
-.follow-up-message { margin: 18px 0 0; padding: 14px; border-radius: 10px; color: #40545f; background: #eaf4f5; font-size: 13px; }
-.follow-up-message strong { display: block; margin-bottom: 4px; color: var(--blue); font-size: 12px; }
 @media (max-width: 1180px) {
   .nav-links.open a[aria-current="page"]::after { width: 34px; margin-top: 4px; }
 }
