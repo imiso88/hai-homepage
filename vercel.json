@@ -1,1 +1,11 @@
-{"framework":"nextjs","buildCommand":"npx next build"}
+﻿{
+    "framework":  "nextjs",
+    "buildCommand":  "npx next build",
+    "redirects":  [
+                      {
+                          "source":  "/index.html",
+                          "destination":  "/",
+                          "permanent":  true
+                      }
+                  ]
+}
