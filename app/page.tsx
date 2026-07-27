@@ -61,46 +61,55 @@ const testimonials = [
   {
     organization: "중앙부처 현직 공무원",
     name: "김0정",
+    summary: "정책소통에 AI·빅데이터를 적용하는 방향과 출처 검증법을 익히고, 후속 심화과정까지 요청했습니다.",
     quote: "정책 소통에 AI와 빅데이터를 어떻게 활용할지 궁금했는데, 실무 적용 방향과 출처 검증 방법까지 함께 익힐 수 있었습니다. 다음 과정에서는 NotebookLM·Perplexity를 활용한 정책자료 비교·검증과 인포그래픽 제작을 더 깊이 배우고 싶습니다.",
   },
   {
     organization: "방위사업청 표준지원팀",
     name: "이0현",
+    summary: "AI와 빅데이터의 정책소통 활용을 이해하고, 업무와 연결할 인사이트를 얻었습니다.",
     quote: "빅데이터와 AI가 실제 정책 소통에 어떻게 활용되는지 이해하고, 업무에 바로 적용할 수 있는 인사이트를 얻었습니다.",
   },
   {
     organization: "국가기록원 기록관리 담당자",
     name: "박0민",
+    summary: "사례·실습 중심 교육으로 기록관리와 정책소통 업무의 연관성을 구체적으로 확인했습니다.",
     quote: "사례와 실습 중심으로 구성되어 실제 기록관리와 정책 소통 업무의 연결성을 구체적으로 체감할 수 있었습니다.",
   },
   {
     organization: "질병관리청 홍보업무 담당자",
     name: "최0서",
+    summary: "NotebookLM과 데이터 기반 메시지 설계를 익히며 AI 활용 자신감을 높였습니다.",
     quote: "NotebookLM의 다양한 기능과 데이터 기반 메시지 설계 과정을 익히며 AI를 업무에 적용할 자신감이 생겼습니다.",
   },
   {
     organization: "KG케미칼 임직원",
     name: "정0윤",
+    summary: "낯설던 AI 도구를 실생활과 회사 업무에 연결하며 활용 의지가 높아졌습니다.",
     quote: "AI 도구가 낯설었지만 실생활과 회사 업무에 바로 적용할 수 있는 방법을 배우면서 활용 의지가 크게 높아졌습니다.",
   },
   {
     organization: "공공기관 바이브코딩 교육 참가자",
     name: "한0진",
+    summary: "코딩 부담을 낮추고 공문·반복업무용 도구를 직접 만들며 후속 자동화 과정도 요청했습니다.",
     quote: "코딩을 몰라도 공문 작성과 반복업무를 줄이는 도구를 직접 만들어 보니 업무혁신이 현실적으로 느껴졌습니다. 후속 과정에서는 팀 공용 자동화 도구를 완성하고 공유·배포하는 단계까지 배우고 싶습니다.",
   },
   {
     organization: "중앙부처 대변인실 참가자",
     name: "오0은",
+    summary: "정책자료의 핵심 메시지를 대상별 표현으로 바꾸는 실습의 직무 연관성을 확인했습니다.",
     quote: "정책자료에서 핵심 메시지를 도출하고 대상별 표현으로 바꾸는 실습이 보도자료와 정책홍보 업무에 특히 유용했습니다.",
   },
   {
     organization: "국가데이터처 참가자",
     name: "서0우",
+    summary: "근거 검증과 시각화까지 실습한 뒤 공공데이터 심화과정 참여 의사를 밝혔습니다.",
     quote: "데이터를 요약하는 데서 끝나지 않고 근거를 검증하고 시각화해 설명하는 과정까지 연결되어 실무 활용도가 높았습니다. 다음에는 데이터 품질 검증과 시각화 자동화를 실제 공공데이터 과제로 수행하는 심화과정에도 참여하고 싶습니다.",
   },
   {
     organization: "지자체 행정업무 담당자",
     name: "윤0희",
+    summary: "막연했던 생성형 AI를 실제 행정업무에 적용하며 활용 기준을 잡고 후속 자동화 학습을 요청했습니다.",
     quote: "막연하게 느껴졌던 생성형 AI를 민원 안내, 보고자료 정리, 회의 결과 요약 등 실제 행정업무에 적용해 보면서 활용 기준을 잡을 수 있었습니다. 부서의 반복업무를 자동화하는 실습 과정도 이어서 배우고 싶습니다.",
   },
 ];
@@ -128,6 +137,7 @@ function WorkshopPhoto({ compact = false }: { compact?: boolean }) {
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [openTestimonial, setOpenTestimonial] = useState<number | null>(0);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState<"quick" | "diagnosis">("quick");
   const [consent, setConsent] = useState(false);
@@ -447,21 +457,70 @@ export default function Home() {
         <section className="testimonial-section">
           <div className="wrap">
             <div className="section-heading center">
-              <p className="eyebrow">FIELD VOICES</p>
+              <p className="eyebrow">FIELD IMPACT</p>
               <h2>현장에서 확인된 변화</h2>
+              <p>
+                단순히 AI 기능을 소개하는 데 그치지 않고, 교육생이 직접 결과물을 완성하고
+                자신의 업무와 연결할 수 있도록 설계합니다.
+                <br />
+                교육청·인재개발원·공공기관·기업 교육 현장에서 확인한 참여자의 변화와
+                지속적인 교육 의뢰 사례를 소개합니다.
+              </p>
             </div>
-            <div className="testimonial-grid">
-              {testimonials.map((item) => (
-                <article className="testimonial-card" key={`${item.organization}-${item.name}`}>
-                  <div className="testimonial-stars" aria-label="별점 5점 만점에 5점"><span aria-hidden="true">★★★★★</span></div>
-                  <blockquote>“{item.quote}”</blockquote>
-                  <div className="testimonial-meta">
-                    <strong>{item.name}</strong>
-                    <span>{item.organization}</span>
-                  </div>
-                </article>
-              ))}
+            <div className="testimonial-accordion">
+              {testimonials.map((item, index) => {
+                const isOpen = openTestimonial === index;
+                const panelId = `testimonial-panel-${index + 1}`;
+                return (
+                  <article
+                    className={`testimonial-item${index === 0 ? " featured" : ""}${isOpen ? " open" : ""}`}
+                    key={`${item.organization}-${item.name}`}
+                  >
+                    {index === 0 && <p className="testimonial-label">대표 후기</p>}
+                    <h3>
+                      <button
+                        type="button"
+                        aria-expanded={isOpen}
+                        aria-controls={panelId}
+                        onClick={() => setOpenTestimonial(isOpen ? null : index)}
+                      >
+                        <span className="testimonial-number">{String(index + 1).padStart(2, "0")}</span>
+                        <span className="testimonial-summary">{item.summary}</span>
+                        <span className="testimonial-toggle" aria-hidden="true">{isOpen ? "−" : "+"}</span>
+                      </button>
+                    </h3>
+                    <div className="testimonial-panel" id={panelId} hidden={!isOpen}>
+                      <blockquote>“{item.quote}”</blockquote>
+                      <div className="testimonial-meta">
+                        <strong>{item.name}</strong>
+                        <span>{item.organization}</span>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
+            <div className="testimonial-cta">
+              <div>
+                <p className="eyebrow">NEXT STEP</p>
+                <h3>우리 조직에도 이런 변화가 필요하신가요?</h3>
+                <p>
+                  구성원의 AI 활용 수준과 현재 업무를 진단하고
+                  조직에 가장 적합한 교육과 실행 방향을 제안해 드립니다.
+                </p>
+              </div>
+              <div className="testimonial-cta-buttons">
+                <button className="btn btn-primary" onClick={(e) => openModal(e.currentTarget, "diagnosis")}>
+                  무료 AX 진단
+                </button>
+                <button className="btn btn-outline" onClick={(e) => openModal(e.currentTarget)}>
+                  교육·컨설팅 문의
+                </button>
+              </div>
+            </div>
+            <p className="testimonial-disclosure">
+              후기는 실제 교육 설문·참여자 의견 중 공개 동의를 받은 내용만 사용합니다.
+            </p>
           </div>
         </section>
 
