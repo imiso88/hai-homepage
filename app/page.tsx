@@ -39,7 +39,7 @@ const cases = [
     title: "바이브코딩 실무교육",
     problem: "도구 소개에 머문 교육을 실제 업무 적용으로 연결",
     outcome: "개인별 업무자동화 아이디어와 프로토타입 완성",
-    image: "/field-ai-workshop-original.jpg",
+    image: "/field-ai-workshop-3m-clean.jpg",
   },
   {
     tag: "기업·경영진",
@@ -118,7 +118,7 @@ function WorkshopPhoto({ compact = false }: { compact?: boolean }) {
   return (
     <div className={compact ? "workshop-photo compact" : "workshop-photo"}>
       <Image
-        src="/field-ai-workshop-original.jpg"
+        src="/field-ai-workshop-3m-clean.jpg"
         fill
         alt=""
         sizes={compact ? "(max-width: 640px) calc(100vw - 60px), 340px" : "(max-width: 960px) calc(100vw - 30px), 680px"}
