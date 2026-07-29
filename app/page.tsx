@@ -317,7 +317,6 @@ export default function Home() {
           <div className="wrap field-photo-grid">
             <figure className="field-photo">
               <WorkshopPhoto />
-              <figcaption>AI 실습 중심 교육 현장 · 개인정보 보호를 위해 참석자 얼굴 모자이크 처리</figcaption>
             </figure>
             <div className="field-photo-copy">
               <p className="eyebrow">FIELD-BASED AI EDUCATION</p>
