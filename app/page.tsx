@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
@@ -237,9 +237,9 @@ export default function Home() {
             <button type="button" onClick={(e) => { setMenuOpen(false); openModal(e.currentTarget); }}>교육 문의</button>
           </nav>
           <div className="nav-actions">
-            <button className="btn btn-small btn-primary desktop-cta" onClick={(e) => openModal(e.currentTarget, "diagnosis")}>
+            <a href="/diagnosis" className="btn btn-small btn-primary desktop-cta" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
               무료 AX 진단
-            </button>
+            </a>
             <button
               className="menu-toggle"
               type="button"
@@ -260,15 +260,17 @@ export default function Home() {
             <h1 className="sr-only">
               AI 도입 이후 증폭된 업무 환경을 지휘하는 리더십과 현장 중심 AI 교육
             </h1>
-            <Image
+            <video
               className="hero-main-image"
-              src="/hero-main-ai-leadership.png"
-              width={1664}
-              height={936}
-              alt="AI 측정 격차, 업무 몰입도, 집중 시간의 세 가지 리더십 인사이트를 설명하는 배미주 박사"
-              priority
-              sizes="(max-width: 1160px) calc(100vw - 30px), 1120px"
-            />
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }}
+            >
+              <source src="/hero-video.mp4" type="video/mp4" />
+              영상 재생을 지원하지 않는 브라우저입니다.
+            </video>
             <div className="hero-image-actions">
               <div>
                 <p className="eyebrow">AI EDUCATION · AX TRANSFORMATION</p>
@@ -337,7 +339,7 @@ export default function Home() {
               <br />일하는 방식이 달라질 때 비로소 혁신이 됩니다.”
             </blockquote>
             <p>
-              기능을 빠르게 보여주는 데서 멈추지 않습니다. 구성원의 수준과 업무과제를 먼저 이해하고,
+              기능을 빠르게 보여주는 데서 멈추지 않습니다. 구성원의 수준และ 업무과제를 먼저 이해하고,
               직접 만든 결과물이 조직 안에서 계속 활용되도록 돕습니다.
             </p>
           </div>
@@ -509,9 +511,9 @@ export default function Home() {
                 </p>
               </div>
               <div className="testimonial-cta-buttons">
-                <button className="btn btn-primary" onClick={(e) => openModal(e.currentTarget, "diagnosis")}>
+                <a href="/diagnosis" className="btn btn-primary" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
                   무료 AX 진단
-                </button>
+                </a>
                 <button className="btn btn-outline" onClick={(e) => openModal(e.currentTarget)}>
                   교육·컨설팅 문의
                 </button>
@@ -531,9 +533,9 @@ export default function Home() {
               <button className="btn btn-primary" onClick={(e) => openModal(e.currentTarget)}>
                 빠른 교육문의
               </button>
-              <button className="btn btn-light" onClick={(e) => openModal(e.currentTarget, "diagnosis")}>
+              <a href="/diagnosis" className="btn btn-light" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
                 5분 AX 준비도 진단
-              </button>
+              </a>
             </div>
           </div>
         </section>
@@ -615,8 +617,8 @@ export default function Home() {
               {modalMode === "quick" ? (
                 <form onSubmit={submitQuickInquiry}>
                   <div className="form-grid">
-                    <label>이름 <span>*</span><input ref={firstField} name="name" required autoComplete="name" /></label>
-                    <label>기관명 <span>*</span><input name="org" required autoComplete="organization" /></label>
+                     <label>이름 <span>*</span><input ref={firstField} name="name" required autoComplete="name" /></label>
+                     <label>기관명 <span>*</span><input name="org" required autoComplete="organization" /></label>
                   </div>
                   <label>연락처 또는 이메일 <span>*</span><input name="contact" required /></label>
                   <label>희망 주제·교육 대상 <span>*</span><input name="topic" required placeholder="예: 임직원 생성형 AI 교육, 30명" /></label>
@@ -670,6 +672,3 @@ export default function Home() {
     </>
   );
 }
-
-
-
