@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 
-const FORM_URL = "https://forms.gle/3Ee7fwzN5gBRDurWA";
+const FORM_URL = "/diagnosis";
 const EMAIL = "orthia66@gmail.com";
 const PHONE = "010-6398-5354";
 
@@ -638,7 +638,7 @@ export default function Home() {
                     <li>우선 교육과제 도출</li>
                     <li>권장 프로그램과 실행 방향 확인</li>
                   </ul>
-                  <a className="btn btn-primary submit-button" href={FORM_URL} target="_blank" rel="noreferrer">
+                  <a className="btn btn-primary submit-button" href={FORM_URL}>
                     AX 준비도 진단 시작하기
                   </a>
                   <p className="form-note">현재 운영 중인 진단 양식이 새 창에서 열립니다.</p>
@@ -670,4 +670,6 @@ export default function Home() {
     </>
   );
 }
+
+
 
