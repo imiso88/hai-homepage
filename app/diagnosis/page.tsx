@@ -1,12 +1,12 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 
-export default function Diagnosis() {
+export default function DiagnosisPage() {
   return (
     <div style={{ width: "100%", height: "100vh", position: "relative", overflow: "hidden" }}>
-      <Link
-        href="/"
+      {/* 돌아가기 네비게이션 바 */}
+      <Link 
         style={{
           position: "absolute",
           top: "15px",
@@ -22,14 +22,18 @@ export default function Diagnosis() {
           zIndex: 9999,
           display: "inline-flex",
           alignItems: "center",
-          border: "1px solid rgba(255,255,255,0.1)",
+          border: "1px solid rgba(255,255,255,0.1)"
         }}
+        href="/"
       >
-        ???덊럹?댁?濡??뚯븘媛湲?      </Link>
+        ← 홈페이지로 돌아가기
+      </Link>
+      
+      {/* 동일 도메인 내의 정적 HTML 파일을 로드하여 보안 정책(CSP) 우회 */}
       <iframe
-        src="https://claude.ai/code/artifact/04820d5d-2393-4d3d-9fd4-6ffae896cf79"
+        src="/ax-readiness-check.html"
         style={{ width: "100%", height: "100vh", border: "none" }}
-        title="AX 以鍮꾨룄 吏꾨떒"
+        title="AX 준비도 진단"
       />
     </div>
   );
