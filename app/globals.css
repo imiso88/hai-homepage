@@ -623,3 +623,15 @@ footer .footer-link:focus-visible { color: #fff; }
 @media (max-width: 1180px) {
   .nav-links.open a[aria-current="page"]::after { width: 34px; margin-top: 4px; }
 }
+/* Clear audience and next action before the optional introduction video. */
+.audit-hero-copy { max-width: 900px; padding: 28px 0 36px; }
+.audit-hero-copy h1 { color: var(--navy); font-size: clamp(30px, 4.8vw, 58px); line-height: 1.25; letter-spacing: -.04em; margin: 12px 0 20px; }
+.audit-hero-copy > p { line-height: 1.8; }
+.audit-hero-copy .hero-actions { margin-top: 24px; flex-wrap: wrap; }
+.audit-hero-copy .audit-help { font-size: 14px; margin-top: 14px; }
+.hero-main-image { aspect-ratio: 16 / 9; }
+.center-action { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.audit-programs a:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+.form-note a { text-decoration: underline; }
+@media (min-width: 961px) { .nav-links { gap: 14px; } .nav-links a, .nav-links button { font-size: 14px; } }
+@media (max-width: 640px) { .audit-hero-copy { padding-top: 8px; } .audit-hero-copy .hero-actions > a { width: 100%; justify-content: center; } }

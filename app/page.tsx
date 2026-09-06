@@ -120,7 +120,7 @@ function WorkshopPhoto({ compact = false }: { compact?: boolean }) {
       <Image
         src="/field-ai-workshop-3m-clean.jpg"
         fill
-        alt=""
+        alt="참여자가 노트북으로 AI 활용을 실습하는 교육 현장"
         sizes={compact ? "(max-width: 640px) calc(100vw - 60px), 340px" : "(max-width: 960px) calc(100vw - 30px), 680px"}
       />
       <div className="privacy-layer" aria-hidden="true">
@@ -220,7 +220,7 @@ export default function Home() {
     <>
       <header className="site-header">
         <div className="wrap nav">
-          <a className="brand" href="#top" aria-label="휴먼AI융합교육원 전문가 소개 맨 위로">
+          <a className="brand" href="#top" aria-label="휴먼AI융합교육원 홈 맨 위로">
             <Image src="/brand-logo-transparent.png" width={1050} height={600} alt="휴먼AI융합교육원 로고" priority />
             <span>휴먼AI융합교육원</span>
           </a>
@@ -229,16 +229,17 @@ export default function Home() {
             className={menuOpen ? "nav-links open" : "nav-links"}
             aria-label="주요 메뉴"
           >
-            <a href="https://www.humanai-edu.kr/ax-transformation.html" onClick={() => setMenuOpen(false)}>AX 전환</a>
-            <a href="https://www.humanai-edu.kr/programs.html" onClick={() => setMenuOpen(false)}>교육 프로그램</a>
-            <a href="https://www.humanai-edu.kr/about.html" onClick={() => setMenuOpen(false)}>교육원 소개</a>
-            <a href="https://www.humanai-edu.kr/expert.html" aria-current="page" onClick={() => setMenuOpen(false)}>전문가 소개</a>
-            <a href="https://www.humanai-edu.kr/faq.html" onClick={() => setMenuOpen(false)}>FAQ</a>
+            <a href="/ax-transformation.html" onClick={() => setMenuOpen(false)}>AX 전환</a>
+            <a href="/programs.html" onClick={() => setMenuOpen(false)}>교육 프로그램</a>
+            <a href="/cases.html" onClick={() => setMenuOpen(false)}>교육 사례</a>
+            <a href="/about.html" onClick={() => setMenuOpen(false)}>교육원 소개</a>
+            <a href="/expert.html" onClick={() => setMenuOpen(false)}>전문가 소개</a>
+            <a href="/faq.html" onClick={() => setMenuOpen(false)}>FAQ</a>
             <button type="button" onClick={(e) => { setMenuOpen(false); openModal(e.currentTarget); }}>교육 문의</button>
           </nav>
           <div className="nav-actions">
-            <a href="/diagnosis" className="btn btn-small btn-primary desktop-cta" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
-              무료 AX 진단
+            <a href="/contact.html" className="btn btn-small btn-primary desktop-cta" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
+              AI 교육 문의하기
             </a>
             <button
               className="menu-toggle"
@@ -257,14 +258,21 @@ export default function Home() {
       <main id="top">
         <section className="hero">
           <div className="wrap hero-image-shell">
-            <h1 className="sr-only">
-              AI 도입 이후 증폭된 업무 환경을 지휘하는 리더십과 현장 중심 AI 교육
-            </h1>
+            <div className="audit-hero-copy">
+              <p className="eyebrow">기업 · 공공기관 맞춤 교육</p>
+              <h1>기업·공공기관의 업무에<br />바로 쓰는 AI 교육</h1>
+              <p>교육학 박사 배미주가 교육 대상과 실제 업무를 살펴 생성형 AI 교육을 설계합니다.<br />보고서·자료 분석·업무자동화부터 임원·관리자의 AX 전환까지 함께합니다.</p>
+              <div className="hero-actions">
+                <a className="btn btn-primary" href="/contact.html">AI 교육 문의하기</a>
+                <a className="btn btn-outline" href="/programs.html">교육 과정 비교하기</a>
+              </div>
+              <p className="audit-help">주제나 일정이 미정이어도 괜찮습니다. AX 진단 없이 바로 문의하세요.</p>
+            </div>
             <video
               className="hero-main-image"
-              autoPlay
-              loop
-              muted
+              controls
+              preload="none"
+              poster="/hero-main-ai-leadership.png"
               playsInline
               style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }}
             >
@@ -339,9 +347,21 @@ export default function Home() {
               <br />일하는 방식이 달라질 때 비로소 혁신이 됩니다.”
             </blockquote>
             <p>
-              기능을 빠르게 보여주는 데서 멈추지 않습니다. 구성원의 수준และ 업무과제를 먼저 이해하고,
+              기능을 빠르게 보여주는 데서 멈추지 않습니다. 구성원의 수준과 업무과제를 먼저 이해하고,
               직접 만든 결과물이 조직 안에서 계속 활용되도록 돕습니다.
             </p>
+          </div>
+        </section>
+
+        <section className="audit-programs" aria-labelledby="programs-title">
+          <div className="wrap">
+            <div className="section-heading"><h2 id="programs-title">우리 조직에 맞는 교육을 찾아보세요</h2><p>교육 대상과 만들고 싶은 결과물로 과정을 비교할 수 있습니다.</p></div>
+            <div className="highlight-grid">
+              <a className="highlight-card" href="/programs.html#corporate"><h3>기업 실무교육</h3><p>보고서·기획안·자료 분석을 업무용 초안과 템플릿으로 연결합니다.</p></a>
+              <a className="highlight-card" href="/programs.html#public"><h3>공공기관 AI 교육</h3><p>공문·정책자료·민원 업무와 기관의 보안 기준을 함께 다룹니다.</p></a>
+              <a className="highlight-card" href="/programs.html#executive"><h3>임원·관리자 AX 교육</h3><p>AI 적용 우선순위와 조직의 실행 과제를 정리합니다.</p></a>
+              <a className="highlight-card" href="/programs.html#vibe"><h3>업무자동화 실습</h3><p>AI와 대화하며 반복업무를 돕는 도구의 시제품을 만듭니다.</p></a>
+            </div>
           </div>
         </section>
 
@@ -385,7 +405,7 @@ export default function Home() {
                   <li>직무별 프롬프트·NotebookLM 문서분석</li>
                   <li>바이브코딩 업무자동화 랩</li>
                 </ul>
-                <a href="https://www.humanai-edu.kr/programs.html" className="text-link">
+                <a href="/programs.html" className="text-link">
                   교육 프로그램 자세히 보기 →
                 </a>
               </article>
@@ -396,7 +416,7 @@ export default function Home() {
                   서울국제AI영화제 공식 사회 경험을 바탕으로 복잡한 기술과 작품의 메시지를
                   관객의 언어로 연결합니다.
                 </p>
-                <a href="https://www.humanai-edu.kr/mc.html" className="text-link gold-link">
+                <a href="/mc.html" className="text-link gold-link">
                   MC·GV 활동 보기 →
                 </a>
               </article>
@@ -429,6 +449,7 @@ export default function Home() {
               ))}
             </div>
             <div className="center-action">
+              <a className="btn btn-outline" href="/cases.html">기관별 교육 사례 자세히 보기</a>
               <button className="btn btn-primary" onClick={(e) => openModal(e.currentTarget)}>
                 우리 조직에 맞는 과정 문의하기
               </button>
@@ -553,23 +574,23 @@ export default function Home() {
           </div>
           <div>
             <h3>교육</h3>
-            <a href="https://www.humanai-edu.kr/programs.html#corporate">기업 생성형 AI 교육</a>
-            <a href="https://www.humanai-edu.kr/programs.html#public">공공기관 AI 교육</a>
-            <a href="https://www.humanai-edu.kr/programs.html#executive">임원 AX 전략교육</a>
-            <a href="https://www.humanai-edu.kr/programs.html#vibe">바이브코딩 랩</a>
-            <a href="https://www.humanai-edu.kr/programs.html#voice-assistant">소상공인 AI 교육</a>
+            <a href="/programs.html#corporate">기업 생성형 AI 교육</a>
+            <a href="/programs.html#public">공공기관 AI 교육</a>
+            <a href="/programs.html#executive">임원 AX 전략교육</a>
+            <a href="/programs.html#vibe">바이브코딩 랩</a>
+            <a href="/programs.html#voice-assistant">소상공인 AI 교육</a>
           </div>
           <div>
             <h3>교육원</h3>
-            <a href="https://www.humanai-edu.kr/ax-transformation.html">AX 전환이란</a>
-            <a href="https://www.humanai-edu.kr/about.html">교육원 소개</a>
-            <a href="https://www.humanai-edu.kr/expert.html">전문가 소개</a>
-            <a href="https://www.humanai-edu.kr/faq.html">FAQ</a>
+            <a href="/ax-transformation.html">AX 전환이란</a>
+            <a href="/about.html">교육원 소개</a>
+            <a href="/expert.html">전문가 소개</a>
+            <a href="/faq.html">FAQ</a>
           </div>
           <div>
             <h3>문의</h3>
             <button className="footer-link" type="button" onClick={(e) => openModal(e.currentTarget)}>교육 문의하기</button>
-            <a href="https://www.humanai-edu.kr/privacy.html">개인정보처리방침</a>
+            <a href="/privacy.html">개인정보처리방침</a>
             <a href="https://blog.naver.com/ai-ed" target="_blank" rel="noreferrer">네이버 블로그</a>
             <a href="https://www.youtube.com/@Justdoit-%EA%B7%B8%EB%83%A5AI" target="_blank" rel="noreferrer">유튜브</a>
           </div>
@@ -599,18 +620,18 @@ export default function Home() {
             <div className="modal-intro">
               <p className="eyebrow">CONTACT</p>
               <h2 id="inquiry-title">교육·컨설팅 문의</h2>
-              <p id="inquiry-description">빠르게 문의하거나, 5분 진단으로 조직의 현재 단계를 확인하세요.</p>
+              <p id="inquiry-description">교육 문의는 바로 남기실 수 있습니다. AX 준비도 진단은 별도의 선택 항목입니다.</p>
               <div className="direct-links">
                 <a href={`tel:${PHONE.replaceAll("-", "")}`}><small>전화</small>{PHONE}</a>
                 <a href={`mailto:${EMAIL}`}><small>이메일</small>{EMAIL}</a>
               </div>
             </div>
             <div className="modal-content">
-              <div className="modal-tabs" role="tablist" aria-label="문의 방식 선택">
-                <button role="tab" aria-selected={modalMode === "quick"} className={modalMode === "quick" ? "active" : ""} onClick={() => setModalMode("quick")}>
+              <div className="modal-tabs" role="group" aria-label="문의 방식 선택">
+                <button type="button" aria-pressed={modalMode === "quick"} className={modalMode === "quick" ? "active" : ""} onClick={() => setModalMode("quick")}>
                   빠른 문의
                 </button>
-                <button role="tab" aria-selected={modalMode === "diagnosis"} className={modalMode === "diagnosis" ? "active" : ""} onClick={() => setModalMode("diagnosis")}>
+                <button type="button" aria-pressed={modalMode === "diagnosis"} className={modalMode === "diagnosis" ? "active" : ""} onClick={() => setModalMode("diagnosis")}>
                   AX 진단
                 </button>
               </div>
@@ -626,11 +647,11 @@ export default function Home() {
                   <label>문의 내용<textarea name="message" rows={3} placeholder="교육 시간·장소·목적을 알려주세요." /></label>
                   <label className="consent">
                     <input type="checkbox" checked={consent} onChange={(e) => { setConsent(e.target.checked); setFormError(""); }} />
-                    <span>상담을 위한 개인정보 수집·이용에 동의합니다. <a href="https://www.humanai-edu.kr/privacy.html" target="_blank" rel="noreferrer">자세히 보기</a></span>
+                    <span>상담을 위한 개인정보 수집·이용에 동의합니다. <a href="/privacy.html" target="_blank" rel="noreferrer">자세히 보기</a></span>
                   </label>
                   {formError && <p className="form-error" role="alert">{formError}</p>}
                   <button className="btn btn-primary submit-button" type="submit">이메일 문의 작성하기</button>
-                  <p className="form-note">입력한 내용으로 이메일 작성 화면이 열립니다.</p>
+                  <p className="form-note">입력한 내용으로 이메일 작성 화면이 열립니다. 메일 앱에서 전송해야 문의가 접수됩니다. 메일 앱을 사용하지 않으시면 <a href="/contact.html">온라인 문의 안내</a>를 이용하세요.</p>
                 </form>
               ) : (
                 <div className="diagnosis-panel">
@@ -643,7 +664,7 @@ export default function Home() {
                   <a className="btn btn-primary submit-button" href={FORM_URL}>
                     AX 준비도 진단 시작하기
                   </a>
-                  <p className="form-note">현재 운영 중인 진단 양식이 새 창에서 열립니다.</p>
+                  <p className="form-note">진단 페이지로 이동합니다. 교육 문의를 위한 필수 절차는 아닙니다.</p>
                 </div>
               )}
             </div>
@@ -656,14 +677,18 @@ export default function Home() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "ProfilePage",
+            "@type": "WebPage",
+            "@id": "https://www.humanai-edu.kr/#webpage",
+            url: "https://www.humanai-edu.kr/",
+            name: "기업·공공기관 AI 교육 | 휴먼AI융합교육원",
             mainEntity: {
               "@type": "Person",
+              "@id": "https://www.humanai-edu.kr/expert.html#person",
               name: "배미주",
               honorificSuffix: "교육학 박사",
               jobTitle: "AI 교육 컨설턴트 · 휴먼AI융합교육원 원장",
               image: "https://www.humanai-edu.kr/og-image.jpg",
-              worksFor: { "@type": "EducationalOrganization", name: "휴먼AI융합교육원" },
+              worksFor: { "@type": "EducationalOrganization", "@id": "https://www.humanai-edu.kr/#organization", name: "휴먼AI융합교육원", url: "https://www.humanai-edu.kr/" },
               knowsAbout: ["생성형 AI 교육", "AX 전환", "프롬프트 설계", "바이브코딩", "AI 리터러시"],
             },
           }),
