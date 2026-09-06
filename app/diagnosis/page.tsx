@@ -1,4 +1,11 @@
-"use client";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AX 준비도 자가진단 | 휴먼AI융합교육원",
+  description: "조직의 AI 활용 현황과 우선 교육과제를 살펴보는 선택형 자가진단입니다. 교육 문의는 진단 없이 바로 가능합니다.",
+  alternates: { canonical: "/diagnosis" },
+  openGraph: { title: "AX 준비도 자가진단 | 휴먼AI융합교육원", url: "https://www.humanai-edu.kr/diagnosis" },
+};
 
 import Link from "next/link";
 

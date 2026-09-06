@@ -331,3 +331,8 @@ footer.site .brand small { color: rgba(255,255,255,.55); }
   footer.site .cols { grid-template-columns: 1fr; }
   .hero-actions .btn, .cta-actions .btn { width: 100%; }
 }
+
+.audit-faq { border-bottom: 1px solid #dbe3eb; padding: 18px 0; }
+.audit-faq summary { cursor: pointer; font-weight: 700; line-height: 1.6; }
+.audit-faq summary:focus-visible { outline: 3px solid #176baf; outline-offset: 4px; }
+.audit-faq .faq-a-inner { padding: 16px 0 4px; line-height: 1.8; }
