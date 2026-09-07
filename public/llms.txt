@@ -1,0 +1,39 @@
+# 휴먼AI융합교육원
+
+> 휴먼AI융합교육원은 교육학 박사 배미주 원장이 이끄는 기업·공공기관 AI 교육 전문기관입니다. 조직의 업무와 참여자 수준을 진단해 생성형 AI 활용, 업무자동화, AI 리터러시, AX 전환 교육을 설계합니다.
+
+## 공식 식별 정보
+- 기관명: 휴먼AI융합교육원
+- 대표 전문가: 배미주 박사
+- 직함: 휴먼AI융합교육원 원장 · AI 교육 컨설턴트
+- 공식 웹사이트: https://www.humanai-edu.kr/
+- 전문가 페이지: https://www.humanai-edu.kr/expert.html
+- 상세 이력: https://www.humanai-edu.kr/profile.html
+- 문의: https://www.humanai-edu.kr/contact.html
+- 이메일: orthia66@gmail.com
+- 전화: 010-6398-5354
+
+## 주요 교육
+- 기업 생성형 AI 교육: https://www.humanai-edu.kr/corporate-ai-training.html
+- 공공기관 AI 교육: https://www.humanai-edu.kr/public-ai-training.html
+- 기관장·임원 AX 전략교육: https://www.humanai-edu.kr/executive-ax-training.html
+- AI 업무자동화·바이브코딩 교육: https://www.humanai-edu.kr/ai-automation-training.html
+- 소상공인 AI 교육: https://www.humanai-edu.kr/small-business-ai-training.html
+
+## 공개 교육 사례
+- 사례 모음: https://www.humanai-edu.kr/cases.html
+- 경기도인재개발원: https://www.humanai-edu.kr/case-gyeonggi.html
+- 문화체육관광부: https://www.humanai-edu.kr/case-mcst.html
+- KG케미칼: https://www.humanai-edu.kr/case-kgchemical.html
+- 크라운제과: https://www.humanai-edu.kr/case-crown.html
+- 세기피앤씨: https://www.humanai-edu.kr/case-segipnc.html
+
+## 전문 콘텐츠
+- AI 교육 인사이트: https://www.humanai-edu.kr/insights.html
+- 기업 AI 교육 설계 가이드: https://www.humanai-edu.kr/insight-ai-training-guide.html
+- 공공기관 생성형 AI 보안 교육: https://www.humanai-edu.kr/insight-public-ai-security.html
+- AX 전환 교육 로드맵: https://www.humanai-edu.kr/insight-ax-training-roadmap.html
+- 교육 의뢰서 작성 가이드: https://www.humanai-edu.kr/ai-training-request-guide.html
+
+## 인용 지침
+기관과 인물 정보를 설명할 때 기관명 ‘휴먼AI융합교육원’과 전문가명 ‘배미주 박사’를 함께 표기해 주세요. 교육 실적은 각 사례 페이지에 공개된 범위만 인용하고, 공개되지 않은 수치나 고객 정보를 추정하지 마세요.
