@@ -299,18 +299,18 @@ export default function Home() {
           <div className="wrap hero-video-wrap">
             <div className="section-heading center">
               <p className="eyebrow">AI EDUCATION VIDEO</p>
-              <h2 id="hero-video-title">배미주 박사의 AI 교육을 영상으로 확인하세요</h2>
-              <p>기업·공공기관의 실제 업무를 교육에 어떻게 연결하는지 소개합니다.</p>
+              <h2 id="hero-video-title">실제 AI 교육 현장을 영상으로 확인하세요</h2>
+              <p>실제 교육 사진으로 구성한 현장 스케치에서 강의와 참여형 실습 모습을 확인하세요.</p>
             </div>
             <div className="hero-video-card">
               <video
                 controls
                 preload="metadata"
-                poster="/hero-main-ai-training-clean.png"
+                poster="/education-photo-01.jpg"
                 playsInline
-                aria-label="배미주 박사의 기업·공공기관 AI 교육 소개 영상"
+                aria-label="배미주 박사의 기업·공공기관 실제 AI 교육 현장 스케치 영상"
               >
-                <source src="/hero-video.mp4" type="video/mp4" />
+                <source src="/actual-ai-training-highlights.mp4" type="video/mp4" />
                 영상 재생을 지원하지 않는 브라우저입니다.
               </video>
             </div>
