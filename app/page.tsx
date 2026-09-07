@@ -261,7 +261,7 @@ export default function Home() {
             <div className="audit-hero-copy">
               <p className="eyebrow">기업 · 공공기관 맞춤 교육</p>
               <h1>기업·공공기관의 업무에<br />바로 쓰는 AI 교육</h1>
-              <p>교육학 박사 배미주가 교육 대상과 실제 업무를 살펴 생성형 AI 교육을 설계합니다.<br />보고서·자료 분석·업무자동화부터 임원·관리자의 AX 전환까지 함께합니다.</p>
+              <p>휴먼AI융합교육원 원장 배미주 박사가 교육 대상과 실제 업무를 살펴 생성형 AI 교육을 설계합니다.<br />보고서·자료 분석·업무자동화부터 임원·관리자의 AX 전환까지 함께합니다.</p>
               <div className="hero-actions">
                 <a className="btn btn-primary" href="/contact.html">AI 교육 문의하기</a>
                 <a className="btn btn-outline" href="/programs.html">교육 과정 비교하기</a>
@@ -686,7 +686,7 @@ export default function Home() {
               "@id": "https://www.humanai-edu.kr/expert.html#person",
               name: "배미주",
               honorificSuffix: "교육학 박사",
-              jobTitle: "AI 교육 컨설턴트 · 휴먼AI융합교육원 원장",
+              jobTitle: "휴먼AI융합교육원 원장 · AI 교육 컨설턴트",
               image: "https://www.humanai-edu.kr/og-image.jpg",
               worksFor: { "@type": "EducationalOrganization", "@id": "https://www.humanai-edu.kr/#organization", name: "휴먼AI융합교육원", url: "https://www.humanai-edu.kr/" },
               knowsAbout: ["생성형 AI 교육", "AX 전환", "프롬프트 설계", "바이브코딩", "AI 리터러시"],
