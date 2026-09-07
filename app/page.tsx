@@ -258,37 +258,30 @@ export default function Home() {
       <main id="top">
         <section className="hero">
           <div className="wrap hero-image-shell">
-            <div className="audit-hero-copy">
-              <p className="eyebrow">기업 · 공공기관 맞춤 교육</p>
-              <h1>기업·공공기관의 업무에<br />바로 쓰는 AI 교육</h1>
-              <p>휴먼AI융합교육원 원장 배미주 박사가 교육 대상과 실제 업무를 살펴 생성형 AI 교육을 설계합니다.<br />보고서·자료 분석·업무자동화부터 임원·관리자의 AX 전환까지 함께합니다.</p>
-              <div className="hero-actions">
-                <a className="btn btn-primary" href="/contact.html">AI 교육 문의하기</a>
-                <a className="btn btn-outline" href="/programs.html">교육 과정 비교하기</a>
-              </div>
-              <p className="audit-help">주제나 일정이 미정이어도 괜찮습니다. AX 진단 없이 바로 문의하세요.</p>
-            </div>
-            <video
-              className="hero-main-image"
-              controls
-              preload="none"
-              poster="/hero-main-ai-leadership.png"
-              playsInline
-              style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }}
-            >
-              <source src="/hero-video.mp4" type="video/mp4" />
-              영상 재생을 지원하지 않는 브라우저입니다.
-            </video>
-            <div className="hero-image-actions">
-              <div>
-                <p className="eyebrow">AI EDUCATION · AX TRANSFORMATION</p>
-                <strong>조직의 실제 업무를 바꾸는 AI 교육과 AX 전환을 설계합니다.</strong>
-              </div>
-              <div className="hero-actions">
-                <button className="btn btn-primary" onClick={(e) => openModal(e.currentTarget)}>
-                  강의·컨설팅 문의
-                </button>
-                <a className="btn btn-outline" href="#proof">대표 이력 보기</a>
+            <div className="hero-visual">
+              <Image
+                className="hero-main-image"
+                src="/hero-main-ai-training-clean.png"
+                width={1664}
+                height={936}
+                alt="배미주 박사가 기업·공공기관 AI 교육을 진행하는 모습"
+                sizes="(max-width: 960px) calc(100vw - 32px), 1340px"
+                priority
+              />
+              <div className="hero-screen-copy">
+                <p className="eyebrow">기업 · 공공기관 맞춤 교육</p>
+                <h1><span>우리 조직의 업무에</span><span>바로 쓰는 AI 교육</span></h1>
+                <p className="hero-screen-lead"><span>AI가 처음인 구성원도 실제 업무로 연습하고,</span><span>교육 후 바로 활용할 수 있도록 설계합니다.</span></p>
+                <ul className="hero-benefits" aria-label="교육의 핵심 효과">
+                  <li><strong>실제 업무로 실습</strong><span>보고서·자료 분석·콘텐츠 제작</span></li>
+                  <li><strong>수준별 맞춤 교육</strong><span>직급·직무·AI 경험을 반영</span></li>
+                  <li><strong>반복업무 시간 절감</strong><span>업무자동화와 실행 결과물 완성</span></li>
+                </ul>
+                <div className="hero-actions">
+                  <a className="btn btn-primary" href="/contact.html">AI 교육 문의하기</a>
+                  <a className="btn btn-outline" href="/programs.html">교육과정 확인하기</a>
+                </div>
+                <p className="audit-help">주제·일정·인원이 미정이어도 상담할 수 있습니다.</p>
               </div>
             </div>
           </div>
@@ -298,6 +291,28 @@ export default function Home() {
               <div><strong>12권</strong><span>AI 저서</span></div>
               <div><strong>145+</strong><span>출강 기관</span></div>
               <div><strong>10,000+</strong><span>누적 수강생</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section className="hero-video-section" aria-labelledby="hero-video-title">
+          <div className="wrap hero-video-wrap">
+            <div className="section-heading center">
+              <p className="eyebrow">AI EDUCATION VIDEO</p>
+              <h2 id="hero-video-title">배미주 박사의 AI 교육을 영상으로 확인하세요</h2>
+              <p>기업·공공기관의 실제 업무를 교육에 어떻게 연결하는지 소개합니다.</p>
+            </div>
+            <div className="hero-video-card">
+              <video
+                controls
+                preload="metadata"
+                poster="/hero-main-ai-training-clean.png"
+                playsInline
+                aria-label="배미주 박사의 기업·공공기관 AI 교육 소개 영상"
+              >
+                <source src="/hero-video.mp4" type="video/mp4" />
+                영상 재생을 지원하지 않는 브라우저입니다.
+              </video>
             </div>
           </div>
         </section>
