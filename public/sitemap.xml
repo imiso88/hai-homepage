@@ -23,4 +23,8 @@
   <url><loc>https://www.humanai-edu.kr/executive-ax-training.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.humanai-edu.kr/ai-automation-training.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.humanai-edu.kr/small-business-ai-training.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.humanai-edu.kr/insights.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.humanai-edu.kr/insight-ai-training-guide.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.humanai-edu.kr/insight-public-ai-security.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.humanai-edu.kr/insight-ax-training-roadmap.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

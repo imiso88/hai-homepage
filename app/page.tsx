@@ -585,6 +585,7 @@ export default function Home() {
             <a href="/ax-transformation.html">AX 전환이란</a>
             <a href="/about.html">교육원 소개</a>
             <a href="/expert.html">전문가 소개</a>
+            <a href="/insights.html">AI 교육 인사이트</a>
             <a href="/faq.html">FAQ</a>
           </div>
           <div>
