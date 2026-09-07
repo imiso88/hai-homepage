@@ -357,10 +357,10 @@ export default function Home() {
           <div className="wrap">
             <div className="section-heading"><h2 id="programs-title">우리 조직에 맞는 교육을 찾아보세요</h2><p>교육 대상과 만들고 싶은 결과물로 과정을 비교할 수 있습니다.</p></div>
             <div className="highlight-grid">
-              <a className="highlight-card" href="/programs.html#corporate"><h3>기업 실무교육</h3><p>보고서·기획안·자료 분석을 업무용 초안과 템플릿으로 연결합니다.</p></a>
-              <a className="highlight-card" href="/programs.html#public"><h3>공공기관 AI 교육</h3><p>공문·정책자료·민원 업무와 기관의 보안 기준을 함께 다룹니다.</p></a>
-              <a className="highlight-card" href="/programs.html#executive"><h3>임원·관리자 AX 교육</h3><p>AI 적용 우선순위와 조직의 실행 과제를 정리합니다.</p></a>
-              <a className="highlight-card" href="/programs.html#vibe"><h3>업무자동화 실습</h3><p>AI와 대화하며 반복업무를 돕는 도구의 시제품을 만듭니다.</p></a>
+              <a className="highlight-card" href="/corporate-ai-training.html"><h3>기업 실무교육</h3><p>보고서·기획안·자료 분석을 업무용 초안과 템플릿으로 연결합니다.</p></a>
+              <a className="highlight-card" href="/public-ai-training.html"><h3>공공기관 AI 교육</h3><p>공문·정책자료·민원 업무와 기관의 보안 기준을 함께 다룹니다.</p></a>
+              <a className="highlight-card" href="/executive-ax-training.html"><h3>임원·관리자 AX 교육</h3><p>AI 적용 우선순위와 조직의 실행 과제를 정리합니다.</p></a>
+              <a className="highlight-card" href="/ai-automation-training.html"><h3>업무자동화 실습</h3><p>AI와 대화하며 반복업무를 돕는 도구의 시제품을 만듭니다.</p></a>
             </div>
           </div>
         </section>
@@ -574,11 +574,11 @@ export default function Home() {
           </div>
           <div>
             <h3>교육</h3>
-            <a href="/programs.html#corporate">기업 생성형 AI 교육</a>
-            <a href="/programs.html#public">공공기관 AI 교육</a>
-            <a href="/programs.html#executive">임원 AX 전략교육</a>
-            <a href="/programs.html#vibe">바이브코딩 랩</a>
-            <a href="/programs.html#voice-assistant">소상공인 AI 교육</a>
+            <a href="/corporate-ai-training.html">기업 생성형 AI 교육</a>
+            <a href="/public-ai-training.html">공공기관 AI 교육</a>
+            <a href="/executive-ax-training.html">임원 AX 전략교육</a>
+            <a href="/ai-automation-training.html">바이브코딩 랩</a>
+            <a href="/small-business-ai-training.html">소상공인 AI 교육</a>
           </div>
           <div>
             <h3>교육원</h3>

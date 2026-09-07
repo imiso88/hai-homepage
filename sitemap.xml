@@ -18,4 +18,9 @@
 <url><loc>https://www.humanai-edu.kr/case-crown.html</loc></url>
 <url><loc>https://www.humanai-edu.kr/testimonials.html</loc></url>
 <url><loc>https://www.humanai-edu.kr/diagnosis</loc></url>
+  <url><loc>https://www.humanai-edu.kr/corporate-ai-training.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.humanai-edu.kr/public-ai-training.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.humanai-edu.kr/executive-ax-training.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.humanai-edu.kr/ai-automation-training.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.humanai-edu.kr/small-business-ai-training.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
