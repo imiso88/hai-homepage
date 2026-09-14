@@ -4,5 +4,8 @@ dist
 .wrangler
 .env
 *.log
+*.tsbuildinfo
+AGENTS.md
+CLAUDE.md
 
 .vercel

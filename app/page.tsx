@@ -29,6 +29,21 @@ const organizationClients = [
   "삼성 홈플러스", "풀무원식품", "3M", "KG케미칼", "패스트캠퍼스", "한국산업안전보건공단",
 ];
 
+const featuredPartners = [
+  { name: "문화체육관광부", logo: "/partner-logos/mcst-7.jpg" },
+  { name: "중소벤처기업부", logo: "/partner-logos/mss.svg" },
+  { name: "행정안전부 지방자치인재개발원", logo: "/partner-logos/logodi.png" },
+  { name: "경기도인재개발원", logo: "/partner-logos/gyeonggi.png" },
+  { name: "세종시교육청교육원", logo: "/partner-logos/sejong.jpg" },
+  { name: "한국여성인권진흥원", logo: "/partner-logos/kwdi.png" },
+  { name: "3M", logo: "/partner-logos/3m.svg" },
+  { name: "크라운제과", logo: "/partner-logos/crown.png" },
+  { name: "KG케미컬", logo: "/partner-logos/kgchem.jpg" },
+  { name: "패스트캠퍼스", logo: "/partner-logos/fastcampus.svg" },
+  { name: "병무청", logo: "/partner-logos/mma.svg" },
+  { name: "한국PR기업협회", logo: "/partner-logos/kprca.png" },
+];
+
 const privacyMasks = [
   [46.1, 44.0, 4.4, 8.5],
 ];
@@ -238,7 +253,7 @@ export default function Home() {
             <button type="button" onClick={(e) => { setMenuOpen(false); openModal(e.currentTarget); }}>교육 문의</button>
           </nav>
           <div className="nav-actions">
-            <a href="/contact.html" className="btn btn-small btn-primary desktop-cta" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
+            <a href="/contact.html" className="btn btn-small btn-primary desktop-cta">
               AI 교육 문의하기
             </a>
             <button
@@ -269,19 +284,19 @@ export default function Home() {
                 priority
               />
               <div className="hero-screen-copy">
-                <p className="eyebrow">기업 · 공공기관 맞춤 교육</p>
-                <h1><span>우리 조직의 업무에</span><span>바로 쓰는 AI 교육</span></h1>
-                <p className="hero-screen-lead"><span>AI가 처음인 구성원도 실제 업무로 연습하고,</span><span>교육 후 바로 활용할 수 있도록 설계합니다.</span></p>
-                <ul className="hero-benefits" aria-label="교육의 핵심 효과">
-                  <li><strong>실제 업무로 실습</strong><span>보고서·자료 분석·콘텐츠 제작</span></li>
-                  <li><strong>수준별 맞춤 교육</strong><span>직급·직무·AI 경험을 반영</span></li>
-                  <li><strong>반복업무 시간 절감</strong><span>업무자동화와 실행 결과물 완성</span></li>
-                </ul>
+                <p className="eyebrow">기업·공공기관 직무 맞춤형 생성형 AI 교육</p>
+                <h1><span>업무 결과물까지<wbr /> 완성하는</span><span>기업·공공기관<wbr /> AI 교육</span></h1>
+                <p className="hero-screen-lead"><span>구성원의 직무·AI 수준·기관 보안 기준을<wbr /> 사전 분석하고,</span><span>보고서·자료 분석·공문·콘텐츠 제작을<wbr /> 실제 과제로 실습합니다.</span></p>
                 <div className="hero-actions">
-                  <a className="btn btn-primary" href="/contact.html">AI 교육 문의하기</a>
-                  <a className="btn btn-outline" href="/programs.html">교육과정 확인하기</a>
+                  <a className="btn btn-primary" href="/contact.html">맞춤 교육안·견적 받기</a>
+                  <a className="btn btn-outline" href="/programs.html">교육과정·사례 확인하기</a>
                 </div>
-                <p className="audit-help">주제·일정·인원이 미정이어도 상담할 수 있습니다.</p>
+                <p className="audit-help"><span aria-hidden="true">✓</span> 주제·일정·인원이 미정이어도 됩니다. 기관명과 교육 대상만 알려주시면 추천 과정과 진행안을 안내합니다.</p>
+                <ul className="hero-benefits" aria-label="맞춤 교육 설계 과정">
+                  <li><strong>교육 전 요구진단</strong><span>직무·수준·업무과제·보안 기준 확인</span></li>
+                  <li><strong>실제 업무로 실습</strong><span>보고서·정책자료·데이터·홍보 과제</span></li>
+                  <li><strong>1인 1산출물</strong><span>업무 템플릿과 활용 결과물 완성</span></li>
+                </ul>
               </div>
             </div>
           </div>
@@ -314,6 +329,24 @@ export default function Home() {
                 영상 재생을 지원하지 않는 브라우저입니다.
               </video>
             </div>
+          </div>
+        </section>
+
+        <section className="featured-partners" aria-labelledby="featured-partners-title">
+          <div className="wrap featured-partners-inner">
+            <div className="featured-partners-heading">
+              <p className="eyebrow">SELECTED EDUCATION CLIENTS</p>
+              <h2 id="featured-partners-title">주요 교육 수행기관</h2>
+              <p>정부·공공기관과 국내외 기업의 실제 업무 현장에서 교육을 진행했습니다.</p>
+            </div>
+            <ul className="featured-logo-grid">
+              {featuredPartners.map((partner) => (
+                <li className="featured-logo" key={partner.name}>
+                  <Image src={partner.logo} width={260} height={88} alt={`${partner.name} 로고`} />
+                </li>
+              ))}
+            </ul>
+            <p className="featured-partners-note">기관명과 로고는 교육 수행 이력을 알리기 위한 식별 목적으로 사용했습니다.</p>
           </div>
         </section>
 
