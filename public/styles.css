@@ -97,6 +97,7 @@ footer.site .brand-name { color: #fff; }
 .nav-links a { font-size: 16px; font-weight: 600; color: var(--ink-soft); transition: color .15s; }
 .nav-links a:hover, .nav-links a.active { color: var(--blue); }
 .nav-cta { display: flex; align-items: center; gap: 12px; }
+.nav-apply { display: none; }
 .nav-toggle { display: none; background: none; border: 0; cursor: pointer; }
 .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--navy); margin: 5px 0; transition: .2s; }
 
@@ -314,6 +315,7 @@ footer.site .brand small { color: rgba(255,255,255,.55); }
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .nav-links, .nav-cta .btn-outline { display: none; }
+  .nav-apply { display: inline-flex; }
   .nav-toggle { display: block; }
   .nav-links.open {
     display: flex; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0;
@@ -321,7 +323,9 @@ footer.site .brand small { color: rgba(255,255,255,.55); }
   }
   .nav-links.open a { padding: 10px 0; }
   .stats { grid-template-columns: repeat(2, 1fr); }
-  .grid-2, .grid-3, .grid-4, .steps, .feature, .form-grid { grid-template-columns: 1fr; }
+  .chips.chips-1line { flex-wrap: wrap; overflow-x: visible; justify-content: flex-start; }
+  .grid-2, .grid-3, .grid-4, .steps, .feature, .form-grid { grid-template-columns: 1fr !important; }
+  .lecture-toggle, .feature, .feature > * { min-width: 0; max-width: 100%; }
   footer.site .cols { grid-template-columns: 1fr 1fr; }
   section { padding: 60px 0; }
   .cta-band { padding: 40px 24px; }

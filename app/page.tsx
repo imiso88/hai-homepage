@@ -1,33 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
-
-const FORM_URL = "/diagnosis";
-const EMAIL = "orthia66@gmail.com";
-const PHONE = "010-6398-5354";
-
-const highlights = [
-  ["Ph.D.", "교육학 박사", "교육과정·공학과 교육심리를 바탕으로 조직 맞춤 교육을 설계합니다."],
-  ["12권", "AI 저서 집필", "AI 리터러시부터 실무 활용·콘텐츠 제작까지 지식을 체계화했습니다."],
-  ["145+", "출강 기관", "대학·정부·지자체·기업의 다양한 업무 환경을 경험했습니다."],
-  ["10,000+", "누적 수강생", "초보자부터 임원·실무자까지 수준에 맞는 교육을 진행했습니다."],
-  ["공공·기업", "직무 맞춤 교육", "실제 보고서·정책·민원·데이터·홍보 업무로 실습합니다."],
-  ["검증·책임", "안전한 AI 활용", "출처·사실·수치·개인정보·보안을 함께 점검합니다."],
-];
-
-const universityClients = [
-  "강원대", "부산대", "원광대", "경복대", "인제대", "연세대", "유원대", "동양대",
-  "대진대", "대전대", "한양대", "한림대", "극동대", "청주대", "동국대", "인덕대",
-  "부천대", "공주대", "가톨릭대", "한양대 최고위과정", "인천대 CEO 과정",
-];
-
-const organizationClients = [
-  "중소벤처기업부", "문화체육관광부", "행정안전부", "과학기술정보통신부",
-  "지방자치인재개발원", "경기도인재개발원",
-  "세종시교육청", "대구광역시", "광주광역시", "의정부시", "천안시", "포천시",
-  "삼성 홈플러스", "풀무원식품", "3M", "KG케미칼", "패스트캠퍼스", "한국산업안전보건공단",
-];
+import { useState } from "react";
 
 const featuredPartners = [
   { name: "문화체육관광부", logo: "/partner-logos/mcst-7.jpg" },
@@ -153,83 +127,6 @@ function WorkshopPhoto({ compact = false }: { compact?: boolean }) {
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openTestimonial, setOpenTestimonial] = useState<number | null>(0);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalMode, setModalMode] = useState<"quick" | "diagnosis">("quick");
-  const [consent, setConsent] = useState(false);
-  const [formError, setFormError] = useState("");
-  const firstField = useRef<HTMLInputElement>(null);
-  const lastTrigger = useRef<HTMLElement | null>(null);
-  const dialogRef = useRef<HTMLDivElement>(null);
-
-  const openModal = (trigger?: HTMLElement, mode: "quick" | "diagnosis" = "quick") => {
-    lastTrigger.current = trigger ?? null;
-    setModalMode(mode);
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-    setFormError("");
-    setTimeout(() => lastTrigger.current?.focus(), 0);
-  };
-
-  useEffect(() => {
-    if (!modalOpen) return;
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    if (modalMode === "quick") setTimeout(() => firstField.current?.focus(), 0);
-    return () => {
-      document.body.style.overflow = originalOverflow;
-    };
-  }, [modalOpen, modalMode]);
-
-  const handleDialogKey = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === "Escape") {
-      closeModal();
-      return;
-    }
-    if (event.key !== "Tab" || !dialogRef.current) return;
-    const items = Array.from(
-      dialogRef.current.querySelectorAll<HTMLElement>(
-        'button:not([disabled]), a[href], input:not([disabled]), textarea:not([disabled])',
-      ),
-    );
-    if (!items.length) return;
-    const first = items[0];
-    const last = items[items.length - 1];
-    if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault();
-      last.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault();
-      first.focus();
-    }
-  };
-
-  const submitQuickInquiry = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    if (!consent) {
-      setFormError("개인정보 수집·이용에 동의해 주세요.");
-      return;
-    }
-    const subject = encodeURIComponent(
-      `[교육문의] ${String(data.get("org") || "기관 미입력")} · ${String(data.get("name") || "")}`,
-    );
-    const body = encodeURIComponent(
-      [
-        `이름: ${data.get("name")}`,
-        `기관명: ${data.get("org")}`,
-        `연락처: ${data.get("contact")}`,
-        `희망 주제: ${data.get("topic")}`,
-        `희망 일정: ${data.get("schedule") || "협의 필요"}`,
-        "",
-        "문의 내용:",
-        `${data.get("message") || ""}`,
-      ].join("\n"),
-    );
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
-  };
 
   return (
     <>
@@ -250,11 +147,10 @@ export default function Home() {
             <a href="/about.html" onClick={() => setMenuOpen(false)}>교육원 소개</a>
             <a href="/expert.html" onClick={() => setMenuOpen(false)}>전문가 소개</a>
             <a href="/faq.html" onClick={() => setMenuOpen(false)}>FAQ</a>
-            <button type="button" onClick={(e) => { setMenuOpen(false); openModal(e.currentTarget); }}>교육 문의</button>
           </nav>
           <div className="nav-actions">
             <a href="/contact.html" className="btn btn-small btn-primary desktop-cta">
-              AI 교육 문의하기
+              AI 교육 신청
             </a>
             <button
               className="menu-toggle"
@@ -288,7 +184,7 @@ export default function Home() {
                 <h1><span>업무 결과물까지<wbr /> 완성하는</span><span>기업·공공기관<wbr /> AI 교육</span></h1>
                 <p className="hero-screen-lead"><span>구성원의 직무·AI 수준·기관 보안 기준을<wbr /> 사전 분석하고,</span><span>보고서·자료 분석·공문·콘텐츠 제작을<wbr /> 실제 과제로 실습합니다.</span></p>
                 <div className="hero-actions">
-                  <a className="btn btn-primary" href="/contact.html">맞춤 교육안·견적 받기</a>
+                  <a className="btn btn-primary" href="/contact.html">AI 교육 맞춤 신청하기</a>
                   <a className="btn btn-outline" href="/programs.html">교육과정·사례 확인하기</a>
                 </div>
                 <p className="audit-help"><span aria-hidden="true">✓</span> 주제·일정·인원이 미정이어도 됩니다. 기관명과 교육 대상만 알려주시면 추천 과정과 진행안을 안내합니다.</p>
@@ -350,43 +246,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="clients-section" aria-labelledby="clients-title">
-          <div className="wrap clients-heading">
-            <p className="eyebrow">TRUSTED EDUCATION PARTNERS</p>
-            <h2 id="clients-title">주요 출강 및 교육 수행기관</h2>
-            <p>대학·정부·지자체·기업의 다양한 현장에서 생성형 AI와 AX 전환 교육을 진행했습니다.</p>
-          </div>
-          <div className="client-panorama" aria-label="주요 대학 출강기관">
-            <div className="client-track">
-              {[...universityClients, ...universityClients].map((name, index) => (
-                <span className="client-chip university" key={`${name}-${index}`} aria-hidden={index >= universityClients.length}>{name}</span>
-              ))}
-            </div>
-          </div>
-          <div className="client-panorama reverse" aria-label="주요 정부·지자체·기업 교육기관">
-            <div className="client-track">
-              {[...organizationClients, ...organizationClients].map((name, index) => (
-                <span className="client-chip organization" key={`${name}-${index}`} aria-hidden={index >= organizationClients.length}>{name}</span>
-              ))}
-            </div>
-          </div>
-        </section>
-        <section className="field-photo-section" aria-labelledby="field-photo-title">
-          <div className="wrap field-photo-grid">
-            <figure className="field-photo">
-              <WorkshopPhoto />
-            </figure>
-            <div className="field-photo-copy">
-              <p className="eyebrow">FIELD-BASED AI EDUCATION</p>
-              <h2 id="field-photo-title">강의에서 끝나지 않고,<br />현장에서 직접 완성합니다</h2>
-              <p>
-                교육생이 자신의 업무자료와 과제를 바탕으로 직접 실습하고,
-                교육 후에도 활용할 수 있는 결과물을 만드는 참여형 AI 교육을 진행합니다.
-              </p>
-              <a className="text-link" href="#cases">대표 교육 사례 보기 →</a>
-            </div>
-          </div>
-        </section>
+
         <section className="intro">
           <div className="wrap intro-grid">
             <p className="eyebrow">HUMAN FIRST</p>
@@ -413,24 +273,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="proof" className="soft-section">
-          <div className="wrap">
-            <div className="section-heading">
-              <p className="eyebrow">PROOF &amp; EXPERIENCE</p>
-              <h2>전문성을 한눈에 확인하세요</h2>
-              <p>학문적 기반, 현장 경험, 저술과 책임 있는 AI 교육을 하나의 설계 역량으로 연결합니다.</p>
-            </div>
-            <div className="highlight-grid">
-              {highlights.map(([number, title, description]) => (
-                <article className="highlight-card" key={title}>
-                  <strong>{number}</strong>
-                  <h3>{title}</h3>
-                  <p>{description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
 
         <section id="expertise" className="expertise-section">
           <div className="wrap">
@@ -498,31 +340,13 @@ export default function Home() {
             </div>
             <div className="center-action">
               <a className="btn btn-outline" href="/cases.html">기관별 교육 사례 자세히 보기</a>
-              <button className="btn btn-primary" onClick={(e) => openModal(e.currentTarget)}>
-                우리 조직에 맞는 과정 문의하기
-              </button>
+              <a className="btn btn-primary" href="/contact.html">
+                우리 조직에 맞는 과정 신청
+              </a>
             </div>
           </div>
         </section>
 
-        <section className="philosophy soft-section">
-          <div className="wrap philosophy-grid">
-            <div>
-              <p className="eyebrow">EDUCATION PRINCIPLES</p>
-              <h2>교육의 기준은 도구가 아니라 변화입니다</h2>
-              <p className="lead">
-                교육 대상과 조직의 업무과제를 분석하고, 초보자도 직접 결과물을 만들며,
-                AI 결과를 안전하게 검증하도록 가르칩니다.
-              </p>
-            </div>
-            <div className="principles">
-              <div><strong>01</strong><span>사람의 수용성과 자신감부터 확인</span></div>
-              <div><strong>02</strong><span>실제 업무자료와 직무과제로 실습</span></div>
-              <div><strong>03</strong><span>교육생 1인 1산출물 완성</span></div>
-              <div><strong>04</strong><span>출처·사실·보안·책임까지 검증</span></div>
-            </div>
-          </div>
-        </section>
 
         <section className="testimonial-section">
           <div className="wrap">
@@ -570,24 +394,7 @@ export default function Home() {
                 );
               })}
             </div>
-            <div className="testimonial-cta">
-              <div>
-                <p className="eyebrow">NEXT STEP</p>
-                <h3>우리 조직에도 이런 변화가 필요하신가요?</h3>
-                <p>
-                  구성원의 AI 활용 수준과 현재 업무를 진단하고
-                  조직에 가장 적합한 교육과 실행 방향을 제안해 드립니다.
-                </p>
-              </div>
-              <div className="testimonial-cta-buttons">
-                <a href="/diagnosis" className="btn btn-primary" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
-                  무료 AX 진단
-                </a>
-                <button className="btn btn-outline" onClick={(e) => openModal(e.currentTarget)}>
-                  교육·컨설팅 문의
-                </button>
-              </div>
-            </div>
+
           </div>
         </section>
 
@@ -596,12 +403,12 @@ export default function Home() {
             <div>
               <p className="eyebrow">START WITH YOUR WORK</p>
               <h2>우리 조직의 AI 교육,<br />업무과제부터 함께 살펴보겠습니다</h2>
-              <p>기관명·교육대상·인원·희망일정·목적을 알려주시면 적합한 방향을 제안합니다.</p>
+              <p>기관명, 교육 대상과 희망 주제만 알려주세요. 일정·인원이 미정이어도 적합한 방향을 안내합니다.</p>
             </div>
             <div className="cta-buttons">
-              <button className="btn btn-primary" onClick={(e) => openModal(e.currentTarget)}>
-                빠른 교육문의
-              </button>
+              <a className="btn btn-primary" href="/contact.html">
+                AI 교육 신청하기
+              </a>
               <a href="/diagnosis" className="btn btn-light" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
                 5분 AX 준비도 진단
               </a>
@@ -638,7 +445,7 @@ export default function Home() {
           </div>
           <div>
             <h3>문의</h3>
-            <button className="footer-link" type="button" onClick={(e) => openModal(e.currentTarget)}>교육 문의하기</button>
+            <a href="/contact.html">AI 교육 신청</a>
             <a href="/privacy.html">개인정보처리방침</a>
             <a href="https://blog.naver.com/ai-ed" target="_blank" rel="noreferrer">네이버 블로그</a>
             <a href="https://www.youtube.com/@Justdoit-%EA%B7%B8%EB%83%A5AI" target="_blank" rel="noreferrer">유튜브</a>
@@ -650,76 +457,9 @@ export default function Home() {
         </div>
       </footer>
 
-      <button className="floating-contact" onClick={(e) => openModal(e.currentTarget)} aria-haspopup="dialog">
-        <span>교육</span>문의
-      </button>
-
-      {modalOpen && (
-        <div className="modal-overlay" onMouseDown={(e) => e.target === e.currentTarget && closeModal()}>
-          <div
-            className="modal"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="inquiry-title"
-            aria-describedby="inquiry-description"
-            ref={dialogRef}
-            onKeyDown={handleDialogKey}
-          >
-            <button className="modal-close" type="button" onClick={closeModal} aria-label="문의 창 닫기">×</button>
-            <div className="modal-intro">
-              <p className="eyebrow">CONTACT</p>
-              <h2 id="inquiry-title">교육·컨설팅 문의</h2>
-              <p id="inquiry-description">교육 문의는 바로 남기실 수 있습니다. AX 준비도 진단은 별도의 선택 항목입니다.</p>
-              <div className="direct-links">
-                <a href={`tel:${PHONE.replaceAll("-", "")}`}><small>전화</small>{PHONE}</a>
-                <a href={`mailto:${EMAIL}`}><small>이메일</small>{EMAIL}</a>
-              </div>
-            </div>
-            <div className="modal-content">
-              <div className="modal-tabs" role="group" aria-label="문의 방식 선택">
-                <button type="button" aria-pressed={modalMode === "quick"} className={modalMode === "quick" ? "active" : ""} onClick={() => setModalMode("quick")}>
-                  빠른 문의
-                </button>
-                <button type="button" aria-pressed={modalMode === "diagnosis"} className={modalMode === "diagnosis" ? "active" : ""} onClick={() => setModalMode("diagnosis")}>
-                  AX 진단
-                </button>
-              </div>
-              {modalMode === "quick" ? (
-                <form onSubmit={submitQuickInquiry}>
-                  <div className="form-grid">
-                     <label>이름 <span>*</span><input ref={firstField} name="name" required autoComplete="name" /></label>
-                     <label>기관명 <span>*</span><input name="org" required autoComplete="organization" /></label>
-                  </div>
-                  <label>연락처 또는 이메일 <span>*</span><input name="contact" required /></label>
-                  <label>희망 주제·교육 대상 <span>*</span><input name="topic" required placeholder="예: 임직원 생성형 AI 교육, 30명" /></label>
-                  <label>희망 일정<input name="schedule" placeholder="예: 2026년 9월 중" /></label>
-                  <label>문의 내용<textarea name="message" rows={3} placeholder="교육 시간·장소·목적을 알려주세요." /></label>
-                  <label className="consent">
-                    <input type="checkbox" checked={consent} onChange={(e) => { setConsent(e.target.checked); setFormError(""); }} />
-                    <span>상담을 위한 개인정보 수집·이용에 동의합니다. <a href="/privacy.html" target="_blank" rel="noreferrer">자세히 보기</a></span>
-                  </label>
-                  {formError && <p className="form-error" role="alert">{formError}</p>}
-                  <button className="btn btn-primary submit-button" type="submit">이메일 문의 작성하기</button>
-                  <p className="form-note">입력한 내용으로 이메일 작성 화면이 열립니다. 메일 앱에서 전송해야 문의가 접수됩니다. 메일 앱을 사용하지 않으시면 <a href="/contact.html">온라인 문의 안내</a>를 이용하세요.</p>
-                </form>
-              ) : (
-                <div className="diagnosis-panel">
-                  <p>5분 진단을 완료하면 조직의 AI 활용 단계와 우선 교육과제를 확인할 수 있습니다.</p>
-                  <ul>
-                    <li>조직의 현재 AI 활용 단계 파악</li>
-                    <li>우선 교육과제 도출</li>
-                    <li>권장 프로그램과 실행 방향 확인</li>
-                  </ul>
-                  <a className="btn btn-primary submit-button" href={FORM_URL}>
-                    AX 준비도 진단 시작하기
-                  </a>
-                  <p className="form-note">진단 페이지로 이동합니다. 교육 문의를 위한 필수 절차는 아닙니다.</p>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+      <a className="floating-contact" href="/contact.html" aria-label="AI 교육 신청 페이지로 이동">
+        <span>교육</span>신청
+      </a>
 
       <script
         type="application/ld+json"
