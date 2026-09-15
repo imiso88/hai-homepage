@@ -184,7 +184,7 @@ export default function Home() {
                 <h1><span>업무 결과물까지<wbr /> 완성하는</span><span>기업·공공기관<wbr /> AI 교육</span></h1>
                 <p className="hero-screen-lead"><span>구성원의 직무·AI 수준·기관 보안 기준을<wbr /> 사전 분석하고,</span><span>보고서·자료 분석·공문·콘텐츠 제작을<wbr /> 실제 과제로 실습합니다.</span></p>
                 <div className="hero-actions">
-                  <a className="btn btn-primary" href="/contact.html">AI 교육 맞춤 신청하기</a>
+                  <a className="btn btn-primary" href="/contact.html">맞춤형 AI 교육 신청하기</a>
                   <a className="btn btn-outline" href="/programs.html">교육과정·사례 확인하기</a>
                 </div>
                 <p className="audit-help"><span aria-hidden="true">✓</span> 주제·일정·인원이 미정이어도 됩니다. 기관명과 교육 대상만 알려주시면 추천 과정과 진행안을 안내합니다.</p>
