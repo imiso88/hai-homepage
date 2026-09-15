@@ -46,6 +46,30 @@ const cases = [
   },
 ];
 
+const educationArticles = [
+  {
+    outlet: "경북일보",
+    date: "2025.09.30",
+    isoDate: "2025-09-30",
+    title: "“팩트 체크는 기자 몫”…경북일보, 배미주 박사 초청 ‘생성형 AI’ 교육",
+    href: "https://www.kyongbuk.co.kr/news/articleView.html?idxno=4053334",
+  },
+  {
+    outlet: "파이낸스투데이",
+    date: "2025.07.15",
+    isoDate: "2025-07-15",
+    title: "‘AI가 실무를 바꾸다!’, 충남디스플레이산업기업협의회, 생성형 AI 실무 교육 성료",
+    href: "https://www.fntoday.co.kr/news/articleView.html?idxno=357307",
+  },
+  {
+    outlet: "파이낸스투데이",
+    date: "2025.04.19",
+    isoDate: "2025-04-19",
+    title: "“AI는 이제 공무원의 팀원”… 마포구청, 간부 대상 ‘생성형 AI 실무교육’ 진행",
+    href: "https://www.fntoday.co.kr/news/articleView.html?idxno=349823",
+  },
+];
+
 const testimonials = [
   {
     organization: "중앙부처 현직 공무원",
@@ -347,6 +371,34 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="education-press" aria-labelledby="education-press-title">
+          <div className="wrap">
+            <div className="section-heading">
+              <p className="eyebrow">EDUCATION IN THE NEWS</p>
+              <h2 id="education-press-title">배미주 박사 교육 관련 기사</h2>
+              <p>기업·공공기관에서 진행한 생성형 AI 실무교육을 언론 보도로 확인해 보세요.</p>
+            </div>
+            <div className="article-grid">
+              {educationArticles.map((article) => (
+                <a
+                  className="article-card"
+                  href={article.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  key={article.href}
+                  aria-label={`${article.title} 원문 기사 새 창에서 보기`}
+                >
+                  <div className="article-meta"><strong>{article.outlet}</strong><time dateTime={article.isoDate}>{article.date}</time></div>
+                  <h3>{article.title}</h3>
+                  <span>원문 기사 보기 <span aria-hidden="true">↗</span></span>
+                </a>
+              ))}
+            </div>
+            <div className="center-action">
+              <a className="btn btn-outline" href="/education-news.html">교육 관련 기사 전체 보기</a>
+            </div>
+          </div>
+        </section>
 
         <section className="testimonial-section">
           <div className="wrap">

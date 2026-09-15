@@ -149,6 +149,23 @@ section { padding: 88px 0; scroll-margin-top: 78px; }
 .case-card dd { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
 .center-action { margin-top: 34px; text-align: center; }
 
+.education-press { background: var(--soft); }
+.article-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.article-card {
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 8px 26px rgba(16,42,67,.05);
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+.article-card:hover { transform: translateY(-4px); border-color: rgba(15,127,147,.4); box-shadow: 0 18px 40px rgba(16,42,67,.1); }
+.article-meta { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 13px; }
+.article-meta strong { color: var(--blue); }
+.article-card h3 { margin: 18px 0 28px; color: var(--navy); font-size: 19px; line-height: 1.5; }
+.article-card > span { color: var(--blue); font-size: 14px; font-weight: 800; }
+
 .philosophy-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 80px; align-items: center; }
 .lead { color: var(--muted); font-size: 17px; }
 .principles { border-top: 1px solid var(--line); }
@@ -214,7 +231,7 @@ footer a:hover { color: #fff; }
   .hero-copy { padding-top: 20px; }
   .hero-visual { min-height: 520px; }
   .intro-grid { grid-template-columns: 1fr; gap: 18px; }
-  .highlight-grid, .case-grid { grid-template-columns: repeat(2, 1fr); }
+  .highlight-grid, .case-grid, .article-grid { grid-template-columns: repeat(2, 1fr); }
   .expertise-grid { grid-template-columns: 1fr; }
   .expertise-card { min-height: auto; }
   .philosophy-grid { grid-template-columns: 1fr; gap: 42px; }
@@ -237,7 +254,7 @@ footer a:hover { color: #fff; }
   .stats div:nth-child(2) { border-right: 0; }
   .stats div:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,.1); }
   .intro blockquote br { display: none; }
-  .highlight-grid, .case-grid, .testimonial-grid { grid-template-columns: 1fr; }
+  .highlight-grid, .case-grid, .testimonial-grid, .article-grid { grid-template-columns: 1fr; }
   .section-heading { margin-bottom: 30px; }
   .expertise-card { padding: 28px 24px; }
   .final-cta h2 br { display: none; }
