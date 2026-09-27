@@ -82,6 +82,7 @@
         <a class="btn btn-outline mt-16" href="mailto:orthia66@gmail.com?subject=%5BAI%20교육%20문의%5D%20기관명">이메일 작성하기</a>
       </div>
     </div>
+    <div class="nugget reveal mt-24">교육 담당자이신가요? 품의서에 옮길 강사 정보, 교육 시간별 강의 구성 예시, 견적 산정 기준은 <a href="ai-training-request-guide.html" style="text-decoration:underline;font-weight:700">교육 담당자 자료실</a>에서 먼저 확인하실 수 있습니다. 강사 이력서·강의 계획서·견적서가 필요하면 문의 시 함께 요청해 주세요.</div>
   </div>
 </section>
 
@@ -89,16 +90,30 @@
   <div class="wrap">
     <div class="card reveal" id="contact-form" style="max-width:900px;margin:0 auto">
         <span class="eyebrow">APPLICATION</span>
-        <h3 style="margin-bottom:14px">AI 교육 맞춤형 진단 신청서</h3>
-        <p style="color:var(--ink-soft)">아래 구글폼에 교육 대상과 현재 고민을 남겨주세요. 아직 정해지지 않은 일정·인원·주제는 미정으로 적으셔도 됩니다. 입력 내용을 확인한 뒤 AI 교육 및 맞춤형 진단 진행에 필요한 사항을 안내합니다.</p>
-        <div class="consent mt-16">
-          휴먼AI융합교육원은 AI 교육 및 맞춤형 진단 신청에 답변하기 위해 기관명·담당자명·연락처·이메일·문의내용을 수집합니다.
-          수집된 정보는 상담과 진단 안내 목적으로만 사용하며, 보유기간이 지나면 관련 법령과 내부 기준에 따라 파기합니다.
-          자세한 내용은 <a href="privacy.html" style="color:var(--blue);font-weight:600">개인정보처리방침</a>을 참고해 주세요.
-          <label style="display:flex;gap:8px;align-items:center;margin-top:10px;font-weight:600"><input type="checkbox" id="agree" style="width:auto"> 개인정보 수집·이용에 동의합니다.</label>
-        </div>
-        <a href="https://forms.gle/3Ee7fwzN5gBRDurWA" target="_blank" rel="noopener" class="btn btn-primary mt-16" style="width:100%" aria-label="AI 교육 맞춤형 진단 신청서 (새 창)" onclick="if(!document.getElementById('agree').checked){alert('개인정보 수집·이용에 동의해 주세요.');return false;}">AI 교육 맞춤형 진단 신청서 →</a>
-        <p class="mt-16">양식을 여는 것만으로 접수되지 않습니다. 구글폼에서 제출을 완료해 주세요. 이용이 어려우시면 <a href="tel:01063985354">전화</a> 또는 <a href="mailto:orthia66@gmail.com?subject=%5BAI%20교육%20문의%5D%20기관명">이메일</a>로 바로 문의하실 수 있습니다.</p>
+        <h3 style="margin-bottom:14px">AI 교육 신청서</h3>
+        <p style="color:var(--ink-soft)">교육 대상과 현재 고민을 남겨주세요. 아직 정해지지 않은 일정·인원·주제는 ‘미정’으로 적으셔도 됩니다. 접수 내용을 확인한 뒤 적합한 과정과 진행 방식을 안내합니다.</p>
+        <form id="apply-form" class="mt-24" novalidate>
+          <div class="form-grid">
+            <div class="field"><label for="f-organization">기관·기업명 *</label><input id="f-organization" name="organization" required maxlength="100" autocomplete="organization"></div>
+            <div class="field"><label for="f-name">담당자명 *</label><input id="f-name" name="name" required maxlength="50" autocomplete="name"></div>
+            <div class="field"><label for="f-phone">연락처 *</label><input id="f-phone" name="phone" type="tel" required maxlength="30" autocomplete="tel" placeholder="010-0000-0000"></div>
+            <div class="field"><label for="f-email">이메일 *</label><input id="f-email" name="email" type="email" required maxlength="120" autocomplete="email"></div>
+            <div class="field"><label for="f-audience">교육 대상</label><input id="f-audience" name="audience" maxlength="200" placeholder="예: 홍보팀 실무자, 신규 공무원"></div>
+            <div class="field"><label for="f-headcount">예상 인원</label><input id="f-headcount" name="headcount" maxlength="50" placeholder="예: 30명 / 미정"></div>
+            <div class="field full"><label for="f-schedule">희망 일정·교육 시간</label><input id="f-schedule" name="schedule" maxlength="200" placeholder="예: 11월 중순, 6시간 / 미정"></div>
+            <div class="field full"><label for="f-message">교육 목적·문의 내용 *</label><textarea id="f-message" name="message" required maxlength="3000" placeholder="해결하고 싶은 업무, 원하는 교육 결과물, 사용 가능한 AI 도구·보안 기준 등을 적어주세요."></textarea></div>
+            <div class="field" style="position:absolute;left:-9999px" aria-hidden="true"><label for="f-website">웹사이트</label><input id="f-website" name="website" tabindex="-1" autocomplete="off"></div>
+          </div>
+          <div class="consent mt-16">
+            휴먼AI융합교육원은 AI 교육 신청에 답변하기 위해 기관명·담당자명·연락처·이메일·교육 대상·인원·희망 일정·문의 내용을 수집합니다.
+            수집된 정보는 상담과 교육 안내 목적으로만 사용하며, 수집일로부터 1년간 보관 후 파기합니다.
+            신청 내용은 이메일 발송 서비스(Resend)를 통해 교육원 메일로 전달됩니다. 자세한 내용은 <a href="privacy.html" style="color:var(--blue);font-weight:600">개인정보처리방침</a>을 참고해 주세요.
+            <label style="display:flex;gap:8px;align-items:center;margin-top:10px;font-weight:600"><input type="checkbox" id="agree" name="consent" required style="width:auto"> 개인정보 수집·이용에 동의합니다. (필수)</label>
+          </div>
+          <p id="apply-status" class="mt-16" role="status" aria-live="polite" style="font-weight:700"></p>
+          <button type="submit" class="btn btn-primary mt-16" style="width:100%" id="apply-submit">교육 신청서 보내기</button>
+        </form>
+        <p class="mt-16" style="color:var(--ink-soft);font-size:14px">온라인 접수가 어려우시면 <a href="tel:01063985354" style="text-decoration:underline">전화 010-6398-5354</a> 또는 이메일 <strong>orthia66@gmail.com</strong>으로 바로 문의하실 수 있습니다.</p>
     </div>
   </div>
 </section>
@@ -114,6 +129,45 @@
     <div class="foot-bottom"><span>© 2026 휴먼AI융합교육원. All rights reserved. · 사업자등록번호 352-16-02365</span><span>Human First · Workflow Design · Real Transformation</span></div>
   </div>
 </footer>
+<script>
+(function () {
+  var form = document.getElementById('apply-form');
+  if (!form) return;
+  var statusEl = document.getElementById('apply-status');
+  var button = document.getElementById('apply-submit');
+  function show(message, ok) { statusEl.textContent = message; statusEl.style.color = ok ? 'var(--blue)' : '#c0392b'; }
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var required = ['organization', 'name', 'phone', 'email', 'message'];
+    for (var i = 0; i < required.length; i++) {
+      var input = form.elements[required[i]];
+      if (!input.value.trim()) { show(input.labels[0].textContent.replace(' *', '') + ' 항목을 입력해 주세요.', false); input.focus(); return; }
+    }
+    if (!form.elements.email.checkValidity()) { show('이메일 주소 형식을 확인해 주세요.', false); form.elements.email.focus(); return; }
+    if (!form.elements.consent.checked) { show('개인정보 수집·이용에 동의해 주세요.', false); form.elements.consent.focus(); return; }
+    var payload = {};
+    ['organization', 'name', 'phone', 'email', 'audience', 'headcount', 'schedule', 'message', 'website'].forEach(function (key) { payload[key] = form.elements[key].value; });
+    payload.consent = true;
+    button.disabled = true; button.textContent = '보내는 중…'; show('', true);
+    fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+      .then(function (res) { return res.json().catch(function () { return { ok: false }; }); })
+      .then(function (result) {
+        if (result.ok) {
+          form.reset();
+          show('신청서가 접수되었습니다. 내용을 확인한 뒤 연락드리겠습니다.', true);
+          button.textContent = '접수 완료';
+        } else {
+          show(result.error || '전송하지 못했습니다. 전화 또는 이메일로 문의해 주세요.', false);
+          button.disabled = false; button.textContent = '교육 신청서 보내기';
+        }
+      })
+      .catch(function () {
+        show('네트워크 문제로 전송하지 못했습니다. 잠시 후 다시 시도하거나 전화 010-6398-5354로 문의해 주세요.', false);
+        button.disabled = false; button.textContent = '교육 신청서 보내기';
+      });
+  });
+})();
+</script>
 <script src="site.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const featuredPartners = [
   { name: "문화체육관광부", logo: "/partner-logos/mcst-7.jpg" },
@@ -127,6 +127,41 @@ const testimonials = [
   },
 ];
 
+const learningTracks = [
+  {
+    stage: "기초",
+    title: "AI 리터러시와 안전한 활용",
+    time: "2시간 특강",
+    points: ["ChatGPT·Gemini·Claude·NotebookLM 특성 비교", "개인정보·보안 기준과 출처 검증", "AI 기본법에 따른 생성물 표시 원칙"],
+    output: "기관·부서용 AI 활용 체크리스트",
+    href: "/public-ai-training.html",
+  },
+  {
+    stage: "실무",
+    title: "직무별 업무 결과물 실습",
+    time: "4~6시간 실습",
+    points: ["보고서·기획안·공문 초안 작성", "정책자료·데이터 분석과 요약", "보도자료·카드뉴스 등 홍보 콘텐츠"],
+    output: "1인 1산출물과 직무별 프롬프트",
+    href: "/corporate-ai-training.html",
+  },
+  {
+    stage: "확장",
+    title: "AI 에이전트와 업무자동화",
+    time: "1~2일 랩 · 프로젝트형",
+    points: ["업무를 단계로 쪼개 AI에게 맡기는 법", "지시서·참고자료 설계(컨텍스트 엔지니어링)", "바이브코딩으로 반복업무 도구 제작"],
+    output: "업무 위임 지시서와 자동화 시제품",
+    href: "/programs.html#agent",
+  },
+  {
+    stage: "정착",
+    title: "교육 효과 측정과 확산",
+    time: "교육 후 1~3개월",
+    points: ["사전·사후 AI 활용 역량 진단", "현업 적용도 조사와 우수사례 발굴", "부서별 표준 템플릿·활용지침 정리"],
+    output: "교육 효과 분석 리포트",
+    href: "/programs.html#impact",
+  },
+];
+
 function WorkshopPhoto({ compact = false }: { compact?: boolean }) {
   return (
     <div className={compact ? "workshop-photo compact" : "workshop-photo"}>
@@ -151,6 +186,24 @@ function WorkshopPhoto({ compact = false }: { compact?: boolean }) {
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openTestimonial, setOpenTestimonial] = useState<number | null>(0);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = heroVideoRef.current;
+    if (!video) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const apply = () => {
+      if (reduce.matches) {
+        video.pause();
+        video.currentTime = 2.8;
+      } else {
+        video.play().catch(() => {});
+      }
+    };
+    apply();
+    reduce.addEventListener("change", apply);
+    return () => reduce.removeEventListener("change", apply);
+  }, []);
 
   return (
     <>
@@ -193,31 +246,39 @@ export default function Home() {
       <main id="top">
         <section className="hero">
           <div className="wrap hero-image-shell">
-            <div className="hero-visual">
-              <Image
-                className="hero-main-image"
-                src="/hero-main-ai-training-clean.png"
-                width={1664}
-                height={936}
-                alt="배미주 박사가 기업·공공기관 AI 교육을 진행하는 모습"
-                sizes="(max-width: 960px) calc(100vw - 32px), 1340px"
-                priority
-              />
-              <div className="hero-screen-copy">
+            <div className="hero-motion">
+              <video
+                ref={heroVideoRef}
+                className="hero-motion-video"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                poster="/hero-motion-poster.jpg"
+                aria-label="휴먼AI융합교육원 소개 모션그래픽: 4단계 학습 트랙, 신규 과정, 주요 실적"
+              >
+                <source src="/hero-motion.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div className="hero-copy-band">
+              <div className="hero-copy-main">
                 <p className="eyebrow">기업·공공기관 직무 맞춤형 생성형 AI 교육</p>
-                <h1><span>업무 결과물까지<wbr /> 완성하는</span><span>기업·공공기관<wbr /> AI 교육</span></h1>
-                <p className="hero-screen-lead"><span>구성원의 직무·AI 수준·기관 보안 기준을<wbr /> 사전 분석하고,</span><span>보고서·자료 분석·공문·콘텐츠 제작을<wbr /> 실제 과제로 실습합니다.</span></p>
+                <h1><span>업무 결과물까지<wbr /> 완성하는</span> <span>기업·공공기관<wbr /> AI 교육</span></h1>
+                <p className="hero-screen-lead"><span>구성원의 직무·AI 수준·기관 보안 기준을<wbr /> 사전 분석하고,</span> <span>보고서·자료 분석·공문·콘텐츠 제작을<wbr /> 실제 과제로 실습합니다.</span></p>
+              </div>
+              <div className="hero-copy-side">
                 <div className="hero-actions">
                   <a className="btn btn-primary" href="/contact.html">맞춤형 AI 교육 신청하기</a>
                   <a className="btn btn-outline" href="/programs.html">교육과정·사례 확인하기</a>
                 </div>
                 <p className="audit-help"><span aria-hidden="true">✓</span> 주제·일정·인원이 미정이어도 됩니다. 기관명과 교육 대상만 알려주시면 추천 과정과 진행안을 안내합니다.</p>
-                <ul className="hero-benefits" aria-label="맞춤 교육 설계 과정">
-                  <li><strong>교육 전 요구진단</strong><span>직무·수준·업무과제·보안 기준 확인</span></li>
-                  <li><strong>실제 업무로 실습</strong><span>보고서·정책자료·데이터·홍보 과제</span></li>
-                  <li><strong>1인 1산출물</strong><span>업무 템플릿과 활용 결과물 완성</span></li>
-                </ul>
               </div>
+              <ul className="hero-benefits" aria-label="맞춤 교육 설계 과정">
+                <li><strong>교육 전 요구진단</strong><span>직무·수준·업무과제·보안 기준 확인</span></li>
+                <li><strong>실제 업무로 실습</strong><span>보고서·정책자료·데이터·홍보 과제</span></li>
+                <li><strong>1인 1산출물</strong><span>업무 템플릿과 활용 결과물 완성</span></li>
+              </ul>
             </div>
           </div>
           <div className="stats-bar">
@@ -227,6 +288,9 @@ export default function Home() {
               <div><strong>145+</strong><span>출강 기관</span></div>
               <div><strong>10,000+</strong><span>누적 수강생</span></div>
             </div>
+            <p className="wrap stats-note">
+              2026년 9월 기준 · 저서 12권 목록과 전체 출강 기관은 <a href="/profile.html">상세 이력</a>에서 확인하실 수 있습니다.
+            </p>
           </div>
         </section>
 
@@ -288,7 +352,7 @@ export default function Home() {
         <section className="audit-programs" aria-labelledby="programs-title">
           <div className="wrap">
             <div className="section-heading"><h2 id="programs-title">우리 조직에 맞는 교육을 찾아보세요</h2><p>교육 대상과 만들고 싶은 결과물로 과정을 비교할 수 있습니다.</p></div>
-            <div className="highlight-grid">
+            <div className="highlight-grid four">
               <a className="highlight-card" href="/corporate-ai-training.html"><h3>기업 실무교육</h3><p>보고서·기획안·자료 분석을 업무용 초안과 템플릿으로 연결합니다.</p></a>
               <a className="highlight-card" href="/public-ai-training.html"><h3>공공기관 AI 교육</h3><p>공문·정책자료·민원 업무와 기관의 보안 기준을 함께 다룹니다.</p></a>
               <a className="highlight-card" href="/executive-ax-training.html"><h3>임원·관리자 AX 교육</h3><p>AI 적용 우선순위와 조직의 실행 과제를 정리합니다.</p></a>
@@ -298,43 +362,32 @@ export default function Home() {
         </section>
 
 
-        <section id="expertise" className="expertise-section">
+        <section id="learning-path" className="expertise-section" aria-labelledby="learning-path-title">
           <div className="wrap">
             <div className="section-heading light">
-              <p className="eyebrow">TWO EXPERTISE AREAS</p>
-              <h2>AI 교육을 중심으로, 콘텐츠 소통까지</h2>
-              <p>주력 분야인 교육·컨설팅과 AI 콘텐츠 현장의 진행 경험이 서로를 강화합니다.</p>
+              <p className="eyebrow">2026 LEARNING PATH</p>
+              <h2 id="learning-path-title">도구 사용법에서,<br />AI에게 일을 맡기는 조직으로</h2>
+              <p>조직의 AX 단계에 맞춰 네 개 트랙 중 필요한 구간부터 시작합니다. 앞 단계의 결과물이 다음 단계의 실습 재료가 됩니다.</p>
             </div>
-            <div className="expertise-grid">
-              <article className="expertise-card primary">
-                <span className="tag">주력 · 교육 및 컨설팅</span>
-                <h3>AI 교육 · AX 전환 설계</h3>
-                <p>
-                  조직 진단부터 직무별 실습, 업무 산출물, 자동화 도구와 정착 지원까지
-                  현장 적용을 기준으로 설계합니다.
-                </p>
-                <ul>
-                  <li>기업·공공기관 생성형 AI 실무교육</li>
-                  <li>임원·관리자 AX 전략교육</li>
-                  <li>직무별 프롬프트·NotebookLM 문서분석</li>
-                  <li>바이브코딩 업무자동화 랩</li>
-                </ul>
-                <a href="/programs.html" className="text-link">
-                  교육 프로그램 자세히 보기 →
-                </a>
-              </article>
-              <article className="expertise-card secondary">
-                <span className="tag gold">확장 · 영화제 및 진행</span>
-                <h3>AI 영화제 MC · GV</h3>
-                <p>
-                  서울국제AI영화제 공식 사회 경험을 바탕으로 복잡한 기술과 작품의 메시지를
-                  관객의 언어로 연결합니다.
-                </p>
-                <a href="/mc.html" className="text-link gold-link">
-                  MC·GV 활동 보기 →
-                </a>
-              </article>
-            </div>
+            <ol className="track-grid">
+              {learningTracks.map((track, index) => (
+                <li className="track-card" key={track.title}>
+                  <div className="track-top">
+                    <span className="track-step">{String(index + 1).padStart(2, "0")} · {track.stage}</span>
+                    <span className="track-time">{track.time}</span>
+                  </div>
+                  <h3>{track.title}</h3>
+                  <ul>
+                    {track.points.map((point) => <li key={point}>{point}</li>)}
+                  </ul>
+                  <p className="track-output"><strong>남는 결과물</strong>{track.output}</p>
+                  <a className="text-link" href={track.href}>과정 자세히 보기 →</a>
+                </li>
+              ))}
+            </ol>
+            <p className="track-footnote">
+              서울국제AI영화제 공식 MC·GV 활동은 <a href="/mc.html">AI 영화제 MC 페이지</a>에서 확인하실 수 있습니다.
+            </p>
           </div>
         </section>
 
@@ -464,6 +517,9 @@ export default function Home() {
               <a href="/diagnosis" className="btn btn-light" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
                 5분 AX 준비도 진단
               </a>
+              <a href="/ai-training-request-guide.html" className="cta-text-link">
+                교육 담당자용 품의 자료 보기 →
+              </a>
             </div>
           </div>
         </section>
@@ -492,12 +548,14 @@ export default function Home() {
             <a href="/ax-transformation.html">AX 전환이란</a>
             <a href="/about.html">교육원 소개</a>
             <a href="/expert.html">전문가 소개</a>
+            <a href="/mc.html">AI 영화제 MC·GV</a>
             <a href="/insights.html">AI 교육 인사이트</a>
             <a href="/faq.html">FAQ</a>
           </div>
           <div>
             <h3>문의</h3>
             <a href="/contact.html">AI 교육 신청</a>
+            <a href="/ai-training-request-guide.html">교육 담당자 자료실</a>
             <a href="/privacy.html">개인정보처리방침</a>
             <a href="https://blog.naver.com/ai-ed" target="_blank" rel="noreferrer">네이버 블로그</a>
             <a href="https://www.youtube.com/@Justdoit-%EA%B7%B8%EB%83%A5AI" target="_blank" rel="noreferrer">유튜브</a>
@@ -552,7 +610,7 @@ export default function Home() {
                 url: "https://www.humanai-edu.kr/expert.html",
                 image: "https://www.humanai-edu.kr/og-image.jpg",
                 worksFor: { "@id": "https://www.humanai-edu.kr/#organization" },
-                knowsAbout: ["생성형 AI 교육", "AX 전환", "프롬프트 설계", "바이브코딩", "업무자동화 교육", "AI 리터러시"],
+                knowsAbout: ["생성형 AI 교육", "AX 전환", "프롬프트 설계", "AI 에이전트 활용", "컨텍스트 엔지니어링", "바이브코딩", "업무자동화 교육", "AI 리터러시", "교육 효과 측정"],
                 sameAs: [
                   "https://trend-m.com/lecture/?bmode=view&idx=57246101",
                   "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000005370408",
