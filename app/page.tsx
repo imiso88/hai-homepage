@@ -269,7 +269,7 @@ export default function Home() {
                 playsInline
                 preload="auto"
                 poster="/hero-motion-poster.jpg"
-                aria-label="휴먼AI융합교육원 소개 모션그래픽: 반복업무 자동화, ChatGPT·Claude 실습, 주간보고 자동화 실습, 교육 문의 안내"
+                aria-label="휴먼AI융합교육원 소개 모션그래픽: 배운 그날 바로 쓰는 AI, 반복업무 자동화, ChatGPT·Claude 실습, 주간보고 자동화 실습, 교육 문의 안내"
               >
                 <source src="/hero-motion.mp4" type="video/mp4" />
               </video>
