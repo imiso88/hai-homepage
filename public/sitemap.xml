@@ -62,27 +62,27 @@
   </url>
   <url>
     <loc>https://www.humanai-edu.kr/cases.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-27</lastmod>
   </url>
   <url>
     <loc>https://www.humanai-edu.kr/case-gyeonggi.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-27</lastmod>
   </url>
   <url>
     <loc>https://www.humanai-edu.kr/case-segipnc.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-27</lastmod>
   </url>
   <url>
     <loc>https://www.humanai-edu.kr/case-mcst.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-27</lastmod>
   </url>
   <url>
     <loc>https://www.humanai-edu.kr/case-kgchemical.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-27</lastmod>
   </url>
   <url>
     <loc>https://www.humanai-edu.kr/case-crown.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-27</lastmod>
   </url>
   <url>
     <loc>https://www.humanai-edu.kr/testimonials.html</loc>
@@ -96,31 +96,37 @@
     <loc>https://www.humanai-edu.kr/corporate-ai-training.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-27</lastmod>
   </url>
   <url>
     <loc>https://www.humanai-edu.kr/public-ai-training.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-27</lastmod>
   </url>
   <url>
     <loc>https://www.humanai-edu.kr/executive-ax-training.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-27</lastmod>
   </url>
   <url>
     <loc>https://www.humanai-edu.kr/ai-automation-training.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-27</lastmod>
+  </url>
+  <url>
+    <loc>https://www.humanai-edu.kr/ai-agent-training.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.humanai-edu.kr/small-business-ai-training.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-27</lastmod>
   </url>
   <url>
     <loc>https://www.humanai-edu.kr/education-news.html</loc>

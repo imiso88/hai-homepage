@@ -19,16 +19,16 @@
 - 기관장·임원 AX 전략교육: https://www.humanai-edu.kr/executive-ax-training.html
 - AI 업무자동화·바이브코딩 교육: https://www.humanai-edu.kr/ai-automation-training.html
 - 소상공인 AI 교육: https://www.humanai-edu.kr/small-business-ai-training.html
-- AI 에이전트 업무위임 실무(2026 신규): https://www.humanai-edu.kr/programs.html#agent
+- AI 에이전트 교육(업무위임 실무, 2026 신규): https://www.humanai-edu.kr/ai-agent-training.html
 - 교육 효과 측정·정착 지원(2026 신규): https://www.humanai-edu.kr/programs.html#impact
 
 ## 공개 교육 사례
 - 사례 모음: https://www.humanai-edu.kr/cases.html
-- 경기도인재개발원: https://www.humanai-edu.kr/case-gyeonggi.html
-- 문화체육관광부: https://www.humanai-edu.kr/case-mcst.html
-- KG케미칼: https://www.humanai-edu.kr/case-kgchemical.html
-- 크라운제과: https://www.humanai-edu.kr/case-crown.html
-- 세기피앤씨: https://www.humanai-edu.kr/case-segipnc.html
+- 경기도인재개발원(공무원 AI 교육): https://www.humanai-edu.kr/case-gyeonggi.html
+- 문화체육관광부(공공기관 생성형 AI 교육): https://www.humanai-edu.kr/case-mcst.html
+- KG케미칼(기업 AI 교육): https://www.humanai-edu.kr/case-kgchemical.html
+- 크라운제과(제조업 AX 전환 교육): https://www.humanai-edu.kr/case-crown.html
+- A사(교육 컨설팅) AI 활용 진단 컨설팅: https://www.humanai-edu.kr/case-segipnc.html
 
 ## 전문 콘텐츠
 - AI 교육 인사이트: https://www.humanai-edu.kr/insights.html

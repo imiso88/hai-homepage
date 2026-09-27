@@ -150,7 +150,7 @@ const learningTracks = [
     time: "1~2일 랩 · 프로젝트형",
     points: ["업무를 단계로 쪼개 AI에게 맡기는 법", "지시서·참고자료 설계(컨텍스트 엔지니어링)", "바이브코딩으로 반복업무 도구 제작"],
     output: "업무 위임 지시서와 자동화 시제품",
-    href: "/programs.html#agent",
+    href: "/ai-agent-training.html",
   },
   {
     stage: "정착",
@@ -576,6 +576,7 @@ export default function Home() {
             <a href="/public-ai-training.html">공공기관 AI 교육</a>
             <a href="/executive-ax-training.html">임원 AX 전략교육</a>
             <a href="/ai-automation-training.html">바이브코딩 랩</a>
+            <a href="/ai-agent-training.html">AI 에이전트 교육</a>
             <a href="/small-business-ai-training.html">소상공인 AI 교육</a>
           </div>
           <div>
