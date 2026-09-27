@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const featuredPartners = [
   { name: "문화체육관광부", logo: "/partner-logos/mcst-7.jpg" },
@@ -186,6 +186,24 @@ function WorkshopPhoto({ compact = false }: { compact?: boolean }) {
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openTestimonial, setOpenTestimonial] = useState<number | null>(0);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = heroVideoRef.current;
+    if (!video) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const apply = () => {
+      if (reduce.matches) {
+        video.pause();
+        video.currentTime = 2.8;
+      } else {
+        video.play().catch(() => {});
+      }
+    };
+    apply();
+    reduce.addEventListener("change", apply);
+    return () => reduce.removeEventListener("change", apply);
+  }, []);
 
   return (
     <>
@@ -228,31 +246,39 @@ export default function Home() {
       <main id="top">
         <section className="hero">
           <div className="wrap hero-image-shell">
-            <div className="hero-visual">
-              <Image
-                className="hero-main-image"
-                src="/hero-main-ai-training-clean.png"
-                width={1664}
-                height={936}
-                alt="배미주 박사가 기업·공공기관 AI 교육을 진행하는 모습"
-                sizes="(max-width: 960px) calc(100vw - 32px), 1340px"
-                priority
-              />
-              <div className="hero-screen-copy">
+            <div className="hero-motion">
+              <video
+                ref={heroVideoRef}
+                className="hero-motion-video"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                poster="/hero-motion-poster.jpg"
+                aria-label="휴먼AI융합교육원 소개 모션그래픽: 4단계 학습 트랙, 신규 과정, 주요 실적"
+              >
+                <source src="/hero-motion.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div className="hero-copy-band">
+              <div className="hero-copy-main">
                 <p className="eyebrow">기업·공공기관 직무 맞춤형 생성형 AI 교육</p>
-                <h1><span>업무 결과물까지<wbr /> 완성하는</span><span>기업·공공기관<wbr /> AI 교육</span></h1>
-                <p className="hero-screen-lead"><span>구성원의 직무·AI 수준·기관 보안 기준을<wbr /> 사전 분석하고,</span><span>보고서·자료 분석·공문·콘텐츠 제작을<wbr /> 실제 과제로 실습합니다.</span></p>
+                <h1><span>업무 결과물까지<wbr /> 완성하는</span> <span>기업·공공기관<wbr /> AI 교육</span></h1>
+                <p className="hero-screen-lead"><span>구성원의 직무·AI 수준·기관 보안 기준을<wbr /> 사전 분석하고,</span> <span>보고서·자료 분석·공문·콘텐츠 제작을<wbr /> 실제 과제로 실습합니다.</span></p>
+              </div>
+              <div className="hero-copy-side">
                 <div className="hero-actions">
                   <a className="btn btn-primary" href="/contact.html">맞춤형 AI 교육 신청하기</a>
                   <a className="btn btn-outline" href="/programs.html">교육과정·사례 확인하기</a>
                 </div>
                 <p className="audit-help"><span aria-hidden="true">✓</span> 주제·일정·인원이 미정이어도 됩니다. 기관명과 교육 대상만 알려주시면 추천 과정과 진행안을 안내합니다.</p>
-                <ul className="hero-benefits" aria-label="맞춤 교육 설계 과정">
-                  <li><strong>교육 전 요구진단</strong><span>직무·수준·업무과제·보안 기준 확인</span></li>
-                  <li><strong>실제 업무로 실습</strong><span>보고서·정책자료·데이터·홍보 과제</span></li>
-                  <li><strong>1인 1산출물</strong><span>업무 템플릿과 활용 결과물 완성</span></li>
-                </ul>
               </div>
+              <ul className="hero-benefits" aria-label="맞춤 교육 설계 과정">
+                <li><strong>교육 전 요구진단</strong><span>직무·수준·업무과제·보안 기준 확인</span></li>
+                <li><strong>실제 업무로 실습</strong><span>보고서·정책자료·데이터·홍보 과제</span></li>
+                <li><strong>1인 1산출물</strong><span>업무 템플릿과 활용 결과물 완성</span></li>
+              </ul>
             </div>
           </div>
           <div className="stats-bar">
