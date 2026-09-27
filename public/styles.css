@@ -214,7 +214,7 @@ table.cmp td:first-child { font-weight: 700; color: var(--navy); }
 
 /* Page hero (subpages) */
 .page-hero { background: var(--bg-navy-grad); color: #fff; padding: 70px 0 64px; position: relative; overflow: hidden; }
-.page-hero::after { content:""; position:absolute; right:-120px; bottom:-140px; width:380px; height:380px; background: radial-gradient(circle, rgba(20,165,184,.32), transparent 65%); border-radius:50%; }
+.page-hero::after { content:""; pointer-events:none; position:absolute; right:-120px; bottom:-140px; width:380px; height:380px; background: radial-gradient(circle, rgba(20,165,184,.32), transparent 65%); border-radius:50%; }
 .page-hero .eyebrow { color: var(--blue-bright); }
 .page-hero h1 { color: #fff; font-size: clamp(28px, 4.4vw, 44px); }
 .page-hero p { color: rgba(255,255,255,.82); max-width: 660px; margin-top: 16px; font-size: 17px; }
