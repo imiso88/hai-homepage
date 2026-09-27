@@ -874,3 +874,25 @@ footer .footer-link:focus-visible { color: #fff; }
   .hero-copy-main h1 span { display: inline; }
   .hero-copy-side .hero-actions .btn { width: 100%; }
 }
+
+/* 2026-09 hero sound toggle */
+.hero-motion { position: relative; }
+.hero-sound-toggle { position: absolute; right: 16px; bottom: 16px; z-index: 3; display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; color: #fff; background: rgba(8,22,41,.72); backdrop-filter: blur(6px); font-size: 13px; font-weight: 700; }
+.hero-sound-toggle:hover { border-color: #ff7a3d; }
+.hero-sound-toggle[aria-pressed="true"] { background: #ff7a3d; border-color: #ff7a3d; }
+.hero-sound-toggle:focus-visible { outline: 2px solid #ff7a3d; outline-offset: 3px; }
+@media (max-width: 640px) { .hero-sound-toggle { right: 10px; bottom: 10px; padding: 7px 11px; font-size: 12px; } }
+
+/* 2026-09 partner logos: continuous marquee */
+.logo-marquee { overflow: hidden; border-block: 1px solid rgba(16, 42, 67, .14); background: #fff; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.logo-track { display: flex; width: max-content; margin: 0; padding: 0; list-style: none; animation: logo-scroll 42s linear infinite; }
+.logo-marquee:hover .logo-track, .logo-marquee:focus-within .logo-track { animation-play-state: paused; }
+.logo-item { flex: none; width: 220px; height: 104px; display: grid; place-items: center; padding: 0 30px; border-right: 1px solid rgba(16, 42, 67, .08); }
+.logo-item img { display: block; width: 100%; max-width: 160px; height: 50px; object-fit: contain; filter: saturate(.88); }
+@keyframes logo-scroll { to { transform: translateX(-50%); } }
+@media (max-width: 640px) { .logo-item { width: 160px; height: 84px; padding: 0 20px; } .logo-item img { height: 40px; } .logo-track { animation-duration: 32s; } }
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee { -webkit-mask-image: none; mask-image: none; }
+  .logo-track { width: auto; flex-wrap: wrap; justify-content: center; animation: none; }
+  .logo-item[aria-hidden="true"] { display: none; }
+}
