@@ -1,11 +1,11 @@
-// 교육 상담 요청 접수 → Resend로 교육원 메일(orthia66@gmail.com)에 전달
+// 교육 문의 접수 → Resend로 교육원 메일(orthia66@gmail.com)에 전달
 // 필요한 환경변수: RESEND_API_KEY (Vercel 프로젝트 설정 > Environment Variables)
 // 선택 환경변수: CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL (도메인 인증 후 발신 주소 변경 시)
 
 export const runtime = "nodejs";
 
 const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "orthia66@gmail.com";
-const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || "휴먼AI융합교육원 상담 요청 <onboarding@resend.dev>";
+const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || "휴먼AI융합교육원 교육 문의 <onboarding@resend.dev>";
 
 type Field = { key: string; label: string; required: boolean; max: number };
 
@@ -79,13 +79,13 @@ export async function POST(request: Request) {
 
   const html =
     `<div style="font-family:Pretendard,Apple SD Gothic Neo,Malgun Gothic,sans-serif;color:#1c2b36;max-width:680px">` +
-    `<h2 style="color:#102a43;margin:0 0 6px">새 AI 교육 상담 요청이 도착했습니다</h2>` +
-    `<p style="color:#5d6b76;margin:0 0 18px">접수 시각 ${receivedAt} · humanai-edu.kr 상담 요청</p>` +
+    `<h2 style="color:#102a43;margin:0 0 6px">새 AI 교육 문의가 도착했습니다</h2>` +
+    `<p style="color:#5d6b76;margin:0 0 18px">접수 시각 ${receivedAt} · humanai-edu.kr 교육 문의</p>` +
     `<table style="border-collapse:collapse;width:100%;font-size:14px">${rows}</table>` +
-    `<p style="color:#5d6b76;font-size:13px;margin-top:18px">이 메일에 바로 회신하면 요청자(${escapeHtml(values.email)})에게 답장이 갑니다.</p></div>`;
+    `<p style="color:#5d6b76;font-size:13px;margin-top:18px">이 메일에 바로 회신하면 문의자(${escapeHtml(values.email)})에게 답장이 갑니다.</p></div>`;
 
   const text =
-    `새 AI 교육 상담 요청 (${receivedAt})\n\n` + FIELDS.map((f) => `${f.label}: ${values[f.key] || "-"}`).join("\n");
+    `새 AI 교육 문의 (${receivedAt})\n\n` + FIELDS.map((f) => `${f.label}: ${values[f.key] || "-"}`).join("\n");
 
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -94,7 +94,7 @@ export async function POST(request: Request) {
       from: FROM_EMAIL,
       to: [TO_EMAIL],
       reply_to: values.email,
-      subject: `[AI 교육 상담] ${values.organization} · ${values.name}`,
+      subject: `[AI 교육 문의] ${values.organization} · ${values.name}`,
       html,
       text,
     }),

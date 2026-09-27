@@ -227,7 +227,7 @@ export default function Home() {
           </nav>
           <div className="nav-actions">
             <a href="/contact.html" className="btn btn-small btn-primary desktop-cta">
-              AI 교육 신청
+              AI 교육 문의
             </a>
             <button
               className="menu-toggle"
@@ -269,7 +269,7 @@ export default function Home() {
               </div>
               <div className="hero-copy-side">
                 <div className="hero-actions">
-                  <a className="btn btn-primary" href="/contact.html">맞춤형 AI 교육 신청하기</a>
+                  <a className="btn btn-primary" href="/contact.html">맞춤형 AI 교육 문의하기</a>
                   <a className="btn btn-outline" href="/programs.html">교육과정·사례 확인하기</a>
                 </div>
                 <p className="audit-help"><span aria-hidden="true">✓</span> 주제·일정·인원이 미정이어도 됩니다. 기관명과 교육 대상만 알려주시면 추천 과정과 진행안을 안내합니다.</p>
@@ -418,7 +418,7 @@ export default function Home() {
             <div className="center-action">
               <a className="btn btn-outline" href="/cases.html">기관별 교육 사례 자세히 보기</a>
               <a className="btn btn-primary" href="/contact.html">
-                우리 조직에 맞는 과정 신청
+                우리 조직에 맞는 과정 문의
               </a>
             </div>
           </div>
@@ -512,7 +512,7 @@ export default function Home() {
             </div>
             <div className="cta-buttons">
               <a className="btn btn-primary" href="/contact.html">
-                AI 교육 신청하기
+                AI 교육 문의하기
               </a>
               <a href="/diagnosis" className="btn btn-light" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
                 5분 AX 준비도 진단
@@ -554,7 +554,7 @@ export default function Home() {
           </div>
           <div>
             <h3>문의</h3>
-            <a href="/contact.html">AI 교육 신청</a>
+            <a href="/contact.html">AI 교육 문의</a>
             <a href="/ai-training-request-guide.html">교육 담당자 자료실</a>
             <a href="/privacy.html">개인정보처리방침</a>
             <a href="https://blog.naver.com/ai-ed" target="_blank" rel="noreferrer">네이버 블로그</a>
@@ -567,8 +567,8 @@ export default function Home() {
         </div>
       </footer>
 
-      <a className="floating-contact" href="/contact.html" aria-label="AI 교육 신청 페이지로 이동">
-        <span>교육</span>신청
+      <a className="floating-contact" href="/contact.html" aria-label="교육 문의 페이지로 이동">
+        <span>교육</span>문의
       </a>
 
       <script
