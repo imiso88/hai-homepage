@@ -6,7 +6,13 @@ export const metadata: Metadata = {
   title: "기업·공공기관 AI 교육 | 배미주 박사 · 휴먼AI융합교육원",
   description:
     "휴먼AI융합교육원 원장 배미주 박사가 기업·공공기관의 생성형 AI 교육과 AX 전환을 실제 업무 산출물 중심으로 설계합니다.",
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    types: { "application/rss+xml": [{ url: "/rss.xml", title: "휴먼AI융합교육원 인사이트·사례" }] },
+  },
+  verification: {
+    other: { "naver-site-verification": "450bb1451523283d39193d3ba45df90ff4e69463" },
+  },
   icons: { icon: "/logo.png", shortcut: "/logo.png" },
   openGraph: {
     type: "website",
