@@ -187,6 +187,19 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openTestimonial, setOpenTestimonial] = useState<number | null>(0);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
+  const [soundOn, setSoundOn] = useState(false);
+
+  const toggleSound = () => {
+    const video = heroVideoRef.current;
+    if (!video) return;
+    const next = !soundOn;
+    video.muted = !next;
+    if (next) {
+      video.volume = 0.6;
+      video.play().catch(() => {});
+    }
+    setSoundOn(next);
+  };
 
   useEffect(() => {
     const video = heroVideoRef.current;
@@ -256,10 +269,27 @@ export default function Home() {
                 playsInline
                 preload="auto"
                 poster="/hero-motion-poster.jpg"
-                aria-label="휴먼AI융합교육원 소개 모션그래픽: 4단계 학습 트랙, 신규 과정, 주요 실적"
+                aria-label="휴먼AI융합교육원 소개 모션그래픽: 배운 그날 바로 쓰는 AI, 반복업무 자동화, ChatGPT·Claude 실습, 주간보고 자동화 실습, 교육 문의 안내"
               >
                 <source src="/hero-motion.mp4" type="video/mp4" />
               </video>
+              <button
+                type="button"
+                className="hero-sound-toggle"
+                aria-pressed={soundOn}
+                aria-label={soundOn ? "영상 소리 끄기" : "영상 소리 켜기"}
+                onClick={toggleSound}
+              >
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                  <path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor" />
+                  {soundOn ? (
+                    <path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
+                  ) : (
+                    <path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  )}
+                </svg>
+                <span>{soundOn ? "소리 끄기" : "소리 켜기"}</span>
+              </button>
             </div>
             <div className="hero-copy-band">
               <div className="hero-copy-main">
@@ -323,13 +353,18 @@ export default function Home() {
               <h2 id="featured-partners-title">주요 교육 수행기관</h2>
               <p>정부·공공기관과 국내외 기업의 실제 업무 현장에서 교육을 진행했습니다.</p>
             </div>
-            <ul className="featured-logo-grid">
-              {featuredPartners.map((partner) => (
-                <li className="featured-logo" key={partner.name}>
-                  <Image src={partner.logo} width={260} height={88} alt={`${partner.name} 로고`} />
-                </li>
-              ))}
-            </ul>
+            <div className="logo-marquee" role="region" aria-label="주요 교육 수행기관 로고">
+              <ul className="logo-track">
+                {[...featuredPartners, ...featuredPartners].map((partner, index) => {
+                  const duplicate = index >= featuredPartners.length;
+                  return (
+                    <li className="logo-item" key={`${partner.name}-${index}`} aria-hidden={duplicate ? true : undefined}>
+                      <Image src={partner.logo} width={260} height={88} alt={duplicate ? "" : `${partner.name} 로고`} />
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
             <p className="featured-partners-note">기관명과 로고는 교육 수행 이력을 알리기 위한 식별 목적으로 사용했습니다.</p>
           </div>
         </section>
@@ -608,7 +643,7 @@ export default function Home() {
                 honorificSuffix: "교육학 박사",
                 jobTitle: "휴먼AI융합교육원 원장 · AI 교육 컨설턴트",
                 url: "https://www.humanai-edu.kr/expert.html",
-                image: "https://www.humanai-edu.kr/og-image.jpg",
+                image: "https://www.humanai-edu.kr/profile-photo.jpg",
                 worksFor: { "@id": "https://www.humanai-edu.kr/#organization" },
                 knowsAbout: ["생성형 AI 교육", "AX 전환", "프롬프트 설계", "AI 에이전트 활용", "컨텍스트 엔지니어링", "바이브코딩", "업무자동화 교육", "AI 리터러시", "교육 효과 측정"],
                 sameAs: [
