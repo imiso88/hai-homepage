@@ -71,6 +71,8 @@ h1, h2, h3, h4 { line-height: 1.28; letter-spacing: -0.02em; color: var(--navy);
 .btn-ghost:hover { background: rgba(255,255,255,.16); }
 .btn-outline { background: #fff; color: var(--navy); border-color: var(--line); }
 .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+.btn-home-primary { background: #0f7f93; color: #fff; border-color: #0f7f93; box-shadow: 0 10px 24px rgba(15,127,147,.22); }
+.btn-home-primary:hover { background: #0b6c7e; color: #fff; border-color: #0b6c7e; }
 .btn-sm { padding: 11px 20px; font-size: 15px; }
 
 /* ---------- Header / Nav ---------- */
@@ -340,3 +342,4 @@ footer.site .brand small { color: rgba(255,255,255,.55); }
 .audit-faq summary { cursor: pointer; font-weight: 700; line-height: 1.6; }
 .audit-faq summary:focus-visible { outline: 3px solid #176baf; outline-offset: 4px; }
 .audit-faq .faq-a-inner { padding: 16px 0 4px; line-height: 1.8; }
+
