@@ -1,4 +1,41 @@
 import Image from "next/image";
+import Script from "next/script";
+
+const homeStructuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "EducationalOrganization",
+      "@id": "https://www.humanai-edu.kr/#organization",
+      name: "휴먼AI융합교육원",
+      alternateName: "Human AI Convergence Education Center",
+      url: "https://www.humanai-edu.kr/",
+      logo: "https://www.humanai-edu.kr/brand-logo-transparent.png",
+      description: "기업과 공공기관의 실제 업무를 반영한 생성형 AI 교육과 AX 전환 교육을 설계하고 운영합니다.",
+      telephone: "+82-10-6398-5354",
+      email: "orthia66@gmail.com",
+      sameAs: ["https://blog.naver.com/ai-ed", "https://miso66.tistory.com/"],
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.humanai-edu.kr/expert.html#person",
+      name: "배미주",
+      jobTitle: "휴먼AI융합교육원 대표 강사",
+      worksFor: { "@id": "https://www.humanai-edu.kr/#organization" },
+      url: "https://www.humanai-edu.kr/expert.html",
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://www.humanai-edu.kr/#programs",
+      name: "휴먼AI융합교육원 대표 교육과정",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "직무별 생성형 AI 실무교육", url: "https://www.humanai-edu.kr/corporate-ai-training.html" },
+        { "@type": "ListItem", position: 2, name: "공공업무 AI 활용교육", url: "https://www.humanai-edu.kr/public-ai-training.html" },
+        { "@type": "ListItem", position: 3, name: "AX 전략·리더십 교육", url: "https://www.humanai-edu.kr/executive-ax-training.html" },
+      ],
+    },
+  ],
+};
 
 const stats = [["Ph.D.", "교육학 박사"], ["12권", "AI 저서"], ["145+", "출강 기관"], ["10,000+", "누적 수강생"]];
 const programs = [
@@ -32,6 +69,11 @@ const partners = [
 ];
 export default function Home() {
   return <>
+    <Script
+      id="home-structured-data"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(homeStructuredData) }}
+    />
     <header className="home-header"><div className="wrap home-nav">
       <a className="brand" href="#top" aria-label="휴먼AI융합교육원 홈 맨 위로"><Image src="/brand-logo-transparent.png" width={1050} height={600} alt="휴먼AI융합교육원 로고" priority /><span>휴먼AI융합교육원</span></a>
       <nav className="home-desktop-nav" aria-label="주요 메뉴"><a href="#programs">교육과정</a><a href="#results">교육사례</a><a href="/expert.html">강사소개</a><a href="/faq.html">자주 묻는 질문</a></nav>

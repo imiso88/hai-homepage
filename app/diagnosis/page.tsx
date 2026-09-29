@@ -14,6 +14,21 @@ export default function DiagnosisPage() {
     <div style={{ width: "100%", height: "100dvh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
       {/* 돌아가기 바: 진단 화면 위에 겹치지 않도록 별도 줄로 배치 */}
       <div style={{ flex: "none", backgroundColor: "#1b2340", padding: "6px 12px" }}>
+        <h1
+          style={{
+            position: "absolute",
+            width: "1px",
+            height: "1px",
+            padding: 0,
+            margin: "-1px",
+            overflow: "hidden",
+            clip: "rect(0, 0, 0, 0)",
+            whiteSpace: "nowrap",
+            border: 0,
+          }}
+        >
+          조직 AX 준비도 자가진단
+        </h1>
         <Link
           style={{
             color: "#ffffff",
