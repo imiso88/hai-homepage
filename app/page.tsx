@@ -35,13 +35,13 @@ export default function Home() {
     <header className="home-header"><div className="wrap home-nav">
       <a className="brand" href="#top" aria-label="휴먼AI융합교육원 홈 맨 위로"><Image src="/brand-logo-transparent.png" width={1050} height={600} alt="휴먼AI융합교육원 로고" priority /><span>휴먼AI융합교육원</span></a>
       <nav className="home-desktop-nav" aria-label="주요 메뉴"><a href="#programs">교육과정</a><a href="#results">교육사례</a><a href="/expert.html">강사소개</a><a href="/faq.html">자주 묻는 질문</a></nav>
-      <a className="btn btn-small btn-primary home-header-cta" href="/contact.html">맞춤 교육 문의하기</a>
-      <details className="home-mobile-nav"><summary aria-label="메뉴 열기"><span /><span /><span /></summary><nav aria-label="모바일 메뉴"><a href="#programs">교육과정</a><a href="#results">교육사례</a><a href="/expert.html">강사소개</a><a href="/faq.html">자주 묻는 질문</a><a href="/contact.html">맞춤 교육 문의하기</a></nav></details>
+      <a className="btn btn-small btn-primary home-header-cta" href="/contact.html">맞춤교육 문의하기</a>
+      <details className="home-mobile-nav"><summary aria-label="메뉴 열기"><span /><span /><span /></summary><nav aria-label="모바일 메뉴"><a href="#programs">교육과정</a><a href="#results">교육사례</a><a href="/expert.html">강사소개</a><a href="/faq.html">자주 묻는 질문</a><a href="/contact.html">맞춤교육 문의하기</a></nav></details>
     </div></header>
 
     <main id="top" className="home-page">
       <section className="home-hero" aria-labelledby="home-title"><div className="wrap home-hero-grid">
-        <div className="home-hero-copy"><p className="home-kicker">기업·공공기관 직무 맞춤형 생성형 AI 교육</p><h1 id="home-title">우리 조직의 업무에<br /><em>바로 쓰는 AI 교육</em></h1><p className="home-lead">구성원의 직무와 AI 수준을 먼저 살펴보고, 보고서·자료 분석·공문·콘텐츠 제작을 실제 과제로 실습합니다.</p><div className="home-hero-action"><a className="btn btn-primary" href="/contact.html">맞춤 교육 문의하기</a><span>주제·일정·인원이 미정이어도 상담할 수 있습니다.</span></div></div>
+        <div className="home-hero-copy"><p className="home-kicker">기업·공공기관 직무 맞춤형 생성형 AI 교육</p><h1 id="home-title">우리 조직의 업무에<br /><em>바로 쓰는 AI 교육</em></h1><p className="home-lead">구성원의 직무와 AI 수준을 먼저 살펴보고, 보고서·자료 분석·공문·콘텐츠 제작을 실제 과제로 실습합니다.</p><div className="home-hero-action"><a className="btn btn-primary" href="/contact.html">맞춤교육 문의하기</a><span>주제·일정·인원이 미정이어도 상담할 수 있습니다.</span></div></div>
         <figure className="home-hero-photo">
           <Image src="/hero-main-ai-training-clean.png" width={1664} height={936} alt="배미주 박사가 기업과 공공기관 구성원을 대상으로 AI 교육을 진행하는 모습" sizes="(max-width: 820px) calc(100vw - 32px), 52vw" priority />
           <div className="home-screen-message">
@@ -62,13 +62,14 @@ export default function Home() {
 
       <section id="results" className="home-results" aria-labelledby="results-title"><div className="wrap"><div className="home-section-heading"><p className="home-kicker">교육 사례와 후기</p><h2 id="results-title">배우는 데서 끝나지 않고, 업무 결과물을 완성합니다.</h2></div><div className="home-result-layout"><div className="home-case-list">{cases.map((item, index) => <article key={item.title}><span>0{index + 1}</span><div><small>{item.tag}</small><h3>{item.title}</h3><p>{item.result}</p></div></article>)}<a className="home-inline-link" href="/cases.html">교육 사례 전체 보기</a></div><div className="home-review-list">{reviews.map((review) => <blockquote key={review.person}><p>“{review.quote}”</p><cite>{review.person}</cite></blockquote>)}<a className="home-inline-link" href="/testimonials.html">교육 후기 전체 보기</a></div></div></div></section>
 
-      <section className="home-final" aria-labelledby="final-title"><div className="wrap home-final-inner"><div><p className="home-kicker">우리 조직의 업무부터 살펴보겠습니다</p><h2 id="final-title">AI 교육, 과정명보다<br />해결할 업무에서 시작하세요.</h2><p>교육 대상과 희망 주제만 알려주시면 추천 과정과 진행안을 안내합니다.</p></div><a className="btn btn-light" href="/contact.html">맞춤 교육 문의하기</a></div></section>
+      <section className="home-final" aria-labelledby="final-title"><div className="wrap home-final-inner"><div><p className="home-kicker">우리 조직의 업무부터 살펴보겠습니다</p><h2 id="final-title">AI 교육, 과정명보다<br />해결할 업무에서 시작하세요.</h2><p>교육 대상과 희망 주제만 알려주시면 추천 과정과 진행안을 안내합니다.</p></div><a className="btn btn-light" href="/contact.html">맞춤교육 문의하기</a></div></section>
     </main>
 
-    <footer className="home-footer"><div className="wrap home-footer-inner"><div className="footer-brand-lockup"><Image src="/brand-logo-transparent.png" width={1050} height={600} alt="휴먼AI융합교육원 로고" /><strong>휴먼AI융합교육원</strong></div><p>조직의 업무혁신과 AX 전환을 함께 설계하는 교육 파트너</p><nav aria-label="하단 메뉴"><a href="/about.html">교육원 소개</a><a href="/expert.html">전문가 소개</a><a href="/privacy.html">개인정보처리방침</a></nav><small>© 2026 휴먼AI융합교육원. All rights reserved.</small></div></footer>
-    <a className="home-mobile-cta" href="/contact.html">맞춤 교육 문의하기</a>
+    <footer className="home-footer"><div className="wrap home-footer-inner"><div className="footer-brand-lockup"><Image src="/brand-logo-transparent.png" width={1050} height={600} alt="휴먼AI융합교육원 로고" /><strong>휴먼AI융합교육원</strong></div><p>조직의 업무혁신과 AX 전환을 함께 설계하는 교육 파트너</p><nav aria-label="하단 메뉴"><a href="/about.html">교육원 소개</a><a href="/expert.html">전문가 소개</a><a href="/privacy.html">개인정보처리방침</a><a href="https://blog.naver.com/ai-ed" target="_blank" rel="noopener">네이버 블로그</a><a href="https://miso66.tistory.com/" target="_blank" rel="noopener">티스토리 블로그</a></nav><small>© 2026 휴먼AI융합교육원. All rights reserved.</small></div></footer>
+    <a className="home-mobile-cta" href="/contact.html">맞춤교육 문의하기</a>
   </>;
 }
+
 
 
 
