@@ -35,8 +35,8 @@ export default function Home() {
     <header className="home-header"><div className="wrap home-nav">
       <a className="brand" href="#top" aria-label="휴먼AI융합교육원 홈 맨 위로"><Image src="/brand-logo-transparent.png" width={1050} height={600} alt="휴먼AI융합교육원 로고" priority /><span>휴먼AI융합교육원</span></a>
       <nav className="home-desktop-nav" aria-label="주요 메뉴"><a href="#programs">교육과정</a><a href="#results">교육사례</a><a href="/expert.html">강사소개</a><a href="/faq.html">자주 묻는 질문</a></nav>
-      <a className="btn btn-small btn-primary home-header-cta" href="/contact.html">교육 문의</a>
-      <details className="home-mobile-nav"><summary aria-label="메뉴 열기"><span /><span /><span /></summary><nav aria-label="모바일 메뉴"><a href="#programs">교육과정</a><a href="#results">교육사례</a><a href="/expert.html">강사소개</a><a href="/faq.html">자주 묻는 질문</a><a href="/contact.html">교육 문의</a></nav></details>
+      <a className="btn btn-small btn-primary home-header-cta" href="/contact.html">맞춤 교육 문의하기</a>
+      <details className="home-mobile-nav"><summary aria-label="메뉴 열기"><span /><span /><span /></summary><nav aria-label="모바일 메뉴"><a href="#programs">교육과정</a><a href="#results">교육사례</a><a href="/expert.html">강사소개</a><a href="/faq.html">자주 묻는 질문</a><a href="/contact.html">맞춤 교육 문의하기</a></nav></details>
     </div></header>
 
     <main id="top" className="home-page">
@@ -54,7 +54,7 @@ export default function Home() {
         </figure>
       </div></section>
 
-      <section className="home-start" aria-labelledby="start-title"><div className="wrap home-start-inner"><div><p className="home-kicker">START HERE</p><h2 id="start-title">어떤 과정이 필요한지 몰라도 괜찮습니다.</h2><p>기관명, 교육 대상, 해결하고 싶은 업무만 알려주시면 적합한 과정과 진행안을 안내합니다.</p></div><a className="btn btn-light" href="/contact.html">우리 기관 교육 상담하기</a></div></section>
+      <section className="home-start" aria-labelledby="start-title"><div className="wrap home-start-inner"><div><p className="home-kicker">START HERE</p><h2 id="start-title">어떤 과정이 필요한지 몰라도 괜찮습니다.</h2><p>기관명, 교육 대상, 해결하고 싶은 업무만 알려주시면 적합한 과정과 진행안을 안내합니다.</p></div></div></section>
 
       <section className="home-proof" aria-labelledby="proof-title"><div className="wrap"><div className="home-section-heading"><p className="home-kicker">검증된 교육 경험</p><h2 id="proof-title">설명보다, 현장에서 쌓은 결과로 보여드립니다.</h2></div><div className="home-stats">{stats.map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div><div className="home-logo-marquee" aria-label="주요 교육 수행기관과 기업"><ul className="home-logo-track">{[...partners, ...partners].map((partner, index) => <li className="home-logo-item" key={`${partner.src}-${index}`} aria-hidden={index >= partners.length}><Image src={partner.src} width={260} height={88} alt={index >= partners.length ? "" : partner.alt} /></li>)}</ul></div></div></section>
 
@@ -69,6 +69,7 @@ export default function Home() {
     <a className="home-mobile-cta" href="/contact.html">맞춤 교육 문의하기</a>
   </>;
 }
+
 
 
 
