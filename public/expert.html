@@ -21,6 +21,12 @@
   .film-hero { background: linear-gradient(135deg, #12172b 0%, #1b2340 60%, #2a2140 100%); }
   .film-tag { display:inline-block; font-size:12px; font-weight:700; color:#c79a3a; background:rgba(199,154,58,.14); border:1px solid rgba(199,154,58,.4); padding:5px 12px; border-radius:999px; margin-bottom:12px; letter-spacing:.08em;}
   .hl-list li { margin:8px 0; }
+  .expertise-split { grid-template-columns:3fr 1fr; align-items:center; }
+  .mc-compact-card { padding:15px; }
+  .mc-compact-card h3 { font-size:19px; margin:12px 0 8px; }
+  .mc-compact-card p { font-size:13px; line-height:1.45; margin:0; }
+  .mc-compact-card .btn { padding:8px 11px; font-size:12px; }
+  @media (max-width:768px){ .expertise-split { grid-template-columns:1fr; } }
 </style>
 <script type="application/ld+json">
 { "@context":"https://schema.org","@type":"ProfilePage",
@@ -90,14 +96,14 @@
 <section class="section-navy">
   <div class="wrap">
     <div class="section-head center reveal" style="max-width:720px"><span class="eyebrow" style="color:var(--blue-bright)">CORE &amp; EXTENDED EXPERTISE</span><h2 class="section-title" style="color:#fff">AI 교육·AX 전환 전문성을 먼저 확인하세요</h2><p class="lead" style="color:rgba(255,255,255,.8)">주력 분야인 교육·컨설팅 이력과 확장 분야인 AI 영화제 진행 활동을 구분해 안내합니다.</p></div>
-    <div class="grid grid-2">
+    <div class="grid grid-2 expertise-split">
       <div class="card reveal" style="border-top:4px solid var(--blue)">
         <span class="tag">교육 · 컨설팅</span>
         <h3>AI 교육 · AX 전환 전문가</h3>
         <p>기업·공공기관 생성형 AI 교육, 업무혁신, 바이브코딩 자동화, AX 전환 컨설팅.<br>학력·경력·저서 12권·자격·수상·출강 이력을 확인하세요.</p>
         <a class="btn btn-outline btn-sm mt-16" href="profile.html">AI 교육·AX 상세 이력 보기 →</a>
       </div>
-      <div class="card reveal" style="border-top:4px solid #c79a3a;background:linear-gradient(135deg,#12172b,#2a2140);color:#fff">
+      <div class="card reveal mc-compact-card" style="border-top:4px solid #c79a3a;background:linear-gradient(135deg,#12172b,#2a2140);color:#fff">
         <span class="tag" style="background:rgba(199,154,58,.18);color:#e8c874">영화제 · 진행</span>
         <h3 style="color:#fff">AI 영화제 전문 MC · GV</h3>
         <p style="color:rgba(255,255,255,.82)">서울국제AI영화제 제1~5회 공식 사회, 대한민국인공지능영화제 GV 진행.<br>진행 역량·현장 사진·섭외 채널을 확인하세요.</p>
