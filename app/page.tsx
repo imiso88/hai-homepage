@@ -17,6 +17,19 @@ const reviews = [
   { quote: "코딩을 몰라도 반복업무를 줄이는 도구를 직접 만들어 업무혁신이 현실적으로 느껴졌습니다.", person: "공공기관 교육 참가자" },
 ];
 
+const partners = [
+  { src: "/partner-logos/mcst-7.jpg", alt: "문화체육관광부" },
+  { src: "/partner-logos/mss.svg", alt: "중소벤처기업부" },
+  { src: "/partner-logos/logodi.png", alt: "지방자치인재개발원" },
+  { src: "/partner-logos/gyeonggi.png", alt: "경기도인재개발원" },
+  { src: "/partner-logos/sejong.jpg", alt: "세종시교육청교육원" },
+  { src: "/partner-logos/incheon-ih.gif", alt: "인천도시공사" },
+  { src: "/partner-logos/kwdi.png", alt: "한국여성인권진흥원" },
+  { src: "/partner-logos/3m.svg", alt: "3M" },
+  { src: "/partner-logos/crown.png", alt: "크라운제과" },
+  { src: "/partner-logos/kgchem.jpg", alt: "KG케미칼" },
+  { src: "/partner-logos/fastcampus.svg", alt: "패스트캠퍼스" },
+];
 export default function Home() {
   return <>
     <header className="home-header"><div className="wrap home-nav">
@@ -43,7 +56,7 @@ export default function Home() {
 
       <section className="home-start" aria-labelledby="start-title"><div className="wrap home-start-inner"><div><p className="home-kicker">START HERE</p><h2 id="start-title">어떤 과정이 필요한지 몰라도 괜찮습니다.</h2><p>기관명, 교육 대상, 해결하고 싶은 업무만 알려주시면 적합한 과정과 진행안을 안내합니다.</p></div><a className="btn btn-light" href="/contact.html">우리 기관 교육 상담하기</a></div></section>
 
-      <section className="home-proof" aria-labelledby="proof-title"><div className="wrap"><div className="home-section-heading"><p className="home-kicker">검증된 교육 경험</p><h2 id="proof-title">설명보다, 현장에서 쌓은 결과로 보여드립니다.</h2></div><div className="home-stats">{stats.map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div><div className="home-client-groups"><p><strong>공공기관</strong><span>문화체육관광부 · 중소벤처기업부 · 지방자치인재개발원 · 경기도인재개발원 · 세종시교육청 · 인천도시공사 · 한국여성인권진흥원</span></p><p><strong>기업</strong><span>3M · KG케미칼 · 크라운제과 · 패스트캠퍼스</span></p></div></div></section>
+      <section className="home-proof" aria-labelledby="proof-title"><div className="wrap"><div className="home-section-heading"><p className="home-kicker">검증된 교육 경험</p><h2 id="proof-title">설명보다, 현장에서 쌓은 결과로 보여드립니다.</h2></div><div className="home-stats">{stats.map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div><div className="home-logo-marquee" aria-label="주요 교육 수행기관과 기업"><ul className="home-logo-track">{[...partners, ...partners].map((partner, index) => <li className="home-logo-item" key={`${partner.src}-${index}`} aria-hidden={index >= partners.length}><Image src={partner.src} width={260} height={88} alt={index >= partners.length ? "" : partner.alt} /></li>)}</ul></div></div></section>
 
       <section id="programs" className="home-programs" aria-labelledby="programs-title"><div className="wrap"><div className="home-section-heading home-heading-row"><div><p className="home-kicker">대표 교육 3가지</p><h2 id="programs-title">교육 대상에 맞춰 빠르게 선택하세요.</h2></div><a href="/programs.html">전체 교육과정 보기</a></div><div className="home-program-grid">{programs.map((program) => <article className="home-program-card" key={program.title}><div className="home-program-meta"><span>{program.number}</span><strong>{program.audience}</strong></div><h3>{program.title}</h3><p>{program.description}</p><dl><dt>교육 후 남는 결과</dt><dd>{program.outcome}</dd></dl><a href={program.href}>과정 자세히 보기</a></article>)}</div></div></section>
 
@@ -56,6 +69,8 @@ export default function Home() {
     <a className="home-mobile-cta" href="/contact.html">맞춤 교육 문의하기</a>
   </>;
 }
+
+
 
 
 
