@@ -29,7 +29,16 @@ export default function Home() {
     <main id="top" className="home-page">
       <section className="home-hero" aria-labelledby="home-title"><div className="wrap home-hero-grid">
         <div className="home-hero-copy"><p className="home-kicker">기업·공공기관 직무 맞춤형 생성형 AI 교육</p><h1 id="home-title">우리 조직의 업무에<br /><em>바로 쓰는 AI 교육</em></h1><p className="home-lead">구성원의 직무와 AI 수준을 먼저 살펴보고, 보고서·자료 분석·공문·콘텐츠 제작을 실제 과제로 실습합니다.</p><div className="home-hero-action"><a className="btn btn-primary" href="/contact.html">맞춤 교육 문의하기</a><span>주제·일정·인원이 미정이어도 상담할 수 있습니다.</span></div></div>
-        <figure className="home-hero-photo"><Image src="/hero-main-ai-training-clean.png" width={1664} height={936} alt="배미주 박사가 기업과 공공기관 구성원을 대상으로 AI 교육을 진행하는 모습" sizes="(max-width: 820px) calc(100vw - 32px), 52vw" priority /><figcaption><strong>배미주 박사</strong><span>교육학 박사 · AI 저서 12권</span></figcaption></figure>
+        <figure className="home-hero-photo">
+          <Image src="/hero-main-ai-training-clean.png" width={1664} height={936} alt="배미주 박사가 기업과 공공기관 구성원을 대상으로 AI 교육을 진행하는 모습" sizes="(max-width: 820px) calc(100vw - 32px), 52vw" priority />
+          <div className="home-screen-message">
+            <span>HUMAN-FIRST AI EDUCATION</span>
+            <strong>교육 후, 실제 업무<br />결과물이 남습니다</strong>
+            <p>보고서 · 정책자료 · 데이터 분석 · 업무자동화</p>
+            <small>진단부터 실습, 현업 적용까지</small>
+          </div>
+          <figcaption><strong>배미주 박사</strong><span>교육학 박사 · AI 저서 12권</span></figcaption>
+        </figure>
       </div></section>
 
       <section className="home-start" aria-labelledby="start-title"><div className="wrap home-start-inner"><div><p className="home-kicker">START HERE</p><h2 id="start-title">어떤 과정이 필요한지 몰라도 괜찮습니다.</h2><p>기관명, 교육 대상, 해결하고 싶은 업무만 알려주시면 적합한 과정과 진행안을 안내합니다.</p></div><a className="btn btn-light" href="/contact.html">우리 기관 교육 상담하기</a></div></section>
@@ -47,3 +56,4 @@ export default function Home() {
     <a className="home-mobile-cta" href="/contact.html">맞춤 교육 문의하기</a>
   </>;
 }
+

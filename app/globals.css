@@ -1035,3 +1035,26 @@ footer .footer-link:focus-visible { color: #fff; }
 .home-footer .footer-brand-lockup img { display: block; width: 70px; height: 40px; object-fit: contain; }
 @media (max-width: 640px) { .home-mobile-nav { display: block !important; flex: 0 0 42px; } .home-footer .footer-brand-lockup img { width: 56px; height: 32px; } }
 
+/* Message displayed on the projection screen in the homepage hero image. */
+.home-screen-message {
+  position: absolute;
+  z-index: 3;
+  top: 13%;
+  left: 6%;
+  width: 66%;
+  color: var(--navy);
+}
+.home-screen-message > span,
+.home-screen-message > strong,
+.home-screen-message > small { display: block; }
+.home-screen-message > span { margin-bottom: 11px; color: var(--blue); font-size: clamp(9px,.75vw,12px); font-weight: 900; letter-spacing: .13em; }
+.home-screen-message > strong { font-size: clamp(22px,2.25vw,36px); line-height: 1.25; letter-spacing: -.045em; }
+.home-screen-message > p { margin: 15px 0 6px; color: #405664; font-size: clamp(10px,.9vw,14px); font-weight: 750; }
+.home-screen-message > small { color: #667984; font-size: clamp(9px,.75vw,12px); font-weight: 650; }
+@media (max-width: 640px) {
+  .home-screen-message { top: 12%; left: 7%; width: 67%; }
+  .home-screen-message > span { margin-bottom: 6px; font-size: 8px; }
+  .home-screen-message > strong { font-size: 18px; line-height: 1.25; }
+  .home-screen-message > p { margin: 8px 0 3px; font-size: 9px; line-height: 1.45; }
+  .home-screen-message > small { font-size: 8px; }
+}
