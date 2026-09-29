@@ -1068,3 +1068,7 @@ footer .footer-link:focus-visible { color: #fff; }
   .home-screen-message { top: 24%; }
   .home-client-groups p { grid-template-columns: 1fr; gap: 2px; }
 }
+
+/* Restore the full screen message while keeping only the instructor name in the caption. */
+.home-screen-message { top: 13%; }
+@media (max-width: 640px) { .home-screen-message { top: 12%; } }

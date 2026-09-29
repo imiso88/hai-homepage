@@ -32,9 +32,12 @@ export default function Home() {
         <figure className="home-hero-photo">
           <Image src="/hero-main-ai-training-clean.png" width={1664} height={936} alt="배미주 박사가 기업과 공공기관 구성원을 대상으로 AI 교육을 진행하는 모습" sizes="(max-width: 820px) calc(100vw - 32px), 52vw" priority />
           <div className="home-screen-message">
+            <span>HUMAN-FIRST AI EDUCATION</span>
             <strong>교육 후, 실제 업무<br />결과물이 남습니다</strong>
+            <p>보고서 · 정책자료 · 데이터 분석 · 업무자동화</p>
+            <small>진단부터 실습, 현업 적용까지</small>
           </div>
-          <figcaption><strong>배미주 박사</strong><span>교육학 박사 · AI 저서 12권</span></figcaption>
+          <figcaption><strong>배미주 박사</strong></figcaption>
         </figure>
       </div></section>
 
@@ -53,5 +56,6 @@ export default function Home() {
     <a className="home-mobile-cta" href="/contact.html">맞춤 교육 문의하기</a>
   </>;
 }
+
 
 
