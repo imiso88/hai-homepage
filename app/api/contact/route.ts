@@ -112,18 +112,32 @@ export async function POST(request: Request) {
     return response.ok;
   };
 
+  // 진단용 상태 코드(비밀값 없음): off | bad-url | ok | http-<code>-<형식> | script:<오류> | exception:<이름>
+  let sheetState = "off";
   const saveToSheet = async () => {
     if (!sheetUrl) return false;
-    const response = await fetch(sheetUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...values, tracks, source }),
-      redirect: "follow",
-      signal: AbortSignal.timeout(8000),
-    });
-    const result = await response.json().catch(() => ({ ok: false }));
-    if (!result.ok) console.error("[contact] Sheet webhook error", response.status, JSON.stringify(result));
-    return result.ok === true;
+    const url = sheetUrl.trim();
+    if (!/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(url)) sheetState = "bad-url";
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...values, tracks, source }),
+        redirect: "follow",
+        signal: AbortSignal.timeout(8000),
+      });
+      const raw = await response.text();
+      let result: { ok?: boolean; error?: string } = {};
+      try { result = JSON.parse(raw); } catch { /* HTML 응답 */ }
+      if (result.ok === true) { sheetState = "ok"; return true; }
+      const kind = raw.trim().startsWith("<") ? "html" : "json";
+      sheetState = result.error ? `script:${String(result.error).slice(0, 120)}` : `${sheetState === "bad-url" ? "bad-url/" : ""}http-${response.status}-${kind}`;
+      console.error("[contact] Sheet webhook error", response.status, raw.slice(0, 300));
+      return false;
+    } catch (err) {
+      sheetState = `exception:${(err as Error)?.name || "unknown"}`;
+      throw err;
+    }
   };
 
   const [mail, sheet] = await Promise.allSettled([sendMail(), saveToSheet()]);
@@ -133,8 +147,8 @@ export async function POST(request: Request) {
   if (sheet.status === "rejected") console.error("[contact] sheet failed", sheet.reason);
 
   if (!mailOk && !sheetOk) {
-    return json({ ok: false, error: "전송 중 문제가 생겼습니다. 전화 010-6398-5354 또는 이메일 orthia66@gmail.com으로 문의해 주세요." }, 502);
+    return json({ ok: false, error: "전송 중 문제가 생겼습니다. 전화 010-6398-5354 또는 이메일 orthia66@gmail.com으로 문의해 주세요.", sheet: sheetState }, 502);
   }
 
-  return json({ ok: true });
+  return json({ ok: true, mail: mailOk ? "ok" : "fail", sheet: sheetState });
 }
