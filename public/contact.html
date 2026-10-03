@@ -62,7 +62,36 @@
       <h2 class="section-title">교육 계획이 미정이어도 문의할 수 있습니다</h2>
       <p class="section-desc">확정된 내용만 알려주세요. 교육 목적과 대상만 있어도 과정 설계를 시작할 수 있습니다.</p>
     </div>
-    <div class="grid grid-2">
+
+    <!-- 온라인 문의 폼: /api/contact(Resend)로 orthia66@gmail.com에 전달 -->
+    <form id="apply-form" class="card reveal" novalidate>
+      <span class="tag">온라인 문의</span>
+      <h3>교육 문의 남기기</h3>
+      <p>문의를 남겨주시면 <strong>영업일 기준 1일 이내</strong>에 배미주 박사가 직접 회신드립니다.</p>
+      <div class="form-grid mt-24">
+        <div class="field"><label for="f-organization">기관·기업명 *</label><input id="f-organization" name="organization" maxlength="100" placeholder="예) OO시청 정보통신과" autocomplete="organization"></div>
+        <div class="field"><label for="f-name">담당자명 *</label><input id="f-name" name="name" maxlength="50" autocomplete="name"></div>
+        <div class="field"><label for="f-phone">연락처 *</label><input id="f-phone" name="phone" type="tel" maxlength="30" placeholder="010-0000-0000" autocomplete="tel"></div>
+        <div class="field"><label for="f-email">이메일 *</label><input id="f-email" name="email" type="email" maxlength="120" autocomplete="email"></div>
+        <div class="field"><label for="f-audience">교육 대상</label><input id="f-audience" name="audience" maxlength="200" placeholder="예) 공무원 실무자, 팀장급, 임원"></div>
+        <div class="field"><label for="f-headcount">예상 인원</label><input id="f-headcount" name="headcount" maxlength="50" placeholder="예) 30명 / 미정"></div>
+        <div class="field full"><label for="f-schedule">희망 일정·시간</label><input id="f-schedule" name="schedule" maxlength="200" placeholder="예) 11월 중, 3시간 / 미정"></div>
+        <div class="field full"><label for="f-message">현재 고민·궁금한 점 *</label><textarea id="f-message" name="message" maxlength="3000" placeholder="해결하고 싶은 업무, 희망 주제, 실습 환경 등 정해진 것만 적어주셔도 됩니다."></textarea></div>
+        <!-- 스팸 방지용 숨김 칸(사람에게는 보이지 않음) -->
+        <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label for="f-website">웹사이트</label><input id="f-website" name="website" tabindex="-1" autocomplete="off"></div>
+        <div class="field full">
+          <label class="consent" for="f-consent" style="display:flex;gap:10px;align-items:flex-start;font-weight:500;cursor:pointer">
+            <input id="f-consent" name="consent" type="checkbox" style="width:18px;height:18px;margin-top:2px;flex:0 0 18px">
+            <span>[필수] 문의 답변을 위해 기관명·담당자명·연락처·이메일을 수집하며, 수집일로부터 1년간 보관 후 지체 없이 파기합니다. 수집·이용에 동의합니다. <a href="privacy.html" style="text-decoration:underline">개인정보처리방침</a></span>
+          </label>
+        </div>
+      </div>
+      <button id="apply-submit" class="btn btn-primary mt-16" type="submit" style="width:100%">교육 문의 보내기</button>
+      <p id="apply-status" role="status" aria-live="polite" class="mt-8" style="font-size:15px;font-weight:600"></p>
+    </form>
+
+    <p class="section-desc mt-32" style="text-align:center">전화나 이메일이 편하시면 아래로 바로 연락 주세요.</p>
+    <div class="grid grid-2 mt-16">
       <div class="card reveal">
         <span class="tag">빠른 상담</span>
         <h3>전화 문의</h3>
