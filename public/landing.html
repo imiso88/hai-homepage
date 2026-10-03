@@ -1,0 +1,1335 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>공공기관·기업 AI 교육 강사 | 배미주 박사 · 휴먼AI융합교육원</title>
+<meta name="description" content="교육학 박사 배미주가 공공기관·기업의 실제 업무로 AI 활용 교육을 직접 설계합니다. AI 리터러시·결과 검증·개인정보 보호까지 포함한 실습형 AX 교육.">
+<meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><meta property="og:site_name" content="휴먼AI융합교육원">
+<meta property="og:title" content="공공기관·기업 AI 교육 강사 | 배미주 박사">
+<meta property="og:description" content="실제 업무로 실습하고, 교육 후 결과물이 남는 맞춤형 AX 교육. 기획부터 강의까지 배미주 박사가 직접 맡습니다.">
+<meta property="og:image" content="https://www.humanai-edu.kr/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.humanai-edu.kr/">
+<meta property="og:url" content="https://www.humanai-edu.kr/">
+<meta name="naver-site-verification" content="450bb1451523283d39193d3ba45df90ff4e69463">
+<link rel="icon" href="/logo.png">
+<link rel="alternate" type="application/rss+xml" title="휴먼AI융합교육원 인사이트·사례" href="/rss.xml">
+</head><body style="margin:0">
+<!-- =====================================================================
+  휴먼AI융합교육원 | AX 교육 랜딩 — 히어로 + 혜택 섹션 (v1)
+  · 모든 스타일은 .hai-lp 안에서만 적용됩니다 (웹빌더 테마와 충돌 방지)
+  · JS 없음 — 아임웹/카페24/워드프레스/Shopify 커스텀 HTML 블록에 그대로 붙여넣기
+  · [교체] 표시가 있는 곳만 바꾸면 됩니다
+===================================================================== -->
+<div class="hai-lp">
+<style>
+  /* ---------- 0. 브랜드 토큰 (색상은 여기서만 바꾸면 전체 반영) ---------- */
+  .hai-lp{
+    --navy:#0B2A5B; --blue:#1E5BD8; --sky:#38B6FF;
+    --ink:#121826; --sub:#4A5568; --line:#E3E8F0; --bg-soft:#F4F7FC;
+    --grad:linear-gradient(135deg,#0B2A5B 0%,#1E5BD8 55%,#38B6FF 100%);
+    font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+    color:var(--ink); line-height:1.6; word-break:keep-all; -webkit-font-smoothing:antialiased;
+  }
+  .hai-lp *,.hai-lp *::before,.hai-lp *::after{box-sizing:border-box;margin:0;padding:0}
+  .hai-lp a{text-decoration:none;color:inherit}
+  .hai-lp p,.hai-lp li,.hai-lp small,.hai-lp h3{overflow-wrap:anywhere}  /* 띄어쓰기 없는 긴 단어도 좁은 화면에서 줄바꿈 */
+  .hai-lp .wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+  .hai-lp .eyebrow{display:inline-block;font-size:14px;font-weight:700;color:var(--blue);
+    background:#E8F0FF;padding:6px 14px;border-radius:999px;letter-spacing:-.2px}
+  .hai-lp .sec-title{font-size:clamp(26px,3.6vw,40px);font-weight:800;line-height:1.35;letter-spacing:-1px}
+  .hai-lp .sec-sub{font-size:clamp(15px,1.6vw,18px);color:var(--sub);margin-top:14px}
+  .hai-lp .center{text-align:center}
+  .hai-lp .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* ---------- 0-2. 상단 메뉴바 (고정) ---------- */
+  .hai-lp .hai-header{position:fixed;top:0;left:0;right:0;z-index:10000;height:68px;
+    background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--line)}
+  .hai-lp .hai-header .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .hai-lp .h-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;color:var(--navy);letter-spacing:-.4px;white-space:nowrap}
+  .hai-lp .h-logo img{height:20px;width:auto;display:block}
+  .hai-lp .h-nav{display:flex;align-items:center;gap:4px}
+  .hai-lp .h-nav a{font-size:15px;font-weight:600;color:var(--ink);padding:8px 12px;border-radius:8px}
+  .hai-lp .h-nav a:hover{color:var(--blue);background:#F2F6FF}
+  .hai-lp .h-cta{display:flex;align-items:center;gap:8px}
+  .hai-lp .h-cta a{white-space:nowrap;height:42px;padding:0 18px;border-radius:10px;font-size:15px;font-weight:700;display:inline-flex;align-items:center}
+  .hai-lp .h-cta .h-ask{background:var(--grad);color:#fff}
+  .hai-lp .nav-toggle{position:absolute;opacity:0;pointer-events:none}
+  .hai-lp .burger{display:none;width:42px;height:42px;border-radius:10px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+  .hai-lp .burger span{width:20px;height:2px;background:var(--navy);border-radius:2px;transition:.2s}
+  .hai-lp .header-space{height:68px}
+  .hai-lp section[id]{scroll-margin-top:80px}
+
+  /* ---------- 0-3. 출강 기관 로고 흐름 ---------- */
+  .hai-lp .marquee-sec{padding:44px 0 48px;background:#fff;border-bottom:1px solid var(--line)}
+  .hai-lp .marquee-sec h2{text-align:center;font-size:clamp(16px,1.8vw,19px);font-weight:700;color:var(--sub)}
+  .hai-lp .marquee-sec h2 b{color:var(--navy)}
+  .hai-lp .marquee{overflow:hidden;margin-top:24px;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .hai-lp .m-track{display:flex;width:max-content;animation:hai-flow 38s linear infinite}
+  .hai-lp .marquee:hover .m-track{animation-play-state:paused}
+  .hai-lp .m-set{display:flex;gap:16px;padding-right:16px;list-style:none}
+  .hai-lp .m-set li{flex:0 0 168px;height:72px;border:1px solid var(--line);border-radius:12px;background:#fff;
+    display:flex;align-items:center;justify-content:center;padding:12px 16px;font-size:13px;font-weight:700;color:var(--navy);text-align:center}
+  .hai-lp .m-set img{max-width:100%;max-height:42px;object-fit:contain;filter:grayscale(1);opacity:.8;transition:.2s}
+  .hai-lp .m-set li:hover img{filter:none;opacity:1}
+  @keyframes hai-flow{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (max-width:374px){   /* 320~374px 소형 폰 */
+    .hai-lp .h-logo span{display:none}
+    .hai-lp .hai-header .wrap{gap:8px;padding:0 12px}
+    .hai-lp .float-cta{padding-left:8px;padding-right:8px}
+    .hai-lp .float-cta a{font-size:14px}
+  }
+  @media (prefers-reduced-motion:reduce){.hai-lp .m-track{animation:none}.hai-lp .marquee{overflow-x:auto}}
+
+  /* ---------- 1. 버튼 (문의 = 주 버튼 / 소개서 = 보조 버튼) ---------- */
+  .hai-lp .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    height:56px;padding:0 28px;border-radius:12px;font-size:17px;font-weight:700;
+    transition:transform .15s,box-shadow .15s,background .15s}
+  .hai-lp .btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 24px rgba(30,91,216,.32)}
+  .hai-lp .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(30,91,216,.42)}
+  .hai-lp .btn-ghost{background:#fff;color:var(--navy);border:1.5px solid #C9D6EE}
+  .hai-lp .btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+
+  /* ---------- 2. HERO ---------- */
+  .hai-lp .hero{position:relative;overflow:hidden;padding:96px 0 80px;
+    background:radial-gradient(1000px 500px at 85% 10%,#E3F1FF 0%,rgba(255,255,255,0) 60%),#fff}
+  .hai-lp .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .hai-lp .hero h1{font-size:clamp(32px,4.8vw,56px);font-weight:800;line-height:1.28;
+    letter-spacing:-1.6px;margin-top:20px}
+  .hai-lp .hero .lead{font-size:clamp(16px,1.7vw,19px);color:var(--sub);margin-top:22px;max-width:540px}
+  .hai-lp .hero .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+  .hai-lp .reassure{font-size:14px;color:var(--sub);margin-top:12px}
+  .hai-lp .checks{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:28px;list-style:none}
+  .hai-lp .checks li{font-size:15px;color:var(--sub);display:flex;align-items:center;gap:6px}
+  .hai-lp .checks li::before{content:"✓";font-weight:800;color:var(--blue)}
+
+  /* 히어로 우측 비주얼 — [교체] 이미지/영상으로 바꾸려면 .hero-visual 안을 통째로 교체 */
+  .hai-lp .hero-visual{position:relative}
+  .hai-lp .board{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;
+    box-shadow:0 24px 60px rgba(11,42,91,.14)}
+  .hai-lp .board-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+  .hai-lp .board-head b{font-size:16px}
+  .hai-lp .board-head span{font-size:12px;color:#fff;background:var(--navy);padding:4px 10px;border-radius:999px}
+  .hai-lp .step{display:flex;gap:14px;align-items:flex-start;padding:14px;border-radius:12px;background:var(--bg-soft);margin-top:10px}
+  .hai-lp .step i{flex:0 0 34px;height:34px;border-radius:10px;background:var(--grad);color:#fff;
+    font-style:normal;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+  .hai-lp .step strong{display:block;font-size:15px}
+  .hai-lp .step small{font-size:13px;color:var(--sub)}
+  .hai-lp .tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+  .hai-lp .tools em{font-style:normal;font-size:12px;font-weight:600;color:var(--navy);
+    border:1px solid #C9D6EE;padding:4px 10px;border-radius:999px}
+  .hai-lp .out-board{background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px 24px 60px;box-shadow:0 24px 60px rgba(11,42,91,.14)}
+  .hai-lp .ob-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}
+  .hai-lp .ob-head b{font-size:16px;letter-spacing:-.3px}
+  .hai-lp .ob-head span{font-size:11px;font-weight:800;letter-spacing:1px;color:#fff;background:var(--grad);padding:4px 10px;border-radius:999px}
+  .hai-lp .ob-list{list-style:none;display:grid;gap:10px}
+  .hai-lp .ob-list li{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:var(--bg-soft)}
+  .hai-lp .ob-list i{flex:0 0 38px;height:38px;border-radius:10px;background:#fff;font-style:normal;font-size:18px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(11,42,91,.08)}
+  .hai-lp .ob-list div{flex:1;min-width:0}
+  .hai-lp .ob-list strong{display:block;font-size:15px}
+  .hai-lp .ob-list small{font-size:13px;color:var(--sub)}
+  .hai-lp .ob-list em{font-style:normal;font-size:11px;font-weight:700;color:var(--blue);background:#E8F0FF;padding:3px 8px;border-radius:6px;white-space:nowrap}
+  .hai-lp .ins-badge{position:absolute;left:-18px;bottom:-22px;display:flex;align-items:center;gap:10px;background:#fff;border-radius:16px;
+    padding:10px 16px 10px 10px;box-shadow:0 12px 30px rgba(11,42,91,.18)}
+  .hai-lp .ins-badge img{width:44px;height:44px;border-radius:50%;object-fit:cover;display:block}
+  .hai-lp .ins-badge b{display:block;font-size:14px}
+  .hai-lp .ins-badge small{font-size:12px;color:var(--sub)}
+  .hai-lp .hero-photo{margin:0;border-radius:24px;overflow:hidden;aspect-ratio:4/3;background:var(--bg-soft);
+    box-shadow:0 24px 60px rgba(11,42,91,.18)}
+  .hai-lp .hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .hai-lp .photo-tag{position:absolute;left:-12px;top:24px;background:rgba(255,255,255,.96);border-radius:12px;padding:10px 14px;
+    font-size:13px;color:var(--sub);box-shadow:0 10px 26px rgba(11,42,91,.16)}
+  .hai-lp .photo-tag b{color:var(--navy);margin-right:6px}
+  .hai-lp .float-chip{position:absolute;right:-12px;top:-18px;background:#fff;border-radius:14px;
+    padding:12px 16px;box-shadow:0 12px 30px rgba(11,42,91,.18);font-size:14px;font-weight:700}
+  .hai-lp .float-chip span{color:var(--blue)}
+
+  /* ---------- 3. 신뢰 지표 바 ---------- */
+  .hai-lp .stats{background:var(--navy);color:#fff;padding:36px 0}
+  .hai-lp .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+  .hai-lp .stats b{display:block;font-size:clamp(26px,3vw,36px);font-weight:800;letter-spacing:-1px}
+  .hai-lp .stats small{font-size:14px;opacity:.75}
+  .hai-lp .stats-note{text-align:center;font-size:12px;opacity:.5;margin-top:16px}
+
+  /* ---------- 4. 문제 제기 → 해결 (혜택 섹션 ①) ---------- */
+  .hai-lp .pain{padding:100px 0 40px;background:#fff}
+  .hai-lp .pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+  .hai-lp .pain-card{border:1px dashed #CBD5E1;border-radius:16px;padding:26px;background:#FBFCFE}
+  .hai-lp .pain-card .q{font-size:13px;font-weight:700;color:#94A3B8}
+  .hai-lp .pain-card p{font-size:17px;font-weight:700;margin-top:8px;color:#334155}
+  .hai-lp .arrow-down{width:2px;height:56px;margin:36px auto 0;background:linear-gradient(#CBD5E1,var(--blue))}
+
+  .hai-lp .benefit{padding:40px 0 100px;background:#fff}
+  .hai-lp .benefit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+  .hai-lp .b-card{border-radius:18px;padding:28px 24px;background:var(--bg-soft);border:1px solid transparent;transition:.2s}
+  .hai-lp .b-card:hover{background:#fff;border-color:#C9D6EE;box-shadow:0 14px 34px rgba(11,42,91,.10);transform:translateY(-4px)}
+  .hai-lp .b-card .num{font-size:13px;font-weight:800;color:var(--blue)}
+  .hai-lp .b-card h3{font-size:19px;font-weight:800;margin:10px 0 8px;letter-spacing:-.4px}
+  .hai-lp .b-card p{font-size:15px;color:var(--sub)}
+
+  /* ---------- 4-2. 학습 방법 ---------- */
+  .hai-lp .method{padding:100px 0;background:#fff;border-top:1px solid var(--line)}
+  .hai-lp .m-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px;list-style:none;counter-reset:m}
+  .hai-lp .m-grid li{position:relative;border-radius:18px;padding:28px 22px;border:1px solid var(--line);background:#fff}
+  .hai-lp .m-grid li:not(:last-child)::after{content:"→";position:absolute;right:-14px;top:50%;transform:translateY(-50%);
+    width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center;z-index:1}
+  .hai-lp .m-grid li:nth-child(3){border-color:var(--sky);background:#F2FAFF}
+  .hai-lp .m-no{font-size:12px;font-weight:800;color:var(--blue);letter-spacing:.5px}
+  .hai-lp .m-grid h3{font-size:20px;font-weight:800;margin:8px 0;letter-spacing:-.5px}
+  .hai-lp .m-grid p{font-size:15px;color:var(--sub)}
+  .hai-lp .m-ex{margin-top:14px;font-size:13px;font-weight:600;color:var(--navy);background:var(--bg-soft);border-radius:8px;padding:8px 10px}
+
+  /* ---------- 4-3. 교육 운영 원칙 (AI 리터러시·검증·개인정보·윤리) ---------- */
+  .hai-lp .principles{padding:0 0 100px;background:#fff}
+  .hai-lp .pr-box{border-radius:24px;background:var(--bg-soft);padding:40px}
+  .hai-lp .pr-box h3.pr-title{font-size:clamp(20px,2.4vw,26px);font-weight:800;letter-spacing:-.6px}
+  .hai-lp .pr-box .pr-sub{font-size:15px;color:var(--sub);margin-top:8px}
+  .hai-lp .pr-grid{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
+  .hai-lp .pr-grid li{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 20px}
+  .hai-lp .pr-grid span{font-size:12px;font-weight:800;color:var(--blue)}
+  .hai-lp .pr-grid b{display:block;font-size:17px;margin:8px 0 6px;letter-spacing:-.3px}
+  .hai-lp .pr-grid p{font-size:14px;color:var(--sub);line-height:1.6}
+  @media (max-width:1024px){.hai-lp .pr-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:520px){.hai-lp .pr-grid{grid-template-columns:1fr}.hai-lp .pr-box{padding:26px 18px}.hai-lp .principles{padding-bottom:72px}}
+
+  /* ---------- 5-2. 무료 AX 진단 ---------- */
+  .hai-lp .diag{padding:100px 0;background:#fff}
+  .hai-lp .diag-box{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;border-radius:28px;padding:52px;
+    background:linear-gradient(135deg,#0B2A5B 0%,#123F86 60%,#1E5BD8 100%);color:#fff;position:relative;overflow:hidden}
+  .hai-lp .diag-box::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;right:-140px;top:-160px;background:rgba(56,182,255,.16)}
+  .hai-lp .diag-box > *{position:relative;z-index:1}
+  .hai-lp .diag .eyebrow{background:rgba(255,255,255,.14);color:#9FD8FF}
+  .hai-lp .diag h2{font-size:clamp(26px,3.4vw,38px);font-weight:800;line-height:1.3;letter-spacing:-1px;margin-top:16px}
+  .hai-lp .diag .d-lead{font-size:16px;color:rgba(255,255,255,.82);margin-top:14px}
+  .hai-lp .d-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;list-style:none}
+  .hai-lp .d-meta li{font-size:14px;font-weight:700;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:7px 13px;border-radius:999px}
+  .hai-lp .d-areas{font-size:14px;color:rgba(255,255,255,.75);margin-top:16px}
+  .hai-lp .d-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:28px}
+  .hai-lp .d-cta .btn-ghost{border:none}
+  .hai-lp .d-cta small{font-size:13px;color:rgba(255,255,255,.7)}
+  .hai-lp .d-card{background:#fff;color:var(--ink);border-radius:20px;padding:26px;box-shadow:0 24px 50px rgba(0,0,0,.25)}
+  .hai-lp .d-card .d-head{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:800;color:var(--sub)}
+  .hai-lp .d-card .d-head b{color:var(--blue)}
+  .hai-lp .d-steps{list-style:none;display:grid;gap:8px;margin-top:16px}
+  .hai-lp .d-steps li{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:12px;background:var(--bg-soft);font-size:14px;color:var(--sub)}
+  .hai-lp .d-steps li i{flex:0 0 28px;height:28px;border-radius:8px;background:#E3E8F0;color:var(--navy);font-style:normal;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
+  .hai-lp .d-steps li b{color:var(--ink);font-size:15px;margin-right:6px}
+  .hai-lp .d-steps li.on{background:#E8F0FF;outline:2px solid var(--blue)}
+  .hai-lp .d-steps li.on i{background:var(--grad);color:#fff}
+  .hai-lp .d-card .d-out{margin-top:14px;font-size:13px;color:var(--sub);border-top:1px solid var(--line);padding-top:12px}
+  .hai-lp .diag-link{display:inline-block;margin-top:10px;font-size:14px;font-weight:700;color:var(--blue);text-decoration:underline}
+
+  /* ---------- 5. 교육 트랙 3종 + 커리큘럼 다운로드 (혜택 섹션 ②) ---------- */
+  .hai-lp .tracks{padding:100px 0;background:var(--bg-soft)}
+  .hai-lp .track-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+  .hai-lp .t-card{background:#fff;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;
+    border:1px solid var(--line)}
+  .hai-lp .t-top{padding:28px 26px 22px;color:#fff;background:var(--grad)}
+  .hai-lp .t-card:nth-child(2) .t-top{background:linear-gradient(135deg,#0B2A5B,#2F6FE4)}
+  .hai-lp .t-card:nth-child(3) .t-top{background:linear-gradient(135deg,#0A1A33,#1E5BD8)}
+  .hai-lp .t-card:nth-child(4) .t-top{background:linear-gradient(135deg,#123B7A,#38B6FF)}
+  .hai-lp .t-body .lv{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--navy);padding:2px 8px;border-radius:4px;margin-bottom:6px}
+  .hai-lp .t-top small{font-size:13px;opacity:.8;font-weight:600}
+  .hai-lp .t-top h3{font-size:22px;font-weight:800;margin-top:6px;letter-spacing:-.5px}
+  .hai-lp .t-body{padding:24px 26px 28px;display:flex;flex-direction:column;flex:1}
+  .hai-lp .t-body .for{font-size:14px;color:var(--sub)}
+  .hai-lp .t-body ul{list-style:none;margin:16px 0 18px}
+  .hai-lp .t-body li{font-size:15px;padding:7px 0 7px 18px;position:relative;border-bottom:1px solid #EEF2F7}
+  .hai-lp .t-body li::before{content:"";position:absolute;left:2px;top:15px;width:6px;height:6px;border-radius:50%;background:var(--sky)}
+  .hai-lp .deliv{font-size:13px;font-weight:700;color:var(--navy);background:var(--bg-soft);padding:9px 12px;border-radius:8px;margin-bottom:14px}
+  .hai-lp .deliv::before{content:"교육 후 산출물 · ";color:var(--blue)}
+  .hai-lp .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+  .hai-lp .tags span{font-size:12px;color:var(--blue);background:#E8F0FF;padding:3px 9px;border-radius:6px}
+  .hai-lp .t-link{margin-top:auto;font-size:15px;font-weight:700;color:var(--navy);display:flex;justify-content:space-between;
+    padding-top:16px;border-top:1px solid var(--line)}
+  .hai-lp .t-link:hover{color:var(--blue)}
+
+  /* 하단 진단·문의 배너 */
+  .hai-lp .cta-band{margin-top:48px;border-radius:20px;padding:36px 40px;background:var(--navy);color:#fff;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .hai-lp .cta-band h3{font-size:clamp(19px,2.2vw,24px);font-weight:800;letter-spacing:-.5px}
+  .hai-lp .cta-band p{font-size:15px;opacity:.75;margin-top:6px}
+  .hai-lp .cta-band .btn-ghost{border:none}
+
+  /* ---------- 6. 반응형 ---------- */
+  @media (max-width:1024px){
+    .hai-lp .h-nav a{padding:8px 8px;font-size:14px}
+    .hai-lp .benefit-grid,.hai-lp .m-grid,.hai-lp .track-grid{grid-template-columns:repeat(2,1fr)}
+    .hai-lp .m-grid li:not(:last-child)::after{display:none}
+  }
+  @media (max-width:860px){
+    .hai-lp .diag-box{grid-template-columns:1fr;gap:32px;padding:36px 24px}
+    /* 모바일 메뉴: 햄버거 버튼으로 펼침 */
+    .hai-lp .burger{display:flex}
+    .hai-lp .h-nav{position:fixed;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#fff;
+      border-bottom:1px solid var(--line);box-shadow:0 16px 30px rgba(11,42,91,.12);padding:8px 16px 16px;
+      transform:translateY(-8px);opacity:0;visibility:hidden;transition:.2s}
+    .hai-lp .h-nav a{padding:14px 8px;font-size:16px;border-bottom:1px solid #F0F3F8;border-radius:0}
+    .hai-lp .nav-toggle:checked ~ .h-nav{transform:none;opacity:1;visibility:visible}
+    .hai-lp .nav-toggle:checked ~ .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hai-lp .nav-toggle:checked ~ .burger span:nth-child(2){opacity:0}
+    .hai-lp .nav-toggle:checked ~ .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .hai-lp .h-cta{margin-left:auto}
+    .hai-lp .m-set li{flex-basis:136px;height:60px}
+    .hai-lp .hero{padding:64px 0 72px}
+    .hai-lp .hero-grid{grid-template-columns:1fr;gap:48px}
+    .hai-lp .float-chip{right:8px}
+    .hai-lp .photo-tag{left:8px;top:12px}
+    .hai-lp .ins-badge{left:8px}
+    .hai-lp .pain-grid,.hai-lp .track-grid{grid-template-columns:1fr}
+    .hai-lp .stats-grid{grid-template-columns:repeat(2,1fr);row-gap:28px}
+  }
+  @media (max-width:520px){
+    .hai-lp .hero .cta-row .btn{width:100%}
+    .hai-lp .diag{padding:72px 0}
+    .hai-lp .diag-box{padding:30px 18px;border-radius:22px}
+    .hai-lp .d-cta .btn{width:100%}
+    .hai-lp .h-logo{font-size:15px;gap:8px}
+    .hai-lp .ob-list em{display:none}
+    .hai-lp .h-logo img{height:16px;width:auto}
+    .hai-lp .h-cta .h-ask{padding:0 14px;font-size:14px}
+    .hai-lp .benefit-grid,.hai-lp .m-grid{grid-template-columns:1fr}
+    .hai-lp .method{padding:72px 0}
+    .hai-lp .cta-band{padding:28px 22px}
+    .hai-lp .cta-band .btn{width:100%}
+    .hai-lp .pain,.hai-lp .tracks{padding:72px 0}
+    .hai-lp .benefit{padding:32px 0 72px}
+  }
+</style>
+
+<!-- ================= 상단 메뉴바 (스크롤해도 고정) — 로고는 코드에 내장 =================
+     웹빌더 자체 헤더를 쓰면 이 <header>와 .header-space를 삭제하세요. -->
+<header class="hai-header">
+  <div class="wrap">
+    <a class="h-logo" href="#top"><img src="data:image/png;base64,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" alt="휴먼AI융합교육원 로고" width="33" height="20"><span>휴먼AI융합교육원</span></a>
+    <input type="checkbox" id="hai-nav" class="nav-toggle" aria-label="메뉴 열기">
+    <nav class="h-nav" aria-label="주요 메뉴" onclick="document.getElementById('hai-nav').checked=false">
+      <a href="#programs">교육과정</a>
+      <a href="#method">학습방법</a>
+      <a href="#cases">교육사례</a>
+      <a href="#instructor">배미주 박사</a>
+      <a href="#faq">자주 묻는 질문</a>
+      <a href="#diagnosis">무료 AX 진단</a>
+    </nav>
+    <div class="h-cta">
+      <a class="h-ask" href="#contact">교육 문의</a>
+    </div>
+    <label class="burger" for="hai-nav" aria-label="메뉴"><span></span><span></span><span></span></label>
+  </div>
+</header>
+<div class="header-space" id="top"></div>
+
+<!-- ================= SECTION 1. HERO ================= -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">공공기관·공무원·기업 AI 교육 강사 배미주 박사</span>
+      <h1>사람의 성장을 설계하고,<br><span class="hl">AI로 일의 변화</span>를 만듭니다.</h1>
+      <p class="lead">도구 사용법을 보여주는 교육에서 멈추지 않습니다.
+        기관·기업의 <b>실제 업무</b>를 바탕으로 AI 활용부터 업무 개선까지 연결하는
+        실습 중심 맞춤형 교육을 설계합니다. 기획부터 강의까지 <b>배미주 박사</b>가 직접 맡습니다.</p>
+
+      <div class="cta-row">
+        <!-- [교체] 문의 페이지 주소 -->
+        <a class="btn btn-primary" href="#contact">교육 문의하기 →</a>
+        <!-- [교체] 교육 소개서 PDF 주소 (구글드라이브/웹빌더 파일 링크) -->
+        <a class="btn btn-ghost" href="#download">교육과정·소개서 보기</a>
+      </div>
+      <p class="reassure">교육 주제와 일정이 아직 정해지지 않아도 상담할 수 있습니다.</p>
+      <a class="diag-link" href="#diagnosis">어떤 과정이 맞을지 모르겠다면 → 3분 무료 AX 진단</a>
+
+      <ul class="checks">
+        <li>4대 AI 도구 실습</li>
+        <li>수강생 실습 워크북 제공</li>
+        <li>기관·직무별 맞춤 커리큘럼</li>
+      </ul>
+    </div>
+
+    <!-- 우측 비주얼: '교육 후 남는 결과물' 카드 (코드 내장, 외부 이미지 없음)
+         실제 교육 사진으로 바꾸려면 .out-board 대신 <img src="웹빌더에 올린 사진 주소" alt="교육 현장" style="width:100%;border-radius:24px"> -->
+    <div class="hero-visual">
+      <div class="out-board">
+        <div class="ob-head"><b>교육 후, 실제 업무 결과물이 남습니다</b><span>OUTPUT</span></div>
+        <ul class="ob-list">
+          <li><i>📄</i><div><strong>보고서 · 공문 초안</strong><small>우리 기관 양식으로 직접 완성</small></div><em>공공</em></li>
+          <li><i>📰</i><div><strong>정책자료 → 보도자료 · 카드뉴스</strong><small>핵심 메시지로 전환하고 출처 검증</small></div><em>정책소통</em></li>
+          <li><i>📊</i><div><strong>데이터 분석 결과</strong><small>설문·실적 자료를 표와 인사이트로</small></div><em>기업</em></li>
+          <li><i>⚙️</i><div><strong>업무자동화 시제품</strong><small>코딩 없이 바이브코딩으로 직접 제작</small></div><em>자동화</em></li>
+        </ul>
+        <div class="tools"><em>ChatGPT</em><em>Gemini</em><em>Claude</em><em>NotebookLM</em></div>
+      </div>
+      <div class="ins-badge"><img src="data:image/jpeg;base64,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" alt="배미주 박사" width="56" height="56"><div><b>배미주 박사</b><small>교육학 박사 · 직접 설계·강의</small></div></div>
+      <div class="float-chip">📘 실습 워크북 <span>세트 제공</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 2. 신뢰 지표 (humanai-edu.kr 기준 실적) =================
+     수치가 갱신되면 여기와 강사 소개(2차)를 함께 수정하세요. -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div><b>Ph.D.</b><small>교육학 박사</small></div>
+      <div><b>12권</b><small>AI 저서</small></div>
+      <div><b>145+</b><small>출강 기관</small></div>
+      <div><b>10,000+</b><small>누적 수강생</small></div>
+    </div>
+    <p class="stats-note">* 휴먼AI융합교육원 누적 실적 기준 (2026년)</p>
+  </div>
+</section>
+
+<!-- ================= SECTION 2-2. 주요 출강 기관 (자동으로 옆으로 흐름) =================
+     기관 추가: 아래 두 목록(ul) 모두에 같은 <li>를 추가하세요. 두 번째 목록은 끊김 없이 이어지게 하는 복사본입니다.
+     마우스를 올리면 멈춥니다. 로고는 humanai-edu.kr 파일을 불러옵니다. -->
+<section class="marquee-sec" aria-label="주요 출강 기관">
+  <h2><b>145개 이상의 기관</b>이 휴먼AI융합교육원과 함께했습니다</h2>
+  <div class="marquee">
+    <div class="m-track">
+      <ul class="m-set">
+        <li><img src="https://www.humanai-edu.kr/_next/image?url=%2Fpartner-logos%2Fmcst-7.jpg&w=640&q=75" alt="문화체육관광부" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+        <li><img src="https://www.humanai-edu.kr/partner-logos/mss.svg" alt="중소벤처기업부" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+        <li><img src="https://www.humanai-edu.kr/_next/image?url=%2Fpartner-logos%2Flogodi.png&w=640&q=75" alt="지방자치인재개발원" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+        <li><img src="https://www.humanai-edu.kr/_next/image?url=%2Fpartner-logos%2Fgyeonggi.png&w=640&q=75" alt="경기도인재개발원" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+        <li><img src="https://www.humanai-edu.kr/_next/image?url=%2Fpartner-logos%2Fsejong.jpg&w=640&q=75" alt="세종시교육청교육원" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+        <li><img src="https://www.humanai-edu.kr/_next/image?url=%2Fpartner-logos%2Fincheon-ih.gif&w=640&q=75" alt="인천도시공사" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+        <li><img src="https://www.humanai-edu.kr/_next/image?url=%2Fpartner-logos%2Fkwdi.png&w=640&q=75" alt="한국여성인권진흥원" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+        <li><img src="https://www.humanai-edu.kr/partner-logos/3m.svg" alt="3M" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+        <li><img src="https://www.humanai-edu.kr/_next/image?url=%2Fpartner-logos%2Fcrown.png&w=640&q=75" alt="크라운제과" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+        <li><img src="https://www.humanai-edu.kr/_next/image?url=%2Fpartner-logos%2Fkgchem.jpg&w=640&q=75" alt="KG케미칼" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+        <li><img src="https://www.humanai-edu.kr/partner-logos/fastcampus.svg" alt="패스트캠퍼스" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+      </ul>
+      <ul class="m-set" aria-hidden="true">
+        <li><img src="https://www.humanai-edu.kr/_next/image?url=%2Fpartner-logos%2Fmcst-7.jpg&w=640&q=75" alt="" data-name="문화체육관광부" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+        <li><img src="https://www.humanai-edu.kr/partner-logos/mss.svg" alt="" data-name="중소벤처기업부" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+        <li><img src="https://www.humanai-edu.kr/_next/image?url=%2Fpartner-logos%2Flogodi.png&w=640&q=75" alt="" data-name="지방자치인재개발원" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+        <li><img src="https://www.humanai-edu.kr/_next/image?url=%2Fpartner-logos%2Fgyeonggi.png&w=640&q=75" alt="" data-name="경기도인재개발원" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+        <li><img src="https://www.humanai-edu.kr/_next/image?url=%2Fpartner-logos%2Fsejong.jpg&w=640&q=75" alt="" data-name="세종시교육청교육원" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+        <li><img src="https://www.humanai-edu.kr/_next/image?url=%2Fpartner-logos%2Fincheon-ih.gif&w=640&q=75" alt="" data-name="인천도시공사" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+        <li><img src="https://www.humanai-edu.kr/_next/image?url=%2Fpartner-logos%2Fkwdi.png&w=640&q=75" alt="" data-name="한국여성인권진흥원" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+        <li><img src="https://www.humanai-edu.kr/partner-logos/3m.svg" alt="" data-name="3M" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+        <li><img src="https://www.humanai-edu.kr/_next/image?url=%2Fpartner-logos%2Fcrown.png&w=640&q=75" alt="" data-name="크라운제과" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+        <li><img src="https://www.humanai-edu.kr/_next/image?url=%2Fpartner-logos%2Fkgchem.jpg&w=640&q=75" alt="" data-name="KG케미칼" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+        <li><img src="https://www.humanai-edu.kr/partner-logos/fastcampus.svg" alt="" data-name="패스트캠퍼스" loading="lazy" onerror="this.replaceWith(this.alt||this.dataset.name)"></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 3. 문제 제기 → 혜택 ================= -->
+<section class="pain">
+  <div class="wrap center">
+    <h2 class="sec-title">AI 교육은 들었는데,<br>왜 <span class="hl">업무는 그대로</span>일까요?</h2>
+    <p class="sec-sub">교육 담당자분들이 가장 많이 말씀하시는 기존 AI 교육의 아쉬움입니다.</p>
+    <div class="pain-grid">
+      <div class="pain-card"><div class="q">아쉬움 01</div><p>"강사 시연만 보고<br>직접 해볼 시간은 없었어요"</p></div>
+      <div class="pain-card"><div class="q">아쉬움 02</div><p>"예제가 우리 업무와<br>너무 동떨어져 있었어요"</p></div>
+      <div class="pain-card"><div class="q">아쉬움 03</div><p>"교육 끝나고 나니<br>뭘 했는지 기억이 안 나요"</p></div>
+    </div>
+    <div class="arrow-down"></div>
+  </div>
+</section>
+
+<section class="benefit">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">휴먼AI융합교육원의 해법</span>
+      <h2 class="sec-title" style="margin-top:16px">교육장에서 만든 결과물을<br><span class="hl">다음 날 업무에 그대로</span> 씁니다.</h2>
+    </div>
+    <div class="benefit-grid">
+      <div class="b-card"><div class="num">BENEFIT 01</div><h3>실제 업무 기반 실습</h3>
+        <p>보고서·공문·기획안 등 수강생의 실제 업무를 과제로 삼아 결과물까지 완성합니다.</p></div>
+      <div class="b-card"><div class="num">BENEFIT 02</div><h3>4대 AI 도구 비교 실습</h3>
+        <p>ChatGPT·Gemini·Claude·NotebookLM을 업무별로 비교하며 상황에 맞는 도구를 고르는 법을 익힙니다.</p></div>
+      <div class="b-card"><div class="num">BENEFIT 03</div><h3>실습 워크북 세트</h3>
+        <p>슬라이드·강의안·실습지를 한 세트로 제공해, 교육 후에도 혼자 다시 따라 할 수 있습니다.</p></div>
+      <div class="b-card"><div class="num">BENEFIT 04</div><h3>대상별 맞춤 설계</h3>
+        <p>공무원·교사·기업 직원 등 대상과 수준, 강의 시간에 맞춰 커리큘럼을 새로 설계합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 3-2. HAI 학습 방법 ================= -->
+<section class="method" id="method">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">HAI 학습 방법</span>
+      <h2 class="sec-title">AI가 대신하는 교육이 아니라,<br><span class="hl">사람의 판단력과 실행력</span>을 키우는 교육</h2>
+      <p class="sec-sub">모든 과정은 4단계로 진행됩니다. 결과물을 만드는 것에서 끝나지 않고, 사람이 검토하고 책임지는 법까지 익힙니다.</p>
+    </div>
+    <ol class="m-grid">
+      <li><span class="m-no">STEP 1</span><h3>이해하기</h3><p>내 업무에서 AI가 도울 수 있는 일과 주의할 점을 구분합니다.</p><div class="m-ex">예) 우리 부서 반복업무 목록 만들기</div></li>
+      <li><span class="m-no">STEP 2</span><h3>직접 만들기</h3><p>실제 업무 자료로 프롬프트를 작성하고 결과물을 완성합니다.</p><div class="m-ex">예) 보고서 초안 · 보도자료 · 분석표</div></li>
+      <li><span class="m-no">STEP 3</span><h3>함께 검토하기</h3><p>AI 결과의 사실·출처·보안 문제를 점검하고 서로 피드백합니다.</p><div class="m-ex">예) 출처 검증 · 개인정보 제거 확인</div></li>
+      <li><span class="m-no">STEP 4</span><h3>업무에 적용하기</h3><p>완성한 프롬프트와 도구를 내일 업무에 쓰는 실행 계획으로 정리합니다.</p><div class="m-ex">예) 나만의 프롬프트 · 자동화 도구</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= SECTION 3-3. 교육 운영 원칙 (AI 리터러시·윤리·개인정보 보호) ================= -->
+<section class="principles" id="principles" aria-label="교육 운영 원칙">
+  <div class="wrap">
+    <div class="pr-box">
+      <h3 class="pr-title">AI 리터러시·AI 윤리·개인정보 보호까지 함께 가르칩니다</h3>
+      <p class="pr-sub">모든 과정에 아래 4가지 원칙을 기본으로 포함합니다.</p>
+      <ol class="pr-grid">
+        <li><span>01 · AI 리터러시</span><b>AI를 이해하고 시작합니다</b><p>AI가 잘하는 일과 틀리기 쉬운 일을 구분하고, 내 업무에 맞는 활용 범위를 정합니다.</p></li>
+        <li><span>02 · 결과 검증</span><b>그럴듯함을 사실로 믿지 않습니다</b><p>AI 답변의 사실·수치·출처를 확인하는 검증 절차를 실습마다 함께 익힙니다.</p></li>
+        <li><span>03 · 개인정보 보호</span><b>민감한 정보는 입력하지 않습니다</b><p>개인정보·기밀·비공개 자료는 입력하지 않고, 실습 자료는 비식별화해 기관 보안지침에 맞춰 씁니다.</p></li>
+        <li><span>04 · 책임과 윤리</span><b>최종 판단은 사람이 합니다</b><p>AI 결과물의 최종 판단과 책임은 사람에게 있습니다. 저작권과 공정한 활용 원칙도 함께 다룹니다.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 4. 교육 트랙 4종 ================= -->
+<section class="tracks" id="programs">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">교육 프로그램</span>
+      <h2 class="sec-title" style="margin-top:16px">공공기관 AI 교육부터 기업 AI 교육까지,<br>대상별 4가지 트랙으로 설계합니다</h2>
+      <p class="sec-sub">실무자는 업무 결과물, 관리자는 팀 업무 개선, 임원은 도입 우선순위에 초점을 맞춥니다.</p>
+    </div>
+
+    <div class="track-grid">
+      <!-- 트랙 1 -->
+      <div class="t-card">
+        <div class="t-top"><small>TRACK 01 · PUBLIC</small><h3>공공기관 AI 업무활용</h3></div>
+        <div class="t-body">
+          <p class="for">공무원 AI 교육 · 중앙부처·지자체·교육청, 교사</p>
+          <ul>
+            <li>생성형 AI 이해와 공공 업무 활용 원칙</li>
+            <li>보고서·보도자료·민원 답변 초안 작성</li>
+            <li>NotebookLM으로 법령·정책 자료 분석</li>
+          </ul>
+          <div class="deliv">보안 준수 AI 활용 체크리스트</div>
+          <div class="tags"><span>#AI리터러시</span><span>#보고서작성</span><span>#정책자료분석</span></div>
+          <!-- [교체] 트랙별 상세 커리큘럼 PDF 주소 -->
+          <a class="t-link" href="#download">상세 커리큘럼 받기 <span>↓</span></a>
+        </div>
+      </div>
+      <!-- 트랙 2 -->
+      <div class="t-card">
+        <div class="t-top"><small>TRACK 02 · ENTERPRISE</small><h3>기업 맞춤형 AI 실무</h3></div>
+        <div class="t-body">
+          <p class="for">직무·직급별 기업 실무자, 팀장</p>
+          <ul>
+            <li>직무별 프롬프트 설계와 업무 적용</li>
+            <li>기획안·데이터 분석·PPT 제작 실습</li>
+            <li>팀 단위 업무 개선 과제 실습</li>
+          </ul>
+          <div class="deliv">개인별 업무 결과물 · 직무별 프롬프트</div>
+          <div class="tags"><span>#프롬프트설계</span><span>#직무맞춤</span><span>#팀업무개선</span></div>
+          <a class="t-link" href="#download">상세 커리큘럼 받기 <span>↓</span></a>
+        </div>
+      </div>
+      <!-- 트랙 3 -->
+      <div class="t-card">
+        <div class="t-top"><small>TRACK 03 · LEADERSHIP</small><h3>AX 전략 · 리더십</h3></div>
+        <div class="t-body">
+          <p class="for">임원 · 부서장 · 관리자</p>
+          <ul>
+            <li>AI 전환이 조직과 업무에 주는 영향 이해</li>
+            <li>부서별 AI 활용 격차와 도입 우선순위 정리</li>
+            <li>AI 활용에 대한 리더의 판단·책임 원칙</li>
+          </ul>
+          <div class="deliv">경영진 의사결정 방향 문서</div>
+          <div class="tags"><span>#AX전략</span><span>#리더십</span><span>#도입우선순위</span></div>
+          <a class="t-link" href="#download">상세 커리큘럼 받기 <span>↓</span></a>
+        </div>
+      </div>
+      <!-- 트랙 4 -->
+      <div class="t-card">
+        <div class="t-top"><small>TRACK 04 · AUTOMATION</small><h3>업무자동화 · AI 에이전트</h3></div>
+        <div class="t-body">
+          <p class="for">반복 업무를 줄이고 싶은 실무자·담당 부서</p>
+          <ul>
+            <li>반복 업무 찾기와 자동화 설계</li>
+            <li>AI 에이전트·커스텀 GPT/Gem 만들기</li>
+            <li>바이브코딩으로 업무 도구 직접 만들기</li>
+          </ul>
+          <div class="deliv">개인별 업무자동화 시제품</div>
+          <div class="tags"><span>#업무자동화</span><span>#AI에이전트</span><span>#바이브코딩</span></div>
+          <a class="t-link" href="#download">상세 커리큘럼 받기 <span>↓</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 하단 문의 배너 -->
+    <div class="cta-band">
+      <div>
+        <h3>어떤 과정이 필요한지 몰라도 괜찮습니다</h3>
+        <p>기관명, 교육 대상, 해결하고 싶은 업무만 알려주시면 적합한 과정과 진행안을 안내합니다.</p>
+      </div>
+      <a class="btn btn-ghost" href="#contact">맞춤 교육 문의하기 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 4-2. 무료 AX 진단 (humanai-edu.kr/diagnosis 연결) ================= -->
+<section class="diag" id="diagnosis" aria-labelledby="diag-title">
+  <div class="wrap">
+    <div class="diag-box">
+      <div>
+        <span class="eyebrow">무료 AX 진단</span>
+        <h2 id="diag-title">우리 조직의 AI 활용 수준,<br>3분 만에 진단해 보세요</h2>
+        <p class="d-lead">조직 AX 준비도 자가진단에 답하면, 제출 즉시 우리 조직의 AX 단계와 영역별 강점·보완점, 맞춤 교육 방향을 화면에서 바로 확인할 수 있습니다.</p>
+        <ul class="d-meta"><li>⏱ 약 3분</li><li>📝 15문항</li><li>🔒 이메일 입력 불필요</li><li>💾 결과 저장 안 함</li></ul>
+        <p class="d-areas">진단 영역 · AI 이해 / 도구 활용 / 업무 적용 / 데이터 활용 / 검증·보안</p>
+        <div class="d-cta">
+          <a class="btn btn-ghost" href="https://www.humanai-edu.kr/diagnosis" target="_blank" rel="noopener">무료 AX 진단 시작하기 →</a>
+          <small>진단 없이 바로 <a href="#contact" style="color:#fff;text-decoration:underline">교육 문의</a>도 가능합니다</small>
+        </div>
+      </div>
+      <div class="d-card" aria-label="진단 결과 예시">
+        <div class="d-head"><span>진단 결과 예시</span><b>AX 4단계</b></div>
+        <ol class="d-steps">
+          <li><i>1</i><span><b>도입기</b>AI를 시험적으로 써보는 단계</span></li>
+          <li class="on"><i>2</i><span><b>확산기</b>부서별로 AI 활용이 번지는 단계</span></li>
+          <li><i>3</i><span><b>적용기</b>주요 업무에 AI를 실제로 적용</span></li>
+          <li><i>4</i><span><b>정착기</b>AI 활용이 표준 업무방식으로 정착</span></li>
+        </ol>
+        <p class="d-out">결과 화면에서 영역별 점수와 단계에 맞는 추천 교육 과정을 함께 안내합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+<!-- ===================== /휴먼AI융합교육원 랜딩 끝 ===================== -->
+<!-- =====================================================================
+  휴먼AI융합교육원 | AX 교육 랜딩 — 2차: 강사 소개 + 후기 + FAQ + 문의 폼
+  · 1차 코드(히어로·혜택) 바로 아래에 붙여넣으세요. 단독 사용도 가능합니다.
+  · JS 없음 (후기 슬라이드 = CSS 스크롤 스냅, FAQ = <details>)
+  · [교체] 표시가 있는 곳만 바꾸면 됩니다
+===================================================================== -->
+<div class="hai-lp">
+<style>
+  /* ---------- 0. 브랜드 토큰 (1차 코드와 동일) ---------- */
+  .hai-lp{
+    --navy:#0B2A5B; --blue:#1E5BD8; --sky:#38B6FF;
+    --ink:#121826; --sub:#4A5568; --line:#E3E8F0; --bg-soft:#F4F7FC;
+    --grad:linear-gradient(135deg,#0B2A5B 0%,#1E5BD8 55%,#38B6FF 100%);
+    font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+    color:var(--ink); line-height:1.6; word-break:keep-all; -webkit-font-smoothing:antialiased;
+  }
+  .hai-lp *,.hai-lp *::before,.hai-lp *::after{box-sizing:border-box;margin:0;padding:0}
+  .hai-lp a{text-decoration:none;color:inherit}
+  .hai-lp p,.hai-lp li,.hai-lp small,.hai-lp h3{overflow-wrap:anywhere}  /* 띄어쓰기 없는 긴 단어도 좁은 화면에서 줄바꿈 */
+  .hai-lp .wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+  .hai-lp .center{text-align:center}
+  .hai-lp .eyebrow{display:inline-block;font-size:14px;font-weight:700;color:var(--blue);
+    background:#E8F0FF;padding:6px 14px;border-radius:999px}
+  .hai-lp .sec-title{font-size:clamp(26px,3.6vw,40px);font-weight:800;line-height:1.35;letter-spacing:-1px;margin-top:16px}
+  .hai-lp .sec-sub{font-size:clamp(15px,1.6vw,18px);color:var(--sub);margin-top:14px}
+  .hai-lp .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hai-lp .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:56px;padding:0 28px;
+    border-radius:12px;font-size:17px;font-weight:700;border:none;cursor:pointer;font-family:inherit;transition:.15s}
+  .hai-lp .btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 24px rgba(30,91,216,.32)}
+  .hai-lp .btn-primary:hover{transform:translateY(-2px)}
+  .hai-lp .btn-ghost{background:#fff;color:var(--navy);border:1.5px solid #C9D6EE}
+  .hai-lp .btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+
+  /* ---------- 1. 대표 강사 ---------- */
+  .hai-lp .instructor{padding:100px 0;background:#fff}
+  .hai-lp .lead-card{display:grid;grid-template-columns:340px 1fr;gap:48px;align-items:center;margin-top:48px;
+    background:var(--bg-soft);border-radius:24px;padding:40px}
+  /* [교체] 사진: .photo 안에 <img src="사진주소" alt="배미주 박사"> 넣으면 이니셜 대신 사진 표시 */
+  .hai-lp .photo{aspect-ratio:4/5;border-radius:20px;background:var(--grad);display:flex;align-items:center;
+    justify-content:center;color:#fff;font-size:64px;font-weight:800;overflow:hidden}
+  .hai-lp .photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+  .hai-lp .lead-card .role{font-size:15px;font-weight:700;color:var(--blue)}
+  .hai-lp .lead-card h3{font-size:clamp(26px,3vw,34px);font-weight:800;letter-spacing:-1px;margin-top:4px}
+  .hai-lp .lead-card .quote{font-size:17px;color:var(--sub);margin:18px 0 24px;padding-left:16px;border-left:3px solid var(--sky)}
+  .hai-lp .creds{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;list-style:none}
+  .hai-lp .creds li{font-size:15px;padding-left:18px;position:relative}
+  .hai-lp .creds li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--blue)}
+  .hai-lp .creds-title{font-size:13px;font-weight:800;color:#94A3B8;letter-spacing:.5px;margin:22px 0 10px}
+
+  .hai-lp .lead-card .intro{font-size:16px;font-weight:600;color:var(--navy);margin-top:6px}
+  .hai-lp .lead-card .quote{margin-top:16px}
+  .hai-lp .full-profile{display:inline-block;margin-top:16px;font-size:15px;font-weight:700;color:var(--blue)}
+  .hai-lp .full-profile:hover{text-decoration:underline}
+  .hai-lp .principles{list-style:none;display:grid;gap:8px}
+  .hai-lp .principles li{background:#fff;border-radius:10px;padding:12px 14px;font-size:14px;color:var(--sub)}
+  .hai-lp .principles b{display:block;font-size:15px;color:var(--ink);margin-bottom:2px}
+
+  /* 파트너 강사 */
+  .hai-lp .partner-head{display:flex;justify-content:space-between;align-items:flex-end;margin-top:64px;gap:16px;flex-wrap:wrap}
+  .hai-lp .partner-head h3{font-size:22px;font-weight:800;letter-spacing:-.5px}
+  .hai-lp .partner-head p{font-size:15px;color:var(--sub)}
+  .hai-lp .partner-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:20px}
+  .hai-lp .p-card{border:1px solid var(--line);border-radius:16px;padding:22px 16px;text-align:center}
+  .hai-lp .p-card .av{width:72px;height:72px;margin:0 auto 12px;border-radius:50%;background:#E8F0FF;color:var(--blue);
+    font-weight:800;font-size:22px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .hai-lp .p-card .av img{width:100%;height:100%;object-fit:cover}
+  .hai-lp .p-card b{display:block;font-size:16px}
+  .hai-lp .p-card small{display:block;font-size:13px;color:var(--sub);margin-top:4px}
+  .hai-lp .p-card span{display:inline-block;margin-top:10px;font-size:12px;color:var(--blue);background:#E8F0FF;padding:3px 9px;border-radius:6px}
+
+  /* ---------- 1-2. 교육 사례 ---------- */
+  .hai-lp .cases{padding:100px 0;background:var(--bg-soft)}
+  .hai-lp .case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+  .hai-lp .c-card{background:#fff;border-radius:20px;padding:30px 26px;border:1px solid var(--line);position:relative;overflow:hidden}
+  .hai-lp .c-card::before{content:"";position:absolute;left:0;top:0;right:0;height:4px;background:var(--grad)}
+  .hai-lp .c-card .who{font-size:13px;font-weight:800;color:var(--blue)}
+  .hai-lp .c-card h3{font-size:20px;font-weight:800;margin:8px 0 14px;letter-spacing:-.5px}
+  .hai-lp .c-card .task{font-size:14px;color:var(--sub);margin-bottom:10px;padding-left:12px;border-left:3px solid #C9D6EE}
+  .hai-lp .c-card .task b{color:var(--navy);margin-right:4px}
+  .hai-lp .c-card .res{font-size:15px;color:var(--ink);background:var(--bg-soft);border-radius:10px;padding:14px 16px}
+  .hai-lp .c-card .res b{display:block;font-size:12px;color:var(--sub);margin-bottom:4px}
+  .hai-lp .outputs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:36px}
+  .hai-lp .outputs span{font-size:15px;font-weight:700;color:var(--navy);background:#fff;border:1.5px solid #C9D6EE;padding:9px 18px;border-radius:999px}
+
+  /* ---------- 2. 교육 후기 (CSS 스크롤 스냅 슬라이드) ---------- */
+  .hai-lp .reviews{padding:100px 0;background:var(--navy);color:#fff;overflow:hidden}
+  .hai-lp .reviews .eyebrow{background:rgba(255,255,255,.12);color:#9FD8FF}
+  .hai-lp .reviews .sec-sub{color:rgba(255,255,255,.7)}
+  .hai-lp .r-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:44px 20px 18px;
+    max-width:1160px;margin:0 auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.3) transparent}
+  .hai-lp .r-card{flex:0 0 360px;scroll-snap-align:start;background:#fff;color:var(--ink);border-radius:20px;padding:28px;
+    display:flex;flex-direction:column}
+  .hai-lp .r-card .course{font-size:12px;font-weight:700;color:var(--blue);background:#E8F0FF;padding:4px 10px;border-radius:6px;align-self:flex-start}
+  .hai-lp .r-card .mark{font-size:44px;line-height:1;color:var(--sky);font-weight:800;margin-top:12px;height:24px}
+  .hai-lp .r-card p{font-size:16px;margin:14px 0 22px;flex:1}
+  .hai-lp .r-card .who{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--line)}
+  .hai-lp .r-card .who i{width:40px;height:40px;border-radius:50%;background:var(--grad);flex:0 0 40px}
+  .hai-lp .r-card .who b{display:block;font-size:14px}
+  .hai-lp .r-card .who small{font-size:13px;color:var(--sub)}
+  .hai-lp .r-hint{text-align:center;font-size:13px;opacity:.55;margin-top:8px}
+
+  /* ---------- 3. FAQ ---------- */
+  .hai-lp .faq{padding:100px 0;background:#fff}
+  .hai-lp .faq-list{max-width:820px;margin:44px auto 0}
+  .hai-lp .faq details{border-bottom:1px solid var(--line)}
+  .hai-lp .faq summary{list-style:none;cursor:pointer;padding:22px 40px 22px 0;font-size:17px;font-weight:700;position:relative}
+  .hai-lp .faq summary::-webkit-details-marker{display:none}
+  .hai-lp .faq summary::before{content:"Q.";color:var(--blue);margin-right:10px}
+  .hai-lp .faq summary::after{content:"+";position:absolute;right:6px;top:18px;font-size:24px;color:var(--blue);font-weight:400;transition:.2s}
+  .hai-lp .faq details[open] summary::after{transform:rotate(45deg)}
+  .hai-lp .faq details p{padding:0 0 22px 30px;font-size:16px;color:var(--sub)}
+
+  /* ---------- 4. 문의 폼 + 소개서 다운로드 ---------- */
+  .hai-lp .contact{padding:100px 0;background:var(--bg-soft)}
+  .hai-lp .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;margin-top:48px;align-items:start}
+  .hai-lp .side{display:flex;flex-direction:column;gap:16px}
+  .hai-lp .side-box{background:#fff;border-radius:20px;padding:28px;border:1px solid var(--line)}
+  .hai-lp .side-box h3{font-size:19px;font-weight:800;letter-spacing:-.4px}
+  .hai-lp .side-box p{font-size:15px;color:var(--sub);margin-top:8px}
+  .hai-lp .side-box .btn{width:100%;margin-top:18px}
+  .hai-lp .dl{background:var(--grad);color:#fff;border:none}
+  .hai-lp .dl p{color:rgba(255,255,255,.8)}
+  .hai-lp .dl .btn-ghost{border:none}
+  .hai-lp .info{list-style:none;margin-top:14px}
+  .hai-lp .info li{font-size:15px;padding:8px 0;border-bottom:1px solid #EEF2F7;display:flex;gap:12px}
+  .hai-lp .info li b{flex:0 0 72px;color:var(--navy)}
+
+  .hai-lp form{background:#fff;border-radius:20px;padding:36px;border:1px solid var(--line)}
+  .hai-lp .f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .hai-lp .f{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+  .hai-lp .f label,.hai-lp .f legend{font-size:14px;font-weight:700}
+  .hai-lp .f label em,.hai-lp .f legend em{color:#E5484D;font-style:normal}
+  .hai-lp .f input,.hai-lp .f select,.hai-lp .f textarea{width:100%;font:inherit;font-size:16px;padding:13px 14px;
+    border:1.5px solid #D5DDEA;border-radius:10px;background:#fff;color:var(--ink)}
+  .hai-lp .f input:focus,.hai-lp .f select:focus,.hai-lp .f textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px #E8F0FF}
+  .hai-lp .f textarea{min-height:120px;resize:vertical}
+  .hai-lp fieldset.f{border:none}
+  .hai-lp .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .hai-lp .chips label{font-weight:500;font-size:15px;cursor:pointer}
+  .hai-lp .chips input{position:absolute;opacity:0;width:1px;height:1px}
+  .hai-lp .chips span{display:inline-block;padding:9px 14px;border:1.5px solid #D5DDEA;border-radius:999px}
+  .hai-lp .chips input:checked+span{border-color:var(--blue);background:#E8F0FF;color:var(--blue);font-weight:700}
+  .hai-lp .chips input:focus-visible+span{box-shadow:0 0 0 3px #C9D6EE}
+  .hai-lp .agree{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--sub);margin:6px 0 22px}
+  .hai-lp .agree input{width:18px;height:18px;margin-top:2px;accent-color:var(--blue);flex:0 0 18px}
+  .hai-lp .agree a{text-decoration:underline}
+  .hai-lp form .btn-primary{width:100%}
+
+  /* ---------- 5. 반응형 ---------- */
+  @media (max-width:1024px){
+    .hai-lp .partner-grid{grid-template-columns:repeat(3,1fr)}
+    .hai-lp .lead-card{grid-template-columns:260px 1fr;gap:32px}
+  }
+  @media (max-width:860px){
+    .hai-lp .case-grid{grid-template-columns:1fr}
+    .hai-lp .lead-card{grid-template-columns:1fr;padding:28px}
+    .hai-lp .photo{max-width:280px;margin:0 auto;width:100%}
+    .hai-lp .contact-grid{grid-template-columns:1fr}
+    .hai-lp .contact-grid form{order:-1}   /* 모바일에서는 폼을 먼저 */
+  }
+  @media (max-width:520px){
+    .hai-lp .instructor,.hai-lp .cases,.hai-lp .reviews,.hai-lp .faq,.hai-lp .contact{padding:72px 0}
+    .hai-lp .creds,.hai-lp .f-row{grid-template-columns:1fr}
+    .hai-lp .partner-grid{grid-template-columns:repeat(2,1fr)}
+    .hai-lp .r-card{flex-basis:84%}
+    .hai-lp form{padding:24px 18px}
+  }
+</style>
+
+<!-- ================= SECTION 5. 강사 소개 ================= -->
+<section class="instructor" id="instructor">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">강사 소개</span>
+      <h2 class="sec-title">AI 교육 강사 배미주 박사,<br>설계한 사람이 <span class="hl">직접 가르칩니다</span></h2>
+      <p class="sec-sub">교육 기획부터 강의, 실습 워크북까지 대표 강사가 처음부터 끝까지 책임집니다.</p>
+    </div>
+
+    <div class="lead-card">
+      <!-- 프로필 사진(코드에 내장). 웹빌더에 사진을 올렸다면 src를 그 주소로 바꾸면 코드가 훨씬 짧아집니다 -->
+      <div class="photo"><img src="data:image/jpeg;base64,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" alt="배미주 박사 프로필 사진" width="560" height="700"></div>
+      <div>
+        <div class="role">휴먼AI융합교육원 원장 · AI 교육 컨설턴트</div>
+        <h3>배미주 박사</h3>
+        <p class="intro">기업·공공기관의 생성형 AI 교육과 AX 전환을 설계하는 교육학 박사</p>
+        <p class="quote">"배운 AI가 현장에서 사용될 때 교육이 되고,<br>일하는 방식이 달라질 때 비로소 혁신이 됩니다."</p>
+        <div class="creds-title">학력 · 자격</div>
+        <ul class="creds">
+          <li>교육학 박사 (대진대학교 대학원)</li>
+          <li>교육학 석사 (한양대학교 교육대학원)</li>
+          <li>구글 공인 교육전문가</li>
+          <li>생성형 AI 교육지도사 · 프롬프트 엔지니어</li>
+        </ul>
+        <div class="creds-title">주요 활동</div>
+        <ul class="creds">
+          <li>AI 저서 12권 (《전문직을 위한 챗GPT》 외)</li>
+          <li>패스트캠퍼스 전임강사 · 한국능률협회 파트너 강사</li>
+          <li>지방자치인재개발원 디지털 소통강사</li>
+          <li>문체부 빅데이터·AI 활용 정책소통 과정</li>
+          <li>KG케미칼 AI LAB 2일 과정</li>
+          <li>크라운제과 AI 활용 교육</li>
+          <li>세종시교육청교육원 AI 활용 교육</li>
+          <li>경기도인재개발원 AI 활용 교육</li>
+        </ul>
+        <div class="creds-title">대상별 교육 설계 원칙</div>
+        <ol class="principles">
+          <li><b>수준부터 파악합니다</b>사전 설문으로 AI 활용 경험·반복업무·보안 우려를 먼저 확인합니다.</li>
+          <li><b>초보자도 끝까지 따라옵니다</b>로그인부터 결과 수정까지 단계별로 안내하고 속도를 조정합니다.</li>
+          <li><b>대상별로 목표를 나눕니다</b>실무자는 결과물, 관리자는 팀 개선, 임원은 의사결정에 집중합니다.</li>
+        </ol>
+        <a class="full-profile" href="https://www.humanai-edu.kr/expert.html" target="_blank" rel="noopener">전체 프로필 보기 →</a>
+      </div>
+    </div>
+
+    <!-- [보류] 파트너 강사 정보가 준비되면 아래 주석을 풀어 공개하세요 (자리표시자가 보이면 미완성 사이트로 보임)
+    <div class="partner-head">
+      <h3>파트너 강사진</h3>
+      <p>분야별 전문 강사가 대규모·다회차 교육을 함께 운영합니다.</p>
+    </div>
+     [교체] 이름·분야·태그 입력, .av 안에 <img> 넣으면 사진 표시 
+    <div class="partner-grid">
+      <div class="p-card"><div class="av">P1</div><b>파트너 강사 1</b><small>전문 분야 입력</small><span>#태그</span></div>
+      <div class="p-card"><div class="av">P2</div><b>파트너 강사 2</b><small>전문 분야 입력</small><span>#태그</span></div>
+      <div class="p-card"><div class="av">P3</div><b>파트너 강사 3</b><small>전문 분야 입력</small><span>#태그</span></div>
+      <div class="p-card"><div class="av">P4</div><b>파트너 강사 4</b><small>전문 분야 입력</small><span>#태그</span></div>
+      <div class="p-card"><div class="av">P5</div><b>파트너 강사 5</b><small>전문 분야 입력</small><span>#중국어 강의</span></div>
+    </div>
+    -->
+  </div>
+</section>
+
+<!-- ================= SECTION 6-1. 교육 사례 ================= -->
+<section class="cases" id="cases">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">교육 사례</span>
+      <h2 class="sec-title">교육 후, <span class="hl">실제 업무 결과물</span>이 남습니다</h2>
+    </div>
+    <div class="case-grid">
+      <div class="c-card"><div class="who">CASE 01 · 공공기관</div><h3>바이브코딩 업무자동화</h3>
+        <!-- [확인] '과제' 문구는 결과물에서 역으로 정리한 것 — 실제 교육 배경에 맞게 다듬으세요 -->
+        <p class="task"><b>과제</b>공문 작성과 반복업무에 쓰이는 시간 줄이기</p>
+        <div class="res"><b>결과물</b>공문과 반복업무를 돕는 개인별 자동화 시제품 완성</div></div>
+      <div class="c-card"><div class="who">CASE 02 · 기업·경영진</div><h3>AI 활용 수준 진단</h3>
+        <p class="task"><b>과제</b>부서마다 다른 AI 활용 수준 파악과 도입 순서 결정</p>
+        <div class="res"><b>결과물</b>부서별 활용 격차와 도입 우선순위를 담은 진단 리포트</div></div>
+      <div class="c-card"><div class="who">CASE 03 · 중앙부처</div><h3>정책소통 AI 교육</h3>
+        <p class="task"><b>과제</b>어려운 정책자료를 국민이 이해하기 쉬운 콘텐츠로 전환</p>
+        <div class="res"><b>결과물</b>정책자료를 핵심 메시지·보도자료·카드뉴스로 전환</div></div>
+    </div>
+    <div class="outputs"><span>보고서</span><span>정책자료</span><span>데이터 분석</span><span>업무자동화</span></div>
+  </div>
+</section>
+
+<!-- ================= SECTION 6-2. 교육 후기 (humanai-edu.kr 게재 후기) ================= -->
+<section class="reviews">
+  <div class="wrap center">
+    <span class="eyebrow">교육 후기</span>
+    <h2 class="sec-title">교육 다음 날, 업무가 달라졌다는 이야기</h2>
+    <p class="sec-sub">수강생이 직접 남긴 교육 후기입니다.</p>
+  </div>
+  <div class="r-track">
+    <div class="r-card"><span class="course">정책소통 AI 교육</span><div class="mark">“</div>
+      <p>정책 소통에 AI와 빅데이터를 적용하는 방향뿐 아니라 출처 검증 방법까지 익힐 수 있었습니다.</p>
+      <div class="who"><i></i><div><b>중앙부처 공무원</b><small>공공기관 AI 업무활용</small></div></div></div>
+    <div class="r-card"><span class="course">기업 AI 실무교육</span><div class="mark">“</div>
+      <p>AI 도구를 실제 회사 업무에 바로 적용하는 방법을 배우면서 활용 의지가 크게 높아졌습니다.</p>
+      <div class="who"><i></i><div><b>KG케미칼 임직원</b><small>기업 맞춤형 AI 실무</small></div></div></div>
+    <div class="r-card"><span class="course">바이브코딩 업무자동화</span><div class="mark">“</div>
+      <p>코딩을 몰라도 반복업무를 줄이는 도구를 직접 만들어 업무혁신이 현실적으로 느껴졌습니다.</p>
+      <div class="who"><i></i><div><b>공공기관 교육생</b><small>업무자동화 · AI 에이전트</small></div></div></div>
+    <!-- 후기를 추가하려면 위 r-card 블록을 복사해 붙여넣으세요 -->
+  </div>
+  <p class="r-hint">← 옆으로 넘겨 더 보기 →</p>
+</section>
+
+<!-- ================= SECTION 7. FAQ ================= -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">자주 묻는 질문</span>
+      <h2 class="sec-title">AI 교육 담당자분들이 많이 물어보세요</h2>
+      <p class="sec-sub">더 많은 질문은 <a href="https://www.humanai-edu.kr/faq.html" target="_blank" rel="noopener" style="color:var(--blue);font-weight:700;text-decoration:underline">FAQ 전체 보기</a>에서 확인하세요.</p>
+    </div>
+    <div class="faq-list">
+      <details open><summary>일반적인 생성형 AI 교육과 무엇이 다른가요?</summary>
+        <p>일반 교육이 도구의 기능·사용법 중심이라면, 우리 과정은 조직의 문제와 실제 업무에서 시작합니다.</p></details>
+      <details><summary>공무원 대상 AI 교육도 가능한가요?</summary>
+        <p>가능합니다. 중앙부처·지자체·교육청 공무원을 대상으로 공문·보고서·정책자료·민원 답변 업무에 생성형 AI를 활용하는 교육을 운영합니다. 기관 보안지침과 승인된 도구에 맞춰 실습 범위를 조정합니다.</p></details>
+      <details><summary>AI를 처음 사용하는 직원도 참여할 수 있나요?</summary>
+        <p>가능합니다. 초보자를 위해 로그인·기본 화면·질문 작성·파일 업로드·결과 수정 방법을 단계별로 안내합니다.</p></details>
+      <details><summary>교육에는 어떤 AI 도구를 사용하나요?</summary>
+        <p>교육목적과 기관 환경에 따라 ChatGPT·Gemini·Claude·NotebookLM 등을 활용합니다.</p></details>
+      <details><summary>유료 계정이 꼭 필요한가요?</summary>
+        <p>교육내용에 따라 다릅니다. 기본 체험은 무료 계정으로도 가능하지만 파일분석·고급 기능·안정적인 실습을 위해 유료 계정이 유리할 수 있습니다.</p></details>
+      <details><summary>공공기관에서 생성형 AI를 사용해도 안전한가요?</summary>
+        <p>기관의 보안지침과 승인된 도구를 우선 확인해야 합니다. 실제 기관 자료를 활용할 때는 개인정보·영업비밀·비공개 정보를 반드시 제거하거나 비식별화합니다.</p></details>
+      <details><summary>바이브코딩은 코딩 경험이 없어도 가능한가요?</summary>
+        <p>가능합니다. 바이브코딩은 자연어로 AI와 대화하며 기능을 설계하는 방식이므로 개발 경험이 없는 실무자도 참여할 수 있습니다.</p></details>
+      <details><summary>교육 후 어떤 결과물이 남나요?</summary>
+        <p>과정에 따라 직무별 프롬프트·보고서·기획안·데이터 분석 결과·회의록·프레젠테이션·홍보 콘텐츠·업무자동화 도구·활용 가이드가 남습니다.</p></details>
+      <details><summary>교육비는 어떻게 결정되나요?</summary>
+        <p>교육시간·참여인원·장소·맞춤 커리큘럼 설계·사전 진단·교재·결과보고서·후속 컨설팅 여부에 따라 결정됩니다.</p></details>
+      <details><summary>AI 교육 강사 섭외는 어떻게 하나요?</summary>
+        <p>문의 양식이나 전화·이메일로 교육 대상, 인원, 희망 일정을 알려주시면 배미주 박사가 직접 커리큘럼과 진행 방식을 안내드립니다. 강사 이력서·강의 계획서·견적서도 함께 보내드립니다.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 8. 문의 폼 + 소개서 ================= -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">교육 문의</span>
+      <h2 class="sec-title">우리 조직에 맞는 AI 교육,<br><span class="hl">함께 설계해 보세요</span></h2>
+      <p class="sec-sub">교육 목적과 대상만 있어도 과정 설계를 시작할 수 있습니다.<br>문의를 남겨주시면 <b>영업일 기준 1일 이내</b>에 배미주 박사가 직접 회신드립니다.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="side">
+        <div class="side-box dl" id="download">
+          <h3>📘 교육 소개서 다운로드</h3>
+          <p>4개 트랙 커리큘럼, 진행 방식, 실습 워크북 예시를 한 번에 확인하세요. 내부 보고용으로도 활용하실 수 있습니다.</p>
+          <!-- [교체] 소개서 PDF 주소 -->
+          <!-- [교체] 소개서 PDF가 준비되면 href를 PDF 주소로 바꾸고 download 속성 추가 -->
+          <a class="btn btn-ghost" href="mailto:orthia66@gmail.com?subject=%5B%EA%B5%90%EC%9C%A1%20%EC%86%8C%EA%B0%9C%EC%84%9C%20%EC%9A%94%EC%B2%AD%5D%20%EA%B8%B0%EA%B4%80%EB%AA%85">소개서 요청하기 →</a>
+        </div>
+        <div class="side-box">
+          <h3>직접 연락하기</h3>
+          <ul class="info">
+            <li><b>빠른 상담</b><a href="tel:010-6398-5354">010-6398-5354</a></li>
+            <li><b>이메일</b><a href="mailto:orthia66@gmail.com">orthia66@gmail.com</a></li>
+            <li><b>웹사이트</b><a href="https://www.humanai-edu.kr" target="_blank" rel="noopener">humanai-edu.kr</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- [교체] action: 폼 수신 주소 (예: Formspree, 웹빌더 폼 연동 주소)
+           아임웹·카페24는 자체 '폼 위젯' 사용을 권장 — 적용 가이드 참고 -->
+      <!-- 문의 접수: humanai-edu.kr의 /api/contact(메일 발송)로 전달 → orthia66@gmail.com 수신
+           다른 곳에 올릴 경우 아래 스크립트의 CONTACT_URL을 Formspree 주소로 바꾸면 됩니다 -->
+      <form id="hai-form" action="/api/contact" method="POST" novalidate>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
+        <div class="f-row">
+          <div class="f"><label for="org">기관/기업명 <em>*</em></label><input id="org" name="기관명" required placeholder="예) OO시청 정보통신과"></div>
+          <div class="f"><label for="nm">담당자명 <em>*</em></label><input id="nm" name="담당자" required></div>
+        </div>
+        <div class="f-row">
+          <div class="f"><label for="ph">연락처 <em>*</em></label><input id="ph" name="연락처" type="tel" required placeholder="010-0000-0000"></div>
+          <div class="f"><label for="em">이메일 <em>*</em></label><input id="em" name="email" type="email" required autocomplete="email"></div>
+        </div>
+        <fieldset class="f">
+          <legend>관심 트랙 (복수 선택)</legend>
+          <div class="chips">
+            <label><input type="checkbox" name="트랙" value="공공기관 AI 업무활용"><span>공공기관 AI 업무활용</span></label>
+            <label><input type="checkbox" name="트랙" value="기업 맞춤형 AI 실무"><span>기업 맞춤형 AI 실무</span></label>
+            <label><input type="checkbox" name="트랙" value="AX 전략·리더십"><span>AX 전략·리더십</span></label>
+            <label><input type="checkbox" name="트랙" value="업무자동화·AI 에이전트"><span>업무자동화·AI 에이전트</span></label>
+            <label><input type="checkbox" name="트랙" value="미정"><span>아직 모르겠어요</span></label>
+          </div>
+        </fieldset>
+        <div class="f"><label for="tg">교육 대상</label>
+          <select id="tg" name="교육대상"><option value="">선택</option><option>공무원</option><option>교사·교직원</option><option>기업 실무자</option><option>팀장·관리자</option><option>임원·경영진</option><option>일반 시민</option><option>기타</option></select></div>
+        <div class="f"><label for="ms">희망 주제 · 문의 내용</label><textarea id="ms" name="문의내용" placeholder="정해진 것만 적어주셔도 됩니다.&#10;예) 11월 중 3시간, 30명, 보고서 작성 실습 위주 / 아직 미정"></textarea></div>
+        <label class="agree"><input type="checkbox" required name="개인정보동의" value="동의">
+          <span>[필수] 문의 답변을 위한 개인정보(이름·연락처·이메일) 수집·이용에 동의합니다. <a href="https://www.humanai-edu.kr/privacy.html" target="_blank" rel="noopener">개인정보처리방침</a></span></label>
+        <button id="hai-submit" class="btn btn-primary" type="submit">교육 문의 보내기 →</button>
+        <p id="hai-status" role="status" aria-live="polite" style="margin-top:12px;font-size:15px;font-weight:700"></p>
+      </form>
+      <script>
+      /* 제출 후 페이지를 벗어나지 않고 이 자리에서 결과 안내 */
+      (function(){
+        var CONTACT_URL='/api/contact';
+        var f=document.getElementById('hai-form'); if(!f||!window.fetch) return;
+        var btn=document.getElementById('hai-submit'), st=document.getElementById('hai-status');
+        function v(n){var el=f.elements[n];return el&&el.value?el.value.trim():'';}
+        function fail(msg){st.style.color='#c0392b';st.textContent=msg||'전송하지 못했습니다. 전화 010-6398-5354 또는 orthia66@gmail.com으로 문의해 주세요.';btn.disabled=false;btn.textContent='교육 문의 보내기 →';}
+        f.addEventListener('submit',function(e){
+          e.preventDefault();
+          if(!f.checkValidity()){ f.reportValidity(); return; }
+          var tracks=[].slice.call(f.querySelectorAll('input[name="트랙"]:checked')).map(function(x){return x.value;});
+          var msg=v('문의내용')||'(문의 내용 미기재)';
+          if(tracks.length) msg='[관심 트랙] '+tracks.join(', ')+'\n\n'+msg;
+          var payload={organization:v('기관명'),name:v('담당자'),phone:v('연락처'),email:v('email'),
+            audience:v('교육대상'),headcount:'',schedule:'',message:msg,website:v('_gotcha'),
+            consent:!!(f.elements['개인정보동의']&&f.elements['개인정보동의'].checked)};
+          btn.disabled=true; btn.textContent='보내는 중…'; st.textContent='';
+          fetch(CONTACT_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+            .then(function(r){return r.json().catch(function(){return {ok:false};});})
+            .then(function(res){
+              if(res.ok){ f.reset(); st.style.color='#1E5BD8'; st.textContent='교육 문의가 전달되었습니다. 영업일 기준 1일 이내에 배미주 박사가 직접 회신드립니다.'; btn.textContent='전달 완료'; }
+              else fail(res.error);
+            })
+            .catch(function(){ fail(); });
+        });
+      })();
+      </script>
+    </div>
+  </div>
+</section>
+</div>
+<!-- ===================== /2차 섹션 끝 ===================== -->
+<!-- =====================================================================
+  휴먼AI융합교육원 | AX 교육 랜딩 — 3차: 진행 프로세스 + 함께한 기관 + 최종 CTA + 푸터 + 플로팅 바
+  · 2차 코드 아래에 붙여넣으세요 (단독 사용 가능)
+  · 플로팅 문의 바·FAQ 구조화 데이터 포함 — 적용 가이드 참고
+  · [교체] 표시가 있는 곳만 바꾸면 됩니다
+===================================================================== -->
+<div class="hai-lp">
+<style>
+  /* ---------- 0. 브랜드 토큰 (1·2차와 동일) ---------- */
+  .hai-lp{
+    --navy:#0B2A5B; --blue:#1E5BD8; --sky:#38B6FF;
+    --ink:#121826; --sub:#4A5568; --line:#E3E8F0; --bg-soft:#F4F7FC;
+    --grad:linear-gradient(135deg,#0B2A5B 0%,#1E5BD8 55%,#38B6FF 100%);
+    font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+    color:var(--ink); line-height:1.6; word-break:keep-all; -webkit-font-smoothing:antialiased;
+  }
+  .hai-lp *,.hai-lp *::before,.hai-lp *::after{box-sizing:border-box;margin:0;padding:0}
+  .hai-lp a{text-decoration:none;color:inherit}
+  .hai-lp p,.hai-lp li,.hai-lp small,.hai-lp h3{overflow-wrap:anywhere}  /* 띄어쓰기 없는 긴 단어도 좁은 화면에서 줄바꿈 */
+  .hai-lp .wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+  .hai-lp .center{text-align:center}
+  .hai-lp .eyebrow{display:inline-block;font-size:14px;font-weight:700;color:var(--blue);
+    background:#E8F0FF;padding:6px 14px;border-radius:999px}
+  .hai-lp .sec-title{font-size:clamp(26px,3.6vw,40px);font-weight:800;line-height:1.35;letter-spacing:-1px;margin-top:16px}
+  .hai-lp .sec-sub{font-size:clamp(15px,1.6vw,18px);color:var(--sub);margin-top:14px}
+  .hai-lp .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hai-lp .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:56px;padding:0 28px;
+    border-radius:12px;font-size:17px;font-weight:700;transition:.15s}
+  .hai-lp .btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 24px rgba(30,91,216,.32)}
+  .hai-lp .btn-primary:hover{transform:translateY(-2px)}
+  .hai-lp .btn-ghost{background:#fff;color:var(--navy);border:1.5px solid #C9D6EE}
+  .hai-lp .btn-line{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+  .hai-lp .btn-line:hover{background:rgba(255,255,255,.1)}
+
+  /* ---------- 1. 교육 진행 프로세스 ---------- */
+  .hai-lp .process{padding:100px 0;background:#fff}
+  .hai-lp .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:56px;list-style:none;position:relative}
+  .hai-lp .flow::before{content:"";position:absolute;top:31px;left:10%;right:10%;height:2px;
+    background:linear-gradient(90deg,#C9D6EE,var(--blue),var(--sky))}
+  .hai-lp .flow li{position:relative;text-align:center;padding:0 10px}
+  .hai-lp .flow .dot{width:64px;height:64px;margin:0 auto;border-radius:50%;background:#fff;border:2px solid var(--blue);
+    color:var(--blue);font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
+  .hai-lp .flow li:last-child .dot{background:var(--grad);color:#fff;border:none}
+  .hai-lp .flow h3{font-size:18px;font-weight:800;margin-top:18px;letter-spacing:-.4px}
+  .hai-lp .flow p{font-size:14px;color:var(--sub);margin-top:6px}
+  .hai-lp .flow .out{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--navy);
+    background:var(--bg-soft);padding:4px 10px;border-radius:6px}
+
+  /* ---------- 2. 함께한 기관 (로고 띠) ---------- */
+  .hai-lp .clients{padding:64px 0;background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .hai-lp .clients h2{font-size:clamp(18px,2vw,22px);font-weight:800;text-align:center;letter-spacing:-.5px}
+  .hai-lp .logo-row{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:28px}
+  .hai-lp .logo-row .logo{flex:0 1 170px}
+  /* [교체] .logo 안에 <img src="로고주소" alt="기관명"> 넣기 — 회색조로 통일됨 */
+  .hai-lp .logo{height:72px;border-radius:12px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;
+    justify-content:center;font-size:14px;font-weight:700;color:var(--navy);padding:12px;text-align:center}
+  .hai-lp .logo img{max-width:100%;max-height:40px;filter:grayscale(1);opacity:.75;transition:.2s}
+  .hai-lp .logo:hover img{filter:none;opacity:1}
+
+  /* ---------- 3. 최종 CTA ---------- */
+  .hai-lp .final{padding:110px 0;background:var(--grad);color:#fff;position:relative;overflow:hidden}
+  .hai-lp .final::after{content:"";position:absolute;width:520px;height:520px;border-radius:50%;right:-160px;top:-200px;
+    background:rgba(255,255,255,.08)}
+  .hai-lp .final .wrap{position:relative;z-index:1}
+  .hai-lp .final h2{font-size:clamp(28px,4vw,46px);font-weight:800;line-height:1.3;letter-spacing:-1.2px}
+  .hai-lp .final p{font-size:clamp(16px,1.7vw,19px);opacity:.85;margin-top:18px}
+  .hai-lp .final .cta-row{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:36px}
+  .hai-lp .final .btn-ghost{border:none}
+
+  /* ---------- 4. 푸터 ---------- */
+  .hai-lp .foot{background:#0A1A33;color:rgba(255,255,255,.65);padding:56px 0 40px;font-size:14px}
+  .hai-lp .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+  .hai-lp .foot .brand{color:#fff;font-size:20px;font-weight:800;letter-spacing:-.5px;display:flex;align-items:center;gap:10px}
+  .hai-lp .foot .f-logo{background:#fff;border-radius:7px;padding:4px 6px;display:inline-flex}  /* 어두운 배경에서 남색 로고가 묻히지 않도록 흰 바탕 */
+  .hai-lp .foot .f-logo img{height:20px;width:auto;display:block}
+  .hai-lp .foot .slogan{margin-top:8px}
+  .hai-lp .foot h4{color:#fff;font-size:14px;font-weight:700;margin-bottom:12px}
+  .hai-lp .foot ul{list-style:none}
+  .hai-lp .foot li{padding:3px 0}
+  .hai-lp .foot a:hover{color:#fff}
+  .hai-lp .foot .legal{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);font-size:13px;
+    display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  /* ---------- 5. 플로팅 문의 바 ---------- */
+  /* PC: 우측 하단 버튼 2개 / 모바일: 화면 하단 고정 바 */
+  .hai-lp .float-cta{position:fixed;right:24px;bottom:24px;z-index:9999;display:flex;gap:8px}
+  .hai-lp .float-cta a{display:flex;align-items:center;justify-content:center;height:52px;padding:0 22px;border-radius:999px;
+    font-size:15px;font-weight:700;box-shadow:0 10px 28px rgba(11,42,91,.28);transition:.15s}
+  .hai-lp .float-cta .f1{background:#fff;color:var(--navy)}
+  .hai-lp .float-cta .f2{background:var(--grad);color:#fff}
+  .hai-lp .float-cta a:hover{transform:translateY(-2px)}
+  .hai-lp .float-spacer{height:0}
+
+  /* ---------- 6. 반응형 ---------- */
+  @media (max-width:860px){
+    .hai-lp .flow{grid-template-columns:1fr;gap:22px;max-width:420px;margin-left:auto;margin-right:auto}
+    .hai-lp .flow::before{top:0;bottom:0;left:31px;right:auto;width:2px;height:auto;
+      background:linear-gradient(#C9D6EE,var(--blue),var(--sky))}
+    .hai-lp .flow li{display:grid;grid-template-columns:64px 1fr;column-gap:18px;text-align:left;padding:0}
+    .hai-lp .flow .dot{grid-row:span 3;margin:0}
+    .hai-lp .flow h3{margin-top:4px}
+    .hai-lp .flow .out{justify-self:start}
+    .hai-lp .foot-grid{grid-template-columns:1fr 1fr}
+    .hai-lp .foot-grid>div:first-child{grid-column:1/-1}
+  }
+  @media (max-width:520px){
+    .hai-lp .process,.hai-lp .final{padding:72px 0}
+    .hai-lp .logo-row .logo{flex:0 1 calc(50% - 6px);height:60px;font-size:13px}
+    .hai-lp .final .btn{width:100%}
+    .hai-lp .float-cta{left:0;right:0;bottom:0;gap:0;padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+      background:rgba(255,255,255,.96);box-shadow:0 -6px 20px rgba(11,42,91,.12)}
+    .hai-lp .float-cta a{flex:1;border-radius:10px;box-shadow:none;height:50px}
+    .hai-lp .float-cta .f1{border:1.5px solid #C9D6EE;margin-right:8px}
+    .hai-lp .float-spacer{height:76px}   /* 하단 바가 푸터를 가리지 않도록 */
+  }
+</style>
+
+<!-- ================= SECTION 9. 교육 진행 프로세스 ================= -->
+<section class="process">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">진행 프로세스</span>
+      <h2 class="sec-title">문의부터 교육 후까지,<br><span class="hl">5단계로 함께합니다</span></h2>
+      <p class="sec-sub">담당자분은 대상과 목표만 알려주세요. 나머지는 저희가 설계합니다.</p>
+    </div>
+    <ol class="flow">
+      <li><div class="dot">01</div><h3>교육 문의</h3><p>대상·인원·희망 일정 접수</p><span class="out">문의 양식 · 이메일</span></li>
+      <li><div class="dot">02</div><h3>사전 진단</h3><p>사전 설문으로 AI 활용 경험·반복업무·보안 우려 파악</p><span class="out">사전 설문 · 요구사항</span></li>
+      <li><div class="dot">03</div><h3>맞춤 설계</h3><p>실제 업무 사례를 반영한 커리큘럼 구성</p><span class="out">커리큘럼 · 제안서</span></li>
+      <li><div class="dot">04</div><h3>실습 교육</h3><p>4대 AI 도구로 직접 결과물 완성</p><span class="out">슬라이드 · 실습 워크북</span></li>
+      <li><div class="dot">05</div><h3>성과 확인</h3><p>교육 전·후 활용의지·과제 완성도·업무 적용 가능성 확인</p><span class="out">결과물 · 활용 가이드</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- (함께한 기관 섹션은 1차 코드 상단 '주요 출강 기관' 흐름 섹션으로 이동했습니다) -->
+
+<!-- ================= SECTION 11. 최종 CTA ================= -->
+<section class="final">
+  <div class="wrap center">
+    <h2>우리 조직의 업무부터<br>살펴보겠습니다</h2>
+    <p>교육 대상과 희망 주제만 알려주시면 추천 과정과 진행안을 안내합니다.</p>
+    <div class="cta-row">
+      <a class="btn btn-ghost" href="#contact">교육 문의하기 →</a>
+      <a class="btn btn-line" href="#download">교육 소개서 다운로드</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 12. 푸터 =================
+     웹빌더에 기본 푸터가 있으면 이 섹션은 삭제하세요 (중복 방지) -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand"><span class="f-logo"><img src="data:image/png;base64,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" alt="" width="33" height="20"></span>휴먼AI융합교육원</div>
+        <p class="slogan">사람의 성장을 설계하고, AI로 일의 변화를 만듭니다.</p>
+        <p style="margin-top:6px;font-size:12px;letter-spacing:1px;opacity:.6">AX TRANSFORMATION PARTNER</p>
+      </div>
+      <div>
+        <h4>교육 프로그램</h4>
+        <ul>
+          <li><a href="https://www.humanai-edu.kr/diagnosis" target="_blank" rel="noopener">무료 AX 진단</a></li>
+          <li><a href="#contact">공공기관 AI 업무활용</a></li>
+          <li><a href="#contact">기업 맞춤형 AI 실무</a></li>
+          <li><a href="#contact">AX 전략 · 리더십</a></li>
+          <li><a href="#contact">업무자동화 · AI 에이전트</a></li>
+          <li><a href="#principles">AI 리터러시</a></li>
+          <li><a href="#principles">AI 윤리</a></li>
+          <li><a href="#principles">개인정보 보호</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>문의 · 채널</h4>
+        <ul>
+          <li><a href="tel:010-6398-5354">010-6398-5354</a></li>
+          <li><a href="mailto:orthia66@gmail.com">orthia66@gmail.com</a></li>
+          <li><a href="https://www.humanai-edu.kr" target="_blank" rel="noopener">humanai-edu.kr</a></li>
+          <li><a href="https://miso66.tistory.com" target="_blank" rel="noopener">블로그 · 인사이트허브</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>휴먼AI융합교육원 · 대표 배미주 · <span style="white-space:nowrap">사업자등록번호 352-16-02365</span></span>
+      <span>© 2026 휴먼AI융합교육원. All rights reserved.</span>
+    </div>
+  </div>
+  <div class="float-spacer"></div>
+</footer>
+
+<!-- ================= 플로팅 문의 바 (페이지 어디서나 보임) ================= -->
+<nav class="float-cta" aria-label="빠른 문의">
+  <a class="f1" href="#download">소개서 받기</a>
+  <a class="f2" href="#contact">교육 문의</a>
+</nav>
+</div>
+
+<!-- ================= FAQ 구조화 데이터 (구글·AI 검색용, 화면에는 안 보임) =================
+     2차 코드의 FAQ(홈페이지 faq.html 문구 기준)를 수정하면 여기도 같이 맞춰 주세요. -->
+<!-- 기관·인물 구조화 데이터 (검색엔진·AI 검색용, 화면에는 안 보임) -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "EducationalOrganization",
+   "@id": "https://www.humanai-edu.kr/#organization",
+   "name": "휴먼AI융합교육원",
+   "url": "https://www.humanai-edu.kr/",
+   "telephone": "+82-10-6398-5354",
+   "email": "orthia66@gmail.com",
+   "description": "공공기관·기업의 실제 업무를 바탕으로 AI 활용부터 업무 개선까지 연결하는 맞춤형 AX 교육",
+   "sameAs": [
+    "https://blog.naver.com/ai-ed",
+    "https://miso66.tistory.com/"
+   ]
+  },
+  {
+   "@type": "Person",
+   "@id": "https://www.humanai-edu.kr/expert.html#person",
+   "name": "배미주",
+   "honorificSuffix": "교육학 박사",
+   "jobTitle": "휴먼AI융합교육원 원장 · AI 교육 컨설턴트",
+   "worksFor": {
+    "@id": "https://www.humanai-edu.kr/#organization"
+   },
+   "alumniOf": [
+    "대진대학교 대학원",
+    "한양대학교 교육대학원"
+   ],
+   "knowsAbout": [
+    "생성형 AI 교육",
+    "AI 리터러시",
+    "AI 윤리",
+    "생성형 AI 개인정보 보호",
+    "공공기관 AI 활용",
+    "AX 전환",
+    "업무자동화",
+    "바이브코딩"
+   ],
+   "url": "https://www.humanai-edu.kr/expert.html"
+  }
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "일반적인 생성형 AI 교육과 무엇이 다른가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "일반 교육이 도구의 기능·사용법 중심이라면, 우리 과정은 조직의 문제와 실제 업무에서 시작합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "공무원 대상 AI 교육도 가능한가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "가능합니다. 중앙부처·지자체·교육청 공무원을 대상으로 공문·보고서·정책자료·민원 답변 업무에 생성형 AI를 활용하는 교육을 운영합니다. 기관 보안지침과 승인된 도구에 맞춰 실습 범위를 조정합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "AI를 처음 사용하는 직원도 참여할 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "가능합니다. 초보자를 위해 로그인·기본 화면·질문 작성·파일 업로드·결과 수정 방법을 단계별로 안내합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "교육에는 어떤 AI 도구를 사용하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "교육목적과 기관 환경에 따라 ChatGPT·Gemini·Claude·NotebookLM 등을 활용합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "유료 계정이 꼭 필요한가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "교육내용에 따라 다릅니다. 기본 체험은 무료 계정으로도 가능하지만 파일분석·고급 기능·안정적인 실습을 위해 유료 계정이 유리할 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "공공기관에서 생성형 AI를 사용해도 안전한가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "기관의 보안지침과 승인된 도구를 우선 확인해야 합니다. 실제 기관 자료를 활용할 때는 개인정보·영업비밀·비공개 정보를 반드시 제거하거나 비식별화합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "바이브코딩은 코딩 경험이 없어도 가능한가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "가능합니다. 바이브코딩은 자연어로 AI와 대화하며 기능을 설계하는 방식이므로 개발 경험이 없는 실무자도 참여할 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "교육 후 어떤 결과물이 남나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "과정에 따라 직무별 프롬프트·보고서·기획안·데이터 분석 결과·회의록·프레젠테이션·홍보 콘텐츠·업무자동화 도구·활용 가이드가 남습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "교육비는 어떻게 결정되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "교육시간·참여인원·장소·맞춤 커리큘럼 설계·사전 진단·교재·결과보고서·후속 컨설팅 여부에 따라 결정됩니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "AI 교육 강사 섭외는 어떻게 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "문의 양식이나 전화·이메일로 교육 대상, 인원, 희망 일정을 알려주시면 배미주 박사가 직접 커리큘럼과 진행 방식을 안내드립니다. 강사 이력서·강의 계획서·견적서도 함께 보내드립니다."
+      }
+    }
+  ]
+}
+</script>
+<!-- ===================== /3차 섹션 끝 ===================== -->
+
+</body></html>
