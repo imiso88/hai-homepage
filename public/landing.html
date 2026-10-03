@@ -657,6 +657,16 @@
   .hai-lp .partner-head h3{font-size:22px;font-weight:800;letter-spacing:-.5px}
   .hai-lp .partner-head p{font-size:15px;color:var(--sub)}
   .hai-lp .partner-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:20px}
+  /* 강사진·운영 체계 (공공기관 장기·대규모 교육 대응) */
+  .hai-lp .ops-grid{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+  .hai-lp .ops-grid li{border:1px solid var(--line);border-radius:16px;padding:22px 20px;background:#fff}
+  .hai-lp .ops-grid span{display:inline-block;font-size:12px;font-weight:800;color:#fff;background:var(--grad);padding:3px 9px;border-radius:6px}
+  .hai-lp .ops-grid b{display:block;font-size:17px;margin:12px 0 6px;letter-spacing:-.3px}
+  .hai-lp .ops-grid p{font-size:14px;color:var(--sub);line-height:1.6}
+  .hai-lp .ops-note{margin-top:14px;font-size:14px;color:var(--sub)}
+  .hai-lp .ops-note a{color:var(--blue);font-weight:700;text-decoration:underline}
+  @media (max-width:1024px){.hai-lp .ops-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:520px){.hai-lp .ops-grid{grid-template-columns:1fr}}
   .hai-lp .p-card{border:1px solid var(--line);border-radius:16px;padding:22px 16px;text-align:center}
   .hai-lp .p-card .av{width:72px;height:72px;margin:0 auto 12px;border-radius:50%;background:#E8F0FF;color:var(--blue);
     font-weight:800;font-size:22px;display:flex;align-items:center;justify-content:center;overflow:hidden}
@@ -809,12 +819,18 @@
       </div>
     </div>
 
-    <!-- [보류] 파트너 강사 정보가 준비되면 아래 주석을 풀어 공개하세요 (자리표시자가 보이면 미완성 사이트로 보임)
     <div class="partner-head">
-      <h3>파트너 강사진</h3>
-      <p>분야별 전문 강사가 대규모·다회차 교육을 함께 운영합니다.</p>
+      <h3>공공기관 장기·대규모 교육도 안정적으로 운영합니다</h3>
+      <p>배미주 박사가 전체 과정을 설계·총괄하고, 분야별 파트너 강사진이 분반·다회차 교육을 함께 운영합니다.</p>
     </div>
-     [교체] 이름·분야·태그 입력, .av 안에 <img> 넣으면 사진 표시 
+    <ol class="ops-grid">
+      <li><span>설계·총괄</span><b>대표 강사가 끝까지 책임</b><p>사전 진단부터 커리큘럼, 최종 결과 정리까지 배미주 박사가 직접 맡습니다.</p></li>
+      <li><span>분반·다회차</span><b>파트너 강사진 공동 운영</b><p>여러 반·여러 회차로 나뉘는 장기 교육도 같은 커리큘럼으로 함께 운영합니다.</p></li>
+      <li><span>품질 유지</span><b>강사가 달라도 같은 결과물</b><p>같은 슬라이드·실습 워크북·평가 기준을 써서 반마다 결과물 수준을 맞춥니다.</p></li>
+      <li><span>결과 보고</span><b>회차별 운영 결과 정리</b><p>교육 전·후 활용 의지, 실습 과제 완성도, 만족도를 결과보고서로 정리합니다.</p></li>
+    </ol>
+    <p class="ops-note">파트너 강사 프로필은 제안서와 함께 제공해 드립니다. <a href="#contact">장기교육 제안 요청하기</a></p>
+    <!-- [보관] 파트너 강사 5인 카드: 이름·전문 분야·태그(.av 안에 img로 사진)가 준비되면 아래 주석을 풀어 공개하세요
     <div class="partner-grid">
       <div class="p-card"><div class="av">P1</div><b>파트너 강사 1</b><small>전문 분야 입력</small><span>#태그</span></div>
       <div class="p-card"><div class="av">P2</div><b>파트너 강사 2</b><small>전문 분야 입력</small><span>#태그</span></div>
@@ -896,6 +912,8 @@
         <p>가능합니다. 바이브코딩은 자연어로 AI와 대화하며 기능을 설계하는 방식이므로 개발 경험이 없는 실무자도 참여할 수 있습니다.</p></details>
       <details><summary>교육 후 어떤 결과물이 남나요?</summary>
         <p>과정에 따라 직무별 프롬프트·보고서·기획안·데이터 분석 결과·회의록·프레젠테이션·홍보 콘텐츠·업무자동화 도구·활용 가이드가 남습니다.</p></details>
+      <details><summary>공공기관 장기교육이나 여러 반으로 나눈 대규모 교육도 가능한가요?</summary>
+        <p>가능합니다. 배미주 박사가 전체 커리큘럼을 설계·총괄하고, 파트너 강사진이 같은 교재와 실습 워크북으로 분반·다회차 교육을 함께 운영합니다. 회차별 결과는 결과보고서로 정리해 드립니다.</p></details>
       <details><summary>교육비는 어떻게 결정되나요?</summary>
         <p>교육시간·참여인원·장소·맞춤 커리큘럼 설계·사전 진단·교재·결과보고서·후속 컨설팅 여부에 따라 결정됩니다.</p></details>
       <details><summary>AI 교육 강사 섭외는 어떻게 하나요?</summary>
@@ -1309,6 +1327,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "과정에 따라 직무별 프롬프트·보고서·기획안·데이터 분석 결과·회의록·프레젠테이션·홍보 콘텐츠·업무자동화 도구·활용 가이드가 남습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "공공기관 장기교육이나 여러 반으로 나눈 대규모 교육도 가능한가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "가능합니다. 배미주 박사가 전체 커리큘럼을 설계·총괄하고, 파트너 강사진이 같은 교재와 실습 워크북으로 분반·다회차 교육을 함께 운영합니다. 회차별 결과는 결과보고서로 정리해 드립니다."
       }
     },
     {
