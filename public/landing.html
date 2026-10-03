@@ -752,6 +752,8 @@
   .hai-lp .agree input{width:18px;height:18px;margin-top:2px;accent-color:var(--blue);flex:0 0 18px}
   .hai-lp .agree a{text-decoration:underline}
   .hai-lp form .btn-primary{width:100%}
+  .hai-lp .f .is-bad{border-color:#E5484D !important;box-shadow:0 0 0 3px #FDECEC !important}
+  .hai-lp .agree.is-bad{outline:2px solid #E5484D;outline-offset:4px;border-radius:8px}
 
   /* ---------- 5. 반응형 ---------- */
   @media (max-width:1024px){
@@ -992,7 +994,19 @@
         function fail(msg){st.style.color='#c0392b';st.textContent=msg||'전송하지 못했습니다. 전화 010-6398-5354 또는 orthia66@gmail.com으로 문의해 주세요.';btn.disabled=false;btn.textContent='교육 문의 보내기 →';}
         f.addEventListener('submit',function(e){
           e.preventDefault();
-          if(!f.checkValidity()){ f.reportValidity(); return; }
+          var labels={'기관명':'기관/기업명','담당자':'담당자명','연락처':'연락처','email':'이메일'};
+          var bad=[].slice.call(f.querySelectorAll('[required]')).filter(function(el){return !el.checkValidity();});
+          [].forEach.call(f.querySelectorAll('.is-bad'),function(el){el.classList.remove('is-bad');});
+          if(bad.length){
+            var el=bad[0], msg;
+            if(el.type==='checkbox') msg='맨 아래 [필수] 개인정보 수집·이용 동의에 체크해 주세요.';
+            else if(el.type==='email'&&el.value) msg='이메일 주소 형식을 확인해 주세요. (예: name@example.com)';
+            else msg=bad.map(function(x){return x.type==='checkbox'?'개인정보 동의':(labels[x.name]||x.name);}).join(', ')+' 항목을 입력해 주세요.';
+            bad.forEach(function(x){(x.type==='checkbox'?x.closest('label'):x).classList.add('is-bad');});
+            st.style.color='#c0392b'; st.textContent=msg;
+            el.scrollIntoView({behavior:'smooth',block:'center'}); setTimeout(function(){el.focus({preventScroll:true});},350);
+            return;
+          }
           var tracks=[].slice.call(f.querySelectorAll('input[name="트랙"]:checked')).map(function(x){return x.value;});
           var msg=v('문의내용')||'(문의 내용 미기재)';
           if(tracks.length) msg='[관심 트랙] '+tracks.join(', ')+'\n\n'+msg;
