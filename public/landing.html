@@ -1434,4 +1434,9 @@
 </script>
 <!-- ===================== /3차 섹션 끝 ===================== -->
 
+<script>
+/* PDF 다운로드 집계: GA4 이벤트 pdf_download (file_label로 자료 구분) */
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".pdf"]');if(!a||typeof gtag!=='function')return;
+var h=a.getAttribute('href');gtag('event','pdf_download',{file_label:h.indexOf('privacy')>-1?'개인정보보호교육':'교육소개서',link_url:h,transport_type:'beacon'});});
+</script>
 </body></html>
