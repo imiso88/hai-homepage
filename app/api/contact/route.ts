@@ -1,6 +1,7 @@
 // 교육 문의 접수 → Resend로 교육원 메일(orthia66@gmail.com)에 전달
 // 필요한 환경변수: RESEND_API_KEY (Vercel 프로젝트 설정 > Environment Variables)
 // 선택 환경변수: CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL (도메인 인증 후 발신 주소 변경 시)
+// 선택 환경변수: SHEET_WEBHOOK_URL (구글 시트 Apps Script 웹 앱 주소 — 설정하면 문의가 시트에도 한 줄씩 기록됨)
 
 export const runtime = "nodejs";
 
@@ -60,10 +61,16 @@ export async function POST(request: Request) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    console.error("[contact] RESEND_API_KEY is not set");
+  const sheetUrl = process.env.SHEET_WEBHOOK_URL;
+  if (!apiKey && !sheetUrl) {
+    console.error("[contact] RESEND_API_KEY and SHEET_WEBHOOK_URL are not set");
     return json({ ok: false, error: "지금은 온라인 접수가 어렵습니다. 전화 010-6398-5354 또는 이메일 orthia66@gmail.com으로 문의해 주세요." }, 503);
   }
+
+  // 선택 항목(시트 기록용): 관심 트랙, 유입 경로
+  const extra = (key: string, max: number) => (typeof data[key] === "string" ? (data[key] as string).trim().slice(0, max) : "");
+  const tracks = extra("tracks", 200);
+  const source = extra("source", 50) || "홈페이지";
 
   const receivedAt = new Intl.DateTimeFormat("ko-KR", {
     dateStyle: "medium",
@@ -87,21 +94,45 @@ export async function POST(request: Request) {
   const text =
     `새 AI 교육 문의 (${receivedAt})\n\n` + FIELDS.map((f) => `${f.label}: ${values[f.key] || "-"}`).join("\n");
 
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      from: FROM_EMAIL,
-      to: [TO_EMAIL],
-      reply_to: values.email,
-      subject: `[AI 교육 문의] ${values.organization} · ${values.name}`,
-      html,
-      text,
-    }),
-  });
+  const sendMail = async () => {
+    if (!apiKey) return false;
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        from: FROM_EMAIL,
+        to: [TO_EMAIL],
+        reply_to: values.email,
+        subject: `[AI 교육 문의] ${values.organization} · ${values.name}`,
+        html,
+        text,
+      }),
+    });
+    if (!response.ok) console.error("[contact] Resend error", response.status, await response.text());
+    return response.ok;
+  };
 
-  if (!response.ok) {
-    console.error("[contact] Resend error", response.status, await response.text());
+  const saveToSheet = async () => {
+    if (!sheetUrl) return false;
+    const response = await fetch(sheetUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...values, tracks, source }),
+      redirect: "follow",
+      signal: AbortSignal.timeout(8000),
+    });
+    const result = await response.json().catch(() => ({ ok: false }));
+    if (!result.ok) console.error("[contact] Sheet webhook error", response.status, JSON.stringify(result));
+    return result.ok === true;
+  };
+
+  const [mail, sheet] = await Promise.allSettled([sendMail(), saveToSheet()]);
+  const mailOk = mail.status === "fulfilled" && mail.value;
+  const sheetOk = sheet.status === "fulfilled" && sheet.value;
+  if (mail.status === "rejected") console.error("[contact] mail failed", mail.reason);
+  if (sheet.status === "rejected") console.error("[contact] sheet failed", sheet.reason);
+
+  if (!mailOk && !sheetOk) {
     return json({ ok: false, error: "전송 중 문제가 생겼습니다. 전화 010-6398-5354 또는 이메일 orthia66@gmail.com으로 문의해 주세요." }, 502);
   }
 

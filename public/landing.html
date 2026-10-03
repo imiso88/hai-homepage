@@ -1011,7 +1011,7 @@
           var msg=v('문의내용')||'(문의 내용 미기재)';
           if(tracks.length) msg='[관심 트랙] '+tracks.join(', ')+'\n\n'+msg;
           var payload={organization:v('기관명'),name:v('담당자'),phone:v('연락처'),email:v('email'),
-            audience:v('교육대상'),headcount:'',schedule:'',message:msg,website:v('_gotcha'),
+            audience:v('교육대상'),headcount:'',schedule:'',message:msg,website:v('_gotcha'),tracks:tracks.join(', '),source:'홈페이지 메인(랜딩)',
             consent:!!(f.elements['개인정보동의']&&f.elements['개인정보동의'].checked)};
           btn.disabled=true; btn.textContent='보내는 중…'; st.textContent='';
           fetch(CONTACT_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
