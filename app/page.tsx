@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Script from "next/script";
 
 const homeStructuredData = {
   "@context": "https://schema.org",
@@ -20,8 +19,14 @@ const homeStructuredData = {
       "@type": "Person",
       "@id": "https://www.humanai-edu.kr/expert.html#person",
       name: "배미주",
-      jobTitle: "휴먼AI융합교육원 대표 강사",
+      jobTitle: "휴먼AI융합교육원 원장 · AI 교육 컨설턴트",
+      honorificSuffix: "교육학 박사",
+      image: "https://www.humanai-edu.kr/profile-photo.jpg",
+      description: "기업·공공기관의 생성형 AI 교육과 AX 전환을 설계하는 교육학 박사. AI 저서 12권 집필.",
       worksFor: { "@id": "https://www.humanai-edu.kr/#organization" },
+      alumniOf: ["대진대학교 대학원", "한양대학교 교육대학원"],
+      knowsAbout: ["생성형 AI 교육", "AI 리터러시", "AI 윤리", "생성형 AI 개인정보 보호", "공공기관 AI 활용", "AX 전환", "업무자동화", "바이브코딩"],
+      sameAs: ["https://blog.naver.com/ai-ed", "https://miso66.tistory.com/"],
       url: "https://www.humanai-edu.kr/expert.html",
     },
     {
@@ -54,6 +59,13 @@ const reviews = [
   { quote: "코딩을 몰라도 반복업무를 줄이는 도구를 직접 만들어 업무혁신이 현실적으로 느껴졌습니다.", person: "공공기관 교육 참가자" },
 ];
 
+const principles = [
+  { label: "AI 리터러시", title: "AI를 이해하고 시작합니다", text: "AI가 잘하는 일과 틀리기 쉬운 일을 먼저 구분하고, 내 업무에 맞는 활용 범위를 정합니다." },
+  { label: "결과 검증", title: "그럴듯함을 사실로 믿지 않습니다", text: "AI 답변의 사실·수치·출처를 확인하는 검증 절차를 실습마다 함께 익힙니다." },
+  { label: "개인정보 보호", title: "민감한 정보는 입력하지 않습니다", text: "개인정보·기밀·비공개 자료는 입력하지 않고, 실습 자료는 비식별화해 기관 보안지침에 맞춰 사용합니다." },
+  { label: "책임과 윤리", title: "최종 판단은 사람이 합니다", text: "AI 결과물의 최종 판단과 책임은 사람에게 있습니다. 저작권과 공정한 활용 원칙까지 함께 다룹니다." },
+];
+
 const partners = [
   { src: "/partner-logos/mcst-7.jpg", alt: "문화체육관광부" },
   { src: "/partner-logos/mss.svg", alt: "중소벤처기업부" },
@@ -69,10 +81,10 @@ const partners = [
 ];
 export default function Home() {
   return <>
-    <Script
-      id="home-structured-data"
+    {/* 서버에서 바로 출력해 검색 로봇·AI 검색이 JS 실행 없이 읽도록 함 */}
+    <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(homeStructuredData) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(homeStructuredData).replace(/</g, "\\u003c") }}
     />
     <header className="home-header"><div className="wrap home-nav">
       <a className="brand" href="#top" aria-label="휴먼AI융합교육원 홈 맨 위로"><Image src="/brand-logo-transparent.png" width={1050} height={600} alt="휴먼AI융합교육원 로고" priority /><span>휴먼AI융합교육원</span></a>
@@ -104,10 +116,12 @@ export default function Home() {
 
       <section id="results" className="home-results" aria-labelledby="results-title"><div className="wrap"><div className="home-section-heading"><p className="home-kicker">교육 사례와 후기</p><h2 id="results-title">배우는 데서 끝나지 않고, 업무 결과물을 완성합니다.</h2></div><div className="home-result-layout"><div className="home-case-list">{cases.map((item, index) => <article key={item.title}><span>0{index + 1}</span><div><small>{item.tag}</small><h3>{item.title}</h3><p>{item.result}</p></div></article>)}<a className="home-inline-link" href="/cases.html">교육 사례 전체 보기</a></div><div className="home-review-list">{reviews.map((review) => <blockquote key={review.person}><p>“{review.quote}”</p><cite>{review.person}</cite></blockquote>)}<a className="home-inline-link" href="/testimonials.html">교육 후기 전체 보기</a></div></div></div></section>
 
+      <section id="principles" className="home-principles" aria-labelledby="principles-title"><div className="wrap"><div className="home-section-heading"><p className="home-kicker">교육 운영 원칙</p><h2 id="principles-title">안전하고 책임 있게 쓰는 법까지<br />함께 가르칩니다.</h2><p className="home-principles-lead">모든 과정에 AI 리터러시·결과 검증·개인정보 보호·책임과 윤리를 기본으로 포함합니다.</p></div><ol className="home-principle-grid">{principles.map((item, index) => <li key={item.label}><span>0{index + 1} · {item.label}</span><h3>{item.title}</h3><p>{item.text}</p></li>)}</ol></div></section>
+
       <section className="home-final" aria-labelledby="final-title"><div className="wrap home-final-inner"><div><p className="home-kicker">우리 조직의 업무부터 살펴보겠습니다</p><h2 id="final-title">AI 교육, 과정명보다<br />해결할 업무에서 시작하세요.</h2><p>교육 대상과 희망 주제만 알려주시면 추천 과정과 진행안을 안내합니다.</p></div><a className="btn btn-light" href="/contact.html">맞춤교육 문의하기</a></div></section>
     </main>
 
-    <footer className="home-footer"><div className="wrap home-footer-inner"><div className="footer-brand-lockup"><Image src="/brand-logo-transparent.png" width={1050} height={600} alt="휴먼AI융합교육원 로고" /><strong>휴먼AI융합교육원</strong></div><p>조직의 업무혁신과 AX 전환을 함께 설계하는 교육 파트너</p><nav aria-label="하단 메뉴"><a href="/about.html">교육원 소개</a><a href="/expert.html">전문가 소개</a><a href="/privacy.html">개인정보처리방침</a><a href="https://blog.naver.com/ai-ed" target="_blank" rel="noopener">네이버 블로그</a><a href="https://miso66.tistory.com/" target="_blank" rel="noopener">티스토리 블로그</a></nav><small>© 2026 휴먼AI융합교육원. All rights reserved.</small></div></footer>
+    <footer className="home-footer"><div className="wrap home-footer-inner"><div className="footer-brand-lockup"><Image src="/brand-logo-transparent.png" width={1050} height={600} alt="휴먼AI융합교육원 로고" /><strong>휴먼AI융합교육원</strong></div><p>조직의 업무혁신과 AX 전환을 함께 설계하는 교육 파트너</p><nav aria-label="하단 메뉴"><a href="/about.html">교육원 소개</a><a href="/expert.html">전문가 소개</a><a href="/privacy.html">개인정보처리방침</a><a href="https://blog.naver.com/ai-ed" target="_blank" rel="noopener">네이버 블로그</a><a href="https://miso66.tistory.com/" target="_blank" rel="noopener">티스토리 블로그</a></nav><address className="home-footer-info">휴먼AI융합교육원 · 대표 배미주 · <span style={{ whiteSpace: "nowrap" }}>사업자등록번호 352-16-02365</span><br />전화 <a href="tel:010-6398-5354">010-6398-5354</a> · 이메일 <a href="mailto:orthia66@gmail.com">orthia66@gmail.com</a></address><small>© 2026 휴먼AI융합교육원. All rights reserved.</small></div></footer>
     <a className="home-mobile-cta" href="/contact.html">맞춤교육 문의하기</a>
   </>;
 }
