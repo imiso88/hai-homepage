@@ -88,14 +88,14 @@ export default function Home() {
     />
     <header className="home-header"><div className="wrap home-nav">
       <a className="brand" href="#top" aria-label="휴먼AI융합교육원 홈 맨 위로"><Image src="/brand-logo-transparent.png" width={1050} height={600} alt="휴먼AI융합교육원 로고" priority /><span>휴먼AI융합교육원</span></a>
-      <nav className="home-desktop-nav" aria-label="주요 메뉴"><a href="#programs">교육과정</a><a href="#results">교육사례</a><a href="/expert.html">강사소개</a><a href="/faq.html">자주 묻는 질문</a></nav>
+      <nav className="home-desktop-nav" aria-label="주요 메뉴"><a href="#programs">교육과정</a><a href="#results">교육사례</a><a href="/expert.html">배미주 박사</a><a href="/faq.html">자주 묻는 질문</a></nav>
       <a className="btn btn-small btn-primary home-header-cta" href="/contact.html">맞춤교육 문의하기</a>
-      <details className="home-mobile-nav"><summary aria-label="메뉴 열기"><span /><span /><span /></summary><nav aria-label="모바일 메뉴"><a href="#programs">교육과정</a><a href="#results">교육사례</a><a href="/expert.html">강사소개</a><a href="/faq.html">자주 묻는 질문</a><a href="/contact.html">맞춤교육 문의하기</a></nav></details>
+      <details className="home-mobile-nav"><summary aria-label="메뉴 열기"><span /><span /><span /></summary><nav aria-label="모바일 메뉴"><a href="#programs">교육과정</a><a href="#results">교육사례</a><a href="/expert.html">배미주 박사</a><a href="/faq.html">자주 묻는 질문</a><a href="/contact.html">맞춤교육 문의하기</a></nav></details>
     </div></header>
 
     <main id="top" className="home-page">
       <section className="home-hero" aria-labelledby="home-title"><div className="wrap home-hero-grid">
-        <div className="home-hero-copy"><p className="home-kicker">기업·공공기관 직무 맞춤형 생성형 AI 교육</p><h1 id="home-title">우리 조직의 업무에<br /><em>바로 쓰는 AI 교육</em></h1><p className="home-lead">구성원의 직무와 AI 수준을 먼저 살펴보고, 보고서·자료 분석·공문·콘텐츠 제작을 실제 과제로 실습합니다.</p><div className="home-hero-action"><a className="btn btn-primary" href="/contact.html">맞춤교육 문의하기</a><span>주제·일정·인원이 미정이어도 상담할 수 있습니다.</span></div></div>
+        <div className="home-hero-copy"><p className="home-kicker">공공기관·기업 AI 교육 전문가 · 교육학 박사</p><h1 id="home-title">배미주 박사의<br /><em>업무에 바로 쓰는 <span style={{ whiteSpace: "nowrap" }}>AI 교육</span></em></h1><p className="home-lead">구성원의 직무와 AI 수준을 먼저 살펴보고, 보고서·자료 분석·공문·콘텐츠 제작을 실제 과제로 실습합니다. 기획부터 강의까지 배미주 박사가 직접 맡습니다.</p><div className="home-hero-action"><a className="btn btn-primary" href="/contact.html">맞춤교육 문의하기</a><span>주제·일정·인원이 미정이어도 상담할 수 있습니다.</span></div></div>
         <figure className="home-hero-photo">
           <Image src="/hero-main-ai-training-clean.png" width={1664} height={936} alt="배미주 박사가 기업과 공공기관 구성원을 대상으로 AI 교육을 진행하는 모습" sizes="(max-width: 820px) calc(100vw - 32px), 52vw" priority />
           <div className="home-screen-message">
@@ -104,8 +104,25 @@ export default function Home() {
             <p>보고서 · 정책자료 · 데이터 분석 · 업무자동화</p>
             <small>진단부터 실습, 현업 적용까지</small>
           </div>
-          <figcaption><strong>배미주 박사</strong></figcaption>
+          <figcaption><strong>배미주 박사</strong><span>교육학 박사 · 휴먼AI융합교육원 원장</span></figcaption>
         </figure>
+      </div></section>
+
+      <section id="instructor" className="home-instructor" aria-labelledby="instructor-title"><div className="wrap home-instructor-card">
+        <Image src="/profile-photo.jpg" width={320} height={400} alt="배미주 박사 프로필 사진" sizes="(max-width: 640px) 120px, 220px" className="home-instructor-photo" />
+        <div className="home-instructor-body">
+          <p className="home-kicker">강사 소개</p>
+          <h2 id="instructor-title">설계한 사람이 직접 가르칩니다</h2>
+          <p className="home-instructor-name"><strong>배미주 박사</strong> 휴먼AI융합교육원 원장 · AI 교육 컨설턴트</p>
+          <p className="home-instructor-quote">“배운 AI가 현장에서 사용될 때 교육이 되고, 일하는 방식이 달라질 때 비로소 혁신이 됩니다.”</p>
+          <ul className="home-instructor-facts">
+            <li>교육학 박사 (대진대학교 대학원)</li>
+            <li>《전국민이 알아야 할 AI 리터러시》 등 AI 저서 12권</li>
+            <li>패스트캠퍼스 전임강사 · 한국능률협회 파트너 강사</li>
+            <li>지방자치인재개발원 디지털 소통강사</li>
+          </ul>
+          <a className="home-inline-link" href="/expert.html">배미주 박사 전문가 소개 보기</a>
+        </div>
       </div></section>
 
       <section className="home-start" aria-labelledby="start-title"><div className="wrap home-start-inner"><div><p className="home-kicker">START HERE</p><h2 id="start-title">어떤 과정이 필요한지 몰라도 괜찮습니다.</h2><p>기관명, 교육 대상, 해결하고 싶은 업무만 알려주시면 적합한 과정과 진행안을 안내합니다.</p></div></div></section>
@@ -118,7 +135,7 @@ export default function Home() {
 
       <section id="principles" className="home-principles" aria-labelledby="principles-title"><div className="wrap"><div className="home-section-heading"><p className="home-kicker">교육 운영 원칙</p><h2 id="principles-title">안전하고 책임 있게 쓰는 법까지<br />함께 가르칩니다.</h2><p className="home-principles-lead">모든 과정에 AI 리터러시·결과 검증·개인정보 보호·책임과 윤리를 기본으로 포함합니다.</p></div><ol className="home-principle-grid">{principles.map((item, index) => <li key={item.label}><span>0{index + 1} · {item.label}</span><h3>{item.title}</h3><p>{item.text}</p></li>)}</ol></div></section>
 
-      <section className="home-final" aria-labelledby="final-title"><div className="wrap home-final-inner"><div><p className="home-kicker">우리 조직의 업무부터 살펴보겠습니다</p><h2 id="final-title">AI 교육, 과정명보다<br />해결할 업무에서 시작하세요.</h2><p>교육 대상과 희망 주제만 알려주시면 추천 과정과 진행안을 안내합니다.</p></div><a className="btn btn-light" href="/contact.html">맞춤교육 문의하기</a></div></section>
+      <section className="home-final" aria-labelledby="final-title"><div className="wrap home-final-inner"><div><p className="home-kicker">우리 조직의 업무부터 살펴보겠습니다</p><h2 id="final-title">AI 교육, 과정명보다<br />해결할 업무에서 시작하세요.</h2><p>교육 대상과 희망 주제만 알려주시면 배미주 박사가 직접 추천 과정과 진행안을 안내합니다.</p></div><a className="btn btn-light" href="/contact.html">맞춤교육 문의하기</a></div></section>
     </main>
 
     <footer className="home-footer"><div className="wrap home-footer-inner"><div className="footer-brand-lockup"><Image src="/brand-logo-transparent.png" width={1050} height={600} alt="휴먼AI융합교육원 로고" /><strong>휴먼AI융합교육원</strong></div><p>조직의 업무혁신과 AX 전환을 함께 설계하는 교육 파트너</p><nav aria-label="하단 메뉴"><a href="/about.html">교육원 소개</a><a href="/expert.html">전문가 소개</a><a href="/privacy.html">개인정보처리방침</a><a href="https://blog.naver.com/ai-ed" target="_blank" rel="noopener">네이버 블로그</a><a href="https://miso66.tistory.com/" target="_blank" rel="noopener">티스토리 블로그</a></nav><address className="home-footer-info">휴먼AI융합교육원 · 대표 배미주 · <span style={{ whiteSpace: "nowrap" }}>사업자등록번호 352-16-02365</span><br />전화 <a href="tel:010-6398-5354">010-6398-5354</a> · 이메일 <a href="mailto:orthia66@gmail.com">orthia66@gmail.com</a></address><small>© 2026 휴먼AI융합교육원. All rights reserved.</small></div></footer>
