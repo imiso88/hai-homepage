@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /home-classic
+Disallow: /landing.html
 
 Sitemap: https://www.humanai-edu.kr/sitemap.xml
