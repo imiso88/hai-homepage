@@ -147,8 +147,8 @@ export async function POST(request: Request) {
   if (sheet.status === "rejected") console.error("[contact] sheet failed", sheet.reason);
 
   if (!mailOk && !sheetOk) {
-    return json({ ok: false, error: "전송 중 문제가 생겼습니다. 전화 010-6398-5354 또는 이메일 orthia66@gmail.com으로 문의해 주세요.", sheet: sheetState }, 502);
+    return json({ ok: false, error: "전송 중 문제가 생겼습니다. 전화 010-6398-5354 또는 이메일 orthia66@gmail.com으로 문의해 주세요."}, 502);
   }
 
-  return json({ ok: true, mail: mailOk ? "ok" : "fail", sheet: sheetState });
+  return json({ ok: true });
 }
