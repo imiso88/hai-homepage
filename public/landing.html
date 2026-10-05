@@ -1236,10 +1236,9 @@
   .hai-lp .gate-file{margin:6px 0 0;font-size:14px;color:var(--sub)}
   .hai-lp .gate-file b{color:var(--navy)}
   .hai-lp .gate .dl-again{display:inline-block;margin-top:6px;color:var(--blue);text-decoration:underline;font-weight:700}
-  .hai-lp .float-cta .f2 .num{margin-left:8px;font-weight:600;opacity:.9}
+  .hai-lp .float-cta .f2:active,.hai-lp .float-cta .f2.is-pressed{background:#0B2A5B;box-shadow:inset 0 3px 10px rgba(0,0,0,.35);transform:scale(.97);transition:none}
   @media (max-width:520px){
     .hai-lp .chat-panel{left:10px;right:10px;width:auto;bottom:calc(152px + env(safe-area-inset-bottom));max-height:calc(100vh - 180px)}
-    .hai-lp .float-cta .f2 .num{display:none}
   }
   .hai-lp .float-cta{position:fixed;right:24px;bottom:24px;z-index:9999;display:flex;gap:8px}
   .hai-lp .float-cta a{display:flex;align-items:center;justify-content:center;height:52px;padding:0 22px;border-radius:999px;
@@ -1403,7 +1402,7 @@
 
 <nav class="float-cta" aria-label="빠른 문의">
   <a class="f1" href="#download" data-gate="brochure">소개서 받기</a>
-  <a class="f2" href="tel:01063985354" data-phone><span>📞 전화 문의</span><span class="num">010-6398-5354</span></a>
+  <a class="f2" href="tel:01063985354" data-phone aria-label="전화 문의 (010-6398-5354)">📞 전화 문의</a>
 </nav>
 
 </div>
@@ -1569,7 +1568,10 @@ var h=a.getAttribute('href');gtag('event','pdf_download',{file_label:h.indexOf('
   var hb=panel.querySelector('.cp-hours-btn'),hp=panel.querySelector('.cp-hours');
   hb.addEventListener('click',function(){hp.hidden=!hp.hidden;hb.setAttribute('aria-expanded',hp.hidden?'false':'true');hb.textContent=hp.hidden?'운영시간 보기 ›':'운영시간 닫기 ‹';});
   var f=panel.querySelector('.cp-input'),ta=f.querySelector('textarea'),tip=f.querySelector('.cp-tip');
-  function openKakao(){ga('kakao_chat_click',{transport_type:'beacon'});if(mobile)location.href=KAKAO;else window.open(KAKAO,'_blank','noopener');}
+  /* 이전 페이지 주소를 카카오에 넘기지 않음(noreferrer) → 채팅방에 '이전 페이지: 홈페이지 링크'가 붙지 않게 */
+  function openKakao(){ga('kakao_chat_click',{transport_type:'beacon'});
+    var a=document.createElement('a');a.href=KAKAO;a.rel='noreferrer noopener';a.referrerPolicy='no-referrer';if(!mobile)a.target='_blank';
+    a.style.display='none';document.body.appendChild(a);a.click();setTimeout(function(){a.remove();},1000);}
   /* 카카오톡은 외부에서 메시지를 미리 채워 넣는 기능이 없어 '복사 → 붙여넣기' 방식을 씁니다.
      복사는 클릭 순간에 바로 실행하고(실패 시 거짓 '복사됨' 안내 금지), 실패하면 직접 복사하도록 안내합니다. */
   function copyNow(t){var ok=false,x=document.createElement('textarea');x.value=t;x.setAttribute('readonly','');
@@ -1589,7 +1591,7 @@ var h=a.getAttribute('href');gtag('event','pdf_download',{file_label:h.indexOf('
   panel.addEventListener('click',function(e){if(e.target.closest('[data-gate]'))toggle(false);});
 })();
 /* 전화 문의 클릭 집계 (PC에서는 번호가 함께 보입니다) */
-document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('[data-phone]')&&typeof gtag==='function')gtag('event','phone_click',{transport_type:'beacon'});});
+document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[data-phone]');if(!t)return;t.classList.add('is-pressed');setTimeout(function(){t.classList.remove('is-pressed');},1200);if(typeof gtag==='function')gtag('event','phone_click',{transport_type:'beacon'});});
 /* 자료 다운로드: 정보 입력 → 교육원 메일로 접수 → 다운로드 시작 (같은 방문 중에는 다시 묻지 않음) */
 (function(){
   var FILES={
