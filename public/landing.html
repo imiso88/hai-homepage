@@ -1229,7 +1229,7 @@
   /* ---------- 5. 플로팅 문의 바 ---------- */
   /* PC: 우측 하단 버튼 2개 / 모바일: 화면 하단 고정 바 */
   /* 카카오톡 채널 상담 버튼 (우측 하단) */
-  .hai-lp .kakao-fab{position:fixed;right:24px;bottom:92px;z-index:9999;display:flex;align-items:center;gap:0;height:56px;padding:0 16px 0 14px;border-radius:999px;background:#FEE500;color:#191919;font-weight:800;font-size:15px;text-decoration:none;box-shadow:0 10px 28px rgba(0,0,0,.18);transition:transform .2s}
+  .hai-lp .kakao-fab{position:fixed;right:24px;bottom:92px;z-index:10001;display:flex;align-items:center;gap:0;height:56px;padding:0 16px 0 14px;border-radius:999px;background:#FEE500;color:#191919;font-weight:800;font-size:15px;text-decoration:none;box-shadow:0 10px 28px rgba(0,0,0,.18);transition:transform .2s}
   .hai-lp .kakao-fab svg{width:28px;height:28px;flex:none}
   .hai-lp .kakao-fab span{max-width:0;overflow:hidden;white-space:nowrap;transition:max-width .25s,margin .25s}
   .hai-lp .kakao-fab:hover{transform:translateY(-2px)}
@@ -1263,7 +1263,7 @@
     .hai-lp .float-cta a{flex:1;border-radius:10px;box-shadow:none;height:50px}
     .hai-lp .float-cta .f1{border:1.5px solid #C9D6EE;margin-right:8px}
     .hai-lp .float-spacer{height:76px}   /* 하단 바가 푸터를 가리지 않도록 */
-    .hai-lp .kakao-fab{right:14px;bottom:86px;height:52px;padding:0 12px}
+    .hai-lp .kakao-fab{right:14px;bottom:calc(92px + env(safe-area-inset-bottom));height:52px;padding:0 12px}
   }
 </style>
 
@@ -1342,7 +1342,7 @@
 
 <!-- ================= 플로팅 문의 바 (페이지 어디서나 보임) ================= -->
 <a class="kakao-fab" href="https://pf.kakao.com/_AIQxiX/chat" target="_blank" rel="noopener" aria-label="카카오톡 채널로 상담하기"
-   onclick="if(typeof gtag==='function')gtag('event','kakao_chat_click',{transport_type:'beacon'})">
+   onclick="if(typeof gtag==='function')gtag('event','kakao_chat_click',{transport_type:'beacon'});if(/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)){event.preventDefault();location.href=this.href;}">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#191919" d="M12 3C6.48 3 2 6.58 2 11c0 2.85 1.86 5.35 4.66 6.77l-.95 3.46c-.08.3.26.54.52.37l4.13-2.73c.54.07 1.08.13 1.64.13 5.52 0 10-3.58 10-8S17.52 3 12 3z"/></svg>
   <span>카카오톡 상담</span>
 </a>
