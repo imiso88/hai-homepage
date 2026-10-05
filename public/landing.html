@@ -308,7 +308,7 @@
     <input type="checkbox" id="hai-nav" class="nav-toggle" aria-label="메뉴 열기">
     <nav class="h-nav" aria-label="주요 메뉴" onclick="document.getElementById('hai-nav').checked=false">
       <a href="#programs">교육과정</a>
-      <a href="#method">학습방법</a>
+      <a href="#method">교육방법</a>
       <a href="#cases">교육사례</a>
       <a href="#instructor">배미주 박사</a>
       <a href="#faq">자주 묻는 질문</a>
@@ -453,11 +453,11 @@
   </div>
 </section>
 
-<!-- ================= SECTION 3-2. HAI 학습 방법 ================= -->
+<!-- ================= SECTION 3-2. HAI 교육 방법 ================= -->
 <section class="method" id="method">
   <div class="wrap">
     <div class="center">
-      <span class="eyebrow">HAI 학습 방법</span>
+      <span class="eyebrow">HAI 교육 방법</span>
       <h2 class="sec-title">AI가 대신하는 교육이 아니라,<br><span class="hl">사람의 판단력과 실행력</span>을 키우는 교육</h2>
       <p class="sec-sub">모든 과정은 4단계로 진행됩니다. 결과물을 만드는 것에서 끝나지 않고, 사람이 검토하고 책임지는 법까지 익힙니다.</p>
     </div>
@@ -483,7 +483,7 @@
         <li><span>03 · 개인정보 보호</span><b>민감한 정보는 입력하지 않습니다</b><p>개인정보·기밀·비공개 자료는 입력하지 않고, 실습 자료는 비식별화해 기관 보안지침에 맞춰 씁니다.</p></li>
         <li><span>04 · 책임과 윤리</span><b>최종 판단은 사람이 합니다</b><p>AI 결과물의 최종 판단과 책임은 사람에게 있습니다. 저작권과 공정한 활용 원칙도 함께 다룹니다.</p></li>
       </ol>
-      <p style="margin:18px 0 0;font-size:15px">개인정보보호를 따로 깊이 배우고 싶다면 → <a href="/humanai-edu-privacy-curriculum.pdf" download="휴먼AI융합교육원_개인정보보호교육_커리큘럼.pdf" style="color:var(--blue);font-weight:700;text-decoration:underline">AI 시대 개인정보보호 교육 커리큘럼 (PDF)</a></p>
+      <p style="margin:18px 0 0;font-size:15px">개인정보보호를 따로 깊이 배우고 싶다면 → <a href="#download" data-gate="privacy" style="color:var(--blue);font-weight:700;text-decoration:underline">AI 시대 개인정보보호 교육 커리큘럼 (PDF)</a></p>
     </div>
   </div>
 </section>
@@ -1013,48 +1013,14 @@
         <div class="side-box dl" id="download">
           <h3>📘 교육 자료 다운로드</h3>
           <p>교육 소개서, 개인정보보호교육 커리큘럼, 교육 방법론을 내려받아 확인하세요. 내부 보고용으로도 활용하실 수 있습니다.</p>
+          <p style="margin:-4px 0 14px;font-size:13px;color:var(--sub)">기관·기업명, 이름, 이메일을 입력하시면 바로 내려받을 수 있습니다.</p>
           <!-- 소개서 PDF: public/humanai-edu-brochure.pdf (교체 시 같은 이름으로 덮어쓰기) -->
-          <a class="btn btn-ghost" href="/humanai-edu-brochure.pdf" download="휴먼AI융합교육원_교육소개서.pdf">소개서 PDF 다운로드 ↓</a>
+          <button type="button" class="btn btn-ghost" data-gate="brochure">소개서 PDF 다운로드 ↓</button>
           <p style="margin:8px 0 0;font-size:13px;opacity:.75">PDF · 13쪽 · 4개 트랙 커리큘럼 · 진행 방식 · 실습 워크북 예시</p>
-          <a class="btn btn-ghost" style="margin-top:14px;display:flex;justify-content:center;text-align:center" href="/humanai-edu-privacy-curriculum.pdf" download="휴먼AI융합교육원_개인정보보호교육_커리큘럼.pdf">개인정보보호교육 PDF ↓</a>
+          <button type="button" class="btn btn-ghost" style="margin-top:14px;display:flex;justify-content:center;text-align:center" data-gate="privacy">개인정보보호교육 PDF ↓</button>
           <p style="margin:8px 0 0;font-size:13px;opacity:.75">PDF · 8쪽 · 공공기관·기업 과정 · 2026 개정 기준 · 모의훈련 시트</p>
-          <a class="btn btn-ghost" style="margin-top:14px;display:flex;justify-content:center;text-align:center" href="/humanai-edu-method.pdf" download="휴먼AI융합교육원_교육방법론.pdf">교육 방법론 PDF ↓</a>
+          <button type="button" class="btn btn-ghost" style="margin-top:14px;display:flex;justify-content:center;text-align:center" data-gate="method">교육 방법론 PDF ↓</button>
           <p style="margin:8px 0 0;font-size:13px;opacity:.75">PDF · 1쪽 · 현업×AI×책임 3요소 · 교육 흐름 · 교육 철학</p>
-        </div>
-        <div class="side-box rq" id="request">
-          <h3>📩 맞춤 제안서도 받아보세요 <span style="font-size:13px;font-weight:600;color:var(--blue)">(선택)</span></h3>
-          <p>자료를 보신 뒤 우리 기관·회사에 맞춘 커리큘럼 제안이 필요하면 남겨 주세요. 영업 전화는 하지 않고 <b>이메일로만</b> 보내드립니다.</p>
-          <form id="rq-form" novalidate>
-            <input type="text" name="organization" placeholder="기관·기업명" aria-label="기관·기업명" required maxlength="100">
-            <input type="text" name="name" placeholder="이름" aria-label="이름" required maxlength="50">
-            <input type="email" name="email" placeholder="이메일" aria-label="이메일" required maxlength="120">
-            <select name="resource" aria-label="관심 자료">
-              <option value="교육 소개서">관심 자료: 교육 소개서</option>
-              <option value="개인정보보호교육 커리큘럼">관심 자료: 개인정보보호교육</option>
-              <option value="교육 방법론">관심 자료: 교육 방법론</option>
-              <option value="전체 자료">관심 자료: 전체</option>
-            </select>
-            <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
-            <div class="notice">수집 항목: 기관·기업명, 이름, 이메일 · 목적: 맞춤 제안서와 요청 자료 회신 · 보유 기간: 1년 후 파기. 동의하지 않으셔도 자료 다운로드는 그대로 이용할 수 있습니다.</div>
-            <label class="agree"><input type="checkbox" name="consent" required><span><b>[필수]</b> 개인정보 수집·이용에 동의합니다. <a href="/privacy.html" target="_blank" rel="noopener" style="color:var(--blue)">처리방침</a></span></label>
-            <label class="agree"><input type="checkbox" name="marketing"><span>[선택] 교육 안내·소식 메일 수신에 동의합니다. (언제든 수신 거부 가능)</span></label>
-            <button type="submit" class="btn btn-primary">맞춤 제안서 요청하기</button>
-            <p class="rq-status" role="status" aria-live="polite"></p>
-          </form>
-          <script>
-          (function(){var f=document.getElementById('rq-form');if(!f)return;var st=f.querySelector('.rq-status'),btn=f.querySelector('button');
-          function show(m,ok){st.textContent=m;st.style.color=ok?'var(--blue)':'#c0392b';}
-          f.addEventListener('submit',function(e){e.preventDefault();[].forEach.call(f.querySelectorAll('.is-bad'),function(x){x.classList.remove('is-bad');});
-            var miss=[];['organization','name','email'].forEach(function(k){var el=f.elements[k];if(!el.value.trim()||!el.checkValidity()){miss.push(el);el.classList.add('is-bad');}});
-            if(miss.length){show(miss[0].name==='email'&&miss[0].value.trim()?'이메일 주소 형식을 확인해 주세요.':'기관·기업명, 이름, 이메일을 모두 입력해 주세요.',false);miss[0].focus();return;}
-            if(!f.elements.consent.checked){show('[필수] 개인정보 수집·이용에 동의해 주세요.',false);f.elements.consent.closest('label').classList.add('is-bad');return;}
-            btn.disabled=true;btn.textContent='보내는 중…';show('',true);
-            var body={organization:f.elements.organization.value,name:f.elements.name.value,email:f.elements.email.value,resource:f.elements.resource.value,website:f.elements.website.value,consent:true,marketing:f.elements.marketing.checked};
-            fetch('/api/resource-request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json().catch(function(){return{ok:false};});}).then(function(r){
-              if(r.ok){f.reset();show('요청이 접수되었습니다. 영업일 기준 2일 이내에 이메일로 맞춤 제안서를 보내드립니다.',true);btn.textContent='요청 완료';if(typeof gtag==='function')gtag('event','resource_request',{file_label:body.resource,marketing_opt_in:body.marketing?'yes':'no'});}
-              else{show(r.error||'전송하지 못했습니다. 잠시 후 다시 시도해 주세요.',false);btn.disabled=false;btn.textContent='맞춤 제안서 요청하기';}
-            }).catch(function(){show('네트워크 문제로 전송하지 못했습니다. 잠시 후 다시 시도해 주세요.',false);btn.disabled=false;btn.textContent='맞춤 제안서 요청하기';});});})();
-          </script>
         </div>
         <div class="side-box">
           <h3>직접 연락하기</h3>
@@ -1234,6 +1200,47 @@
   .hai-lp .kakao-fab span{max-width:0;overflow:hidden;white-space:nowrap;transition:max-width .25s,margin .25s}
   .hai-lp .kakao-fab:hover{transform:translateY(-2px)}
   .hai-lp .kakao-fab:hover span,.hai-lp .kakao-fab:focus span{max-width:120px;margin-left:8px}
+  /* 상담창(카카오톡 연결) */
+  .hai-lp button.btn{font-family:inherit;cursor:pointer;width:100%}
+  .hai-lp button.kakao-fab{border:0;cursor:pointer;font-family:inherit}
+  .hai-lp .chat-panel{position:fixed;right:24px;bottom:160px;z-index:10002;width:370px;max-height:calc(100vh - 190px);overflow:auto;border-radius:22px;background:#fff;box-shadow:0 24px 60px rgba(11,42,91,.28);font-size:15px}
+  .hai-lp .chat-panel[hidden],.hai-lp .gate[hidden],.hai-lp .cp-hours[hidden]{display:none}
+  .hai-lp .cp-head{position:relative;padding:26px 22px 22px;background:linear-gradient(135deg,#0B2A5B 0%,#1E5BD8 60%,#38B6FF 100%);color:#fff}
+  .hai-lp .cp-close{position:absolute;top:12px;right:12px;width:34px;height:34px;border:0;border-radius:50%;background:rgba(255,255,255,.18);color:#fff;font-size:15px;cursor:pointer}
+  .hai-lp .cp-brand{display:flex;align-items:center;gap:12px}
+  .hai-lp .cp-logo{flex:none;width:52px;height:52px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .hai-lp .cp-logo img{width:42px;height:auto}
+  .hai-lp .cp-brand strong{display:block;font-size:19px;font-weight:800}
+  .hai-lp .cp-hours-btn{border:0;background:none;color:#DCE9FF;font:inherit;font-size:13px;padding:2px 0;cursor:pointer}
+  .hai-lp .cp-hours{margin:12px 0 0;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.14);font-size:13px;line-height:1.6}
+  .hai-lp .cp-body{padding:18px}
+  .hai-lp .cp-msg{display:flex;gap:10px;align-items:flex-start}
+  .hai-lp .cp-av{flex:none;width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .hai-lp .cp-av img{width:27px;height:auto}
+  .hai-lp .cp-msg b{font-size:13px;color:var(--sub)}
+  .hai-lp .cp-msg p{margin:4px 0 0;padding:12px 14px;border-radius:4px 16px 16px 16px;background:var(--bg-soft);line-height:1.6;font-size:14.5px}
+  .hai-lp .cp-input{margin:16px 0 0;padding:0;border:0;background:none;display:grid;gap:8px}
+  .hai-lp .cp-input textarea{width:100%;resize:none;padding:12px 14px;border:1.5px solid #C9D6EE;border-radius:14px;font:inherit;font-size:14.5px;line-height:1.5}
+  .hai-lp .cp-input textarea:focus{outline:0;border-color:var(--blue)}
+  .hai-lp .cp-send{height:48px;border:0;border-radius:12px;background:#FEE500;color:#191919;font:inherit;font-weight:800;font-size:15px;cursor:pointer}
+  .hai-lp .cp-tip{margin:0;font-size:12px;color:var(--sub);line-height:1.5}
+  .hai-lp .cp-tip.ok{color:var(--blue);font-weight:700}
+  .hai-lp .cp-speed{margin:12px 0 0;font-size:13px;color:var(--sub)}
+  .hai-lp .cp-quick{display:grid;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+  .hai-lp .cp-quick a{display:block;padding:11px 14px;border:1px solid var(--line);border-radius:12px;color:var(--navy);font-weight:700;font-size:14px;text-decoration:none}
+  .hai-lp .cp-quick a:hover{border-color:var(--blue);background:#F3F7FF}
+  /* 자료 신청 창 */
+  .hai-lp .gate{position:fixed;inset:0;z-index:10003;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(11,22,45,.55)}
+  .hai-lp .gate-card{position:relative;width:100%;max-width:440px;max-height:calc(100vh - 32px);overflow:auto;margin:0;background:#fff}
+  .hai-lp .gate-close{position:absolute;top:12px;right:12px;width:34px;height:34px;border:0;border-radius:50%;background:var(--bg-soft);font-size:15px;cursor:pointer}
+  .hai-lp .gate-file{margin:6px 0 0;font-size:14px;color:var(--sub)}
+  .hai-lp .gate-file b{color:var(--navy)}
+  .hai-lp .gate .dl-again{display:inline-block;margin-top:6px;color:var(--blue);text-decoration:underline;font-weight:700}
+  .hai-lp .float-cta .f2 .num{margin-left:8px;font-weight:600;opacity:.9}
+  @media (max-width:520px){
+    .hai-lp .chat-panel{left:10px;right:10px;width:auto;bottom:calc(152px + env(safe-area-inset-bottom));max-height:calc(100vh - 180px)}
+    .hai-lp .float-cta .f2 .num{display:none}
+  }
   .hai-lp .float-cta{position:fixed;right:24px;bottom:24px;z-index:9999;display:flex;gap:8px}
   .hai-lp .float-cta a{display:flex;align-items:center;justify-content:center;height:52px;padding:0 22px;border-radius:999px;
     font-size:15px;font-weight:700;box-shadow:0 10px 28px rgba(11,42,91,.28);transition:.15s}
@@ -1341,15 +1348,64 @@
 </footer>
 
 <!-- ================= 플로팅 문의 바 (페이지 어디서나 보임) ================= -->
-<a class="kakao-fab" href="https://pf.kakao.com/_AIQxiX/chat" target="_blank" rel="noopener" aria-label="카카오톡 채널로 상담하기"
-   onclick="if(typeof gtag==='function')gtag('event','kakao_chat_click',{transport_type:'beacon'});if(/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)){event.preventDefault();location.href=this.href;}">
+<!-- ================= 상담창(카카오톡 연결) · 자료 신청 창 · 플로팅 바 =================
+     상담창 문구·운영시간은 아래 .chat-panel 안에서 바로 고치면 됩니다. -->
+<button type="button" class="kakao-fab" aria-label="상담창 열기" aria-expanded="false" aria-controls="chat-panel">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#191919" d="M12 3C6.48 3 2 6.58 2 11c0 2.85 1.86 5.35 4.66 6.77l-.95 3.46c-.08.3.26.54.52.37l4.13-2.73c.54.07 1.08.13 1.64.13 5.52 0 10-3.58 10-8S17.52 3 12 3z"/></svg>
   <span>카카오톡 상담</span>
-</a>
+</button>
+<section class="chat-panel" id="chat-panel" role="dialog" aria-label="휴먼AI융합교육원 상담" hidden>
+  <header class="cp-head">
+    <button type="button" class="cp-close" aria-label="상담창 닫기">✕</button>
+    <div class="cp-brand"><span class="cp-logo"><img alt="" src=""></span><div><strong>휴먼AI융합교육원</strong><button type="button" class="cp-hours-btn" aria-expanded="false">운영시간 보기 ›</button></div></div>
+    <p class="cp-hours" hidden>평일 09:00 ~ 18:00<br>주말·공휴일 문의는 다음 영업일에 답변드립니다.</p>
+  </header>
+  <div class="cp-body">
+    <div class="cp-msg">
+      <span class="cp-av"><img alt="" src=""></span>
+      <div><b>휴먼AI융합교육원</b>
+        <p>안녕하세요, 휴먼AI융합교육원입니다. 👋<br>AI 활용 교육·AX 전환 교육에 대해 궁금한 점을 편하게 남겨 주세요. 배미주 박사가 직접 답변드립니다.</p>
+      </div>
+    </div>
+    <form class="cp-input" novalidate>
+      <textarea rows="2" maxlength="500" placeholder="문의 내용을 입력해 주세요 (예: 공무원 30명, 3시간 생성형 AI 교육)" aria-label="문의 내용"></textarea>
+      <button type="submit" class="cp-send">카카오톡으로 문의 보내기</button>
+      <p class="cp-tip">입력한 내용이 복사되고 카카오톡 상담창이 열립니다. 붙여넣기만 하면 전달돼요.</p>
+    </form>
+    <p class="cp-speed">⏱ 영업시간에는 보통 빠르게 답변드려요</p>
+    <div class="cp-quick">
+      <a href="#download" data-gate="brochure">📘 교육 소개서 받기</a>
+      <a href="/diagnosis">📊 무료 AX 진단</a>
+      <a href="tel:01063985354" data-phone>📞 전화 010-6398-5354</a>
+    </div>
+  </div>
+</section>
+
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title" hidden>
+  <div class="gate-card side-box rq">
+    <button type="button" class="gate-close" aria-label="닫기">✕</button>
+    <h3 id="gate-title">📘 자료 받기</h3>
+    <p class="gate-file"></p>
+    <form id="gate-form" novalidate>
+      <input type="text" name="organization" placeholder="기관·기업명" aria-label="기관·기업명" required maxlength="100">
+      <input type="text" name="name" placeholder="이름" aria-label="이름" required maxlength="50">
+      <input type="email" name="email" placeholder="이메일" aria-label="이메일" required maxlength="120">
+      <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+      <div class="notice">수집 항목: 기관·기업명, 이름, 이메일 · 목적: 요청 자료 제공, 맞춤 제안서 회신(신청 시) · 보유 기간: 1년 후 파기. 동의를 거부할 수 있으나, 이 경우 자료를 내려받을 수 없습니다.</div>
+      <label class="agree"><input type="checkbox" name="consent" required><span><b>[필수]</b> 개인정보 수집·이용에 동의합니다. <a href="/privacy.html" target="_blank" rel="noopener" style="color:var(--blue)">처리방침</a></span></label>
+      <label class="agree"><input type="checkbox" name="proposal"><span>[선택] 우리 기관·회사 맞춤 제안서도 이메일로 받겠습니다.</span></label>
+      <label class="agree"><input type="checkbox" name="marketing"><span>[선택] 교육 안내·소식 메일 수신에 동의합니다. (언제든 수신 거부 가능)</span></label>
+      <button type="submit" class="btn btn-primary">입력하고 다운로드</button>
+      <p class="rq-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+
 <nav class="float-cta" aria-label="빠른 문의">
-  <a class="f1" href="#download">소개서 받기</a>
-  <a class="f2" href="#contact">교육 문의</a>
+  <a class="f1" href="#download" data-gate="brochure">소개서 받기</a>
+  <a class="f2" href="tel:01063985354" data-phone><span>📞 전화 문의</span><span class="num">010-6398-5354</span></a>
 </nav>
+
 </div>
 
 <!-- ================= FAQ 구조화 데이터 (구글·AI 검색용, 화면에는 안 보임) =================
@@ -1497,6 +1553,66 @@
 <script>
 /* PDF 다운로드 집계: GA4 이벤트 pdf_download (file_label로 자료 구분) */
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".pdf"]');if(!a||typeof gtag!=='function')return;
-var h=a.getAttribute('href');gtag('event','pdf_download',{file_label:h.indexOf('privacy')>-1?'개인정보보호교육':'교육소개서',link_url:h,transport_type:'beacon'});});
+var h=a.getAttribute('href');gtag('event','pdf_download',{file_label:h.indexOf('privacy')>-1?'개인정보보호교육':(h.indexOf('method')>-1?'교육방법론':'교육소개서'),link_url:h,transport_type:'beacon'});});
+</script>
+<script>
+/* 상담창 열기/닫기 + 카카오톡 연결 */
+(function(){
+  var KAKAO='https://pf.kakao.com/_AIQxiX/chat',mobile=/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+  var fab=document.querySelector('.kakao-fab'),panel=document.getElementById('chat-panel');if(!fab||!panel)return;
+  var logo=document.querySelector('.h-logo img');if(logo)[].forEach.call(panel.querySelectorAll('.cp-logo img,.cp-av img'),function(i){i.src=logo.src;});
+  function ga(n,p){if(typeof gtag==='function')gtag('event',n,p||{});}
+  function toggle(open){panel.hidden=!open;fab.setAttribute('aria-expanded',open?'true':'false');if(open)ga('chat_panel_open');}
+  fab.addEventListener('click',function(){toggle(panel.hidden);});
+  panel.querySelector('.cp-close').addEventListener('click',function(){toggle(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!panel.hidden)toggle(false);});
+  var hb=panel.querySelector('.cp-hours-btn'),hp=panel.querySelector('.cp-hours');
+  hb.addEventListener('click',function(){hp.hidden=!hp.hidden;hb.setAttribute('aria-expanded',hp.hidden?'false':'true');hb.textContent=hp.hidden?'운영시간 보기 ›':'운영시간 닫기 ‹';});
+  var f=panel.querySelector('.cp-input'),ta=f.querySelector('textarea'),tip=f.querySelector('.cp-tip');
+  function openKakao(){ga('kakao_chat_click',{transport_type:'beacon'});if(mobile)location.href=KAKAO;else window.open(KAKAO,'_blank','noopener');}
+  f.addEventListener('submit',function(e){e.preventDefault();var t=ta.value.trim();
+    if(!t){openKakao();return;}
+    var done=function(){tip.textContent='복사되었습니다. 카카오톡 창에 붙여넣기(Ctrl+V / 길게 눌러 붙여넣기) 해 주세요.';tip.className='cp-tip ok';setTimeout(openKakao,mobile?700:0);};
+    try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,done);return;}}catch(err){}
+    try{ta.select();document.execCommand('copy');}catch(err){}done();});
+  panel.addEventListener('click',function(e){if(e.target.closest('[data-gate]'))toggle(false);});
+})();
+/* 전화 문의 클릭 집계 (PC에서는 번호가 함께 보입니다) */
+document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('[data-phone]')&&typeof gtag==='function')gtag('event','phone_click',{transport_type:'beacon'});});
+/* 자료 다운로드: 정보 입력 → 교육원 메일로 접수 → 다운로드 시작 (같은 방문 중에는 다시 묻지 않음) */
+(function(){
+  var FILES={
+    brochure:{label:'교육 소개서',title:'교육 소개서 (PDF · 13쪽)',url:'/humanai-edu-brochure.pdf',name:'휴먼AI융합교육원_교육소개서.pdf'},
+    privacy:{label:'개인정보보호교육 커리큘럼',title:'개인정보보호교육 커리큘럼 (PDF · 8쪽)',url:'/humanai-edu-privacy-curriculum.pdf',name:'휴먼AI융합교육원_개인정보보호교육_커리큘럼.pdf'},
+    method:{label:'교육 방법론',title:'교육 방법론 (PDF · 1쪽)',url:'/humanai-edu-method.pdf',name:'휴먼AI융합교육원_교육방법론.pdf'}
+  };
+  var gate=document.getElementById('gate'),f=document.getElementById('gate-form');if(!gate||!f)return;
+  var st=f.querySelector('.rq-status'),btn=f.querySelector('button[type=submit]'),fileEl=gate.querySelector('.gate-file'),cur=null,lastFocus=null;
+  var KEY='hai_dl_ok';function ok(){try{return sessionStorage.getItem(KEY)==='1';}catch(e){return false;}}
+  function remember(){try{sessionStorage.setItem(KEY,'1');}catch(e){}}
+  function show(m,good){st.innerHTML=m;st.style.color=good?'var(--blue)':'#c0392b';}
+  function download(file){var a=document.createElement('a');a.href=file.url;a.download=file.name;a.style.display='none';document.body.appendChild(a);a.click();setTimeout(function(){a.remove();},1000);}
+  function open(key){cur=FILES[key]||FILES.brochure;
+    if(ok()){download(cur);return;}
+    lastFocus=document.activeElement;fileEl.innerHTML='신청 자료: <b>'+cur.title+'</b><br>아래 정보를 입력하시면 바로 다운로드가 시작됩니다.';
+    show('',true);btn.disabled=false;btn.textContent='입력하고 다운로드';f.style.display='';gate.hidden=false;setTimeout(function(){f.elements.organization.focus();},50);}
+  function close(){gate.hidden=true;if(lastFocus&&lastFocus.focus)lastFocus.focus();}
+  document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[data-gate]');if(!t)return;e.preventDefault();open(t.getAttribute('data-gate'));});
+  gate.querySelector('.gate-close').addEventListener('click',close);
+  gate.addEventListener('click',function(e){if(e.target===gate)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!gate.hidden)close();});
+  f.addEventListener('submit',function(e){e.preventDefault();[].forEach.call(f.querySelectorAll('.is-bad'),function(x){x.classList.remove('is-bad');});
+    var miss=[];['organization','name','email'].forEach(function(k){var el=f.elements[k];if(!el.value.trim()||!el.checkValidity()){miss.push(el);el.classList.add('is-bad');}});
+    if(miss.length){show(miss[0].name==='email'&&miss[0].value.trim()?'이메일 주소 형식을 확인해 주세요.':'기관·기업명, 이름, 이메일을 모두 입력해 주세요.',false);miss[0].focus();return;}
+    if(!f.elements.consent.checked){show('[필수] 개인정보 수집·이용에 동의해 주세요.',false);f.elements.consent.closest('label').classList.add('is-bad');return;}
+    btn.disabled=true;btn.textContent='확인 중…';show('',true);
+    var body={organization:f.elements.organization.value,name:f.elements.name.value,email:f.elements.email.value,resource:cur.label,website:f.elements.website.value,consent:true,proposal:f.elements.proposal.checked,marketing:f.elements.marketing.checked};
+    fetch('/api/resource-request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json().catch(function(){return{ok:false};});}).then(function(r){
+      if(r.ok){remember();download(cur);if(typeof gtag==='function')gtag('event','resource_request',{file_label:cur.label,proposal:body.proposal?'yes':'no',marketing_opt_in:body.marketing?'yes':'no'});
+        f.reset();btn.textContent='다운로드 완료';
+        show('다운로드가 시작되었습니다.'+(body.proposal?' 맞춤 제안서는 영업일 기준 2일 이내에 이메일로 보내드립니다.':'')+'<br><a class="dl-again" href="'+cur.url+'" download="'+cur.name+'">다운로드가 시작되지 않으면 여기를 누르세요</a>',true);}
+      else{show(r.error||'전송하지 못했습니다. 잠시 후 다시 시도해 주세요.',false);btn.disabled=false;btn.textContent='입력하고 다운로드';}
+    }).catch(function(){show('네트워크 문제로 확인하지 못했습니다. 잠시 후 다시 시도해 주세요.',false);btn.disabled=false;btn.textContent='입력하고 다운로드';});});
+})();
 </script>
 </body></html>

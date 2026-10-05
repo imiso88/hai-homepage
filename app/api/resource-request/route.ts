@@ -1,4 +1,4 @@
-// 자료 다운로드 후 '맞춤 제안서 받기' 신청 → Resend로 교육원 메일(orthia66@gmail.com)에 전달
+// 자료 다운로드 신청(정보 입력 후 다운로드, 맞춤 제안서 요청 선택) → Resend로 교육원 메일(orthia66@gmail.com)에 전달
 // 필요한 환경변수: RESEND_API_KEY (교육 문의와 같은 키 사용)
 
 export const runtime = "nodejs";
@@ -38,6 +38,7 @@ export async function POST(request: Request) {
   const resourceRaw = text(data, "resource", 50);
   const resource = RESOURCES.includes(resourceRaw) ? resourceRaw : "전체 자료";
   const marketing = data.marketing === true;
+  const proposal = data.proposal === true;
 
   if (!organization) return json({ ok: false, error: "기관·기업명을 입력해 주세요." }, 400);
   if (!name) return json({ ok: false, error: "이름을 입력해 주세요." }, 400);
@@ -56,12 +57,13 @@ export async function POST(request: Request) {
     ["기관·기업명", organization],
     ["이름", name],
     ["이메일", email],
-    ["관심 자료", resource],
+    ["다운로드 자료", resource],
+    ["맞춤 제안서", proposal ? "요청함 (이메일로 제안서 회신 필요)" : "요청 안 함"],
     ["교육 안내 메일 수신", marketing ? "동의 (교육 안내·소식 발송 가능)" : "미동의 (요청 건 회신만 가능)"],
   ];
   const html =
     `<div style="font-family:Pretendard,Apple SD Gothic Neo,Malgun Gothic,sans-serif;color:#1c2b36;max-width:640px">` +
-    `<h2 style="color:#102a43;margin:0 0 6px">맞춤 제안서 요청이 도착했습니다</h2>` +
+    `<h2 style="color:#102a43;margin:0 0 6px">자료 다운로드 신청이 도착했습니다</h2>` +
     `<p style="color:#5d6b76;margin:0 0 18px">접수 시각 ${receivedAt} · humanai-edu.kr 자료 다운로드 영역</p>` +
     `<table style="border-collapse:collapse;width:100%;font-size:14px">` +
     rows
@@ -72,7 +74,7 @@ export async function POST(request: Request) {
       )
       .join("") +
     `</table><p style="color:#5d6b76;font-size:13px;margin-top:18px">이 메일에 바로 회신하면 신청자(${escapeHtml(email)})에게 답장이 갑니다.</p></div>`;
-  const plain = `맞춤 제안서 요청 (${receivedAt})\n\n` + rows.map(([k, v]) => `${k}: ${v}`).join("\n");
+  const plain = `자료 다운로드 신청 (${receivedAt})\n\n` + rows.map(([k, v]) => `${k}: ${v}`).join("\n");
 
   try {
     const response = await fetch("https://api.resend.com/emails", {
@@ -82,7 +84,7 @@ export async function POST(request: Request) {
         from: FROM_EMAIL,
         to: [TO_EMAIL],
         reply_to: email,
-        subject: `[자료 신청] ${organization} · ${resource}`,
+        subject: `[자료 신청] ${organization} · ${resource}${proposal ? " · 제안서 요청" : ""}`,
         html,
         text: plain,
       }),
