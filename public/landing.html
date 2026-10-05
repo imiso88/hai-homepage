@@ -1570,11 +1570,22 @@ var h=a.getAttribute('href');gtag('event','pdf_download',{file_label:h.indexOf('
   hb.addEventListener('click',function(){hp.hidden=!hp.hidden;hb.setAttribute('aria-expanded',hp.hidden?'false':'true');hb.textContent=hp.hidden?'운영시간 보기 ›':'운영시간 닫기 ‹';});
   var f=panel.querySelector('.cp-input'),ta=f.querySelector('textarea'),tip=f.querySelector('.cp-tip');
   function openKakao(){ga('kakao_chat_click',{transport_type:'beacon'});if(mobile)location.href=KAKAO;else window.open(KAKAO,'_blank','noopener');}
+  /* 카카오톡은 외부에서 메시지를 미리 채워 넣는 기능이 없어 '복사 → 붙여넣기' 방식을 씁니다.
+     복사는 클릭 순간에 바로 실행하고(실패 시 거짓 '복사됨' 안내 금지), 실패하면 직접 복사하도록 안내합니다. */
+  function copyNow(t){var ok=false,x=document.createElement('textarea');x.value=t;x.setAttribute('readonly','');
+    x.style.cssText='position:fixed;top:0;left:0;width:1px;height:1px;opacity:0';document.body.appendChild(x);
+    x.focus();x.select();try{x.setSelectionRange(0,t.length);}catch(err){}
+    try{ok=document.execCommand('copy');}catch(err){ok=false;}x.remove();return ok;}
   f.addEventListener('submit',function(e){e.preventDefault();var t=ta.value.trim();
     if(!t){openKakao();return;}
-    var done=function(){tip.textContent='복사되었습니다. 카카오톡 창에 붙여넣기(Ctrl+V / 길게 눌러 붙여넣기) 해 주세요.';tip.className='cp-tip ok';setTimeout(openKakao,mobile?700:0);};
-    try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,done);return;}}catch(err){}
-    try{ta.select();document.execCommand('copy');}catch(err){}done();});
+    var ok=copyNow(t);
+    if(!ok&&navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(function(){tip.textContent='✅ 복사되었습니다. 열린 카카오톡 창에 붙여넣기(Ctrl+V / 길게 눌러 붙여넣기) 해 주세요.';tip.className='cp-tip ok';},
+        function(){tip.textContent='⚠️ 자동 복사가 되지 않았습니다. 위 입력칸의 글을 직접 복사해서 카카오톡 창에 붙여넣어 주세요.';tip.className='cp-tip';ta.focus();ta.select();});
+      tip.textContent='복사 중…';
+    }else if(ok){tip.textContent='✅ 복사되었습니다. 열린 카카오톡 창에 붙여넣기(Ctrl+V / 길게 눌러 붙여넣기) 해 주세요.';tip.className='cp-tip ok';}
+    else{tip.textContent='⚠️ 자동 복사가 되지 않았습니다. 위 입력칸의 글을 직접 복사해서 카카오톡 창에 붙여넣어 주세요.';tip.className='cp-tip';ta.focus();ta.select();return;}
+    if(mobile)setTimeout(openKakao,900);else openKakao();});
   panel.addEventListener('click',function(e){if(e.target.closest('[data-gate]'))toggle(false);});
 })();
 /* 전화 문의 클릭 집계 (PC에서는 번호가 함께 보입니다) */
