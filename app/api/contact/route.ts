@@ -16,6 +16,7 @@ const FIELDS: Field[] = [
   { key: "phone", label: "연락처", required: true, max: 30 },
   { key: "email", label: "이메일", required: true, max: 120 },
   { key: "audience", label: "교육 대상", required: false, max: 200 },
+  { key: "budget", label: "교육 예산", required: false, max: 100 },
   { key: "headcount", label: "예상 인원", required: false, max: 50 },
   { key: "schedule", label: "희망 일정·시간", required: false, max: 200 },
   { key: "message", label: "현재 고민·궁금한 점", required: true, max: 3000 },
