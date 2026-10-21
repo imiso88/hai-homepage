@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
-    "test:resources": "node scripts/test-resources.cjs"
+    "test:resources": "node --test scripts/test-resources.cjs scripts/test-resource-sheet.cjs"
   },
   "dependencies": {
     "next": "16.3.5",
