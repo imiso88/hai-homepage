@@ -1,0 +1,70 @@
+import { createRequire } from 'node:module';
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+const require = createRequire(import.meta.url);
+const { chromium } = require('C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const base = process.env.RESOURCE_TEST_BASE || 'http://localhost:3051';
+const out = process.env.RESOURCE_TEST_OUTPUT || path.resolve('../resource-verification');
+await fs.mkdir(out, { recursive: true });
+const browser = await chromium.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true });
+const errors = [], results = [];
+try {
+ for (const viewport of [{ width: 1366, height: 900 }, { width: 390, height: 844 }]) {
+  const context = await browser.newContext({ viewport });
+  await context.route('https://**/*', route => route.fulfill({ status: 204, body: '' }));
+  const page = await context.newPage(); page.on('pageerror', e => errors.push(e.message));
+  let submissions = 0, downloads = 0, verifications = 0;
+  page.on('download', () => downloads++);
+  await page.route('**/api/resource-request', async route => {
+   submissions++; const body = route.request().postDataJSON();
+   assert.equal(body.email, 'hrd@example.org'); assert.equal(body.marketing, false);
+   await route.fulfill({ json: { ok: true, retryAfter: 60 } });
+  });
+  await page.goto(base + '/#download', { waitUntil: 'domcontentloaded' });
+  await page.evaluate(() => sessionStorage.setItem('hai_dl_ok', '1'));
+  await page.locator('#download [data-gate="brochure"]').click();
+  await page.locator('#gate-form').waitFor({ state: 'visible' });
+  await page.locator('#gate-form [name=organization]').fill('테스트 공공기관');
+  await page.locator('#gate-form [name=name]').fill('교육담당자');
+  await page.locator('#gate-form [name=email]').fill('hrd@example.org');
+  await page.locator('#gate-form [name=consent]').check();
+  await page.locator('#gate-form button[type=submit]').click();
+  await page.locator('#gate-sent').waitFor({ state: 'visible' });
+  assert.equal(await page.locator('#gate-sent-address').textContent(), 'hrd@example.org');
+  assert.equal(await page.locator('#gate-resend').isDisabled(), true);
+  assert.equal(downloads, 0); assert.equal(submissions, 1);
+  await page.screenshot({ path: path.join(out, 'sent-' + viewport.width + '.png'), fullPage: false });
+  await page.locator('#gate-edit').click();
+  assert.equal(await page.locator('#gate-form [name=email]').inputValue(), 'hrd@example.org');
+  await page.locator('#gate-form [name=email]').fill('not-email');
+  await page.locator('#gate-form button[type=submit]').click();
+  assert.equal(submissions, 1);
+  await page.screenshot({ path: path.join(out, 'form-' + viewport.width + '.png'), fullPage: false });
+  await page.route('**/api/resource-verify', async route => {
+   verifications++; assert.equal(route.request().method(), 'POST');
+   await route.fulfill({ json: { ok: true, label: '교육 소개서', downloadUrl: '/api/resource-download?resource=brochure' } });
+  });
+  await page.goto(base + '/resource-verify.html#token=client-test', { waitUntil: 'networkidle' });
+  assert.equal(new URL(page.url()).hash, ''); assert.equal(verifications, 0);
+  await page.locator('#confirm').click();
+  await page.locator('#download').waitFor({ state: 'visible' });
+  assert.equal(verifications, 1);
+  assert.equal(await page.locator('#download').getAttribute('href'), '/api/resource-download?resource=brochure');
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+  await page.screenshot({ path: path.join(out, 'verified-' + viewport.width + '.png'), fullPage: false });
+  results.push({ width: viewport.width, submissions, verifications, prematureDownloads: downloads });
+  await context.close();
+ }
+ const context = await browser.newContext();
+ const unauthorized = await context.request.get(base + '/api/resource-download?resource=brochure');
+ assert.equal(unauthorized.status(), 401);
+ const legacy = await context.request.get(base + '/humanai-edu-brochure.pdf', { maxRedirects: 0 });
+ assert.equal(legacy.status(), 307); assert.equal(legacy.headers().location, '/#download');
+ const unconfigured = await context.request.post(base + '/api/resource-request', { data: { organization: '로컬 검사', name: '테스터', email: 'local@example.org', resource: 'method', consent: true } });
+ assert.equal(unconfigured.status(), 503);
+ await context.close();
+ assert.deepEqual(errors, []);
+ await fs.writeFile(path.join(out, 'browser-results.json'), JSON.stringify({ results, pageErrors: errors, realMailSent: false, backend: { unverifiedDownload: 401, legacyPdf: 307, unconfiguredSender: 503 } }, null, 2));
+ console.log(JSON.stringify({ results, pageErrors: errors, realMailSent: false }));
+} finally { await browser.close(); }
