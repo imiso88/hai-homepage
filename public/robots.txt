@@ -2,5 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /home-classic
 Disallow: /landing.html
+Disallow: /resource-verify.html
+Disallow: /api/resource-
 
 Sitemap: https://www.humanai-edu.kr/sitemap.xml
