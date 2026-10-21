@@ -8,7 +8,7 @@ export const RESOURCES = {
 export type ResourceKey = keyof typeof RESOURCES;
 export type ResourceRequest = {
   organization: string; name: string; email: string; resource: ResourceKey;
-  consent: true; proposal: boolean; marketing: boolean; id: string; issuedAt: number;
+  consent: true; proposal: boolean; marketing: boolean; id: string; issuedAt: number; consentVersion?: string;
 };
 export const LINK_SECONDS = 1800, ACCESS_SECONDS = 900;
 export const ACCESS_COOKIE = "hai_resource_access";
@@ -92,7 +92,7 @@ export function parseRequest(data: Record<string, unknown>): ResourceRequest | s
   if (!/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(values.email)) return "이메일 주소 형식을 확인해 주세요.";
   const resource = resourceKey(data.resource);
   if (!resource) return "신청 자료를 다시 선택해 주세요.";
-  return { organization: values.organization, name: values.name, email: values.email, resource, consent: true, proposal: data.proposal === true, marketing: data.marketing === true, id: randomUUID(), issuedAt: Date.now() };
+  return { organization: values.organization, name: values.name, email: values.email, resource, consent: true, proposal: data.proposal === true, marketing: data.marketing === true, id: randomUUID(), issuedAt: Date.now(), consentVersion: "2026-10-22" };
 }
 // Bounded warm-instance abuse guard + signed browser cooldown. Not a globally shared IP limiter.
 // Configure a Vercel WAF rate limit before public activation (see setup document).
