@@ -15,7 +15,7 @@ export async function POST(request: Request) {
   if (retryAfter) return json({ ok: false, error: "잠시 후 다시 신청해 주세요.", retryAfter }, 429, { "Retry-After": String(retryAfter) });
   try {
     const token = seal("verify", parsed, LINK_SECONDS);
-    await sendMail(confirmationMail(parsed, verificationUrl(token)), "resource-confirm/" + parsed.id);
+    await sendMail(confirmationMail(parsed, verificationUrl(token, Boolean(parsed.proposalDetails))), "resource-confirm/" + parsed.id);
     return json({ ok: true, retryAfter: 60 }, 200, { "Set-Cookie": cooldownCookie() });
   } catch {
     return json({ ok: false, error: "확인 메일을 보내지 못했습니다. 이메일 주소를 확인하거나 잠시 후 다시 시도해 주세요." }, 502);

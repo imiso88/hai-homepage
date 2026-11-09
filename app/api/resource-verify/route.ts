@@ -21,6 +21,10 @@ export async function POST(request: Request) {
       console.error("[resources] Verified lead notification failed");
       if (!sheet.value) throw new Error("No lead delivery succeeded");
     }
+    if (data.proposalDetails) {
+      if (!sheet.value || mail.status === "rejected") return json({ ok: false, error: "제안서 신청 접수가 지연되고 있습니다. 잠시 후 확인 버튼을 다시 눌러 주세요." }, 502);
+      return json({ ok: true, kind: "proposal" });
+    }
     return json({ ok: true, label: RESOURCES[data.resource].label, downloadUrl: "/api/resource-download?resource=" + data.resource }, 200, {
       "Set-Cookie": cookie(ACCESS_COOKIE, seal("access", { resource: data.resource }, ACCESS_SECONDS), ACCESS_SECONDS),
     });

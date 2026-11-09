@@ -11,9 +11,9 @@ export async function saveVerifiedResource(data: ResourceRequest): Promise<boole
   const payload = JSON.stringify({
     version: 1, id: data.id, requestedAt: new Date(data.issuedAt).toISOString(),
     organization: data.organization, name: data.name, email: data.email,
-    resource: data.resource, resourceLabel: RESOURCES[data.resource].label,
+    resource: data.resource, resourceLabel: data.proposalDetails ? "맞춤 교육 제안서" : RESOURCES[data.resource].label,
     consent: data.consent, proposal: data.proposal, marketing: data.marketing,
-    consentVersion: data.consentVersion || "2026-10-21", source: "홈페이지 자료 신청",
+    consentVersion: data.consentVersion || "2026-10-21", source: data.proposalDetails ? "AX 진단 제안서 작성란" : "홈페이지 자료 신청",
   });
   const timestamp = Date.now().toString();
   const signature = createHmac("sha256", secret).update(timestamp + "." + payload).digest("hex");

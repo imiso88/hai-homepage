@@ -9,6 +9,7 @@ export type ResourceKey = keyof typeof RESOURCES;
 export type ResourceRequest = {
   organization: string; name: string; email: string; resource: ResourceKey;
   consent: true; proposal: boolean; marketing: boolean; id: string; issuedAt: number; consentVersion?: string;
+  proposalDetails?: string;
 };
 export const LINK_SECONDS = 1800, ACCESS_SECONDS = 900;
 export const ACCESS_COOKIE = "hai_resource_access";
@@ -62,11 +63,11 @@ export function cookieValue(request: Request, name: string) {
 export function cookie(name: string, value: string, seconds: number) {
   return name + "=" + value + "; Path=/api; HttpOnly; SameSite=Strict; Max-Age=" + seconds + (process.env.NODE_ENV === "production" ? "; Secure" : "");
 }
-export function verificationUrl(token: string) {
+export function verificationUrl(token: string, proposal = false) {
   const base = new URL(process.env.RESOURCE_BASE_URL || "https://www.humanai-edu.kr");
   if (base.protocol !== "https:" && !(process.env.NODE_ENV !== "production" && base.hostname === "localhost")) throw new Error("Invalid RESOURCE_BASE_URL");
   // Fragments are not sent to HTTP servers, mail scanners, or referrers.
-  return base.origin + "/resource-verify.html#token=" + token;
+  return base.origin + "/resource-verify.html" + (proposal ? "?proposal=1" : "") + "#token=" + token;
 }
 export function sameOrigin(request: Request) {
   const origin = request.headers.get("origin");
@@ -90,6 +91,13 @@ export function parseRequest(data: Record<string, unknown>): ResourceRequest | s
     values[key] = value;
   }
   if (!/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(values.email)) return "이메일 주소 형식을 확인해 주세요.";
+  if (data.kind === "proposal") {
+    if (!/^\p{L}[\p{L}\p{M} .’'·-]*$/u.test(values.name)) return "담당자 이름을 확인해 주세요. 숫자나 기호만으로 입력할 수 없습니다.";
+    if (typeof data.emailConfirm !== "string" || values.email.toLowerCase() !== data.emailConfirm.trim().toLowerCase()) return "이메일 주소 두 칸을 동일하게 입력해 주세요.";
+    const proposalDetails = typeof data.details === "string" ? data.details.trim() : "";
+    if (!proposalDetails || proposalDetails.length > 600) return "교육 대상과 필요한 내용을 600자 이내로 적어 주세요.";
+    return { organization: values.organization, name: values.name, email: values.email, resource: "brochure", consent: true, proposal: true, marketing: false, id: randomUUID(), issuedAt: Date.now(), consentVersion: "proposal-v1", proposalDetails };
+  }
   const resource = resourceKey(data.resource);
   if (!resource) return "신청 자료를 다시 선택해 주세요.";
   return { organization: values.organization, name: values.name, email: values.email, resource, consent: true, proposal: data.proposal === true, marketing: data.marketing === true, id: randomUUID(), issuedAt: Date.now(), consentVersion: "2026-10-22" };
@@ -130,6 +138,11 @@ export async function sendMail(mail: Mail, idempotencyKey: string) {
   }
 }
 export function confirmationMail(data: ResourceRequest, url: string): Mail {
+  if (data.proposalDetails) return {
+    to: [data.email], subject: "[휴먼AI융합교육원] 맞춤 교육 제안서 신청 확인",
+    text: data.name + "님, " + data.organization + "의 제안서 신청을 완료하려면 아래 링크에서 이메일을 확인해 주세요. 입력하신 이름과 기관명이 맞는지 먼저 확인해 주세요.\n\n" + url + "\n\n링크는 30분 동안 유효합니다. 신청하지 않았다면 무시해 주세요.",
+    html: '<div lang="ko"><h2>제안서 신청을 확인해 주세요</h2><p>담당자: ' + escapeHtml(data.name) + ' · 기관: ' + escapeHtml(data.organization) + '</p><p>이름과 기관명이 맞으면 아래 링크에서 이메일을 확인해 주세요. 확인 후 신청이 접수됩니다.</p><p><a href="' + escapeHtml(url) + '">제안서 신청 확인하기</a></p><p>링크는 30분 동안 유효합니다. 신청하지 않았다면 이 메일을 무시해 주세요.</p></div>',
+  };
   const label = RESOURCES[data.resource].label;
   return {
     to: [data.email], subject: "[휴먼AI융합교육원] " + label + " 자료 받기", reply_to: process.env.CONTACT_TO_EMAIL || "orthia66@gmail.com",
@@ -138,6 +151,10 @@ export function confirmationMail(data: ResourceRequest, url: string): Mail {
   };
 }
 export function verifiedMail(data: ResourceRequest): Mail {
+  if (data.proposalDetails) {
+    const text = "기관·기업명: " + data.organization + "\n담당자명: " + data.name + "\n확인된 이메일: " + data.email + "\n교육 요청: " + data.proposalDetails;
+    return { to: [process.env.CONTACT_TO_EMAIL || "orthia66@gmail.com"], reply_to: data.email, subject: "[이메일 확인 완료] 맞춤 교육 제안서 신청", text, html: '<pre style="white-space:pre-wrap">' + escapeHtml(text) + '</pre>' };
+  }
   const rows = [["이메일 확인", "완료 (확인 링크에서 자료 받기 버튼 클릭)"], ["기관·기업명", data.organization], ["이름", data.name], ["이메일", data.email], ["신청 자료", RESOURCES[data.resource].label], ["신청 시각", new Date(data.issuedAt).toISOString()], ["맞춤 제안서", data.proposal ? "요청함 · 이메일 회신 필요" : "요청 안 함"], ["교육 소식 수신", data.marketing ? "동의" : "미동의 · 요청 건 회신만 가능"]];
   return {
     to: [process.env.CONTACT_TO_EMAIL || "orthia66@gmail.com"], reply_to: data.email,

@@ -37,7 +37,7 @@ test('verified sheet persistence', async t => {
     const envelope = JSON.parse(options.body);
     assert.equal(envelope.signature, createHmac('sha256', secret).update(envelope.timestamp + '.' + envelope.payload).digest('hex'));
     savedPayload = JSON.parse(envelope.payload);
-    return Response.json(sheetOk ? { ok: true, id: data.id } : { ok: false });
+    return Response.json(sheetOk ? { ok: true, id: savedPayload.id } : { ok: false });
   };
   const request = token => new Request('https://www.humanai-edu.kr/api/resource-verify', { method: 'POST', body: JSON.stringify({ token }) });
   const token = resources.seal('verify', data, 1800);
@@ -68,6 +68,38 @@ test('verified sheet persistence', async t => {
     delete process.env.RESOURCE_SHEET_WEBHOOK_URL;
     assert.equal(await persistence.saveVerifiedResource(data), false);
     process.env.RESOURCE_SHEET_WEBHOOK_URL = url; process.env.RESOURCE_SHEET_SECRET = secret;
+  });
+  await t.test('proposal requires valid name, matching emails and mailbox confirmation before saving', async () => {
+    const requestRoute = compile('app/api/resource-request/route.ts', { '@/lib/resources': resources });
+    const input = { kind: 'proposal', organization: '예시 기관', name: '김담당', email: 'proposal@example.org', emailConfirm: 'proposal@example.org', details: '실무자 30명 공문 작성 교육', consent: true };
+    const send = data => requestRoute.POST(new Request('https://www.humanai-edu.kr/api/resource-request', { method: 'POST', body: JSON.stringify(data) }));
+    const oldFetch = global.fetch;
+    const originalPayload = savedPayload;
+    let confirmation, owner;
+    global.fetch = async (url, options) => {
+      if (url === 'https://api.resend.com/emails') {
+        const body = JSON.parse(options.body);
+        if (body.to.includes(input.email)) confirmation = body; else owner = body;
+      }
+      return oldFetch(url, options);
+    };
+    try {
+      savedPayload = undefined;
+      for (const patch of [{ name: '123' }, { emailConfirm: 'other@example.org' }, { consent: false }]) assert.equal((await send({ ...input, ...patch })).status, 400);
+      assert.equal((await send(input)).status, 200);
+      assert.equal(savedPayload, undefined);
+      assert.equal(owner, undefined);
+      assert.match(confirmation.text, /김담당/);
+      assert.match(confirmation.text, /\?proposal=1#token=/);
+      const verified = await route.POST(request(confirmation.text.match(/#token=([A-Za-z0-9_-]+)/)[1]));
+      assert.deepEqual(await verified.json(), { ok: true, kind: 'proposal' });
+      assert.equal(verified.headers.get('set-cookie'), null);
+      assert.equal(savedPayload.name, input.name);
+      assert.equal(savedPayload.email, input.email);
+      assert.equal(savedPayload.resourceLabel, '맞춤 교육 제안서');
+      assert.equal(savedPayload.marketing, false);
+      assert.match(owner.text, /공문 작성 교육/);
+    } finally { global.fetch = oldFetch; savedPayload = originalPayload; }
   });
   await t.test('Apps Script verifies signature/freshness, locks writes, deduplicates and escapes formulas', () => {
     const rows = [], script = fs.readFileSync(path.join(root, 'scripts/resource-sheet.gs'), 'utf8');
