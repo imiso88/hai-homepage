@@ -2,32 +2,7 @@
   "use strict";
   const $ = id => document.getElementById(id);
   const dimensions = ["AI 이해·목표", "도구 접근·학습", "업무 적용·성과", "데이터 관리", "검증·안전 운영", "AI 자동 실행 안전"];
-  const rollout = ["아직 하지 않음", "개인·소수만 시험", "일부 팀에서 적용", "필요한 팀에 적용", "적용 후 주기적으로 점검"];
-  const policy = ["기준 없음", "논의 또는 초안 단계", "일부 업무에서 적용", "대상 업무에 공식 적용", "공식 적용 후 주기적으로 점검"];
-  const measure = ["기록하지 않음", "체감이나 의견만 있음", "한 업무에서 전후 비교", "주요 적용 업무에서 전후 비교", "정기 비교 결과로 개선"];
-  const question = (dim, text, scale = rollout, critical = false) => ({ dim, text, scale, critical });
-  const base = [
-    question(0, "직원이 AI를 쓸 때, 예를 들어 회의록 초안은 AI에 맡기고 날짜와 결정 사항은 직접 확인하나요?"),
-    question(0, "AI로 개선할 우선 업무를 정했나요?", policy),
-    question(0, "예를 들어 회의록 정리에 AI를 써 보기로 했다면, 시험을 맡을 담당자가 정해져 있나요?", policy),
-    question(1, "AI가 필요한 직원은 조직에서 허용한 AI 도구에 로그인해 업무에 쓸 수 있나요?"),
-    question(1, "직원이 보고서 작성이나 자료 요약처럼 자기 업무와 비슷한 과제로 AI를 직접 써 봤나요?"),
-    question(1, "보고서 작성에 도움이 된 AI 질문 예시나 양식을 다른 직원도 꺼내 쓸 수 있게 공유하나요?"),
-    question(2, "AI로 만든 초안을 담당자가 검토한 뒤 보고서·공문 등 실제 업무에 사용하나요?"),
-    question(2, "반복 업무에서 ‘AI는 설문을 집계하고, 담당자는 숫자가 맞는지 확인한다’처럼 역할을 나눠 쓰나요?"),
-    question(2, "AI 적용 전후의 처리 시간이나 수정 횟수를 기록해 비교하나요?", measure),
-    question(3, "AI에 입력할 수 있는 자료와 개인정보·기밀 등 입력할 수 없는 자료를 문서로 구분했나요?", policy, true),
-    question(3, "내부 문서나 설문 자료를 AI에 넣기 전에, 그 자료를 사용해도 되는지 확인하는 기준이 있나요?", policy),
-    question(3, "AI에 참고 자료를 줄 때 문서가 어디서 왔는지, 최신 문서인지 확인하나요?", policy),
-    question(4, "업무에 쓸 수 있는 AI 서비스와 계정이 정해져 있나요? 예: 승인된 회사 계정만 사용", policy, true),
-    question(4, "공문·보고서·대외 안내에 AI 결과를 쓰기 전에 담당자가 원자료와 대조하나요?", policy),
-    question(4, "AI가 작성한 보고서나 공문을 제출하기 전에 최종 확인할 사람이 정해져 있나요?", policy, true),
-  ];
-  const agent = [
-    question(5, "자동 실행 AI가 접근할 수 있는 자료와 시스템 권한을 업무에 필요한 범위로 제한했나요?", policy, true),
-    question(5, "외부 발송이나 시스템 변경처럼 영향이 큰 실행 전에 사람이 승인하나요?", policy, true),
-    question(5, "AI가 예상과 다르게 실행되면 담당자가 즉시 중단할 수 있나요?", policy, true),
-  ];
+  let catalog;
   let questions = [], answers = [], current = 0, scope = "", agentUsage = "";
   const assessed = (value) => typeof value === "number";
   function summarize(items) {
@@ -132,7 +107,7 @@
       try {
         sessionStorage.setItem("hai-ax-proposal", JSON.stringify({
           createdAt: Date.now(),
-          diagnosis: {version:"ax-v3", scope, agent:agentUsage, answers},
+          diagnosis: {version:catalog.version, scope, agent:agentUsage, answers},
           preview: {
             headline: $("res-stage-title").textContent,
             scores: ["AI 활용 수준: " + scoreLabel(use), "안전 운영 준비: " + scoreLabel(safety), ...regions.map(r => r.label + ": " + scoreLabel(r))],
@@ -144,10 +119,30 @@
     show("results");
     $("res-stage-title").focus({ preventScroll: true });
   }
-  $("btn-start").addEventListener("click", () => {
+  $("btn-start").addEventListener("click", async () => {
+    const start = $("btn-start");
+    const status = $("diagnosis-load-status");
+    start.disabled = true;
+    status.textContent = "";
+    try {
+      if (!catalog) {
+        status.textContent = "진단 문항을 불러오는 중입니다…";
+        const response = await fetch("/ax-questions-v4.json");
+        if (!response.ok) throw Error("Questionnaire unavailable");
+        const data = await response.json();
+        if (data.version !== "ax-v4" || data.questions?.length !== 18) throw Error("Invalid questionnaire");
+        catalog = data;
+      }
+    } catch {
+      status.textContent = "진단 문항을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.";
+      return;
+    } finally {
+      start.disabled = false;
+    }
+    status.textContent = "";
     scope = $("diagnosis-scope").value;
     agentUsage = $("diagnosis-agent").value;
-    questions = agentUsage === "yes" ? base.concat(agent) : base;
+    questions = catalog.questions.slice(0, agentUsage === "yes" ? 18 : 15);
     answers = new Array(questions.length);
     current = 0;
     show("quiz");

@@ -8,7 +8,7 @@
   try {
     if (fromAx) snapshot = JSON.parse(sessionStorage.getItem("hai-ax-proposal") || "null");
   } catch { /* Sharing is optional. */ }
-  if (snapshot?.diagnosis?.version === "ax-v3" && Number.isFinite(snapshot.createdAt) && Date.now() - snapshot.createdAt < 1800000 && Array.isArray(snapshot.preview?.scores) && Array.isArray(snapshot.preview?.items)) {
+  if (["ax-v3", "ax-v4"].includes(snapshot?.diagnosis?.version) && Number.isFinite(snapshot.createdAt) && Date.now() - snapshot.createdAt < 1800000 && Array.isArray(snapshot.preview?.scores) && Array.isArray(snapshot.preview?.items)) {
     document.getElementById("proposal-diagnosis").hidden = false;
     form.elements.shareDiagnosis.required = true;
     document.getElementById("proposal-diagnosis-summary").textContent = "응답 범위: " + snapshot.diagnosis.scope + " · " + snapshot.preview.headline;
