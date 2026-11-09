@@ -100,7 +100,7 @@ export function parseRequest(data: Record<string, unknown>): ResourceRequest | s
     if (!proposalDetails || proposalDetails.length > 600) return "교육 대상과 필요한 내용을 600자 이내로 적어 주세요.";
     const diagnosis = data.shareDiagnosis === true ? readAxProposalDiagnosis(data.diagnosis) : null;
     if ((data.fromAx === true || data.shareDiagnosis === true) && !diagnosis) return "진단 결과를 확인할 수 없습니다. 진단을 다시 진행하거나 진단 없이 제안서 작성하기를 선택해 주세요.";
-    return { organization: values.organization, name: values.name, email: values.email, resource: "brochure", consent: true, proposal: true, marketing: false, id: randomUUID(), issuedAt: Date.now(), consentVersion: "proposal-v2", proposalDetails, ...(diagnosis ? { diagnosis } : {}) };
+    return { organization: values.organization, name: values.name, email: values.email, resource: "brochure", consent: true, proposal: true, marketing: false, id: randomUUID(), issuedAt: Date.now(), consentVersion: "proposal-v3", proposalDetails, ...(diagnosis ? { diagnosis } : {}) };
   }
   const resource = resourceKey(data.resource);
   if (!resource) return "신청 자료를 다시 선택해 주세요.";

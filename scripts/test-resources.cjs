@@ -25,7 +25,7 @@ test('verified resource flow and abuse controls', async t => {
   process.env.RESEND_API_KEY = 'test-only-key';
   process.env.RESOURCE_BASE_URL = 'https://www.humanai-edu.kr';
   const lib = compile('lib/resources.ts', { './ax-proposal': compile('lib/ax-proposal.ts') });
-  const sheet = compile('lib/resource-sheet.ts', { './resources': lib });
+  const sheet = compile('lib/resource-sheet.ts', { './resources': lib, './ax-proposal': compile('lib/ax-proposal.ts') });
   const deps = { '@/lib/resources': lib, '@/lib/resource-sheet': sheet };
   delete process.env.RESOURCE_SHEET_WEBHOOK_URL;
   delete process.env.RESOURCE_SHEET_SECRET;
