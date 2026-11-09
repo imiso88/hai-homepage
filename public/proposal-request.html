@@ -7,11 +7,12 @@ main{max-width:640px;margin:28px auto;padding:clamp(18px,5vw,36px);background:#f
 input:not([type=checkbox]),textarea{width:100%;min-height:44px;padding:9px 12px;border:1px solid #75889b;border-radius:8px;font:inherit}textarea{min-height:115px;resize:vertical}
 button{margin-top:16px;padding:12px 18px;border:0;border-radius:8px;background:#145c87;color:white;font:inherit;font-weight:700;cursor:pointer}button:disabled{opacity:.65}small{display:block;color:#475e73}#proposal-status{overflow-wrap:anywhere}
 @media(max-width:680px){main{margin:14px}}
-</style><script src="/proposal-request.js?v=2" defer></script></head>
+</style><script src="/proposal-request.js?v=3" defer></script></head>
 <body><main>
 <a href="/diagnosis">← AX 자가진단</a>
 <h1>맞춤 교육 제안서 작성란</h1>
 <p>교육 대상과 필요한 내용을 남겨 주세요. 확인 메일의 링크에서 이메일을 확인하면 신청이 접수됩니다.</p>
+<p id="proposal-missing-diagnosis" hidden>진단 결과가 연결되지 않았습니다. <a href="/diagnosis">진단을 다시 하고 제안서 작성하기</a> 또는 <a href="/proposal-request.html">진단 없이 제안서 작성하기</a>를 선택해 주세요.</p>
 <form id="proposal-form" method="post" action="/api/resource-request">
   <label for="proposal-org">기관·기업명</label><input id="proposal-org" name="organization" autocomplete="organization" required maxlength="100">
   <label for="proposal-name">담당자 이름</label><input id="proposal-name" name="name" autocomplete="name" required maxlength="50" aria-describedby="name-help">
@@ -24,8 +25,8 @@ button{margin-top:16px;padding:12px 18px;border:0;border-radius:8px;background:#
     <h2>AX 진단 결과 함께 보내기</h2>
     <p id="proposal-diagnosis-summary"></p>
     <details><summary>영역별 점수와 문항별 응답 보기</summary><ul id="proposal-diagnosis-scores"></ul><ol id="proposal-diagnosis-answers"></ol></details>
-    <label><input type="checkbox" name="shareDiagnosis"> [선택] 맞춤 제안서 작성을 위해 위 진단 응답과 점수를 담당자에게 전달하는 데 동의합니다.</label>
-    <small>이메일 확인 후 담당자에게 전달됩니다. 선택하지 않아도 제안서를 신청할 수 있습니다.</small>
+    <label><input type="checkbox" name="shareDiagnosis"> [필수] 진단을 바탕으로 제안서를 받기 위해 위 진단 응답과 점수를 담당자에게 전달하는 데 동의합니다.</label>
+    <small>이메일 확인 후 담당자에게 전달됩니다. 결과 공유를 원하지 않으면 <a href="/proposal-request.html">진단 없이 제안서 작성하기</a>를 선택하세요.</small>
   </section>
   <input type="text" name="website" tabindex="-1" autocomplete="off" hidden>
   <p><small>수집 항목: 기관·기업명, 담당자 이름, 이메일, 요청 내용, 진단 응답과 점수(공유에 동의한 경우) · 목적: 이메일 확인 및 제안서 회신 · 보유 기간: 수집일로부터 1년. 필수 항목에 동의하지 않으면 신청할 수 없습니다.</small></p>

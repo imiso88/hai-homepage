@@ -131,6 +131,7 @@
     $("btn-cta-mail").onclick = () => {
       try {
         sessionStorage.setItem("hai-ax-proposal", JSON.stringify({
+          createdAt: Date.now(),
           diagnosis: {version:"ax-v3", scope, agent:agentUsage, answers},
           preview: {
             headline: $("res-stage-title").textContent,
