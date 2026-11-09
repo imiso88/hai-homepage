@@ -1,4 +1,5 @@
 import { createHmac } from "node:crypto";
+import { formatAxProposalDiagnosis } from "./ax-proposal";
 import { RESOURCES, type ResourceRequest } from "./resources";
 
 // Server-to-server only. Never expose the webhook URL or signing secret in browser code.
@@ -8,12 +9,19 @@ export async function saveVerifiedResource(data: ResourceRequest): Promise<boole
   if (!url && !secret) return false; // Existing mail-only flow until setup is complete.
   if (!url || !/^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(url) || !secret || secret.length < 32)
     throw new Error("Resource sheet configuration incomplete");
+  const isProposal = Boolean(data.proposalDetails);
+  const saveDetails = isProposal && data.consentVersion === "proposal-v3";
   const payload = JSON.stringify({
-    version: 1, id: data.id, requestedAt: new Date(data.issuedAt).toISOString(),
+    version: saveDetails ? 2 : 1, id: data.id, requestedAt: new Date(data.issuedAt).toISOString(),
     organization: data.organization, name: data.name, email: data.email,
     resource: data.resource, resourceLabel: data.proposalDetails ? "맞춤 교육 제안서" : RESOURCES[data.resource].label,
     consent: data.consent, proposal: data.proposal, marketing: data.marketing,
-    consentVersion: data.consentVersion || "2026-10-21", source: data.proposalDetails ? "AX 진단 제안서 작성란" : "홈페이지 자료 신청",
+    consentVersion: data.consentVersion || "2026-10-21",
+    source: isProposal ? (data.diagnosis ? "AX 진단 제안서 작성란" : "제안서 작성란") : "홈페이지 자료 신청",
+    ...(saveDetails ? {
+      proposalDetails: data.proposalDetails,
+      diagnosis: data.diagnosis ? formatAxProposalDiagnosis(data.diagnosis) : "",
+    } : {}),
   });
   const timestamp = Date.now().toString();
   const signature = createHmac("sha256", secret).update(timestamp + "." + payload).digest("hex");
@@ -24,6 +32,7 @@ export async function saveVerifiedResource(data: ResourceRequest): Promise<boole
   });
   if (!response.ok) throw new Error("Resource sheet unavailable");
   const result = await response.json();
-  if (result?.ok !== true || result?.id !== data.id) throw new Error("Resource sheet did not acknowledge save");
+  if (result?.ok !== true || result?.id !== data.id || (saveDetails && result.version !== 2))
+    throw new Error("Resource sheet did not acknowledge save");
   return true;
 }

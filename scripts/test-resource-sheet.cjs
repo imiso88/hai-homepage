@@ -26,7 +26,7 @@ test('verified sheet persistence', async t => {
   process.env.RESOURCE_SHEET_SECRET = secret;
   process.env.RESOURCE_SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/test-deployment/exec';
   const resources = compile('lib/resources.ts', { './ax-proposal': compile('lib/ax-proposal.ts') });
-  const persistence = compile('lib/resource-sheet.ts', { './resources': resources });
+  const persistence = compile('lib/resource-sheet.ts', { './resources': resources, './ax-proposal': compile('lib/ax-proposal.ts') });
   const route = compile('app/api/resource-verify/route.ts', { '@/lib/resources': resources, '@/lib/resource-sheet': persistence });
   const data = { organization: '=HYPERLINK("https://invalid")', name: '테스트', email: 'test@example.org', resource: 'brochure', consent: true, proposal: true, marketing: false, id: randomUUID(), issuedAt: Date.now() };
   let savedPayload, sheetOk = true, mailOk = true, callCount = 0;
@@ -37,7 +37,7 @@ test('verified sheet persistence', async t => {
     const envelope = JSON.parse(options.body);
     assert.equal(envelope.signature, createHmac('sha256', secret).update(envelope.timestamp + '.' + envelope.payload).digest('hex'));
     savedPayload = JSON.parse(envelope.payload);
-    return Response.json(sheetOk ? { ok: true, id: savedPayload.id } : { ok: false });
+    return Response.json(sheetOk ? { ok: true, id: savedPayload.id, version: savedPayload.version } : { ok: false });
   };
   const request = token => new Request('https://www.humanai-edu.kr/api/resource-verify', { method: 'POST', body: JSON.stringify({ token }) });
   const token = resources.seal('verify', data, 1800);
@@ -102,7 +102,15 @@ test('verified sheet persistence', async t => {
       assert.equal(savedPayload.email, input.email);
       assert.equal(savedPayload.resourceLabel, '맞춤 교육 제안서');
       assert.equal(savedPayload.marketing, false);
-      assert.equal(savedPayload.diagnosis, undefined);
+      assert.equal(savedPayload.version, 2);
+      assert.equal(savedPayload.proposalDetails, input.details);
+      assert.match(savedPayload.diagnosis, /AI 활용 수준: 5\.0\/5\.0 · 안전 운영 준비: 1\.0\/5\.0/);
+      assert.match(savedPayload.diagnosis, /최종 확인할 사람이 정해져 있지 않음 \(1\/5\)/);
+      assert.equal(await persistence.saveVerifiedResource(standalone), true);
+      assert.equal(savedPayload.diagnosis, '');
+      assert.equal(savedPayload.source, '제안서 작성란');
+      assert.equal(await persistence.saveVerifiedResource({ ...standalone, consentVersion: 'proposal-v2' }), true);
+      assert.equal(savedPayload.proposalDetails, undefined);
       assert.match(owner.text, /공문 작성 교육/);
       assert.match(owner.text, /AI 활용 수준: 5\.0\/5\.0 · 안전 운영 준비: 1\.0\/5\.0/);
       assert.match(owner.text, /무엇을 보고 판단하나요\? — 모름/);
@@ -116,7 +124,7 @@ test('verified sheet persistence', async t => {
   });
   await t.test('Apps Script verifies signature/freshness, locks writes, deduplicates and escapes formulas', () => {
     const rows = [], script = fs.readFileSync(path.join(root, 'scripts/resource-sheet.gs'), 'utf8');
-    let locked = false, flushes = 0;
+    let locked = false, flushes = 0, extraHeaders = ['', ''];
     const context = vm.createContext({
       ContentService: { MimeType: { JSON: 'json' }, createTextOutput: text => ({ setMimeType: () => JSON.parse(text) }) },
       PropertiesService: { getScriptProperties: () => ({ getProperty: () => secret }) },
@@ -124,7 +132,9 @@ test('verified sheet persistence', async t => {
       LockService: { getScriptLock: () => ({ tryLock: () => (locked = true), hasLock: () => locked, releaseLock: () => { locked = false; } }) },
       SpreadsheetApp: { flush: () => { flushes++; }, openById: () => ({ getSheetByName: () => ({
         getLastRow: () => rows.length + 1, getMaxRows: () => 1000,
-        getRange: (r) => ({ getValues: () => [context.HEADERS],
+        getMaxColumns: () => 26, getLastColumn: () => 12,
+        getRange: (r, c) => ({ getValues: () => [c === 1 ? context.HEADERS : extraHeaders],
+          setValues: ([value]) => { extraHeaders = value; },
           createTextFinder: id => ({ matchEntireCell: () => ({ useRegularExpression: () => ({ findNext: () => rows.find(row => row[0] === id) }) }) }),
           setNumberFormat: () => ({ setValues: value => { assert.equal(locked, true); rows.push(...value); } }),
         }),
@@ -143,5 +153,14 @@ test('verified sheet persistence', async t => {
     assert.equal(rows[0][2][0], "'"); assert.equal(rows[0][7], '미동의');
     assert.equal(post(savedPayload).duplicate, true); assert.equal(rows.length, 1);
     assert.equal(flushes, 1); assert.equal(locked, false);
+    const proposal = { ...savedPayload, id: randomUUID(), version: 2, proposal: true,
+      proposalDetails: '=교육 요청', diagnosis: 'AI 활용 수준: 3.0/5.0\n1. 첫 문항 — 모름' };
+    assert.equal(post({ ...proposal, proposalDetails: '' }).ok, false);
+    assert.equal(post(proposal).version, 2);
+    assert.equal(extraHeaders[0], '교육 요청 내용');
+    assert.equal(rows[1][12], "'=교육 요청");
+    assert.equal(rows[1][13], proposal.diagnosis);
+    assert.equal(post(proposal).duplicate, true);
+    assert.equal(rows.length, 2);
   });
 });
