@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>맞춤 교육 제안서 작성란 | 휴먼AI융합교육원</title><meta name="robots" content="noindex">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f2f7fb;color:#102a43;font-family:system-ui,'Malgun Gothic',sans-serif;line-height:1.65}
+main{max-width:640px;margin:28px auto;padding:clamp(18px,5vw,36px);background:#fff;border:1px solid #dce6ee;border-radius:20px}h1{line-height:1.3}a{color:#145c87}label{display:block;margin:14px 0 4px;font-weight:650}
+input:not([type=checkbox]),textarea{width:100%;min-height:44px;padding:9px 12px;border:1px solid #75889b;border-radius:8px;font:inherit}textarea{min-height:115px;resize:vertical}
+button{margin-top:16px;padding:12px 18px;border:0;border-radius:8px;background:#145c87;color:white;font:inherit;font-weight:700;cursor:pointer}button:disabled{opacity:.65}small{display:block;color:#475e73}#proposal-status{overflow-wrap:anywhere}
+@media(max-width:680px){main{margin:14px}}
+</style><script src="/proposal-request.js" defer></script></head>
+<body><main>
+<a href="/diagnosis">← AX 자가진단</a>
+<h1>맞춤 교육 제안서 작성란</h1>
+<p>교육 대상과 필요한 내용을 남겨 주세요. 확인 메일의 링크에서 이메일을 확인하면 신청이 접수됩니다.</p>
+<form id="proposal-form" method="post" action="/api/resource-request">
+  <label for="proposal-org">기관·기업명</label><input id="proposal-org" name="organization" autocomplete="organization" required maxlength="100">
+  <label for="proposal-name">담당자 이름</label><input id="proposal-name" name="name" autocomplete="name" required maxlength="50" aria-describedby="name-help">
+  <small id="name-help">제안서 회신을 받을 담당자 이름을 적어 주세요.</small>
+  <label for="proposal-email">제안서를 받을 이메일</label><input id="proposal-email" name="email" type="email" autocomplete="email" required maxlength="120">
+  <label for="proposal-email-confirm">이메일 한 번 더 입력</label><input id="proposal-email-confirm" name="emailConfirm" type="email" autocomplete="off" required maxlength="120">
+  <label for="proposal-details">교육 대상과 요청 내용</label><textarea id="proposal-details" name="details" required maxlength="600" aria-describedby="details-help" placeholder="예: 시청 실무자 30명, 공문 작성과 결과 검증 실습, 희망 일정 미정"></textarea>
+  <small id="details-help">교육 대상, 인원, 희망 일정, 배우고 싶은 업무를 아는 범위에서 적어 주세요. 개인정보나 내부 기밀은 적지 마세요.</small>
+  <input type="text" name="website" tabindex="-1" autocomplete="off" hidden>
+  <p><small>수집 항목: 기관·기업명, 담당자 이름, 이메일, 요청 내용 · 목적: 이메일 확인 및 제안서 회신 · 보유 기간: 수집일로부터 1년. 동의하지 않으면 신청할 수 없습니다.</small></p>
+  <label><input type="checkbox" name="consent" required> [필수] 개인정보 수집·이용에 동의합니다. <a href="/privacy.html" target="_blank" rel="noopener">처리방침</a></label>
+  <button type="submit">확인 메일 보내기</button>
+</form>
+<p id="proposal-status" role="status" aria-live="polite"></p>
+<button id="proposal-edit" type="button" hidden>입력 내용 수정</button>
+<noscript><p>온라인 신청에는 자바스크립트가 필요합니다. 이용이 어렵다면 <a href="tel:01063985354">전화로 상담해 주세요</a>.</p></noscript>
+</main></body></html>

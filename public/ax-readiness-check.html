@@ -466,6 +466,8 @@
     display:flex; flex-wrap:wrap; gap: 12px;
     margin-top: 30px;
   }
+  .cta-secondary{display:flex;gap:6px;align-items:center}
+  .cta-secondary .btn{padding-inline:12px;white-space:nowrap}
 
   footer.legal{
     margin-top: 40px;
@@ -518,11 +520,13 @@
     </div>
 
     <div class="qcard" style="margin-bottom:20px">
-      <p><label for="diagnosis-scope"><strong>어느 범위의 상황을 알고 계신가요?</strong></label></p>
+      <p><label for="diagnosis-scope"><strong>어디의 AI 활용 상황을 기준으로 답할까요?</strong></label></p>
+      <p class="fineprint">소속 팀의 상황만 안다면 ‘내가 아는 부서’, 여러 부서의 업무와 공통 기준까지 안다면 ‘조직 전체’를 선택하세요. 이 선택은 결과의 범위를 표시하며 점수에는 들어가지 않습니다.</p>
       <select id="diagnosis-scope" style="width:100%;min-height:44px;margin:8px 0 20px;padding:8px;font:inherit">
         <option>내가 아는 부서</option><option>조직 전체</option>
       </select>
-      <p><label for="diagnosis-agent"><strong>AI가 사람 대신 메일을 보내거나 시스템을 변경하는 자동 실행을 쓰나요?</strong></label></p>
+      <p><label for="diagnosis-agent"><strong>AI가 초안 작성뿐 아니라 실제 실행까지 하나요?</strong></label></p>
+      <p class="fineprint">예를 들어 AI가 메일을 직접 보내거나 시스템의 데이터를 바꾸면 ‘사용 중’입니다. AI는 초안만 만들고 사람이 직접 발송하거나 수정한다면 ‘사용하지 않음’입니다. 사용 중이면 안전 확인 3문항이 추가됩니다.</p>
       <select id="diagnosis-agent" style="width:100%;min-height:44px;margin:8px 0;padding:8px;font:inherit">
         <option value="unknown">모름</option><option value="no">사용하지 않음</option><option value="yes">사용 중 · 안전 문항 3개 추가</option>
       </select>
@@ -581,16 +585,18 @@
     </div>
 
     <div class="cta-row">
-      <a class="btn btn-primary" id="btn-cta-mail" href="mailto:orthia66@gmail.com">이 결과로 맞춤 제안 받기 →</a>
-      <a class="btn btn-ghost" id="btn-cta-tel" href="tel:01063985354">지금 전화로 상담하기</a>
+      <a class="btn btn-primary" id="btn-cta-mail" href="/proposal-request.html" target="_top">맞춤제안받기 →</a>
+      <div class="cta-secondary">
+        <a class="btn btn-ghost" id="btn-cta-tel" href="tel:01063985354">전화로 상담하기</a>
+        <button class="btn btn-ghost" type="button" id="btn-restart-end">진단 다시하기</button>
+      </div>
     </div>
 
     <footer class="legal">
       <span>© 휴먼AI융합교육원 · Human First</span>
-      <button class="restart-link" id="btn-restart-end">진단 다시 하기</button>
     </footer>
   </div>
 
 </div>
 
-<script src="/ax-readiness.js?v=2" defer></script>
+<script src="/ax-readiness.js?v=3" defer></script>
