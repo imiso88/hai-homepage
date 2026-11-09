@@ -501,24 +501,34 @@
   <div id="screen-intro">
     <p class="eyebrow">조직 AX 준비도 자가진단</p>
     <h1>우리 조직은 지금<br>AI 전환의 어느 단계에 있을까요?</h1>
-    <p class="lede">15개 문항에 답하면 제출 즉시 우리 조직의 AX 단계, 영역별 강점·보완점, 맞춤 교육 방향까지 화면에서 바로 확인할 수 있습니다.</p>
+    <p class="lede">기본 15문항으로 AI를 얼마나 업무에 쓰는지, 안전하게 운영할 준비가 됐는지 따로 확인합니다. 결과에서 먼저 할 일과 교육 방향을 확인하세요.</p>
 
     <div class="meta-row">
       <span class="meta-chip">⏱ 소요시간 <b>약 3분</b></span>
-      <span class="meta-chip">📝 문항수 <b>15문항</b></span>
+      <span class="meta-chip">📝 문항수 <b>기본 15문항</b></span>
       <span class="meta-chip">🔒 이메일 <b>입력 불필요</b></span>
     </div>
 
     <div class="dims-preview">
-      <div class="dim"><span class="num">01</span><span class="lbl">AI 이해</span></div>
-      <div class="dim"><span class="num">02</span><span class="lbl">도구 활용</span></div>
-      <div class="dim"><span class="num">03</span><span class="lbl">업무 적용</span></div>
-      <div class="dim"><span class="num">04</span><span class="lbl">데이터 활용</span></div>
-      <div class="dim"><span class="num">05</span><span class="lbl">검증·보안</span></div>
+      <div class="dim"><span class="num">01</span><span class="lbl">AI 이해·목표</span></div>
+      <div class="dim"><span class="num">02</span><span class="lbl">도구 접근·학습</span></div>
+      <div class="dim"><span class="num">03</span><span class="lbl">업무 적용·성과</span></div>
+      <div class="dim"><span class="num">04</span><span class="lbl">데이터 관리</span></div>
+      <div class="dim"><span class="num">05</span><span class="lbl">검증·안전 운영</span></div>
     </div>
 
-    <button class="btn btn-primary" id="btn-start">진단 시작하기 →</button>
-    <p class="fineprint">문항은 구성원 개인이 아니라 &ldquo;우리 조직&rdquo;을 기준으로 답해 주세요. 결과는 저장되지 않으며 이 화면에서만 확인됩니다.</p>
+    <div class="qcard" style="margin-bottom:20px">
+      <p><label for="diagnosis-scope"><strong>어느 범위의 상황을 알고 계신가요?</strong></label></p>
+      <select id="diagnosis-scope" style="width:100%;min-height:44px;margin:8px 0 20px;padding:8px;font:inherit">
+        <option>내가 아는 부서</option><option>조직 전체</option>
+      </select>
+      <p><label for="diagnosis-agent"><strong>AI가 사람 대신 메일을 보내거나 시스템을 변경하는 자동 실행을 쓰나요?</strong></label></p>
+      <select id="diagnosis-agent" style="width:100%;min-height:44px;margin:8px 0;padding:8px;font:inherit">
+        <option value="unknown">모름</option><option value="no">사용하지 않음</option><option value="yes">사용 중 · 안전 문항 3개 추가</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" id="btn-start" type="button">진단 시작하기 →</button>
+    <p class="fineprint">선택한 범위의 현재 상황을 기준으로 답해 주세요. ‘모름’과 ‘해당 없음’은 점수에 포함하지 않습니다. 응답과 결과는 저장되지 않습니다.</p>
   </div>
 
   <!-- ============ QUIZ ============ -->
@@ -533,7 +543,7 @@
 
     <div class="qcard">
       <p class="qlabel" id="q-eyebrow">영역 01 · AI 이해</p>
-      <h2 id="q-text">문항이 여기에 표시됩니다.</h2>
+      <h2 id="q-text" tabindex="-1">문항이 여기에 표시됩니다.</h2>
       <div class="scale" id="q-scale"></div>
     </div>
 
@@ -546,12 +556,12 @@
   <!-- ============ RESULTS ============ -->
   <div id="screen-results">
     <div class="result-hero">
-      <span class="stage-pill" id="res-stage-pill">AX 2단계 · 확산기</span>
-      <h2 id="res-stage-title">부서별로 AI를 쓰기 시작한 확산기입니다</h2>
+      <span class="stage-pill" id="res-stage-pill">자가점검 결과</span>
+      <h2 id="res-stage-title" tabindex="-1">우리 조직의 점검 결과</h2>
       <p class="desc" id="res-stage-desc">설명이 여기에 표시됩니다.</p>
       <div class="score-row">
-        <div class="score-num" id="res-score">3.2<span>/5.0</span></div>
-        <p class="score-cap">15개 문항 평균 점수 — 5개 영역(AI 이해·도구 활용·업무 적용·데이터 활용·검증·보안)의 응답을 종합한 결과입니다.</p>
+        <div><strong>AI 활용 수준</strong><div id="res-score"></div><p id="res-use-coverage" class="score-cap"></p></div>
+        <div><strong>안전 운영 준비</strong><div id="res-safety-score"></div><p id="res-safety-coverage" class="score-cap"></p></div>
       </div>
     </div>
 
@@ -561,10 +571,13 @@
     <div class="callout-grid" id="res-callouts"></div>
 
     <div class="reco-card">
+      <h3>지금 먼저 할 일</h3>
+      <p id="res-next"></p>
+    </div>
+    <div class="reco-card">
       <p class="rlabel">맞춤 교육 추천</p>
       <h3 id="res-reco-title">추천 프로그램</h3>
       <p id="res-reco-text">추천 내용이 여기에 표시됩니다.</p>
-      <p id="res-reco-weak"></p>
     </div>
 
     <div class="cta-row">
@@ -580,232 +593,4 @@
 
 </div>
 
-<script>
-(function(){
-  "use strict";
-
-  var DIMENSIONS = [
-    { key: "understand", label: "AI 이해" },
-    { key: "tool",       label: "도구 활용" },
-    { key: "apply",      label: "업무 적용" },
-    { key: "data",       label: "데이터 활용" },
-    { key: "verify",     label: "검증·보안" }
-  ];
-
-  var QUESTIONS = [
-    { dim: "understand", text: "우리 조직 구성원 대다수가 생성형 AI가 무엇이고 어떤 업무에 쓸 수 있는지 기본 개념을 알고 있다." },
-    { dim: "understand", text: "임원과 실무자 모두 AI 도입의 필요성에 대해 어느 정도 공감대를 가지고 있다." },
-    { dim: "understand", text: "회의에서 프롬프트, 환각(할루시네이션) 같은 AI 용어가 나와도 대화가 끊기지 않는다." },
-
-    { dim: "tool", text: "직원들이 ChatGPT·Gemini·Claude 같은 생성형 AI 도구를 업무에 실제로 사용해 본 경험이 있다." },
-    { dim: "tool", text: "부서마다 AI 도구 활용 수준의 편차가 크지 않다." },
-    { dim: "tool", text: "AI 도구 사용에 대한 사내 가이드라인이나 승인된 도구 목록이 있다." },
-
-    { dim: "apply", text: "AI로 초안을 만든 보고서·기획안이 실제 업무에 쓰인 사례가 있다." },
-    { dim: "apply", text: "회의록 정리, 자료 요약 같은 반복 문서 업무 일부를 AI로 대체하고 있다." },
-    { dim: "apply", text: "AI 활용으로 특정 업무의 처리 시간이 줄었다고 느낀다." },
-
-    { dim: "data", text: "부서·조직이 보유한 문서·통계 자료를 AI로 분석하거나 요약해 본 경험이 있다." },
-    { dim: "data", text: "AI 결과물을 만들 때 참고할 내부 자료가 비교적 잘 정리되어 있다." },
-    { dim: "data", text: "데이터에 근거해 의사결정을 내리는 문화가 어느 정도 자리잡고 있다." },
-
-    { dim: "verify", text: "AI가 생성한 결과물의 사실 여부를 검증하는 절차나 습관이 있다." },
-    { dim: "verify", text: "개인정보·민감정보를 공개형 AI에 입력하지 않도록 하는 규정이나 공감대가 있다." },
-    { dim: "verify", text: "AI 활용 결과에 대한 최종 검토·책임 소재가 명확하다." }
-  ];
-
-  var SCALE_LABELS = ["전혀 아니다", "아니다", "보통이다", "그렇다", "매우 그렇다"];
-
-  var answers = new Array(QUESTIONS.length).fill(null);
-  var current = 0;
-
-  var elIntro = document.getElementById("screen-intro");
-  var elQuiz = document.getElementById("screen-quiz");
-  var elResults = document.getElementById("screen-results");
-
-  function dimLabel(key){
-    for (var i=0;i<DIMENSIONS.length;i++){ if (DIMENSIONS[i].key===key) return DIMENSIONS[i].label; }
-    return key;
-  }
-  function dimOrdinal(key){
-    for (var i=0;i<DIMENSIONS.length;i++){ if (DIMENSIONS[i].key===key) return i+1; }
-    return 0;
-  }
-
-  function renderQuestion(){
-    var q = QUESTIONS[current];
-    document.getElementById("progress-step").textContent = "문항 " + (current+1) + " / " + QUESTIONS.length;
-    document.getElementById("progress-dim").textContent = dimLabel(q.dim);
-    document.getElementById("q-eyebrow").textContent = "영역 0" + dimOrdinal(q.dim) + " · " + dimLabel(q.dim);
-    document.getElementById("q-text").textContent = q.text;
-    document.getElementById("progress-fill").style.width = Math.round(((current)/QUESTIONS.length)*100) + "%";
-
-    var scale = document.getElementById("q-scale");
-    scale.innerHTML = "";
-    SCALE_LABELS.forEach(function(label, idx){
-      var val = idx+1;
-      var btn = document.createElement("button");
-      btn.className = "scale-btn" + (answers[current]===val ? " selected" : "");
-      btn.type = "button";
-      btn.innerHTML = '<span class="dot">' + val + '</span><span>' + label + '</span>';
-      btn.addEventListener("click", function(){
-        answers[current] = val;
-        if (current < QUESTIONS.length-1){
-          current++;
-          renderQuestion();
-        } else {
-          showResults();
-        }
-      });
-      scale.appendChild(btn);
-    });
-
-    document.getElementById("btn-prev").disabled = (current===0);
-  }
-
-  document.getElementById("btn-start").addEventListener("click", function(){
-    elIntro.style.display = "none";
-    elQuiz.style.display = "block";
-    current = 0;
-    renderQuestion();
-    window.scrollTo({top:0, behavior:"instant"});
-  });
-
-  document.getElementById("btn-prev").addEventListener("click", function(){
-    if (current>0){ current--; renderQuestion(); }
-  });
-
-  function restart(){
-    answers = new Array(QUESTIONS.length).fill(null);
-    current = 0;
-    elResults.style.display = "none";
-    elQuiz.style.display = "none";
-    elIntro.style.display = "block";
-    window.scrollTo({top:0, behavior:"instant"});
-  }
-  document.getElementById("btn-restart-mid").addEventListener("click", restart);
-  document.getElementById("btn-restart-end").addEventListener("click", restart);
-
-  var STAGES = [
-    {
-      max: 2.0, pill: "AX 1단계 · 도입기",
-      title: "이제 막 AI를 시험적으로 써보는 도입기입니다",
-      desc: "일부 구성원이 개인적으로 AI를 써보는 단계로, 아직 조직 전체의 공통 기반은 만들어지지 않았습니다. 기본 개념과 활용법을 먼저 맞추는 것이 우선입니다."
-    },
-    {
-      max: 3.0, pill: "AX 2단계 · 확산기",
-      title: "부서별로 AI 활용이 번지기 시작한 확산기입니다",
-      desc: "여러 부서가 각자 AI를 쓰기 시작했지만 활용 수준의 편차가 있는 단계입니다. 직무별 맞춤 교육으로 격차를 줄여야 할 시점입니다."
-    },
-    {
-      max: 4.0, pill: "AX 3단계 · 적용기",
-      title: "주요 업무에 AI를 실제로 적용하고 있는 적용기입니다",
-      desc: "AI가 핵심 업무 흐름에 들어와 있는 단계입니다. 이제는 개인의 활용을 넘어 업무 프로세스 자체를 재설계할 시점입니다."
-    },
-    {
-      max: 5.01, pill: "AX 4단계 · 정착기",
-      title: "AI 활용이 표준 업무방식으로 자리잡은 정착기입니다",
-      desc: "AI 활용이 일회성이 아니라 조직의 표준 업무방식으로 정착된 단계입니다. 지속적인 고도화와 신규 인력 온보딩 체계가 중요해집니다."
-    }
-  ];
-
-  var RECOMMENDATIONS = {
-    "AX 1단계 · 도입기": {
-      title: "기업·공공기관 생성형 AI 실무교육 (2~4시간 체험형)",
-      text: "구성원 대부분이 아직 AI를 낯설어하는 단계이므로, 로그인부터 결과 수정까지 단계별로 안내하는 기초 체험 교육을 먼저 진행하는 것을 권장합니다."
-    },
-    "AX 2단계 · 확산기": {
-      title: "직무별 프롬프트 실습 워크숍 (6시간 집중과정)",
-      text: "부서마다 활용 격차가 있는 단계이므로, 보고서·회의록·데이터 분석 등 직무별 실습을 통해 조직 전체의 활용 수준을 맞추는 것을 권장합니다."
-    },
-    "AX 3단계 · 적용기": {
-      title: "바이브코딩 업무자동화 랩 · 임원·관리자 AX 전략교육",
-      text: "이미 AI가 업무에 들어와 있는 단계이므로, 반복 업무를 자동화 도구로 전환하고 임원진과 업무 프로세스 재설계 방향을 함께 논의할 시점입니다."
-    },
-    "AX 4단계 · 정착기": {
-      title: "조직 맞춤 AX 전환 컨설팅 (지속 개선 자문)",
-      text: "AI 활용이 이미 표준 업무방식으로 자리잡았으므로, 정기 진단과 신규 입사자 온보딩 체계를 포함한 지속 컨설팅으로 넘어가는 것을 권장합니다."
-    }
-  };
-
-  var WEAK_NOTES = {
-    understand: "AI 이해 영역이 상대적으로 낮게 나타났습니다. 임원·실무자가 함께 참여하는 기초 개념 특강을 먼저 배치하는 것을 권장합니다.",
-    tool: "도구 활용 영역이 상대적으로 낮게 나타났습니다. 부서별 승인 도구와 기본 사용법을 정리하는 실습이 필요합니다.",
-    apply: "업무 적용 영역이 상대적으로 낮게 나타났습니다. 실제 업무자료를 가지고 직접 실습하는 현장형 과정이 도움이 됩니다.",
-    data: "데이터 활용 영역이 상대적으로 낮게 나타났습니다. 조직 내부 자료를 AI로 분석·요약해보는 실습을 포함하는 것을 권장합니다.",
-    verify: "검증·보안 영역이 상대적으로 낮게 나타났습니다. 개인정보 처리 원칙과 결과 검증 절차를 다루는 모듈을 함께 진행하는 것을 권장합니다."
-  };
-
-  function statusOf(score){
-    if (score >= 4) return "good";
-    if (score >= 2.5) return "watch";
-    return "critical";
-  }
-  function statusLabel(status){
-    return status==="good" ? "양호" : (status==="watch" ? "보완 필요" : "우선 보강");
-  }
-
-  function showResults(){
-    elQuiz.style.display = "none";
-    elResults.style.display = "block";
-    window.scrollTo({top:0, behavior:"instant"});
-
-    // per-dimension averages
-    var dimScores = {};
-    DIMENSIONS.forEach(function(d){
-      var vals = [];
-      QUESTIONS.forEach(function(q, i){ if (q.dim===d.key) vals.push(answers[i]); });
-      var sum = vals.reduce(function(a,b){return a+b;},0);
-      dimScores[d.key] = sum / vals.length;
-    });
-
-    var overallSum = answers.reduce(function(a,b){return a+b;},0);
-    var overall = overallSum / answers.length;
-
-    var stage = STAGES[STAGES.length-1];
-    for (var i=0;i<STAGES.length;i++){ if (overall <= STAGES[i].max){ stage = STAGES[i]; break; } }
-
-    document.getElementById("res-stage-pill").textContent = stage.pill;
-    document.getElementById("res-stage-title").textContent = stage.title;
-    document.getElementById("res-stage-desc").textContent = stage.desc;
-    document.getElementById("res-score").innerHTML = overall.toFixed(1) + "<span>/5.0</span>";
-
-    // dimension bars
-    var barsWrap = document.getElementById("res-dim-bars");
-    barsWrap.innerHTML = "";
-    var sortedForCallouts = DIMENSIONS.map(function(d){ return {key:d.key, label:d.label, score:dimScores[d.key]}; });
-
-    DIMENSIONS.forEach(function(d){
-      var score = dimScores[d.key];
-      var status = statusOf(score);
-      var row = document.createElement("div");
-      row.className = "dim-row";
-      row.innerHTML =
-        '<div class="dim-row-top">' +
-          '<span class="dname">' + d.label + '</span>' +
-          '<span class="dscore">' + score.toFixed(1) + ' / 5.0</span>' +
-        '</div>' +
-        '<div class="bar-track"><div class="bar-fill" style="width:' + Math.round((score/5)*100) + '%"></div></div>' +
-        '<span class="status-chip ' + status + '">' + statusLabel(status) + '</span>';
-      barsWrap.appendChild(row);
-    });
-
-    // strongest / weakest callouts
-    var byScore = sortedForCallouts.slice().sort(function(a,b){ return b.score - a.score; });
-    var strongest = byScore[0];
-    var weakest = byScore[byScore.length-1];
-
-    var calloutsWrap = document.getElementById("res-callouts");
-    calloutsWrap.innerHTML =
-      '<div class="callout strength"><p class="clabel">현재 강점</p><p class="ctext"><b>' + strongest.label + '</b> 영역이 가장 앞서 있습니다 (' + strongest.score.toFixed(1) + '/5.0).</p></div>' +
-      '<div class="callout weakness"><p class="clabel">우선 보강</p><p class="ctext"><b>' + weakest.label + '</b> 영역을 먼저 보완하면 효과가 큽니다 (' + weakest.score.toFixed(1) + '/5.0).</p></div>';
-
-    // recommendation
-    var reco = RECOMMENDATIONS[stage.pill];
-    document.getElementById("res-reco-title").textContent = reco.title;
-    document.getElementById("res-reco-text").textContent = reco.text;
-    document.getElementById("res-reco-weak").textContent = WEAK_NOTES[weakest.key] || "";
-  }
-
-})();
-</script>
+<script src="/ax-readiness.js?v=2" defer></script>
