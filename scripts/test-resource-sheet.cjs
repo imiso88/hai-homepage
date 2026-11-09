@@ -71,7 +71,7 @@ test('verified sheet persistence', async t => {
   });
   await t.test('proposal requires valid name, matching emails and mailbox confirmation before saving', async () => {
     const requestRoute = compile('app/api/resource-request/route.ts', { '@/lib/resources': resources });
-    const diagnosis = { version: 'ax-v3', scope: '내가 아는 부서', agent: 'no', answers: [...Array(9).fill(5), 'unknown', ...Array(5).fill(1)] };
+    const diagnosis = { version: 'ax-v4', scope: '내가 아는 부서', agent: 'yes', answers: [...Array(9).fill(5), 'unknown', ...Array(5).fill(1), 4, 3, 2] };
     const input = { kind: 'proposal', organization: '예시 기관', name: '김담당', email: 'proposal@example.org', emailConfirm: 'proposal@example.org', details: '실무자 30명 공문 작성 교육', consent: true, fromAx: true, shareDiagnosis: true, diagnosis };
     const send = data => requestRoute.POST(new Request('https://www.humanai-edu.kr/api/resource-request', { method: 'POST', body: JSON.stringify(data) }));
     const oldFetch = global.fetch;
@@ -105,7 +105,10 @@ test('verified sheet persistence', async t => {
       assert.equal(savedPayload.diagnosis, undefined);
       assert.match(owner.text, /공문 작성 교육/);
       assert.match(owner.text, /AI 활용 수준: 5\.0\/5\.0 · 안전 운영 준비: 1\.0\/5\.0/);
-      assert.match(owner.text, /금지 자료 구분 — 모름/);
+      assert.match(owner.text, /무엇을 보고 판단하나요\? — 모름/);
+      assert.match(owner.text, /최종 확인할 사람이 정해져 있지 않음 \(1\/5\)/);
+      assert.match(owner.text, /일부 발송이나 변경에만 승인 단계를 둠 \(3\/5\)/);
+      assert.equal(resources.parseRequest({ ...input, diagnosis: { ...diagnosis, version: 'ax-v3' } }).diagnosis.version, 'ax-v3');
       assert.match(owner.subject, /AX 진단 결과 포함/);
       assert.match(owner.html, /신청자가 작성한 교육 요청/);
       assert.match(owner.html, /AX 진단 응답 및 점수/);
