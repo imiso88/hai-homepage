@@ -99,7 +99,7 @@ export function parseRequest(data: Record<string, unknown>): ResourceRequest | s
     const proposalDetails = typeof data.details === "string" ? data.details.trim() : "";
     if (!proposalDetails || proposalDetails.length > 600) return "교육 대상과 필요한 내용을 600자 이내로 적어 주세요.";
     const diagnosis = data.shareDiagnosis === true ? readAxProposalDiagnosis(data.diagnosis) : null;
-    if (data.shareDiagnosis === true && !diagnosis) return "진단 결과를 확인할 수 없습니다. 진단을 다시 진행하거나 결과 공유를 해제해 주세요.";
+    if ((data.fromAx === true || data.shareDiagnosis === true) && !diagnosis) return "진단 결과를 확인할 수 없습니다. 진단을 다시 진행하거나 진단 없이 제안서 작성하기를 선택해 주세요.";
     return { organization: values.organization, name: values.name, email: values.email, resource: "brochure", consent: true, proposal: true, marketing: false, id: randomUUID(), issuedAt: Date.now(), consentVersion: "proposal-v2", proposalDetails, ...(diagnosis ? { diagnosis } : {}) };
   }
   const resource = resourceKey(data.resource);
@@ -157,7 +157,7 @@ export function confirmationMail(data: ResourceRequest, url: string): Mail {
 export function verifiedMail(data: ResourceRequest): Mail {
   if (data.proposalDetails) {
     const text = "기관·기업명: " + data.organization + "\n담당자명: " + data.name + "\n확인된 이메일: " + data.email + "\n교육 요청: " + data.proposalDetails + (data.diagnosis ? "\n\n" + formatAxProposalDiagnosis(data.diagnosis) : "");
-    return { to: [process.env.CONTACT_TO_EMAIL || "orthia66@gmail.com"], reply_to: data.email, subject: "[이메일 확인 완료] 맞춤 교육 제안서 신청", text, html: '<pre style="white-space:pre-wrap">' + escapeHtml(text) + '</pre>' };
+    return { to: [process.env.CONTACT_TO_EMAIL || "orthia66@gmail.com"], reply_to: data.email, subject: "[이메일 확인 완료] 맞춤 교육 제안서 신청" + (data.diagnosis ? " · AX 진단 결과 포함" : ""), text, html: '<div lang="ko" style="font-family:Arial,Malgun Gothic,sans-serif;color:#102a43"><h2>맞춤 교육 제안서 신청</h2><p>기관·기업명: ' + escapeHtml(data.organization) + '<br>담당자명: ' + escapeHtml(data.name) + '<br>확인된 이메일: ' + escapeHtml(data.email) + '</p><h3>신청자가 작성한 교육 요청</h3><p style="white-space:pre-wrap;overflow-wrap:anywhere">' + escapeHtml(data.proposalDetails) + '</p>' + (data.diagnosis ? '<h3>AX 진단 응답 및 점수</h3><p style="white-space:pre-wrap;overflow-wrap:anywhere">' + escapeHtml(formatAxProposalDiagnosis(data.diagnosis)) + '</p>' : '<p>진단 없이 신청한 제안서입니다.</p>') + '</div>' };
   }
   const rows = [["이메일 확인", "완료 (확인 링크에서 자료 받기 버튼 클릭)"], ["기관·기업명", data.organization], ["이름", data.name], ["이메일", data.email], ["신청 자료", RESOURCES[data.resource].label], ["신청 시각", new Date(data.issuedAt).toISOString()], ["맞춤 제안서", data.proposal ? "요청함 · 이메일 회신 필요" : "요청 안 함"], ["교육 소식 수신", data.marketing ? "동의" : "미동의 · 요청 건 회신만 가능"]];
   return {

@@ -3,25 +3,36 @@
   const status = document.getElementById("proposal-status");
   const edit = document.getElementById("proposal-edit");
   const submit = form.querySelector("button[type=submit]");
+  const fromAx = new URLSearchParams(location.search).get("from") === "ax";
   let snapshot;
   try {
-    snapshot = JSON.parse(sessionStorage.getItem("hai-ax-proposal") || "null");
-    sessionStorage.removeItem("hai-ax-proposal");
+    if (fromAx) snapshot = JSON.parse(sessionStorage.getItem("hai-ax-proposal") || "null");
   } catch { /* Sharing is optional. */ }
-  if (snapshot?.diagnosis?.version === "ax-v3" && Array.isArray(snapshot.preview?.scores) && Array.isArray(snapshot.preview?.items)) {
+  if (snapshot?.diagnosis?.version === "ax-v3" && Number.isFinite(snapshot.createdAt) && Date.now() - snapshot.createdAt < 1800000 && Array.isArray(snapshot.preview?.scores) && Array.isArray(snapshot.preview?.items)) {
     document.getElementById("proposal-diagnosis").hidden = false;
+    form.elements.shareDiagnosis.required = true;
     document.getElementById("proposal-diagnosis-summary").textContent = "응답 범위: " + snapshot.diagnosis.scope + " · " + snapshot.preview.headline;
     for (const [id, rows] of [["proposal-diagnosis-scores", snapshot.preview.scores], ["proposal-diagnosis-answers", snapshot.preview.items]]) {
       const list = document.getElementById(id);
       rows.forEach(value => { const li = document.createElement("li"); li.textContent = value; list.append(li); });
     }
-  } else snapshot = null;
+  } else {
+    snapshot = null;
+    if (fromAx) {
+      form.hidden = true;
+      document.getElementById("proposal-missing-diagnosis").hidden = false;
+    }
+  }
   edit.addEventListener("click", () => {
     form.hidden = false; edit.hidden = true; status.textContent = "";
     form.elements.email.focus();
   });
   form.addEventListener("submit", async event => {
     event.preventDefault();
+    if (fromAx && (!snapshot || !form.elements.shareDiagnosis.checked)) {
+      status.textContent = "진단 응답과 점수의 전달에 동의하거나, 진단 없이 제안서 작성하기를 선택해 주세요.";
+      return;
+    }
     const values = Object.fromEntries(new FormData(form));
     if (values.email.trim().toLowerCase() !== values.emailConfirm.trim().toLowerCase()) {
       status.textContent = "이메일 주소 두 칸이 다릅니다. 다시 확인해 주세요.";
@@ -32,7 +43,7 @@
     status.textContent = "확인 메일을 보내는 중입니다…";
     try {
       const shareDiagnosis = Boolean(snapshot && form.elements.shareDiagnosis.checked);
-      const response = await fetch("/api/resource-request", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...values, kind: "proposal", consent: form.elements.consent.checked, shareDiagnosis, ...(shareDiagnosis ? { diagnosis: snapshot.diagnosis } : {}) }) });
+      const response = await fetch("/api/resource-request", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...values, kind: "proposal", consent: form.elements.consent.checked, fromAx, shareDiagnosis, ...(shareDiagnosis ? { diagnosis: snapshot.diagnosis } : {}) }) });
       const result = await response.json();
       if (!response.ok || !result.ok) throw Error(result.error || "확인 메일을 보내지 못했습니다.");
       form.hidden = true;

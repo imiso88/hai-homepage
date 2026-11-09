@@ -72,7 +72,7 @@ test('verified sheet persistence', async t => {
   await t.test('proposal requires valid name, matching emails and mailbox confirmation before saving', async () => {
     const requestRoute = compile('app/api/resource-request/route.ts', { '@/lib/resources': resources });
     const diagnosis = { version: 'ax-v3', scope: '내가 아는 부서', agent: 'no', answers: [...Array(9).fill(5), 'unknown', ...Array(5).fill(1)] };
-    const input = { kind: 'proposal', organization: '예시 기관', name: '김담당', email: 'proposal@example.org', emailConfirm: 'proposal@example.org', details: '실무자 30명 공문 작성 교육', consent: true, shareDiagnosis: true, diagnosis };
+    const input = { kind: 'proposal', organization: '예시 기관', name: '김담당', email: 'proposal@example.org', emailConfirm: 'proposal@example.org', details: '실무자 30명 공문 작성 교육', consent: true, fromAx: true, shareDiagnosis: true, diagnosis };
     const send = data => requestRoute.POST(new Request('https://www.humanai-edu.kr/api/resource-request', { method: 'POST', body: JSON.stringify(data) }));
     const oldFetch = global.fetch;
     const originalPayload = savedPayload;
@@ -86,8 +86,10 @@ test('verified sheet persistence', async t => {
     };
     try {
       savedPayload = undefined;
-      for (const patch of [{ name: '123' }, { emailConfirm: 'other@example.org' }, { consent: false }, { diagnosis: { ...diagnosis, answers: [5] } }]) assert.equal((await send({ ...input, ...patch })).status, 400);
-      assert.equal(resources.parseRequest({ ...input, shareDiagnosis: false }).diagnosis, undefined);
+      for (const patch of [{ name: '123' }, { emailConfirm: 'other@example.org' }, { consent: false }, { shareDiagnosis: false }, { diagnosis: undefined }, { diagnosis: { ...diagnosis, answers: [5] } }]) assert.equal((await send({ ...input, ...patch })).status, 400);
+      const standalone = resources.parseRequest({ ...input, fromAx: false, shareDiagnosis: false });
+      assert.equal(typeof standalone, 'object');
+      assert.equal(standalone.diagnosis, undefined);
       assert.equal((await send(input)).status, 200);
       assert.equal(savedPayload, undefined);
       assert.equal(owner, undefined);
@@ -104,6 +106,9 @@ test('verified sheet persistence', async t => {
       assert.match(owner.text, /공문 작성 교육/);
       assert.match(owner.text, /AI 활용 수준: 5\.0\/5\.0 · 안전 운영 준비: 1\.0\/5\.0/);
       assert.match(owner.text, /금지 자료 구분 — 모름/);
+      assert.match(owner.subject, /AX 진단 결과 포함/);
+      assert.match(owner.html, /신청자가 작성한 교육 요청/);
+      assert.match(owner.html, /AX 진단 응답 및 점수/);
     } finally { global.fetch = oldFetch; savedPayload = originalPayload; }
   });
   await t.test('Apps Script verifies signature/freshness, locks writes, deduplicates and escapes formulas', () => {
