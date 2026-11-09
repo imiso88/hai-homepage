@@ -1,4 +1,5 @@
 import { createCipheriv, createDecipheriv, createHash, randomBytes, randomUUID } from "node:crypto";
+import { formatAxProposalDiagnosis, readAxProposalDiagnosis, type AxProposalDiagnosis } from "./ax-proposal";
 
 export const RESOURCES = {
   brochure: { label: "교육 소개서", file: "humanai-edu-brochure.pdf", name: "휴먼AI융합교육원_교육소개서.pdf" },
@@ -10,6 +11,7 @@ export type ResourceRequest = {
   organization: string; name: string; email: string; resource: ResourceKey;
   consent: true; proposal: boolean; marketing: boolean; id: string; issuedAt: number; consentVersion?: string;
   proposalDetails?: string;
+  diagnosis?: AxProposalDiagnosis;
 };
 export const LINK_SECONDS = 1800, ACCESS_SECONDS = 900;
 export const ACCESS_COOKIE = "hai_resource_access";
@@ -46,7 +48,7 @@ export function seal(purpose: string, data: unknown, seconds: number, now = Date
   return Buffer.concat([iv, cipher.getAuthTag(), bytes]).toString("base64url");
 }
 export function unseal<T>(value: unknown, purpose: string, now = Date.now()): T | null {
-  if (typeof value !== "string" || value.length > 4096 || !/^[A-Za-z0-9_-]+$/.test(value)) return null;
+  if (typeof value !== "string" || value.length > 6144 || !/^[A-Za-z0-9_-]+$/.test(value)) return null;
   try {
     const bytes = Buffer.from(value, "base64url");
     if (bytes.length < 29) return null;
@@ -96,7 +98,9 @@ export function parseRequest(data: Record<string, unknown>): ResourceRequest | s
     if (typeof data.emailConfirm !== "string" || values.email.toLowerCase() !== data.emailConfirm.trim().toLowerCase()) return "이메일 주소 두 칸을 동일하게 입력해 주세요.";
     const proposalDetails = typeof data.details === "string" ? data.details.trim() : "";
     if (!proposalDetails || proposalDetails.length > 600) return "교육 대상과 필요한 내용을 600자 이내로 적어 주세요.";
-    return { organization: values.organization, name: values.name, email: values.email, resource: "brochure", consent: true, proposal: true, marketing: false, id: randomUUID(), issuedAt: Date.now(), consentVersion: "proposal-v1", proposalDetails };
+    const diagnosis = data.shareDiagnosis === true ? readAxProposalDiagnosis(data.diagnosis) : null;
+    if (data.shareDiagnosis === true && !diagnosis) return "진단 결과를 확인할 수 없습니다. 진단을 다시 진행하거나 결과 공유를 해제해 주세요.";
+    return { organization: values.organization, name: values.name, email: values.email, resource: "brochure", consent: true, proposal: true, marketing: false, id: randomUUID(), issuedAt: Date.now(), consentVersion: "proposal-v2", proposalDetails, ...(diagnosis ? { diagnosis } : {}) };
   }
   const resource = resourceKey(data.resource);
   if (!resource) return "신청 자료를 다시 선택해 주세요.";
@@ -152,7 +156,7 @@ export function confirmationMail(data: ResourceRequest, url: string): Mail {
 }
 export function verifiedMail(data: ResourceRequest): Mail {
   if (data.proposalDetails) {
-    const text = "기관·기업명: " + data.organization + "\n담당자명: " + data.name + "\n확인된 이메일: " + data.email + "\n교육 요청: " + data.proposalDetails;
+    const text = "기관·기업명: " + data.organization + "\n담당자명: " + data.name + "\n확인된 이메일: " + data.email + "\n교육 요청: " + data.proposalDetails + (data.diagnosis ? "\n\n" + formatAxProposalDiagnosis(data.diagnosis) : "");
     return { to: [process.env.CONTACT_TO_EMAIL || "orthia66@gmail.com"], reply_to: data.email, subject: "[이메일 확인 완료] 맞춤 교육 제안서 신청", text, html: '<pre style="white-space:pre-wrap">' + escapeHtml(text) + '</pre>' };
   }
   const rows = [["이메일 확인", "완료 (확인 링크에서 자료 받기 버튼 클릭)"], ["기관·기업명", data.organization], ["이름", data.name], ["이메일", data.email], ["신청 자료", RESOURCES[data.resource].label], ["신청 시각", new Date(data.issuedAt).toISOString()], ["맞춤 제안서", data.proposal ? "요청함 · 이메일 회신 필요" : "요청 안 함"], ["교육 소식 수신", data.marketing ? "동의" : "미동의 · 요청 건 회신만 가능"]];

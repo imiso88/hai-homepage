@@ -3,6 +3,19 @@
   const status = document.getElementById("proposal-status");
   const edit = document.getElementById("proposal-edit");
   const submit = form.querySelector("button[type=submit]");
+  let snapshot;
+  try {
+    snapshot = JSON.parse(sessionStorage.getItem("hai-ax-proposal") || "null");
+    sessionStorage.removeItem("hai-ax-proposal");
+  } catch { /* Sharing is optional. */ }
+  if (snapshot?.diagnosis?.version === "ax-v3" && Array.isArray(snapshot.preview?.scores) && Array.isArray(snapshot.preview?.items)) {
+    document.getElementById("proposal-diagnosis").hidden = false;
+    document.getElementById("proposal-diagnosis-summary").textContent = "응답 범위: " + snapshot.diagnosis.scope + " · " + snapshot.preview.headline;
+    for (const [id, rows] of [["proposal-diagnosis-scores", snapshot.preview.scores], ["proposal-diagnosis-answers", snapshot.preview.items]]) {
+      const list = document.getElementById(id);
+      rows.forEach(value => { const li = document.createElement("li"); li.textContent = value; list.append(li); });
+    }
+  } else snapshot = null;
   edit.addEventListener("click", () => {
     form.hidden = false; edit.hidden = true; status.textContent = "";
     form.elements.email.focus();
@@ -18,7 +31,8 @@
     submit.disabled = true;
     status.textContent = "확인 메일을 보내는 중입니다…";
     try {
-      const response = await fetch("/api/resource-request", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...values, kind: "proposal", consent: form.elements.consent.checked }) });
+      const shareDiagnosis = Boolean(snapshot && form.elements.shareDiagnosis.checked);
+      const response = await fetch("/api/resource-request", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...values, kind: "proposal", consent: form.elements.consent.checked, shareDiagnosis, ...(shareDiagnosis ? { diagnosis: snapshot.diagnosis } : {}) }) });
       const result = await response.json();
       if (!response.ok || !result.ok) throw Error(result.error || "확인 메일을 보내지 못했습니다.");
       form.hidden = true;

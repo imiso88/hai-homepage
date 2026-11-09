@@ -128,6 +128,18 @@
     if (blocked && criticalLow.some(i => i.dim === 5)) $("res-next").textContent += " 자동 실행 범위를 확대하기 전에 권한·승인·중단 절차도 확인하세요.";
     $("res-reco-title").textContent = blocked ? "생성형 AI 안전 활용·결과 검증 교육" : uncertain ? "담당자 사전 점검 및 과정 상담" : use.score < 3 ? "직무별 생성형 AI 기초 실습" : "업무 과제 중심 AI 적용 워크숍";
     $("res-reco-text").textContent = blocked ? "자료 보안, 결과 검증과 사람의 검토 기준을 먼저 다루는 과정을 권장합니다." : uncertain ? "도구, 자료, 책임 범위를 확인한 뒤 교육 목표를 정하세요." : "담당 업무와 참여자의 수준을 기준으로 실습 범위를 조정하세요.";
+    $("btn-cta-mail").onclick = () => {
+      try {
+        sessionStorage.setItem("hai-ax-proposal", JSON.stringify({
+          diagnosis: {version:"ax-v3", scope, agent:agentUsage, answers},
+          preview: {
+            headline: $("res-stage-title").textContent,
+            scores: ["AI 활용 수준: " + scoreLabel(use), "안전 운영 준비: " + scoreLabel(safety), ...regions.map(r => r.label + ": " + scoreLabel(r))],
+            items: items.map(i => i.text + " — " + (i.value === "unknown" ? "모름" : i.value === "na" ? "해당 없음" : i.scale[i.value - 1] + " (" + i.value + "/5)")),
+          },
+        }));
+      } catch { /* The proposal form remains available if browser storage is blocked. */ }
+    };
     show("results");
     $("res-stage-title").focus({ preventScroll: true });
   }

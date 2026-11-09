@@ -25,7 +25,7 @@ test('verified sheet persistence', async t => {
   process.env.RESEND_API_KEY = 'test'; process.env.RESOURCE_FROM_EMAIL = 'test@example.org';
   process.env.RESOURCE_SHEET_SECRET = secret;
   process.env.RESOURCE_SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/test-deployment/exec';
-  const resources = compile('lib/resources.ts');
+  const resources = compile('lib/resources.ts', { './ax-proposal': compile('lib/ax-proposal.ts') });
   const persistence = compile('lib/resource-sheet.ts', { './resources': resources });
   const route = compile('app/api/resource-verify/route.ts', { '@/lib/resources': resources, '@/lib/resource-sheet': persistence });
   const data = { organization: '=HYPERLINK("https://invalid")', name: '테스트', email: 'test@example.org', resource: 'brochure', consent: true, proposal: true, marketing: false, id: randomUUID(), issuedAt: Date.now() };
@@ -71,7 +71,8 @@ test('verified sheet persistence', async t => {
   });
   await t.test('proposal requires valid name, matching emails and mailbox confirmation before saving', async () => {
     const requestRoute = compile('app/api/resource-request/route.ts', { '@/lib/resources': resources });
-    const input = { kind: 'proposal', organization: '예시 기관', name: '김담당', email: 'proposal@example.org', emailConfirm: 'proposal@example.org', details: '실무자 30명 공문 작성 교육', consent: true };
+    const diagnosis = { version: 'ax-v3', scope: '내가 아는 부서', agent: 'no', answers: [...Array(9).fill(5), 'unknown', ...Array(5).fill(1)] };
+    const input = { kind: 'proposal', organization: '예시 기관', name: '김담당', email: 'proposal@example.org', emailConfirm: 'proposal@example.org', details: '실무자 30명 공문 작성 교육', consent: true, shareDiagnosis: true, diagnosis };
     const send = data => requestRoute.POST(new Request('https://www.humanai-edu.kr/api/resource-request', { method: 'POST', body: JSON.stringify(data) }));
     const oldFetch = global.fetch;
     const originalPayload = savedPayload;
@@ -85,7 +86,8 @@ test('verified sheet persistence', async t => {
     };
     try {
       savedPayload = undefined;
-      for (const patch of [{ name: '123' }, { emailConfirm: 'other@example.org' }, { consent: false }]) assert.equal((await send({ ...input, ...patch })).status, 400);
+      for (const patch of [{ name: '123' }, { emailConfirm: 'other@example.org' }, { consent: false }, { diagnosis: { ...diagnosis, answers: [5] } }]) assert.equal((await send({ ...input, ...patch })).status, 400);
+      assert.equal(resources.parseRequest({ ...input, shareDiagnosis: false }).diagnosis, undefined);
       assert.equal((await send(input)).status, 200);
       assert.equal(savedPayload, undefined);
       assert.equal(owner, undefined);
@@ -98,7 +100,10 @@ test('verified sheet persistence', async t => {
       assert.equal(savedPayload.email, input.email);
       assert.equal(savedPayload.resourceLabel, '맞춤 교육 제안서');
       assert.equal(savedPayload.marketing, false);
+      assert.equal(savedPayload.diagnosis, undefined);
       assert.match(owner.text, /공문 작성 교육/);
+      assert.match(owner.text, /AI 활용 수준: 5\.0\/5\.0 · 안전 운영 준비: 1\.0\/5\.0/);
+      assert.match(owner.text, /금지 자료 구분 — 모름/);
     } finally { global.fetch = oldFetch; savedPayload = originalPayload; }
   });
   await t.test('Apps Script verifies signature/freshness, locks writes, deduplicates and escapes formulas', () => {
