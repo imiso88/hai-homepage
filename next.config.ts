@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       ...["brochure", "privacy-curriculum", "method"].map(name => ({ source: `/humanai-edu-${name}.pdf`, destination: "/#download", permanent: false })),
+      { source: "/index.html", destination: "/", permanent: true },
       { source: "/contact.html", destination: "/#contact", permanent: false },
       { source: "/contact", destination: "/#contact", permanent: false },
     ];
