@@ -4,7 +4,7 @@
     <loc>https://www.humanai-edu.kr/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-11-10</lastmod>
   </url>
   <url>
     <loc>https://www.humanai-edu.kr/ax-transformation.html</loc>
@@ -28,7 +28,7 @@
     <loc>https://www.humanai-edu.kr/expert.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-11-10</lastmod>
   </url>
   <url>
     <loc>https://www.humanai-edu.kr/profile.html</loc>
@@ -86,13 +86,13 @@
     <loc>https://www.humanai-edu.kr/corporate-ai-training.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-10</lastmod>
   </url>
   <url>
     <loc>https://www.humanai-edu.kr/public-ai-training.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-10</lastmod>
   </url>
   <url>
     <loc>https://www.humanai-edu.kr/executive-ax-training.html</loc>
@@ -152,6 +152,6 @@
     <loc>https://www.humanai-edu.kr/ai-training-request-guide.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-11-10</lastmod>
   </url>
 </urlset>
