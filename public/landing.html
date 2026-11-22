@@ -64,7 +64,10 @@
   .hai-lp .burger span{width:20px;height:2px;background:var(--navy);border-radius:2px;transition:.2s}
   .hai-lp .header-space{height:68px}
   .hai-lp .site-slogan{background:#F2F6FF;color:var(--navy);border-bottom:1px solid var(--line)}
-  .hai-lp .site-slogan p{padding-block:10px;font-size:clamp(13px,1.4vw,16px);font-weight:700;line-height:1.45;word-break:keep-all}
+  .hai-lp .site-slogan .wrap{padding-block:10px;line-height:1.45;word-break:keep-all}
+  .hai-lp .site-slogan .site-slogan-title{font-size:18px;font-weight:700}
+  .hai-lp .site-slogan .site-slogan-audience{font-size:14px;color:var(--sub)}
+  @media(max-width:767px){.hai-lp .site-slogan .site-slogan-title{font-size:16px}}
   .hai-lp section[id]{scroll-margin-top:80px}
 
   /* ---------- 0-3. 출강 기관 로고 흐름 ---------- */
@@ -333,7 +336,12 @@
   </div>
 </header>
 <div class="header-space" id="top"></div>
-<div class="site-slogan"><p class="wrap">공공기관·기업 맞춤형 생성형 AI 교육</p></div>
+<div class="site-slogan">
+  <div class="wrap">
+    <div class="site-slogan-title">맞춤형 생성형 AI 교육</div>
+    <div class="site-slogan-audience">정부부처·지자체·공공기관·기업 대상</div>
+  </div>
+</div>
 
 <!-- ================= SECTION 1. HERO ================= -->
 <section class="hero">
@@ -342,9 +350,8 @@
   <button class="hero-motion-toggle" type="button" aria-pressed="false">배경 움직임 멈추기</button>
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">공공기관·공무원·기업 AI 교육 강사 배미주 박사</span>
+      <span class="eyebrow">AX 전환 교육 설계 전문가 배미주 박사</span>
       <h1 class="hero-slogan">인간을 향한 AI,<br><span class="hl">내 일의 파트너</span></h1>
-      <p class="lead">휴먼AI융합교육원은 배미주 교육학 박사가 기관과 기업의 실제 업무에 맞춰 생성형 AI 교육을 설계하고 진행합니다. 공공기관은 공문·보고서·민원 답변을, 기업은 기획·데이터 분석·업무자동화를 실습합니다.</p>
 
       <div class="cta-row">
         <!-- [교체] 문의 페이지 주소 -->
