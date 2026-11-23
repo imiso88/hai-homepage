@@ -30,6 +30,7 @@ function doPost(e) {
     for (var i = 0; i < 64; i++) difference |= expected.charCodeAt(i) ^ envelope.signature.charCodeAt(i);
     if (difference !== 0) return result_({ ok: false });
     var p = JSON.parse(envelope.payload);
+    if (p.version === 3) return saveContact_(p);
     if ((p.version !== 1 && p.version !== 2) || !/^[a-f0-9-]{36}$/.test(p.id) || p.consent !== true ||
         !['brochure', 'privacy', 'method'].includes(p.resource) ||
         typeof p.proposal !== 'boolean' || typeof p.marketing !== 'boolean' ||
@@ -79,5 +80,43 @@ function doPost(e) {
     return result_({ ok: false, error: 'Save failed' });
   } finally {
     if (lock && lock.hasLock()) lock.releaseLock();
+  }
+}
+
+var CONTACT_HEADERS = ['접수 시각', '기관·기업명', '담당자명', '연락처', '이메일', '교육 대상', '관심 트랙', '예상 인원', '희망 일정', '문의 내용', '유입 경로', '진행 상태', '메모', '교육 예산', '접수 ID', '개인정보 동의'];
+
+function saveContact_(p) {
+  var limits = { organization:100, name:50, phone:30, email:120, audience:200,
+    tracks:200, headcount:50, schedule:200, message:3000, source:50, budget:100 };
+  if (!/^[a-f0-9-]{36}$/.test(p.id) || p.consent !== true ||
+      !Number.isFinite(Date.parse(p.requestedAt)) ||
+      !Object.keys(limits).every(function(k) { return typeof p[k] === 'string' && p[k].length <= limits[k]; }) ||
+      !p.organization || !p.name || !p.phone || !p.email || !p.message) return result_({ ok: false });
+  var lock = LockService.getScriptLock();
+  if (!lock.tryLock(10000)) return result_({ ok: false });
+  try {
+    var sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getSheets().find(function(tab) {
+      return tab.getSheetId() === 19999218;
+    });
+    if (!sheet) throw new Error('Missing contact destination');
+    var header = sheet.getRange(1, 1, 1, CONTACT_HEADERS.length).getValues()[0];
+    if (CONTACT_HEADERS.some(function(v, i) { return i < 13 ? header[i] !== v : header[i] !== '' && header[i] !== v; }))
+      throw new Error('Contact header mismatch');
+    if (header.slice(13).some(function(v) { return v === ''; }))
+      sheet.getRange(1, 14, 1, 3).setValues([CONTACT_HEADERS.slice(13)]);
+    var last = sheet.getLastRow();
+    var prior = last > 1 && sheet.getRange(2, 15, last - 1, 1).createTextFinder(p.id)
+      .matchEntireCell(true).useRegularExpression(false).findNext();
+    if (!prior) {
+      var received = Utilities.formatDate(new Date(p.requestedAt), 'Asia/Seoul', 'yyyy-MM-dd HH:mm:ss');
+      var cells = [received, p.organization, p.name, p.phone, p.email, p.audience, p.tracks,
+        p.headcount, p.schedule, p.message, p.source, '신규', '', p.budget, p.id, '동의'].map(safeCell_);
+      if (last >= sheet.getMaxRows()) sheet.insertRowsAfter(last, 100);
+      sheet.getRange(last + 1, 1, 1, cells.length).setNumberFormat('@').setValues([cells]);
+      SpreadsheetApp.flush();
+    }
+    return result_({ ok: true, id: p.id, version: 3, duplicate: Boolean(prior) });
+  } finally {
+    lock.releaseLock();
   }
 }
